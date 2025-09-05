@@ -24,20 +24,67 @@ const atkinson = Atkinson_Hyperlegible({
 });
 
 export const metadata: Metadata = {
-  title: "ACT Jubilant — Empowering people. Creating possibilities.",
+  title: "ACT Jubilant — NDIS Support Services Canberra | Disability Support Worker Near Me",
   description:
-    "Registered NDIS provider in Canberra. Personalised support, inclusive programs, and real care.",
+    "Leading NDIS provider in Canberra & ACT. Personal care, community support, disability services. Support workers available 24/7. Call +61 434 740 745 for immediate assistance.",
+  keywords: [
+    "NDIS provider Canberra",
+    "disability support services ACT",
+    "support worker near me",
+    "personal care assistant Belconnen",
+    "community support worker Canberra",
+    "NDIS support coordination",
+    "disability services ACT",
+    "home care support Canberra",
+    "respite care ACT",
+    "daily living support",
+    "community participation Canberra",
+    "NDIS registered provider",
+    "disability support worker",
+    "Canberra NDIS services",
+    "ACT disability support"
+  ],
+  authors: [{ name: "ACT Jubilant" }],
+  creator: "ACT Jubilant",
+  publisher: "ACT Jubilant",
   metadataBase: new URL("https://actjubilant.com.au"),
   alternates: { canonical: "/" },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
-    title: "ACT Jubilant",
+    title: "ACT Jubilant — NDIS Support Services Canberra | Disability Support Worker",
     description:
-      "Personalised NDIS support in Canberra. Your goals, your pace — we’re here for you.",
+      "Leading NDIS provider in Canberra & ACT. Personal care, community support, disability services. Support workers available 24/7. Empowering people, creating possibilities.",
     url: "https://actjubilant.com.au",
     siteName: "ACT Jubilant",
-    images: [{ url: "/logo.png", width: 1200, height: 630 }],
+    images: [
+      { 
+        url: "/logo.png", 
+        width: 1200, 
+        height: 630,
+        alt: "ACT Jubilant - NDIS Support Services Canberra"
+      }
+    ],
     locale: "en_AU",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ACT Jubilant — NDIS Support Services Canberra",
+    description: "Leading NDIS provider in Canberra & ACT. Disability support, personal care, community services.",
+    images: ["/logo.png"],
+  },
+  verification: {
+    google: "your-google-verification-code", // Add your Google Search Console verification code
   },
 };
 
@@ -64,7 +111,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Link href="/" className="flex items-center gap-3 min-w-0">
               <Image
                 src="/logo.png"
-                alt="ACT Jubilant"
+                alt="ACT Jubilant - NDIS Support Services Canberra | Disability Support Worker"
                 width={100}
                 height={60}
                 priority
@@ -107,7 +154,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <div className="flex items-center gap-3 mb-4">
                   <Image
                     src="/logo.png"
-                    alt="ACT Jubilant"
+                    alt="ACT Jubilant - NDIS Support Services Canberra | Disability Support Worker"
                     width={100}
                     height={60}
                     className="h-10 md:h-12 w-auto rounded-xl"
@@ -201,6 +248,25 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
           </div>
         </footer>
+
+        {/* Google Analytics */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'GA_MEASUREMENT_ID', {
+                page_title: document.title,
+                page_location: window.location.href,
+              });
+            `,
+          }}
+        />
 
         {/* Structured data */}
         <script

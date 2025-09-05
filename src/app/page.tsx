@@ -9,19 +9,20 @@ export default function Home() {
       <section className="py-10 md:py-16">
         <div className="grid gap-8 md:grid-cols-2 md:items-center">
           <div>
-            <h1 className="text-balance text-3xl md:text-5xl font-extrabold leading-tight">
-              Empowering people. Creating possibilities.
+            <h1 className="text-balance text-3xl md:text-5l font-bold leading-tight">
+              Leading NDIS Support Services in Canberra
             </h1>
-            <p className="mt-3 text-xl text-[var(--text-muted)]">Your goals, your pace — we’re here for you.</p>
+            <p className="mt-3 text-xl text-[var(--text-muted)]">Professional disability support workers available 24/7 in Canberra & ACT</p>
             <p className="mt-6 text-lg">
-              We’re a registered NDIS provider based in Canberra offering personalised support,
-              inclusive programs, and real care.
+              We're a registered NDIS provider in Canberra offering personalised disability support services, 
+              personal care assistants, community support workers, and inclusive programs. 
+              <strong> Support workers near you in Belconnen, Canberra, and surrounding ACT areas.</strong>
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <Link href="/referral" className="btn-primary">Make a Referral</Link>
               <Link href="/consultation" className="btn-secondary">Book a Consultation</Link>
-              <a href="tel:0424488439" className="btn-ghost" aria-label="Call us on 0424 488 439">
-                Call: 0424 488 439
+              <a href="tel:+61434740745" className="btn-ghost" aria-label="Call us on +61 434 740 745">
+                Call: +61 434 740 745
               </a>
             </div>
             <p className="mt-4 text-sm text-[var(--text-muted)]">
@@ -40,12 +41,12 @@ export default function Home() {
       <section aria-labelledby="mission" className="py-8 md:py-10">
         <div className="grid gap-6 md:grid-cols-2">
           <div className="card">
-            <h2 id="mission" className="h2">Our Mission</h2>
-            <p className="mt-2">To empower individuals with disabilities by promoting independence, inclusion, and dignity — through care that’s compassionate, flexible, and tailored.</p>
+            <h2 id="mission" className="h2">NDIS Support Services in Canberra</h2>
+            <p className="mt-2">To empower individuals with disabilities by promoting independence, inclusion, and dignity — through care that's compassionate, flexible, and tailored. Our disability support workers in Canberra provide 24/7 assistance for NDIS participants.</p>
           </div>
           <div className="card">
-            <h2 className="h2">Our Vision</h2>
-            <p className="mt-2">A community where every person, regardless of ability, lives with purpose, connection, and equal opportunity.</p>
+            <h2 className="h2">Professional Support Workers Near You</h2>
+            <p className="mt-2">A community where every person, regardless of ability, lives with purpose, connection, and equal opportunity. Our personal care assistants and community support workers serve Belconnen, Canberra, and all ACT areas.</p>
           </div>
         </div>
       </section>
