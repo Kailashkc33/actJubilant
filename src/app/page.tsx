@@ -1,103 +1,154 @@
+"use client";
+import Link from "next/link";
 import Image from "next/image";
+import "./globals.css";
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <>
+      <section className="py-10 md:py-16">
+        <div className="grid gap-8 md:grid-cols-2 md:items-center">
+          <div>
+            <h1 className="text-balance text-3xl md:text-5xl font-extrabold leading-tight">
+              Empowering people. Creating possibilities.
+            </h1>
+            <p className="mt-3 text-xl text-[var(--text-muted)]">Your goals, your pace — we’re here for you.</p>
+            <p className="mt-6 text-lg">
+              We’re a registered NDIS provider based in Canberra offering personalised support,
+              inclusive programs, and real care.
+            </p>
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <Link href="/referral" className="btn-primary">Make a Referral</Link>
+              <Link href="/consultation" className="btn-secondary">Book a Consultation</Link>
+              <a href="tel:0424488439" className="btn-ghost" aria-label="Call us on 0424 488 439">
+                Call: 0424 488 439
+              </a>
+            </div>
+            <p className="mt-4 text-sm text-[var(--text-muted)]">
+              If you’re in crisis, call <strong>000</strong> or Lifeline <strong>13&nbsp;11&nbsp;14</strong>.
+            </p>
+          </div>
+          <div className="h-64 md:h-[360px] rounded-2xl bg-gradient-to-br from-[var(--primary-600)] to-[var(--primary-700)] flex items-center justify-center shadow-[0_8px_24px_rgba(0,0,0,0.08)]">
+            <div className="text-center text-white p-6">
+              <h2 className="text-2xl md:text-3xl font-bold mb-2">Welcome to ACT Jubilant</h2>
+              <p className="text-lg opacity-90">Empowering people. Creating possibilities.</p>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+
+      <section aria-labelledby="mission" className="py-8 md:py-10">
+        <div className="grid gap-6 md:grid-cols-2">
+          <div className="card">
+            <h2 id="mission" className="h2">Our Mission</h2>
+            <p className="mt-2">To empower individuals with disabilities by promoting independence, inclusion, and dignity — through care that’s compassionate, flexible, and tailored.</p>
+          </div>
+          <div className="card">
+            <h2 className="h2">Our Vision</h2>
+            <p className="mt-2">A community where every person, regardless of ability, lives with purpose, connection, and equal opportunity.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="offerings" aria-labelledby="offerings-title" className="py-8 md:py-12">
+        <h2 id="offerings-title" className="h2">What We Offer</h2>
+        <div className="mt-6 grid gap-6 md:grid-cols-3">
+          <article className="card" aria-labelledby="one-on-one">
+            <h3 id="one-on-one" className="h3">🧍 One-on-One Support</h3>
+            <p className="mt-2">At home or in the community — focused on your goals. Respectful, trusting relationships so you feel safe, heard, and in control.</p>
+          </article>
+          <article className="card" aria-labelledby="group-programs">
+            <h3 id="group-programs" className="h3">👥 Group Programs</h3>
+            <p className="mt-2">Art, social, and skills groups — safe, inclusive and confidence-building.</p>
+          </article>
+          <article className="card" aria-labelledby="community-access">
+            <h3 id="community-access" className="h3">🌏 Community Access</h3>
+            <p className="mt-2">Shopping, events, outings, appointments — explore with the right support.</p>
+          </article>
+        </div>
+      </section>
+
+      <section aria-labelledby="service-areas" className="py-8 md:py-12">
+        <div className="card">
+          <h2 id="service-areas" className="h2">Service Areas</h2>
+          <p className="mt-2">Canberra & surrounds — Gungahlin, Belconnen, City, Woden, Tuggeranong, Weston Creek, and Queanbeyan.</p>
+        </div>
+      </section>
+
+      <section id="why-us" aria-labelledby="why-title" className="py-8 md:py-12">
+        <h2 id="why-title" className="h2">Why Choose ACT Jubilant?</h2>
+        <ul className="mt-4 space-y-2">
+          <li>✅ Participant-first care</li>
+          <li>✅ Skilled, friendly support workers</li>
+          <li>✅ We listen, we adapt, we care</li>
+          <li>✅ Canberra-based & community-focused</li>
+        </ul>
+      </section>
+
+      <section id="reviews" aria-labelledby="reviews-title" className="py-8 md:py-12">
+        <h2 id="reviews-title" className="h2">What Our Participants Say</h2>
+        <div className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="card">
+            <div className="flex items-center gap-1 mb-3">
+              {[...Array(5)].map((_, i) => (
+                <span key={i} className="text-yellow-400" aria-hidden="true">★</span>
+              ))}
+            </div>
+            <blockquote className="text-lg">
+              "ACT Jubilant has been amazing. My support worker really understands my needs and helps me achieve my goals. I feel respected and supported every step of the way."
+            </blockquote>
+            <cite className="mt-3 block text-sm text-[var(--text-muted)]">
+              — Sarah M., Participant
+            </cite>
+          </div>
+          
+          <div className="card">
+            <div className="flex items-center gap-1 mb-3">
+              {[...Array(5)].map((_, i) => (
+                <span key={i} className="text-yellow-400" aria-hidden="true">★</span>
+              ))}
+            </div>
+            <blockquote className="text-lg">
+              "The team at ACT Jubilant helped my son build confidence and independence. Their group programs are fantastic and the staff are so caring and professional."
+            </blockquote>
+            <cite className="mt-3 block text-sm text-[var(--text-muted)]">
+              — Jennifer L., Parent
+            </cite>
+          </div>
+          
+          <div className="card">
+            <div className="flex items-center gap-1 mb-3">
+              {[...Array(5)].map((_, i) => (
+                <span key={i} className="text-yellow-400" aria-hidden="true">★</span>
+              ))}
+            </div>
+            <blockquote className="text-lg">
+              "I love how flexible they are with scheduling. They really listen to what I want to do and help me make it happen. Highly recommend!"
+            </blockquote>
+            <cite className="mt-3 block text-sm text-[var(--text-muted)]">
+              — Michael R., Participant
+            </cite>
+          </div>
+        </div>
+        
+        <div className="mt-8 text-center">
+          <Link href="/reviews" className="btn-secondary">
+            Read More Reviews
+          </Link>
+        </div>
+      </section>
+
+      <section id="contact" aria-labelledby="contact-title" className="py-10 md:py-14">
+        <div className="card">
+          <h2 id="contact-title" className="h2">Get Started</h2>
+          <p className="mt-2">You can refer yourself, or someone else can refer you.</p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <Link href="/referral" className="btn-primary">Make a Referral</Link>
+            <Link href="/consultation" className="btn-secondary">Book a Consultation</Link>
+            <a href="tel:+61434740745" className="btn-ghost">Call: +61 434 740 745</a>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }

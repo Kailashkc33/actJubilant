@@ -19,6 +19,11 @@ const eslintConfig = [
       "build/**",
       "next-env.d.ts",
     ],
+    plugins: ["jsx-a11y"], // ✅ must be an array
+    extends: ["plugin:jsx-a11y/recommended"], // ✅ needs to be in `extends`
+    rules: {
+     
+    },
   },
 ];
 
