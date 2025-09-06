@@ -1,6 +1,8 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
+import SelfHostedVideo from "../components/SelfHostedVideo";
+import ImageCarousel from "../components/ImageCarousel";
 import "./globals.css";
 
 export default function Home() {
@@ -29,12 +31,44 @@ export default function Home() {
               If you’re in crisis, call <strong>000</strong> or Lifeline <strong>13&nbsp;11&nbsp;14</strong>.
             </p>
           </div>
-          <div className="h-64 md:h-[360px] rounded-2xl bg-gradient-to-br from-[var(--primary-600)] to-[var(--primary-700)] flex items-center justify-center shadow-[0_8px_24px_rgba(0,0,0,0.08)]">
-            <div className="text-center text-white p-6">
-              <h2 className="text-2xl md:text-3xl font-bold mb-2">Welcome to ACT Jubilant</h2>
-              <p className="text-lg opacity-90">Empowering people. Creating possibilities.</p>
-            </div>
-          </div>
+          <ImageCarousel
+            images={[
+              {
+                src: "/images/gallery/pexels-kampus-production-8380014.jpg",
+                alt: "Support worker helping client with daily activities",
+                title: "Welcome to ACT Jubilant",
+                description: "Empowering people. Creating possibilities."
+              },
+              {
+                src: "/images/gallery/pexels-cliff-booth-4058218.jpg",
+                alt: "Community support and social activities",
+                title: "Community Support",
+                description: "Building connections and fostering independence"
+              },
+              {
+                src: "/images/gallery/pexels-ivan-samkov-8127437.jpg",
+                alt: "Personal care and assistance services",
+                title: "Personal Care",
+                description: "Compassionate support for daily living"
+              },
+              {
+                src: "/images/gallery/pexels-elevate-3009756.jpg",
+                alt: "Team of professional support workers",
+                title: "Professional Team",
+                description: "Experienced and caring support workers"
+              },
+              {
+                src: "/images/gallery/pexels-akil-mazumder-1072824.jpg",
+                alt: "Inclusive community programs",
+                title: "Inclusive Programs",
+                description: "Creating opportunities for everyone"
+              }
+            ]}
+            autoPlay={true}
+            autoPlayInterval={4000}
+            showDots={true}
+            showArrows={true}
+          />
         </div>
       </section>
 
@@ -73,6 +107,19 @@ export default function Home() {
         <div className="card">
           <h2 id="service-areas" className="h2">Service Areas</h2>
           <p className="mt-2">Canberra & surrounds — Gungahlin, Belconnen, City, Woden, Tuggeranong, Weston Creek, and Queanbeyan.</p>
+        </div>
+      </section>
+
+      {/* Client Testimonial Video */}
+      <section aria-labelledby="testimonial-video" className="py-8 md:py-12">
+        <h2 id="testimonial-video" className="h2 text-center mb-8">Hear From Our Clients</h2>
+        <div className="max-w-4xl mx-auto">
+          <SelfHostedVideo
+            srcMp4="/videos/testimonial2.mp4"
+            title="Client Testimonial - ACT Jubilant NDIS Services"
+            description="Hear directly from our clients about their experience with our disability support services in Canberra"
+            poster="/images/testimonials/video-thumbnail.jpg"
+          />
         </div>
       </section>
 

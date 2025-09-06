@@ -114,17 +114,3 @@ body {
   min-height: 44px; 
   min-width: 44px; 
 }
-
-/* Consistent logo sizing across all pages */
-.site-logo {
-  /* fixed visual height with responsive bump; width auto to preserve aspect ratio */
-  @apply h-10 md:h-12 w-auto;
-}
-
-/* Optional: make header look clean on mobile */
-.site-header {
-  @apply sticky top-0 z-40 border-b bg-white/85 backdrop-blur;
-  /* If you prefer your brand tokens, swap to:
-     bg-[color-mix(in_oklab,white_85%,var(--surface))]
-  */
-}

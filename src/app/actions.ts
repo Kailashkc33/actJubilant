@@ -369,12 +369,27 @@ export async function submitReview(
   const cSubject = "Thanks for your review — ACT Jubilant";
   const cText =
     `Hi ${data.name},\n\n` +
-    `Thanks for sharing your review. We’ll publish it after moderation.\n\n` +
-    `— ACT Jubilant`;
+    `Thanks for sharing your review! We'll publish it on our website after moderation.\n\n` +
+    `Help others find us by also leaving a Google Review:\n` +
+    `https://g.page/r/ACT-Jubilant-NDIS-Provider/review\n\n` +
+    `Your feedback helps other families in Canberra find quality NDIS support services.\n\n` +
+    `— ACT Jubilant Team`;
   const cHtml = `
-    <p>Hi ${escapeHtml(data.name)},</p>
-    <p>Thanks for sharing your review. We’ll publish it after moderation.</p>
-    <p>— ACT Jubilant</p>
+    <div style="max-width: 600px; margin: 0 auto; font-family: Arial, sans-serif;">
+      <p>Hi ${escapeHtml(data.name)},</p>
+      <p>Thanks for sharing your review! We'll publish it on our website after moderation.</p>
+      
+      <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
+        <h3 style="margin: 0 0 10px; color: #1a73e8;">Help Others Find Us!</h3>
+        <p style="margin: 0 0 15px;">Your review helps other families in Canberra find quality NDIS support services.</p>
+        <a href="https://g.page/r/ACT-Jubilant-NDIS-Provider/review" 
+           style="display: inline-block; background: #1a73e8; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold;">
+          Leave Google Review
+        </a>
+      </div>
+      
+      <p>— ACT Jubilant Team</p>
+    </div>
   `;
 
   try {

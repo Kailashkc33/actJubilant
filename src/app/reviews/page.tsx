@@ -3,6 +3,7 @@
 import { useEffect, useRef, useActionState } from "react";
 import { useFormStatus } from "react-dom";
 import { submitReview, type ActionResult } from "../actions";
+import SelfHostedVideo from "../../components/SelfHostedVideo";
 
 const initialState: ActionResult = { ok: false, errors: {} };
 
@@ -20,6 +21,17 @@ export default function ReviewsPage() {
       <p className="mt-4 text-lg">
         Hear from our participants and families about their experiences with ACT Jubilant.
       </p>
+
+      {/* Video Testimonial */}
+      <div className="mt-8">
+        <h2 className="h3 mb-4">Client Testimonial Video</h2>
+        <SelfHostedVideo
+          srcMp4="/videos/testimonial2.mp4"
+          title="Client Testimonial - ACT Jubilant NDIS Services"
+          description="Hear directly from our clients about their experience with our disability support services in Canberra"
+          poster="/images/testimonials/thumbnail.png"
+        />
+      </div>
 
       {/* Review submission form */}
       <div className="mt-8 card">
