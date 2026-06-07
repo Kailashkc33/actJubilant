@@ -198,9 +198,7 @@ export default function ProgramsPage() {
         {/* Additional Services */}
         <div className="mt-8 grid gap-6 md:grid-cols-2">
           <div className="text-center">
-            <div className="w-16 h-16 bg-[var(--primary-100)] rounded-full flex items-center justify-center mx-auto mb-4">
-              <span className="text-2xl">🎯</span>
-            </div>
+            <div className="mx-auto mb-4 h-1 w-12 rounded bg-[var(--primary-600)]" aria-hidden="true" />
             <h3 className="h3">Goal Achievement</h3>
             <p className="text-[var(--text-muted)] mt-2">
               Specialized support to help people achieve their goals and build independence.
@@ -208,9 +206,7 @@ export default function ProgramsPage() {
           </div>
           
           <div className="text-center">
-            <div className="w-16 h-16 bg-[var(--primary-100)] rounded-full flex items-center justify-center mx-auto mb-4">
-              <span className="text-2xl">🤝</span>
-            </div>
+            <div className="mx-auto mb-4 h-1 w-12 rounded bg-[var(--primary-600)]" aria-hidden="true" />
             <h3 className="h3">Support Coordination</h3>
             <p className="text-[var(--text-muted)] mt-2">
               Professional guidance to help people navigate their support plans and access services.

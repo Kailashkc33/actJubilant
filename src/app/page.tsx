@@ -89,15 +89,15 @@ export default function Home() {
         <h2 id="offerings-title" className="h2">What We Offer</h2>
         <div className="mt-6 grid gap-6 md:grid-cols-3">
           <article className="card" aria-labelledby="one-on-one">
-            <h3 id="one-on-one" className="h3">🧍 One-on-One Support</h3>
+            <h3 id="one-on-one" className="h3">One-on-One Support</h3>
             <p className="mt-2">At home or in the community — focused on your goals. Respectful, trusting relationships so you feel safe, heard, and in control.</p>
           </article>
           <article className="card" aria-labelledby="group-programs">
-            <h3 id="group-programs" className="h3">👥 Group Programs</h3>
+            <h3 id="group-programs" className="h3">Group Programs</h3>
             <p className="mt-2">Art, social, and skills groups — safe, inclusive and confidence-building.</p>
           </article>
           <article className="card" aria-labelledby="community-access">
-            <h3 id="community-access" className="h3">🌏 Community Access</h3>
+            <h3 id="community-access" className="h3">Community Access</h3>
             <p className="mt-2">Shopping, events, outings, appointments — explore with the right support.</p>
           </article>
         </div>
@@ -125,11 +125,11 @@ export default function Home() {
 
       <section id="why-us" aria-labelledby="why-title" className="py-8 md:py-12">
         <h2 id="why-title" className="h2">Why Choose ACT Jubilant?</h2>
-        <ul className="mt-4 space-y-2">
-          <li>✅ Participant-first care</li>
-          <li>✅ Skilled, friendly support workers</li>
-          <li>✅ We listen, we adapt, we care</li>
-          <li>✅ Canberra-based & community-focused</li>
+        <ul className="mt-4 list-disc space-y-2 pl-6">
+          <li>Participant-first care</li>
+          <li>Skilled, friendly support workers</li>
+          <li>We listen, we adapt, we care</li>
+          <li>Canberra-based & community-focused</li>
         </ul>
       </section>
 
