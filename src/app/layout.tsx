@@ -240,7 +240,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="border-t bg-[color-mix(in_oklab,var(--primary-600)_8%,var(--surface))]">
             <div className="mx-auto max-w-7xl px-4 py-4 flex flex-wrap items-center justify-between gap-4">
               <p className="text-sm text-[var(--text-muted)]">
-                📍 Proudly supporting the Canberra community
+                Proudly supporting the Canberra community
               </p>
               <p className="text-sm text-[var(--text-muted)]">
                 © 2025 ACT Jubilant. All rights reserved.
