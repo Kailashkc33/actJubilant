@@ -21,10 +21,14 @@ interface SelfHostedVideoProps {
   description?: string;
   /** Shown before play; prefer a lightweight JPG (<=200 KB). */
   poster?: string;
-  /** 16/9 by default. Pass like "4/3", "1/1" if needed. */
+  /** 16/9 by default. Pass like "9/16", "4/3", "1/1" if needed. */
   aspect?: string;
+  /** How video fills the frame when playing. */
+  objectFit?: "contain" | "cover";
   /** Set true to hide the dark overlay label block. */
   minimalChrome?: boolean;
+  /** Optional wrapper classes (e.g. max-width for portrait videos). */
+  className?: string;
 }
 
 /**
@@ -44,8 +48,11 @@ export default function SelfHostedVideo({
   description,
   poster,
   aspect = "16/9",
+  objectFit = "contain",
   minimalChrome,
+  className,
 }: SelfHostedVideoProps) {
+  const fitClass = objectFit === "cover" ? "object-cover" : "object-contain";
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isInView, setIsInView] = useState(false);
@@ -87,7 +94,7 @@ export default function SelfHostedVideo({
   };
 
   return (
-    <div className="w-full">
+    <div className={className ? `w-full ${className}` : "w-full"}>
       {!isPlaying ? (
         <div
           ref={cardRef}
@@ -103,7 +110,7 @@ export default function SelfHostedVideo({
           <img
             src={poster || "/images/video-fallback.jpg"}
             alt={title}
-            className="absolute inset-0 h-full w-full object-cover"
+            className={`absolute inset-0 h-full w-full ${fitClass}`}
             loading="lazy"
             decoding="async"
           />
@@ -138,7 +145,7 @@ export default function SelfHostedVideo({
         >
           <video
             ref={videoRef}
-            className="absolute inset-0 h-full w-full object-contain"
+            className={`absolute inset-0 h-full w-full ${fitClass}`}
             controls
             playsInline
             preload="metadata"

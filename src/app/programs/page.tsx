@@ -1,219 +1,511 @@
+import type { Metadata } from "next";
+import Link from "next/link";
 import Image from "next/image";
+import SelfHostedVideo from "@/components/SelfHostedVideo";
+
+export const metadata: Metadata = {
+  title: "Programs & Activities — Meaningful Daily Life Support | ACT Jubilant",
+  description:
+    "See what participant-driven support looks like in Canberra — interest-led activities, small groups, community outings, and consistent routines built around real life.",
+  alternates: {
+    canonical: "/programs",
+  },
+};
+
+const PROGRAM_BEATS = [
+  {
+    title: "Listen",
+    body: "We take time to understand interests, communication style, and what a good day actually feels like for that person.",
+  },
+  {
+    title: "Understand",
+    body: "We learn their routine, goals, therapy recommendations, and what matters to their family — before anything is scheduled.",
+  },
+  {
+    title: "Design",
+    body: "Structured support is built around them — at home and in the community — around the rhythm of a real week.",
+  },
+  {
+    title: "Run consistently",
+    body: "The same familiar workers show up, week after week — so trust and routine can actually build.",
+  },
+] as const;
+
+const SMALL_GROUP_MEDIA = [
+  {
+    type: "image" as const,
+    src: "/images/team/event-group-photo-dec-2025.jpg",
+    alt: "ACT Jubilant team and participants at a group event",
+    caption: "The same faces, week after week",
+  },
+  {
+    type: "image" as const,
+    src: "/images/gallery/restaurant-group-meal-dec-2025.jpg",
+    alt: "Group meal at a restaurant with friends and support",
+    caption: "Shared experiences that build connection",
+  },
+  {
+    type: "image" as const,
+    src: "/images/gallery/community-cafe-outing-nov-2025.jpg",
+    alt: "Support worker and participant sharing a café outing together",
+    caption: "Connected in everyday places",
+  },
+  {
+    type: "video" as const,
+    srcMp4: "/videos/community-dance-class-event-sep-2025-portrait.mp4",
+    poster: "/images/gallery/dance-class-event-poster-portrait.jpg",
+    title: "A group that feels familiar",
+    description:
+      "Movement, routine, and participation — with familiar support workers and participants in the same group.",
+    caption: "Staying engaged together",
+  },
+] as const;
+
+const MEANINGFUL_PILLARS = [
+  {
+    title: "Hobbies & interests",
+    body: "Someone who takes pride in what they create and pursue — whether that's gardening, art, cooking, or an interest that's uniquely their own.",
+    image: "/images/gallery/art-workshop-group-feb-2026.jpg",
+    alt: "Participant at a group art workshop with paints and supplies",
+    caption: "Pride in what they create",
+  },
+  {
+    title: "Routine & structure",
+    body: "Someone whose week has a rhythm they can count on — familiar activities, regular outings, and days that feel intentional rather than empty.",
+    image: "/images/gallery/wheelchair-outdoor-outing-nov-2025.jpg",
+    alt: "Regular outdoor outing with familiar support workers",
+    caption: "A week with rhythm and purpose",
+  },
+  {
+    title: "Community participation",
+    body: "Someone who belongs in everyday places — catching up with friends, visiting local venues, and staying connected to community life.",
+    image: "/images/gallery/restaurant-group-meal-dec-2025.jpg",
+    alt: "Group meal at a restaurant with friends and support",
+    caption: "Belonging in everyday places",
+  },
+  {
+    title: "Skill & identity building",
+    body: "Someone growing in confidence and recognised for what they learn, build, and contribute — not only for what they need help with.",
+    image: "/images/gallery/participant-home-flowers-jan-2026.jpg",
+    alt: "Participant at home, recognised and valued in their own space",
+    caption: "Confidence and recognition",
+  },
+] as const;
+
+const INTEREST_PHOTO_TILES = [
+  {
+    title: "Café outings & local venues",
+    outcome: "Connection in everyday community spaces",
+    image: "/images/gallery/community-cafe-outing-nov-2025.jpg",
+    alt: "Support worker and participant sharing a café outing together",
+  },
+  {
+    title: "Community events & celebrations",
+    outcome: "Shared experiences that matter",
+    image: "/images/gallery/birthday-celebration-restaurant-jan-2026.jpg",
+    alt: "Birthday celebration at a restaurant with support worker and family",
+  },
+  {
+    title: "Social time with friends",
+    outcome: "Belonging, not just supervision",
+    image: "/images/gallery/restaurant-group-meal-dec-2025.jpg",
+    alt: "Group meal at a restaurant with friends and support",
+  },
+] as const;
+
+const INTEREST_TEXT_TILES = [
+  { title: "Art & creative workshops", outcome: "Pride in what they make" },
+  { title: "Cooking at home or in group", outcome: "Independence and confidence in the kitchen" },
+  { title: "Gardening", outcome: "Routine, mobility, and something to care for" },
+  { title: "Woodworking & hands-on hobbies", outcome: "Skill, focus, and recognition for what they build" },
+  { title: "Learning something new", outcome: "Growth that builds identity" },
+] as const;
+
+const ONE_ON_ONE_LEAD = [
+  {
+    title: "Relationship",
+    body: "Workers who know the person — how they communicate, what they enjoy, what matters to them, and what helps them feel at ease.",
+  },
+  {
+    title: "Routine",
+    body: "A week with rhythm — familiar activities, regular outings, and days that feel intentional rather than empty.",
+  },
+  {
+    title: "Familiar workers",
+    body: "Less time adjusting to new faces. More time building trust, continuity, and a support relationship that actually lasts.",
+  },
+] as const;
+
+const ONE_ON_ONE_SUPPORTING = [
+  {
+    title: "Activities at home",
+    body: "Interests reflected in the person's own space — whether that's a project, a hobby, a daily ritual, or simply a home environment that feels like theirs.",
+  },
+  {
+    title: "Community outings",
+    body: "The same workers in everyday places — cafés, local venues, events, and time with friends — not just escort to appointments.",
+  },
+  {
+    title: "Therapy reinforcement",
+    body: "Everyday activities can reinforce goals between appointments — mobility, independence, and confidence built through the rhythm of a real week.",
+  },
+  {
+    title: "Trust in the details",
+    body: "Favourite places, personal routines, small gestures that show someone's preferences are remembered — support that feels genuinely personal.",
+  },
+] as const;
+
+const ONE_ON_ONE_MEDIA = [
+  {
+    src: "/images/gallery/community-cafe-outing-nov-2025.jpg",
+    alt: "Support worker and participant sharing a café outing together",
+    caption: "The same familiar faces, in everyday places",
+    large: true,
+  },
+  {
+    src: "/images/gallery/birthday-celebration-restaurant-jan-2026.jpg",
+    alt: "Birthday celebration at a restaurant with support worker and family",
+    caption: "Moments that matter, with workers who know them",
+    large: false,
+  },
+  {
+    src: "/images/team/event-group-photo-dec-2025.jpg",
+    alt: "ACT Jubilant team and participants at a group event",
+    caption: "People who know each other, week after week",
+    large: false,
+  },
+] as const;
+
+const FIT_REMINDER = [
+  "Wants engagement and routine — not only tasks or hours filled",
+  "Has interests, hobbies, or goals they'd like support built around",
+  "Does better with familiar support workers than constant change",
+  "Would benefit from small group settings (around six people)",
+] as const;
 
 export default function ProgramsPage() {
   return (
-    <div className="py-10">
-      <h1 className="h2">Specialized Support Programs</h1>
-      <p className="mt-4 text-lg">
-        We provide comprehensive support programs for people who need assistance, 
-        focusing on individual needs, independence, and community inclusion.
-      </p>
-      
-      <div className="mt-8 grid gap-8 md:grid-cols-2">
-        {/* One-on-One Support */}
-        <div className="card overflow-hidden">
-          <div className="relative h-48 w-full">
-            <Image
-              src="/images/gallery/pexels-cliff-booth-4058218.jpg"
-              alt="Support worker helping client with daily activities"
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-            <div className="absolute bottom-4 left-4 right-4 text-white">
-              <h2 className="h3 text-white">One-on-One Support</h2>
-            </div>
-          </div>
-          <div className="p-6">
-            <p className="mt-2">
-              Individualized support for people who need assistance, tailored to your specific needs and goals. 
-              Our trained support workers provide compassionate assistance with daily living activities, 
-              personal care, and skill development.
-            </p>
-            <ul className="mt-4 space-y-2 text-sm text-[var(--text-muted)]">
-              <li>• Personal care and hygiene support</li>
-              <li>• Daily living assistance</li>
-              <li>• Mobility and transfer support</li>
-              <li>• NDIS goal achievement</li>
-            </ul>
-          </div>
-        </div>
-        
-        {/* Group Programs */}
-        <div className="card overflow-hidden">
-          <div className="relative h-48 w-full">
-            <Image
-              src="/images/gallery/pexels-kampus-production-8380014.jpg"
-              alt="Group activities and social programs"
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-            <div className="absolute bottom-4 left-4 right-4 text-white">
-              <h2 className="h3 text-white">Group Programs</h2>
-            </div>
-          </div>
-          <div className="p-6">
-            <p className="mt-2">
-              Inclusive group programs designed for people who need support to build social connections, 
-              develop skills, and participate in community activities. Our programs are adapted to 
-              accommodate various support needs and abilities.
-            </p>
-            <ul className="mt-4 space-y-2 text-sm text-[var(--text-muted)]">
-              <li>• Adaptive art and craft programs</li>
-              <li>• Social skills development</li>
-              <li>• Peer support groups</li>
-              <li>• Inclusive community activities</li>
-            </ul>
-          </div>
-        </div>
-        
-        {/* Community Access */}
-        <div className="card overflow-hidden">
-          <div className="relative h-48 w-full">
-            <Image
-              src="/images/gallery/pexels-ivan-samkov-8127437.jpg"
-              alt="Community access and social activities"
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-            <div className="absolute bottom-4 left-4 right-4 text-white">
-              <h2 className="h3 text-white">Community Access</h2>
-            </div>
-          </div>
-          <div className="p-6">
-            <p className="mt-2">
-              Community access support for people who need assistance to participate in community life. 
-              We provide assistance with accessibility needs, mobility support, and social inclusion 
-              throughout Canberra and surrounding areas.
-            </p>
-            <ul className="mt-4 space-y-2 text-sm text-[var(--text-muted)]">
-              <li>• Accessible shopping support</li>
-              <li>• Medical appointment assistance</li>
-              <li>• Social inclusion activities</li>
-              <li>• Mobility and accessibility support</li>
-            </ul>
-          </div>
-        </div>
-        
-        {/* Life Skills Development */}
-        <div className="card overflow-hidden">
-          <div className="relative h-48 w-full">
-            <Image
-              src="/images/gallery/pexels-elevate-3009756.jpg"
-              alt="Life skills development and training"
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-            <div className="absolute bottom-4 left-4 right-4 text-white">
-              <h2 className="h3 text-white">Life Skills Development</h2>
-            </div>
-          </div>
-          <div className="p-6">
-            <p className="mt-2">
-              Life skills development programs for people who need support to build independence and confidence. 
-              We focus on developing practical skills that support daily living and community participation.
-            </p>
-            <ul className="mt-4 space-y-2 text-sm text-[var(--text-muted)]">
-              <li>• Adaptive cooking and meal preparation</li>
-              <li>• Money management and budgeting</li>
-              <li>• Communication and social skills</li>
-              <li>• Assistive technology training</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+    <>
+      {/* 1. Page opener */}
+      <section aria-labelledby="programs-opener-title" className="py-8 md:py-12">
+        <h1 id="programs-opener-title" className="h2 text-balance">
+          What support looks like in real life
+        </h1>
+        <p className="mt-4 text-lg text-[var(--text-muted)]">
+          Programs aren&apos;t chosen from a standard catalogue. They&apos;re shaped around each
+          person&apos;s interests, routine, and goals — then run consistently by familiar support
+          workers.
+        </p>
+        <p className="mt-3 text-lg">
+          Here&apos;s what that can look like week to week in Canberra.
+        </p>
+      </section>
 
-      {/* Additional Programs Section */}
-      <div className="mt-12">
-        <h2 className="h2 text-center mb-8">Specialized Programs</h2>
-        <div className="grid gap-8 md:grid-cols-2">
-          {/* Respite Care */}
-          <div className="card overflow-hidden">
-            <div className="relative h-48 w-full">
-              <Image
-                src="/images/services/pexels-shvets-production-8415690.jpg"
-                alt="Respite care and family support services"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-              <div className="absolute bottom-4 left-4 right-4 text-white">
-                <h3 className="h3 text-white">Respite Care</h3>
-              </div>
-            </div>
-            <div className="p-6">
-              <p className="mt-2">
-                Respite care services for people who need support and their families. 
-                We provide short-term care support to give families and carers a well-deserved break 
-                while maintaining familiar routines and ensuring comfort.
-              </p>
-              <ul className="mt-4 space-y-2 text-sm text-[var(--text-muted)]">
-                <li>• In-home respite care</li>
-                <li>• Community-based respite</li>
-                <li>• Emergency respite support</li>
-                <li>• Specialized disability support</li>
-              </ul>
-            </div>
-          </div>
-
-          {/* Transport Services */}
-          <div className="card overflow-hidden">
-            <div className="relative h-48 w-full">
-              <Image
-                src="/images/services/Photo 4.jpg"
-                alt="Accessible transport vehicle with wheelchair ramp"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-              <div className="absolute bottom-4 left-4 right-4 text-white">
-                <h3 className="h3 text-white">Transport Services</h3>
-              </div>
-            </div>
-            <div className="p-6">
-              <p className="mt-2">
-                Accessible transport services for people who need support. Our wheelchair-accessible vehicles 
-                with ramps and specialized equipment ensure safe and comfortable transportation to appointments, 
-                activities, and community events.
-              </p>
-              <ul className="mt-4 space-y-2 text-sm text-[var(--text-muted)]">
-                <li>• Medical and therapy appointments</li>
-                <li>• Community participation activities</li>
-                <li>• Shopping and daily errands</li>
-                <li>• Wheelchair accessible vehicles</li>
-              </ul>
-            </div>
-          </div>
+      {/* 2. Programs start with the person — page hero */}
+      <section
+        aria-labelledby="programs-start-title"
+        className="py-8 md:py-14 border-t border-gray-100"
+      >
+        <h2 id="programs-start-title" className="h2 text-balance">
+          Programs start with the person
+        </h2>
+        <p className="mt-4 text-lg md:text-xl font-medium leading-snug">
+          The activity matters less than how support is designed. We start with the person — not a
+          pre-set program list.
+        </p>
+        <div className="mt-10 grid gap-6 sm:grid-cols-2">
+          {PROGRAM_BEATS.map((beat) => (
+            <article
+              key={beat.title}
+              className="card h-full border border-[color-mix(in_oklab,var(--primary-600)_18%,transparent)] bg-[color-mix(in_oklab,var(--primary-600)_4%,var(--surface))]"
+            >
+              <h3 className="text-lg font-semibold">{beat.title}</h3>
+              <p className="mt-2 text-[var(--text-muted)]">{beat.body}</p>
+            </article>
+          ))}
         </div>
+        <p className="mt-8 text-lg text-[var(--text-muted)]">
+          That&apos;s how a person&apos;s interests become a real weekly rhythm ↓
+        </p>
+      </section>
 
-        {/* Additional Services */}
+      {/* 3. Small group programs */}
+      <section
+        aria-labelledby="small-groups-title"
+        className="py-8 md:py-12 border-t border-gray-100"
+      >
+        <h2 id="small-groups-title" className="h2">
+          Small group programs
+        </h2>
+        <p className="mt-4 text-lg font-medium">
+          Group programs stay around six participants — designed for connection, not crowd
+          management.
+        </p>
+        <p className="mt-4 text-lg text-[var(--text-muted)]">
+          Participants join the same small group each week — structured gatherings where people know
+          each other, build routine together, and stay engaged in shared experiences.
+        </p>
+        <div className="mt-10 grid gap-6 lg:grid-cols-12">
+          {SMALL_GROUP_MEDIA.map((item, index) => (
+            <figure
+              key={index}
+              className={`card overflow-hidden p-0 ${
+                item.type === "video"
+                  ? "lg:col-span-4"
+                  : index === 0
+                    ? "lg:col-span-6"
+                    : "lg:col-span-3"
+              }`}
+            >
+              {item.type === "image" ? (
+                <div
+                  className={`relative w-full ${index === 0 ? "h-64 md:h-80" : "h-56 md:h-64"}`}
+                >
+                  <Image
+                    src={item.src}
+                    alt={item.alt}
+                    fill
+                    className="object-cover"
+                    sizes={
+                      index === 0
+                        ? "(max-width: 1024px) 100vw, 50vw"
+                        : "(max-width: 1024px) 50vw, 25vw"
+                    }
+                  />
+                </div>
+              ) : (
+                <div className="mx-auto max-w-xs lg:max-w-none">
+                  <SelfHostedVideo
+                    srcMp4={item.srcMp4}
+                    title={item.title}
+                    description={item.description}
+                    poster={item.poster}
+                    aspect="9/16"
+                    objectFit="cover"
+                    minimalChrome
+                  />
+                </div>
+              )}
+              <figcaption className="p-4 text-sm font-medium text-[var(--text-muted)]">
+                {item.caption}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+
+      {/* 4. Four pillars in practice */}
+      <section
+        aria-labelledby="pillars-title"
+        className="py-8 md:py-12 border-t border-gray-100"
+      >
+        <h2 id="pillars-title" className="h2">
+          A week that feels purposeful
+        </h2>
+        <p className="mt-4 text-lg text-[var(--text-muted)]">
+          Picture a week where support helps someone build a life they recognise as their own.
+        </p>
         <div className="mt-8 grid gap-6 md:grid-cols-2">
-          <div className="text-center">
-            <div className="mx-auto mb-4 h-1 w-12 rounded bg-[var(--primary-600)]" aria-hidden="true" />
-            <h3 className="h3">Goal Achievement</h3>
-            <p className="text-[var(--text-muted)] mt-2">
-              Specialized support to help people achieve their goals and build independence.
-            </p>
-          </div>
-          
-          <div className="text-center">
-            <div className="mx-auto mb-4 h-1 w-12 rounded bg-[var(--primary-600)]" aria-hidden="true" />
-            <h3 className="h3">Support Coordination</h3>
-            <p className="text-[var(--text-muted)] mt-2">
-              Professional guidance to help people navigate their support plans and access services.
-            </p>
+          {MEANINGFUL_PILLARS.map((pillar) => (
+            <article key={pillar.title} className="card overflow-hidden p-0">
+              <div className="relative h-48 w-full">
+                <Image
+                  src={pillar.image}
+                  alt={pillar.alt}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                <p className="absolute bottom-4 left-4 right-4 text-sm font-medium text-white">
+                  {pillar.caption}
+                </p>
+              </div>
+              <div className="p-6">
+                <h3 className="h3">{pillar.title}</h3>
+                <p className="mt-2 text-[var(--text-muted)]">{pillar.body}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* 5. Built around interests */}
+      <section
+        aria-labelledby="interests-title"
+        className="py-8 md:py-12 border-t border-gray-100"
+      >
+        <h2 id="interests-title" className="h2">
+          Built around interests — not a fixed menu
+        </h2>
+        <p className="mt-4 text-lg text-[var(--text-muted)]">
+          Every participant&apos;s program looks different. These are real examples of how interests
+          become structured support.
+        </p>
+        <div className="mt-8 grid gap-6 md:grid-cols-3">
+          {INTEREST_PHOTO_TILES.map((tile) => (
+            <article key={tile.title} className="card overflow-hidden p-0">
+              <div className="relative h-56 w-full md:h-72">
+                <Image
+                  src={tile.image}
+                  alt={tile.alt}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/75 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
+                  <h3 className="text-lg font-semibold leading-snug">{tile.title}</h3>
+                  <p className="mt-2 text-sm font-medium text-white/90">{tile.outcome}</p>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+        <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 rounded-2xl border border-gray-100 bg-gray-50/80 p-4 md:p-5">
+          {INTEREST_TEXT_TILES.map((tile) => (
+            <li
+              key={tile.title}
+              className="border-l-2 border-gray-200 pl-3 py-1 text-sm text-[var(--text-muted)]"
+            >
+              <span className="font-medium text-[var(--text)]">{tile.title}</span>
+              <span className="mt-0.5 block text-xs">{tile.outcome}</span>
+            </li>
+          ))}
+        </ul>
+        <p className="mt-8 text-lg font-medium">
+          Don&apos;t see your participant&apos;s interest here? That&apos;s the point — programs
+          start with them, not this list.
+        </p>
+      </section>
+
+      {/* 6. Consistent one-on-one support */}
+      <section
+        aria-labelledby="one-on-one-title"
+        className="py-8 md:py-14 border-t border-gray-100"
+      >
+        <h2 id="one-on-one-title" className="h2">
+          Consistent one-on-one support
+        </h2>
+        <p className="mt-4 text-lg md:text-xl font-medium leading-snug">
+          Much of meaningful daily life happens one-on-one — the same familiar workers, building
+          trust and routine over time.
+        </p>
+        <div className="mt-10 grid gap-6 md:grid-cols-3">
+          {ONE_ON_ONE_LEAD.map((theme) => (
+            <article key={theme.title} className="card h-full">
+              <h3 className="text-lg font-semibold">{theme.title}</h3>
+              <p className="mt-2 text-[var(--text-muted)]">{theme.body}</p>
+            </article>
+          ))}
+        </div>
+        <div className="mt-10 grid gap-6 lg:grid-cols-12">
+          {ONE_ON_ONE_MEDIA.map((photo, index) => (
+            <figure
+              key={photo.src}
+              className={`card overflow-hidden p-0 ${photo.large ? "lg:col-span-6" : "lg:col-span-3"}`}
+            >
+              <div
+                className={`relative w-full ${photo.large ? "h-64 md:h-80" : "h-56 md:h-64"}`}
+              >
+                <Image
+                  src={photo.src}
+                  alt={photo.alt}
+                  fill
+                  className="object-cover"
+                  sizes={photo.large ? "(max-width: 1024px) 100vw, 50vw" : "(max-width: 1024px) 50vw, 25vw"}
+                  priority={index === 0}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                <figcaption className="absolute bottom-4 left-4 right-4 text-sm font-medium text-white">
+                  {photo.caption}
+                </figcaption>
+              </div>
+            </figure>
+          ))}
+        </div>
+        <dl className="mt-10 grid gap-6 md:grid-cols-2">
+          {ONE_ON_ONE_SUPPORTING.map((item) => (
+            <div key={item.title}>
+              <dt className="font-semibold">{item.title}</dt>
+              <dd className="mt-1 text-[var(--text-muted)]">{item.body}</dd>
+            </div>
+          ))}
+        </dl>
+        <p className="mt-8 text-sm text-[var(--text-muted)]">
+          Personal and daily living support is part of NDIS delivery where funded — always in service
+          of engagement and routine, not as passive task coverage.
+        </p>
+      </section>
+
+      {/* 7. NDIS bridge */}
+      <section
+        aria-labelledby="ndis-bridge-title"
+        className="py-8 md:py-10 border-t border-gray-100"
+      >
+        <h2 id="ndis-bridge-title" className="text-xl font-semibold">
+          Looking for NDIS service categories?
+        </h2>
+        <p className="mt-3 text-[var(--text-muted)]">
+          This page focuses on what support feels like in practice.
+        </p>
+        <p className="mt-3">
+          <Link
+            href="/services/canberra"
+            className="font-semibold text-[var(--primary-600)] underline decoration-2 underline-offset-4"
+          >
+            View NDIS services in Canberra
+          </Link>
+        </p>
+      </section>
+
+      {/* 8. Fit reminder */}
+      <section
+        aria-labelledby="fit-reminder-title"
+        className="py-8 md:py-10 border-t border-gray-100"
+      >
+        <h2 id="fit-reminder-title" className="h2">
+          Who this works best for
+        </h2>
+        <p className="mt-4 text-lg text-[var(--text-muted)]">
+          The right fit matters — for participants, families, and referrers alike.
+        </p>
+        <p className="mt-4 font-semibold">Strong fit when the participant…</p>
+        <ul className="mt-3 list-disc space-y-2 pl-6 text-[var(--text-muted)]">
+          {FIT_REMINDER.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+        <p className="mt-6">
+          <Link
+            href="/#who-were-best-for"
+            className="font-semibold text-[var(--primary-600)] underline decoration-2 underline-offset-4"
+          >
+            See full fit guide
+          </Link>
+        </p>
+      </section>
+
+      {/* 9. Final conversion */}
+      <section aria-labelledby="final-cta-title" className="py-10 md:py-14 border-t border-gray-100">
+        <div className="card text-center md:text-left">
+          <p id="final-cta-title" className="text-lg md:text-xl font-medium leading-relaxed">
+            Meaningful daily life starts with the right support, the right relationships, and the
+            right opportunities to stay engaged.
+          </p>
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3 md:justify-start">
+            <Link href="/referral" className="btn-primary">
+              Make a Referral
+            </Link>
+            <Link href="/consultation" className="btn-secondary">
+              Book a Consultation
+            </Link>
+            <a href="tel:+61434740745" className="btn-ghost" aria-label="Call us on +61 434 740 745">
+              Call: +61 434 740 745
+            </a>
           </div>
         </div>
-      </div>
-    </div>
+      </section>
+    </>
   );
 }
