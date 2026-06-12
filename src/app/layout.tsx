@@ -24,7 +24,7 @@ const atkinson = Atkinson_Hyperlegible({
 });
 
 export const metadata: Metadata = {
-  title: "ACT Jubilant — Meaningful Daily Life Support in Canberra",
+  title: "ACT Jubilant | Meaningful Daily Life Support in Canberra",
   description:
     "ACT Jubilant provides structured, relationship-based support in Canberra, helping participants build routine, engagement, confidence, and meaningful daily life around their interests.",
   keywords: [
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "ACT Jubilant — Meaningful Daily Life Support",
+    title: "ACT Jubilant | Meaningful Daily Life Support",
     description:
       "Boutique, relationship-led support in Canberra designed around participant interests, routine, consistency, and community participation.",
     url: "https://actjubilant.com.au",
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
         url: "/logo.png", 
         width: 1200, 
         height: 630,
-        alt: "ACT Jubilant — Meaningful Daily Life Support in Canberra"
+        alt: "ACT Jubilant | Meaningful Daily Life Support in Canberra"
       }
     ],
     locale: "en_AU",
@@ -79,7 +79,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "ACT Jubilant — Meaningful Daily Life Support",
+    title: "ACT Jubilant | Meaningful Daily Life Support",
     description:
       "Structured support in Canberra built around interests, routine, engagement, and familiar support workers.",
     images: ["/logo.png"],

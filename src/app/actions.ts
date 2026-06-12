@@ -127,7 +127,7 @@ export async function submitReferral(
   if (hasError) return { ok: false, errors };
 
   // Admin email
-  const subject = `New Referral — ${data.fullName} (${data.relationship})`;
+  const subject = `New Referral - ${data.fullName} (${data.relationship})`;
   const text =
     `New referral submitted:\n\n` +
     `Full Name: ${data.fullName}\n` +
@@ -166,17 +166,17 @@ export async function submitReferral(
   `;
 
   // Participant confirmation
-  const cSubject = "We received your referral — ACT Jubilant";
+  const cSubject = "We received your referral - ACT Jubilant";
   const cText =
     `Hi ${data.fullName},\n\n` +
     `Thanks for your referral. Our team will be in touch within 1–2 business days.\n\n` +
     `If this is urgent, please call +61 434 740 745.\n\n` +
-    `— ACT Jubilant`;
+    `- ACT Jubilant`;
   const cHtml = `
     <p>Hi ${escapeHtml(data.fullName)},</p>
     <p>Thanks for your referral. Our team will be in touch within <strong>1–2 business days</strong>.</p>
     <p>If this is urgent, please call <strong>+61 434 740 745</strong>.</p>
-    <p>— ACT Jubilant</p>
+    <p>- ACT Jubilant</p>
   `;
 
   try {
@@ -197,14 +197,14 @@ export async function submitReferral(
         text: cText,
       });
     }
-    return { ok: true, message: "Thanks — we’ll be in touch within 1–2 business days." };
+    return { ok: true, message: "Thanks! We'll be in touch within 1-2 business days." };
   } catch (err) {
     console.error("Resend error (referral):", err);
     // Still ok for the user; advise alternate contact
     return {
       ok: true,
       message:
-        "Thanks — we’ve recorded your referral. If you don’t hear from us, please call +61 434 740 745.",
+        "Thanks! We've recorded your referral. If you don't hear from us, please call +61 434 740 745.",
     };
   }
 }
@@ -245,7 +245,7 @@ export async function submitConsultation(
   if (hasError) return { ok: false, errors };
 
   // Admin message
-  const subject = `Consultation Request — ${data.fullName} (${data.mode})`;
+  const subject = `Consultation Request - ${data.fullName} (${data.mode})`;
   const text =
     `New consultation request:\n\n` +
     `Full Name: ${data.fullName}\n` +
@@ -269,17 +269,17 @@ export async function submitConsultation(
   `;
 
   // Participant confirmation
-  const cSubject = "We received your consultation request — ACT Jubilant";
+  const cSubject = "We received your consultation request - ACT Jubilant";
   const cText =
     `Hi ${data.fullName},\n\n` +
     `Thanks for your request. We’ll confirm a time shortly.\n\n` +
     `If this is urgent, please call +61 434 740 745.\n\n` +
-    `— ACT Jubilant`;
+    `- ACT Jubilant`;
   const cHtml = `
     <p>Hi ${escapeHtml(data.fullName)},</p>
     <p>Thanks for your consultation request. We’ll confirm a time shortly.</p>
     <p>If this is urgent, please call <strong>+61 434 740 745</strong>.</p>
-    <p>— ACT Jubilant</p>
+    <p>- ACT Jubilant</p>
   `;
 
   try {
@@ -345,7 +345,7 @@ export async function submitReview(
   if (hasError) return { ok: false, errors };
 
   // Admin email
-  const subject = `New Review (Pending Moderation) — ${data.name} (${data.relationship})`;
+  const subject = `New Review (Pending Moderation) - ${data.name} (${data.relationship})`;
   const text =
     `New review submitted (moderation required):\n\n` +
     `Name: ${data.name}\n` +
@@ -366,14 +366,14 @@ export async function submitReview(
   `;
 
   // Participant confirmation (if they provided email)
-  const cSubject = "Thanks for your review — ACT Jubilant";
+  const cSubject = "Thanks for your review - ACT Jubilant";
   const cText =
     `Hi ${data.name},\n\n` +
     `Thanks for sharing your review! We'll publish it on our website after moderation.\n\n` +
     `Help others find us by also leaving a Google Review:\n` +
     `https://g.page/r/ACT-Jubilant-NDIS-Provider/review\n\n` +
     `Your feedback helps other families in Canberra find quality NDIS support services.\n\n` +
-    `— ACT Jubilant Team`;
+    `- ACT Jubilant Team`;
   const cHtml = `
     <div style="max-width: 600px; margin: 0 auto; font-family: Arial, sans-serif;">
       <p>Hi ${escapeHtml(data.name)},</p>
@@ -388,7 +388,7 @@ export async function submitReview(
         </a>
       </div>
       
-      <p>— ACT Jubilant Team</p>
+      <p>- ACT Jubilant Team</p>
     </div>
   `;
 
@@ -419,7 +419,7 @@ export async function submitReview(
     return {
       ok: true,
       message:
-        "Thanks for your review — we’ve recorded it. If it doesn’t appear soon, please email admin@actjubilant.com.au.",
+        "Thanks for your review! We've recorded it. If it doesn't appear soon, please email admin@actjubilant.com.au.",
     };
   }
 }

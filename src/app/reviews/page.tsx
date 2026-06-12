@@ -140,7 +140,7 @@ export default function ReviewsPage() {
                 "{review.text}"
               </blockquote>
               <cite className="mt-3 block text-sm text-[var(--text-muted)]">
-                — {review.name}, {review.relationship}
+                {review.name}, {review.relationship}
               </cite>
             </div>
           ))}

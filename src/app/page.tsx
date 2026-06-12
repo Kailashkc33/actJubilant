@@ -22,7 +22,7 @@ const PROOF_GROUPS = [
     cards: [
       {
         title: "Participant-led matching",
-        body: "Participants help choose who supports them — through introductions, trial shifts, and their own feedback.",
+        body: "Participants help choose who supports them through introductions, trial shifts, and their own feedback.",
       },
       {
         title: "Consistent support teams",
@@ -30,7 +30,7 @@ const PROOF_GROUPS = [
       },
       {
         title: "Participant-driven activities",
-        body: "Programs are shaped around each person's interests and hobbies — not pulled from a standard catalogue.",
+        body: "Programs are shaped around each person's interests and hobbies, not pulled from a standard catalogue.",
       },
     ],
   },
@@ -61,7 +61,7 @@ const PROOF_GROUPS = [
       },
       {
         title: "Small structured groups",
-        body: "Group programs stay around six participants — designed for connection, not crowd management.",
+        body: "Group programs stay around six participants, designed for connection, not crowd management.",
       },
     ],
   },
@@ -103,28 +103,28 @@ const HERO_CAROUSEL = [
 const MEANINGFUL_PILLARS = [
   {
     title: "Hobbies & interests",
-    body: "Someone who takes pride in what they create and pursue — whether that's gardening, art, cooking, or an interest that's uniquely their own.",
+    body: "Someone who takes pride in what they create and pursue, whether that's gardening, art, cooking, or an interest that's uniquely their own.",
     image: "/images/gallery/art-workshop-group-feb-2026.jpg",
     alt: "Participant at a group art workshop with paints and supplies",
     caption: "Pride in what they create",
   },
   {
     title: "Routine & structure",
-    body: "Someone whose week has a rhythm they can count on — familiar activities, regular outings, and days that feel intentional rather than empty.",
+    body: "Someone whose week has a rhythm they can count on, with familiar activities, regular outings, and days that feel intentional rather than empty.",
     image: "/images/gallery/wheelchair-outdoor-outing-nov-2025.jpg",
     alt: "Regular outdoor outing with familiar support workers",
     caption: "A week with rhythm and purpose",
   },
   {
     title: "Community participation",
-    body: "Someone who belongs in everyday places — catching up with friends, visiting local venues, and staying connected to community life.",
+    body: "Someone who belongs in everyday places, catching up with friends, visiting local venues, and staying connected to community life.",
     image: "/images/gallery/restaurant-group-meal-dec-2025.jpg",
     alt: "Group meal at a restaurant with friends and support",
     caption: "Belonging in everyday places",
   },
   {
     title: "Skill & identity building",
-    body: "Someone growing in confidence and recognised for what they learn, build, and contribute — not only for what they need help with.",
+    body: "Someone growing in confidence and recognised for what they learn, build, and contribute, not only for what they need help with.",
     image: "/images/gallery/participant-home-flowers-jan-2026.jpg",
     alt: "Participant at home, recognised and valued in their own space",
     caption: "Confidence and recognition",
@@ -133,7 +133,7 @@ const MEANINGFUL_PILLARS = [
 
 const STRONG_FIT = [
   "Is 18–65 with physical disability or mild to moderate cognitive disability",
-  "Wants engagement and routine — not only tasks or hours filled",
+  "Wants engagement and routine, not only tasks or hours filled",
   "Has interests, hobbies, or goals they'd like support built around",
   "Does better with familiar support workers than constant change",
   "Would benefit from small group settings (around six people)",
@@ -215,7 +215,7 @@ export default function Home() {
           Support alone doesn&apos;t create a meaningful day
         </h2>
         <p className="mt-4 text-lg text-[var(--text-muted)]">
-          Many participants receive support — but still experience days without enough
+          Many participants receive support, but still experience days without enough
           engagement, continuity, or connection.
         </p>
         <div className="mt-6 grid gap-6 md:grid-cols-3">
@@ -236,7 +236,7 @@ export default function Home() {
           <article className="card">
             <h3 className="h3">Feeling managed, not seen</h3>
             <p className="mt-2">
-              Support can start to feel like tasks and supervision — rather than being understood
+              Support can start to feel like tasks and supervision, rather than being understood
               for who you are and what you care about.
             </p>
           </article>
@@ -255,7 +255,7 @@ export default function Home() {
         </blockquote>
         <div className="mt-6 space-y-4 text-lg">
           <p>
-            We structure support around interests, hobbies, routine, and relationships — at home
+            We structure support around interests, hobbies, routine, and relationships, at home
             and in the community.
           </p>
           <p>
@@ -264,7 +264,7 @@ export default function Home() {
           </p>
         </div>
         <p className="mt-8 rounded-2xl border-l-4 border-[var(--primary-600)] bg-[var(--surface)] p-6 text-lg font-medium shadow-[0_8px_24px_rgba(0,0,0,0.06)]">
-          We help people be recognised for what they build, learn, and contribute — not only for
+          We help people be recognised for what they build, learn, and contribute, not only for
           what they need support with.
         </p>
         <p className="mt-6 text-lg text-[var(--text-muted)]">
@@ -335,7 +335,7 @@ export default function Home() {
           What meaningful support looks like
         </h2>
         <p className="mt-4 text-lg text-[var(--text-muted)]">
-          Picture a week that feels purposeful — where support helps someone build a life they
+          Picture a week that feels purposeful, where support helps someone build a life they
           recognise as their own.
         </p>
         <div className="mt-8 grid gap-6 md:grid-cols-2">
@@ -365,13 +365,13 @@ export default function Home() {
           <h3 className="text-lg font-semibold">Group programs in action</h3>
           <p className="mt-2 text-[var(--text-muted)]">
             A community dance class with participants and support workers in ACT Jubilant
-            shirts — staying engaged together.
+            shirts, staying engaged together.
           </p>
           <div className="mt-4 mx-auto max-w-sm">
             <SelfHostedVideo
               srcMp4="/videos/community-dance-class-event-sep-2025-portrait.mp4"
               title="Staying engaged together"
-              description="A group movement class — connection, routine, and participation in a welcoming community space."
+              description="A group movement class focused on connection, routine, and participation in a welcoming community space."
               poster="/images/gallery/dance-class-event-poster-portrait.jpg"
               aspect="9/16"
               objectFit="cover"
@@ -396,7 +396,7 @@ export default function Home() {
           Who we&apos;re best for
         </h2>
         <p className="mt-4 text-lg text-[var(--text-muted)]">
-          The right fit matters — for participants, families, and referrers alike.
+          The right fit matters for participants, families, and referrers alike.
         </p>
         <div className="mt-8 grid gap-8 lg:grid-cols-2">
           <div className="card">
@@ -429,7 +429,7 @@ export default function Home() {
               {HONEST_BOUNDARIES.map((item) => (
                 <li key={item} className="flex gap-3">
                   <span className="mt-1 text-[var(--text-muted)]" aria-hidden="true">
-                    —
+                    ·
                   </span>
                   <span className="text-[var(--text-muted)]">{item}</span>
                 </li>
@@ -438,7 +438,7 @@ export default function Home() {
           </div>
         </div>
         <p className="mt-8 text-lg">
-          We&apos;re honest about fit because the right match matters more than volume — and
+          We&apos;re honest about fit because the right match matters more than volume, and
           we&apos;ll gladly help you think through alternatives when we&apos;re not the right
           provider.
         </p>
@@ -488,13 +488,13 @@ export default function Home() {
             For support coordinators and referrers
           </h2>
           <p className="mt-4 text-lg">
-            We work alongside coordinators and therapists — not around them.
+            We work alongside coordinators and therapists, not around them.
           </p>
           <dl className="mt-6 space-y-5">
             <div>
               <dt className="font-semibold">You know who fits</dt>
               <dd className="mt-1 text-[var(--text-muted)]">
-                Participants seeking engagement, routine, and consistent workers —{" "}
+                Participants seeking engagement, routine, and consistent workers.{" "}
                 <a href="#who-were-best-for" className="text-[var(--primary-600)] underline underline-offset-2">
                   see who we&apos;re best for above
                 </a>
@@ -511,7 +511,7 @@ export default function Home() {
             <div>
               <dt className="font-semibold">Referrals stay collaborative</dt>
               <dd className="mt-1 text-[var(--text-muted)]">
-                Regular updates and observations — so you&apos;re informed, not left wondering how
+                Regular updates and observations, so you&apos;re informed, not left wondering how
                 things are going.
               </dd>
             </div>

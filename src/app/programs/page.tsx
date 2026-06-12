@@ -4,9 +4,9 @@ import Image from "next/image";
 import SelfHostedVideo from "@/components/SelfHostedVideo";
 
 export const metadata: Metadata = {
-  title: "Programs & Activities — Meaningful Daily Life Support | ACT Jubilant",
+  title: "Programs & Activities | Meaningful Daily Life Support | ACT Jubilant",
   description:
-    "See what participant-driven support looks like in Canberra — interest-led activities, small groups, community outings, and consistent routines built around real life.",
+    "See what participant-driven support looks like in Canberra: interest-led activities, small groups, community outings, and consistent routines built around real life.",
   alternates: {
     canonical: "/programs",
   },
@@ -19,15 +19,15 @@ const PROGRAM_BEATS = [
   },
   {
     title: "Understand",
-    body: "We learn their routine, goals, therapy recommendations, and what matters to their family — before anything is scheduled.",
+    body: "We learn their routine, goals, therapy recommendations, and what matters to their family before anything is scheduled.",
   },
   {
     title: "Design",
-    body: "Structured support is built around them — at home and in the community — around the rhythm of a real week.",
+    body: "Structured support is built around them, at home and in the community, around the rhythm of a real week.",
   },
   {
     title: "Run consistently",
-    body: "The same familiar workers show up, week after week — so trust and routine can actually build.",
+    body: "The same familiar workers show up, week after week, so trust and routine can actually build.",
   },
 ] as const;
 
@@ -56,7 +56,7 @@ const SMALL_GROUP_MEDIA = [
     poster: "/images/gallery/dance-class-event-poster-portrait.jpg",
     title: "A group that feels familiar",
     description:
-      "Movement, routine, and participation — with familiar support workers and participants in the same group.",
+      "Movement, routine, and participation, with familiar support workers and participants in the same group.",
     caption: "Staying engaged together",
   },
 ] as const;
@@ -64,28 +64,28 @@ const SMALL_GROUP_MEDIA = [
 const MEANINGFUL_PILLARS = [
   {
     title: "Hobbies & interests",
-    body: "Someone who takes pride in what they create and pursue — whether that's gardening, art, cooking, or an interest that's uniquely their own.",
+    body: "Someone who takes pride in what they create and pursue, whether that's gardening, art, cooking, or an interest that's uniquely their own.",
     image: "/images/gallery/art-workshop-group-feb-2026.jpg",
     alt: "Participant at a group art workshop with paints and supplies",
     caption: "Pride in what they create",
   },
   {
     title: "Routine & structure",
-    body: "Someone whose week has a rhythm they can count on — familiar activities, regular outings, and days that feel intentional rather than empty.",
+    body: "Someone whose week has a rhythm they can count on, with familiar activities, regular outings, and days that feel intentional rather than empty.",
     image: "/images/gallery/wheelchair-outdoor-outing-nov-2025.jpg",
     alt: "Regular outdoor outing with familiar support workers",
     caption: "A week with rhythm and purpose",
   },
   {
     title: "Community participation",
-    body: "Someone who belongs in everyday places — catching up with friends, visiting local venues, and staying connected to community life.",
+    body: "Someone who belongs in everyday places, catching up with friends, visiting local venues, and staying connected to community life.",
     image: "/images/gallery/restaurant-group-meal-dec-2025.jpg",
     alt: "Group meal at a restaurant with friends and support",
     caption: "Belonging in everyday places",
   },
   {
     title: "Skill & identity building",
-    body: "Someone growing in confidence and recognised for what they learn, build, and contribute — not only for what they need help with.",
+    body: "Someone growing in confidence and recognised for what they learn, build, and contribute, not only for what they need help with.",
     image: "/images/gallery/participant-home-flowers-jan-2026.jpg",
     alt: "Participant at home, recognised and valued in their own space",
     caption: "Confidence and recognition",
@@ -124,11 +124,11 @@ const INTEREST_TEXT_TILES = [
 const ONE_ON_ONE_LEAD = [
   {
     title: "Relationship",
-    body: "Workers who know the person — how they communicate, what they enjoy, what matters to them, and what helps them feel at ease.",
+    body: "Workers who know the person: how they communicate, what they enjoy, what matters to them, and what helps them feel at ease.",
   },
   {
     title: "Routine",
-    body: "A week with rhythm — familiar activities, regular outings, and days that feel intentional rather than empty.",
+    body: "A week with rhythm, familiar activities, regular outings, and days that feel intentional rather than empty.",
   },
   {
     title: "Familiar workers",
@@ -139,19 +139,19 @@ const ONE_ON_ONE_LEAD = [
 const ONE_ON_ONE_SUPPORTING = [
   {
     title: "Activities at home",
-    body: "Interests reflected in the person's own space — whether that's a project, a hobby, a daily ritual, or simply a home environment that feels like theirs.",
+    body: "Interests reflected in the person's own space, whether that's a project, a hobby, a daily ritual, or simply a home environment that feels like theirs.",
   },
   {
     title: "Community outings",
-    body: "The same workers in everyday places — cafés, local venues, events, and time with friends — not just escort to appointments.",
+    body: "The same workers in everyday places (cafés, local venues, events, and time with friends), not just escort to appointments.",
   },
   {
     title: "Therapy reinforcement",
-    body: "Everyday activities can reinforce goals between appointments — mobility, independence, and confidence built through the rhythm of a real week.",
+    body: "Everyday activities can reinforce goals between appointments: mobility, independence, and confidence built through the rhythm of a real week.",
   },
   {
     title: "Trust in the details",
-    body: "Favourite places, personal routines, small gestures that show someone's preferences are remembered — support that feels genuinely personal.",
+    body: "Favourite places, personal routines, small gestures that show someone's preferences are remembered. Support that feels genuinely personal.",
   },
 ] as const;
 
@@ -177,7 +177,7 @@ const ONE_ON_ONE_MEDIA = [
 ] as const;
 
 const FIT_REMINDER = [
-  "Wants engagement and routine — not only tasks or hours filled",
+  "Wants engagement and routine, not only tasks or hours filled",
   "Has interests, hobbies, or goals they'd like support built around",
   "Does better with familiar support workers than constant change",
   "Would benefit from small group settings (around six people)",
@@ -193,7 +193,7 @@ export default function ProgramsPage() {
         </h1>
         <p className="mt-4 text-lg text-[var(--text-muted)]">
           Programs aren&apos;t chosen from a standard catalogue. They&apos;re shaped around each
-          person&apos;s interests, routine, and goals — then run consistently by familiar support
+          person&apos;s interests, routine, and goals, then run consistently by familiar support
           workers.
         </p>
         <p className="mt-3 text-lg">
@@ -201,7 +201,7 @@ export default function ProgramsPage() {
         </p>
       </section>
 
-      {/* 2. Programs start with the person — page hero */}
+      {/* 2. Programs start with the person, page hero */}
       <section
         aria-labelledby="programs-start-title"
         className="py-8 md:py-14 border-t border-gray-100"
@@ -210,7 +210,7 @@ export default function ProgramsPage() {
           Programs start with the person
         </h2>
         <p className="mt-4 text-lg md:text-xl font-medium leading-snug">
-          The activity matters less than how support is designed. We start with the person — not a
+          The activity matters less than how support is designed. We start with the person, not a
           pre-set program list.
         </p>
         <div className="mt-10 grid gap-6 sm:grid-cols-2">
@@ -238,11 +238,11 @@ export default function ProgramsPage() {
           Small group programs
         </h2>
         <p className="mt-4 text-lg font-medium">
-          Group programs stay around six participants — designed for connection, not crowd
+          Group programs stay around six participants, designed for connection, not crowd
           management.
         </p>
         <p className="mt-4 text-lg text-[var(--text-muted)]">
-          Participants join the same small group each week — structured gatherings where people know
+          Participants join the same small group each week, structured gatherings where people know
           each other, build routine together, and stay engaged in shared experiences.
         </p>
         <div className="mt-10 grid gap-6 lg:grid-cols-12">
@@ -336,7 +336,7 @@ export default function ProgramsPage() {
         className="py-8 md:py-12 border-t border-gray-100"
       >
         <h2 id="interests-title" className="h2">
-          Built around interests — not a fixed menu
+          Built around interests, not a fixed menu
         </h2>
         <p className="mt-4 text-lg text-[var(--text-muted)]">
           Every participant&apos;s program looks different. These are real examples of how interests
@@ -374,7 +374,7 @@ export default function ProgramsPage() {
           ))}
         </ul>
         <p className="mt-8 text-lg font-medium">
-          Don&apos;t see your participant&apos;s interest here? That&apos;s the point — programs
+          Don&apos;t see your participant&apos;s interest here? That&apos;s the point: programs
           start with them, not this list.
         </p>
       </section>
@@ -388,7 +388,7 @@ export default function ProgramsPage() {
           Consistent one-on-one support
         </h2>
         <p className="mt-4 text-lg md:text-xl font-medium leading-snug">
-          Much of meaningful daily life happens one-on-one — the same familiar workers, building
+          Much of meaningful daily life happens one-on-one, the same familiar workers, building
           trust and routine over time.
         </p>
         <div className="mt-10 grid gap-6 md:grid-cols-3">
@@ -433,7 +433,7 @@ export default function ProgramsPage() {
           ))}
         </dl>
         <p className="mt-8 text-sm text-[var(--text-muted)]">
-          Personal and daily living support is part of NDIS delivery where funded — always in service
+          Personal and daily living support is part of NDIS delivery where funded, always in service
           of engagement and routine, not as passive task coverage.
         </p>
       </section>
@@ -468,7 +468,7 @@ export default function ProgramsPage() {
           Who this works best for
         </h2>
         <p className="mt-4 text-lg text-[var(--text-muted)]">
-          The right fit matters — for participants, families, and referrers alike.
+          The right fit matters for participants, families, and referrers alike.
         </p>
         <p className="mt-4 font-semibold">Strong fit when the participant…</p>
         <ul className="mt-3 list-disc space-y-2 pl-6 text-[var(--text-muted)]">
