@@ -40,8 +40,8 @@ Both tools read and write the same local file. Production and the other tool onl
 ### 2026-06-12 — Cursor — WCAG follow-ups + UI redesign worktree setup
 
 **Prompt:** WCAG form `aria-describedby` fixes; footer tap targets; set up worktree + `ui-redesign` branch for phased UI work  
-**Status:** local only (pending commit/push to `main` before worktree branches)  
-**Files:** `ReferralForm.tsx`, `ReviewForm.tsx`, `layout.tsx`, plus prior WCAG batch files
+**Status:** pushed (`1b51499` on `main`; `ui-redesign` synced)  
+**Files:** `ReferralForm.tsx`, `ReviewForm.tsx`, `layout.tsx`, plus WCAG batch files; `WORKFLOW.md`
 
 **Summary:**
 - **Form a11y:** Referral + Review `Field`/`TextArea` link hint + error in `aria-describedby` (`${id}-hint` `${id}-error`)
@@ -55,7 +55,7 @@ Both tools read and write the same local file. Production and the other tool onl
 ### 2026-06-12 — Cursor — WCAG 2.2 AA technical pass (#14)
 
 **Prompt:** Broader WCAG technical pass across forms, focus, metadata, and contact accuracy  
-**Status:** local only  
+**Status:** pushed (`1b51499` on `main`)  
 **Files:** `src/app/globals.css`, `src/app/consultation/page.tsx`, `src/app/consultation/layout.tsx`, `src/app/feedback/page.tsx`, `src/app/feedback/layout.tsx`, `src/app/faq/layout.tsx`, `src/app/privacy/page.tsx`, `src/app/privacy/layout.tsx`, `src/app/referral/ReferralForm.tsx`, `src/app/reviews/ReviewForm.tsx`, `src/components/MobileNav.tsx`, `src/app/layout.tsx`, `CHANGES.md`
 
 **Summary:**
@@ -318,7 +318,7 @@ Both tools read and write the same local file. Production and the other tool onl
 | 11 | Footer blurb + JSON-LD alignment | Cursor | Cursor | **Done** — pushed |
 | 12 | Footer link to `/services/canberra` | Owner + Cursor | Cursor | **Done** — pushed |
 | 13 | Hostinger domain transfer → SMTP forms | Owner | Owner | Blocked on DNS/email stability |
-| 14 | Accessibility standards pass: WCAG 2.2 AA + W3C cognitive accessibility + real-user testing where possible | Owner + Cursor + Codex | Cursor + Codex | **Partial** — standards + video keyboard pushed; WCAG technical pass local only; Codex audit + real-user testing remain |
+| 14 | Accessibility standards pass: WCAG 2.2 AA + W3C cognitive accessibility + real-user testing where possible | Owner + Cursor + Codex | Cursor + Codex | **Partial** — technical pass pushed `1b51499`; real-user testing remains owner-led |
 | 15 | GA + Search Console placeholders in `layout.tsx` | Owner | Owner | `GA_MEASUREMENT_ID` and `your-google-verification-code` still placeholders |
 
 **Confirmed good (no action):** No horizontal overflow · headings clear sticky header · Large Text mode OK · `/referral` Brand Bible structure (Codex audit)
@@ -332,7 +332,8 @@ Both tools read and write the same local file. Production and the other tool onl
 6. ~~Cursor → media compression + pexels removal (#5 partial)~~ ✓ pushed
 7. ~~Cursor → accessibility standards page (#14 partial)~~ ✓ pushed `ac2641d`
 8. ~~Video keyboard audit (all `SelfHostedVideo` instances)~~ ✓ pushed `ac2641d`
-9. ~~Cursor → WCAG technical pass (#14 partial)~~ ✓ local only · Codex browser audit next
+9. ~~Cursor → WCAG technical pass (#14 partial)~~ ✓ pushed `1b51499`
+10. **Next:** Phase 1 UI redesign in worktree (`ui-redesign`) — global theme + homepage only
 10. Owner → Hostinger transfer (#13) → SMTP forms; GA + Search Console IDs (#15)
 
 ### 2026-06-11 — Cursor — Homepage, Programs, docs, and polish
