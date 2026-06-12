@@ -66,7 +66,7 @@ const LEADERSHIP = [
   {
     name: "Nilima Singh",
     role: "Managing Director",
-    image: "/images/team/dd-2.jpeg",
+    image: "/images/team/Nilima.jpeg",
     alt: "Nilima Singh, Managing Director at ACT Jubilant",
   },
   {

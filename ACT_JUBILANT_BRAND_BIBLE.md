@@ -565,6 +565,10 @@ Must explain:
 - Coordinator communication
 - Why referrers trust ACT Jubilant
 
+**Status (June 2026):** Implemented in `src/app/referral/page.tsx` with referrer content above form. Form in `src/app/referral/ReferralForm.tsx`.
+
+**Section order:** Opener → Who we're looking for → Why referrers work with us → What happens after you refer → Depth links → Referral form
+
 ---
 
 # TESTIMONIALS
@@ -2106,7 +2110,7 @@ ACT Jubilant is a boutique, relationship-led provider — built for participants
 4. **Factual over promotional.** State who you are and what you stand for; avoid caring/compassionate/flexible/24/7 as differentiators.
 5. **Shorter than Programs.** Target 6–7 sections. Readable in under 4 minutes.
 6. **Single conversion block at the end** — mirror Homepage Section 10.
-7. **Media (owner-approved June 2026):** Leadership portraits — Nilima Singh, Managing Director (`/images/team/dd-2.jpeg`); Manish Gupta, Founder & Client Service Manager (`/images/team/DSC_MANISHW-42.jpg`). Team group photo: `/images/team/event-group-photo-dec-2025.jpg`. File renames optional before publish.
+7. **Media (owner-approved June 2026):** Leadership portraits — Nilima Singh, Managing Director (`/images/team/Nilima.jpeg`); Manish Gupta, Founder & Client Service Manager (`/images/team/DSC_MANISHW-42.jpg`). Team group photo: `/images/team/event-group-photo-dec-2025.jpg`.
 
 ---
 
@@ -2201,7 +2205,7 @@ Our leadership
 
 | Name | Public role | Asset |
 |------|-------------|-------|
-| Nilima Singh | Managing Director | `/images/team/dd-2.jpeg` |
+| Nilima Singh | Managing Director | `/images/team/Nilima.jpeg` |
 | Manish Gupta | Founder & Client Service Manager | `/images/team/DSC_MANISHW-42.jpg` |
 
 **Layout rule:** Founder narrative leads (trust). Photo cards follow — not a separate "Our team" page hero. Manish appears in narrative and on card; roles must match.
