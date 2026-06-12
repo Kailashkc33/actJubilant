@@ -267,7 +267,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Link href="/" className="flex shrink-0 items-center gap-3">
               <Image
                 src="/logo.png"
-                alt="ACT Jubilant - NDIS Support Services Canberra | Disability Support Worker"
+                alt="ACT Jubilant"
                 width={100}
                 height={60}
                 priority
@@ -312,7 +312,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <div className="flex items-center gap-3 mb-4">
                   <Image
                     src="/logo.png"
-                    alt="ACT Jubilant - NDIS Support Services Canberra | Disability Support Worker"
+                    alt="ACT Jubilant"
                     width={100}
                     height={60}
                     className="h-10 md:h-12 w-auto rounded-xl"
@@ -328,15 +328,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     <strong>Address:</strong>
                     <span className="ml-1">75/20 Beissel St, Belconnen 2617</span>
                   </p>
-                  <p className="text-sm">
+                  <p className="text-sm flex flex-wrap items-center gap-x-1">
                     <strong>Phone:</strong>
-                    <a href="tel:+61434740745" className="ml-1 text-[var(--primary-600)] hover:underline">
+                    <a
+                      href="tel:+61434740745"
+                      className="nav-link inline-flex min-h-11 items-center text-[var(--primary-600)] hover:underline"
+                    >
                       +61 434 740 745
                     </a>
                   </p>
-                  <p className="text-sm">
+                  <p className="text-sm flex flex-wrap items-center gap-x-1">
                     <strong>Email:</strong>
-                    <a href="mailto:admin@actjubilant.com.au" className="ml-1 text-[var(--primary-600)] hover:underline">
+                    <a
+                      href="mailto:admin@actjubilant.com.au"
+                      className="nav-link inline-flex min-h-11 items-center text-[var(--primary-600)] hover:underline break-all sm:break-normal"
+                    >
                       admin@actjubilant.com.au
                     </a>
                   </p>

@@ -50,13 +50,21 @@ export default function ReviewForm() {
           error={state.errors?.relationship as string}
         />
 
-        <div className="md:col-span-2">
-          <label htmlFor="rating" className="block text-sm font-medium">
+        <fieldset className="md:col-span-2">
+          <legend className="block text-sm font-medium">
             Rating <span aria-hidden="true" className="text-red-700">*</span>
-          </label>
-          <div className="mt-2 flex gap-2">
+          </legend>
+          <div
+            className="mt-2 flex gap-2"
+            role="radiogroup"
+            aria-invalid={Boolean(state.errors?.rating)}
+            aria-describedby={state.errors?.rating ? "rating-error" : undefined}
+          >
             {[1, 2, 3, 4, 5].map((star) => (
-              <label key={star} className="cursor-pointer">
+              <label
+                key={star}
+                className="cursor-pointer rounded p-1 has-[:focus-visible]:outline-3 has-[:focus-visible]:outline-[var(--focus)] has-[:focus-visible]:outline-offset-2"
+              >
                 <input
                   type="radio"
                   name="rating"
@@ -64,18 +72,24 @@ export default function ReviewForm() {
                   required
                   className="sr-only peer"
                 />
-                <span className="text-2xl text-gray-300 transition-colors hover:text-yellow-400 peer-checked:text-yellow-400">
+                <span
+                  className="text-2xl text-gray-300 transition-colors hover:text-yellow-400 peer-checked:text-yellow-400"
+                  aria-hidden="true"
+                >
                   ★
+                </span>
+                <span className="sr-only">
+                  {star} {star === 1 ? "star" : "stars"}
                 </span>
               </label>
             ))}
           </div>
           {state.errors?.rating && (
-            <p className="mt-1 text-sm text-red-700" role="alert">
+            <p id="rating-error" className="mt-1 text-sm text-red-700" role="alert">
               {state.errors.rating}
             </p>
           )}
-        </div>
+        </fieldset>
 
         <TextArea
           id="review"
@@ -138,6 +152,9 @@ function Field(props: {
   className?: string;
 }) {
   const { id, label, type = "text", required, hint, error, className } = props;
+  const describedBy =
+    [hint && `${id}-hint`, error && `${id}-error`].filter(Boolean).join(" ") || undefined;
+
   return (
     <div className={className}>
       <label htmlFor={id} className="block text-sm font-medium">
@@ -148,9 +165,9 @@ function Field(props: {
         name={id}
         type={type}
         required={required}
-        className={`mt-2 w-full rounded-xl border px-3 py-3 ${error ? "border-red-500" : "border-gray-300"} focus:outline-none`}
+        className={`form-control ${error ? "border-red-500" : ""}`}
         aria-invalid={Boolean(error)}
-        aria-describedby={hint ? `${id}-hint` : undefined}
+        aria-describedby={describedBy}
       />
       {hint && (
         <p id={`${id}-hint`} className="mt-1 text-sm text-[var(--text-muted)]">
@@ -158,7 +175,7 @@ function Field(props: {
         </p>
       )}
       {error && (
-        <p className="mt-1 text-sm text-red-700" role="alert">
+        <p id={`${id}-error`} className="mt-1 text-sm text-red-700" role="alert">
           {error}
         </p>
       )}
@@ -175,6 +192,9 @@ function TextArea(props: {
   className?: string;
 }) {
   const { id, label, required, hint, error, className } = props;
+  const describedBy =
+    [hint && `${id}-hint`, error && `${id}-error`].filter(Boolean).join(" ") || undefined;
+
   return (
     <div className={className}>
       <label htmlFor={id} className="block text-sm font-medium">
@@ -185,9 +205,9 @@ function TextArea(props: {
         name={id}
         rows={5}
         required={required}
-        className={`mt-2 w-full rounded-xl border px-3 py-3 ${error ? "border-red-500" : "border-gray-300"} focus:outline-none`}
+        className={`form-control ${error ? "border-red-500" : ""}`}
         aria-invalid={Boolean(error)}
-        aria-describedby={hint ? `${id}-hint` : undefined}
+        aria-describedby={describedBy}
       />
       {hint && (
         <p id={`${id}-hint`} className="mt-1 text-sm text-[var(--text-muted)]">
@@ -195,7 +215,7 @@ function TextArea(props: {
         </p>
       )}
       {error && (
-        <p className="mt-1 text-sm text-red-700" role="alert">
+        <p id={`${id}-error`} className="mt-1 text-sm text-red-700" role="alert">
           {error}
         </p>
       )}

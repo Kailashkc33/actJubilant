@@ -145,18 +145,17 @@ export default function MobileNav() {
                     key={item.href}
                     href={item.href}
                     onClick={() => setOpen(false)}
-                    className="block rounded-lg px-4 py-3 text-gray-900 hover:bg-gray-100 focus:bg-gray-100
-                               focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="block rounded-lg px-4 py-3 text-gray-900 hover:bg-gray-100 focus-visible:bg-gray-100"
                   >
                     {item.label}
                   </Link>
                 ))}
 
                 <a
-                                     href="tel:+61434740745"
+                  href="tel:+61434740745"
                   onClick={() => setOpen(false)}
-                  className="mt-3 rounded-lg bg-blue-600 px-4 py-3 text-center text-white
-                             hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="btn-primary mt-3 w-full"
+                  aria-label="Call us on +61 434 740 745"
                 >
                   Call +61 434 740 745
                 </a>

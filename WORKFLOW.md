@@ -155,7 +155,7 @@ See `CHANGES.md` work division table for full list. Current priorities:
 | # | Task | Owner | Status |
 |---|------|-------|--------|
 | 13 | Hostinger domain transfer → SMTP forms | Owner | Blocked on DNS/email stability |
-| 14 | Accessibility standards pass (WCAG 2.2 AA) | Owner + Cursor + Codex | **Partial** — standards page + video keyboard fixes pushed `ac2641d`; broader technical pass optional |
+| 14 | Accessibility standards pass (WCAG 2.2 AA) | Owner + Cursor + Codex | **Partial** — standards + video keyboard pushed; WCAG form/focus fixes local only |
 | 15 | GA + Search Console placeholders in `layout.tsx` | Owner | `GA_MEASUREMENT_ID`, `your-google-verification-code` |
 
 **Done (pushed):** Homepage · Programs · About · Services/Canberra · Referral · Reviews · footer + JSON-LD · media cleanup · accessibility standards page · video keyboard fixes · mobile UX fixes
@@ -163,7 +163,7 @@ See `CHANGES.md` work division table for full list. Current priorities:
 **Suggested order (from `CHANGES.md`):**
 1. ~~Core pages + Reviews + footer/JSON-LD + media cleanup~~ ✓
 2. ~~Accessibility standards page + video keyboard audit~~ ✓ pushed `ac2641d`
-3. Optional: broader WCAG technical pass (#14)
+3. ~~WCAG technical pass (forms, focus, metadata)~~ ✓ local only · Codex audit next
 4. Owner: Hostinger transfer (#13) → SMTP forms; GA + Search Console IDs (#15)
 
 ---
@@ -179,6 +179,58 @@ See `CHANGES.md` work division table for full list. Current priorities:
 **Testimonial poster in use:** `thumbnail.jpg` only
 
 Target max width for gallery JPEGs: **1920px** (sufficient for retina at site layout widths).
+
+---
+
+## UI redesign (worktree + branch)
+
+**Goal:** Experiment with major UI changes without touching production `main` until approved.
+
+| Folder | Branch | Role |
+|--------|--------|------|
+| `/Users/kailashkc/Developer/act-jubilant` | `main` | Current live site; bugfixes and copy only unless merging redesign |
+| `/Users/kailashkc/Developer/act-jubilant-ui-redesign` | `ui-redesign` | UI experiments; Vercel preview from this branch |
+
+**Rollback tag:** `ui-baseline-2026-06-12` (snapshot of `main` before redesign work)
+
+**Phased scope (do not reskin whole site in one pass):**
+
+1. **Phase 1:** Global theme tokens + homepage only → audit on preview URL
+2. **Phase 2:** Nav + footer (if Phase 1 approved)
+3. **Phase 3:** About, Referral, Consultation, Reviews
+4. **Later:** Programs, Services, FAQ, remaining pages
+
+**Rules:**
+- Locked Brand Bible copy stays unless owner approves wording changes
+- No merge to `main` until owner signs off on preview
+- Run `npm run dev` in the **worktree folder** for redesign previews
+
+**Worktree commands:**
+
+```bash
+# From main repo (already set up once):
+git worktree list
+
+# Daily: open redesign folder in Cursor
+cd /Users/kailashkc/Developer/act-jubilant-ui-redesign
+git pull origin ui-redesign
+npm run dev
+
+# Return to current site
+cd /Users/kailashkc/Developer/act-jubilant
+git checkout main
+
+# After approval: merge redesign
+cd /Users/kailashkc/Developer/act-jubilant
+git checkout main && git pull
+git merge ui-redesign
+git push origin main
+
+# If abandoning redesign
+git worktree remove ../act-jubilant-ui-redesign
+git branch -D ui-redesign
+git push origin --delete ui-redesign   # if pushed
+```
 
 ---
 

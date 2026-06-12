@@ -18,7 +18,7 @@ export default function ConsultationPage() {
     <section className="py-10 md:py-14">
       <div className="card">
         <h1 className="h2">Book a Consultation</h1>
-        <p className="mt-2">Tell us a good time to chat. We’ll confirm by phone or email.</p>
+        <p className="mt-2">Tell us a good time to chat. We&apos;ll confirm by phone or email.</p>
 
         {state.ok && (
           <div className="mt-4 rounded-lg border border-green-300 bg-green-50 p-4" role="status">
@@ -36,12 +36,26 @@ export default function ConsultationPage() {
           <Field id="email" label="Email" type="email" required error={state.errors?.email as string} />
           <Field id="phone" label="Phone" type="tel" required error={state.errors?.phone as string} />
 
-          <Field id="preferredDate" label="Preferred date" type="date" required error={state.errors?.preferredDate as string} />
-          <Field id="preferredTime" label="Preferred time" type="time" required error={state.errors?.preferredTime as string} />
+          <Field
+            id="preferredDate"
+            label="Preferred date"
+            type="date"
+            required
+            error={state.errors?.preferredDate as string}
+          />
+          <Field
+            id="preferredTime"
+            label="Preferred time"
+            type="time"
+            required
+            error={state.errors?.preferredTime as string}
+          />
 
           <div>
-            <label htmlFor="mode" className="block text-sm font-medium">Consultation mode</label>
-            <select id="mode" name="mode" className="mt-2 w-full rounded-xl border border-gray-300 px-3 py-3">
+            <label htmlFor="mode" className="block text-sm font-medium">
+              Consultation mode
+            </label>
+            <select id="mode" name="mode" className="form-control">
               <option value="phone">Phone</option>
               <option value="video">Video</option>
               <option value="in-person">In-person (Canberra)</option>
@@ -49,8 +63,22 @@ export default function ConsultationPage() {
           </div>
 
           <div className="md:col-span-2">
-            <label htmlFor="message" className="block text-sm font-medium">What would you like to discuss?</label>
-            <textarea id="message" name="message" rows={5} className="mt-2 w-full rounded-xl border border-gray-300 px-3 py-3" />
+            <label htmlFor="message" className="block text-sm font-medium">
+              What would you like to discuss?
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              rows={5}
+              className="form-control"
+              aria-invalid={Boolean(state.errors?.message)}
+              aria-describedby={state.errors?.message ? "message-error" : undefined}
+            />
+            {state.errors?.message && (
+              <p id="message-error" className="mt-1 text-sm text-red-700" role="alert">
+                {state.errors.message as string}
+              </p>
+            )}
           </div>
 
           <div className="md:col-span-2">
@@ -78,11 +106,20 @@ function Field(props: { id: string; label: string; type?: string; required?: boo
       <label htmlFor={id} className="block text-sm font-medium">
         {label} {required && <span aria-hidden="true" className="text-red-700">*</span>}
       </label>
-      <input id={id} name={id} type={type} required={required}
-        className={`mt-2 w-full rounded-xl border px-3 py-3 ${error ? "border-red-500" : "border-gray-300"} focus:outline-none`}
+      <input
+        id={id}
+        name={id}
+        type={type}
+        required={required}
+        className={`form-control ${error ? "border-red-500" : ""}`}
         aria-invalid={Boolean(error)}
+        aria-describedby={error ? `${id}-error` : undefined}
       />
-      {error && <p className="mt-1 text-sm text-red-700" role="alert">{error}</p>}
+      {error && (
+        <p id={`${id}-error`} className="mt-1 text-sm text-red-700" role="alert">
+          {error}
+        </p>
+      )}
     </div>
   );
 }

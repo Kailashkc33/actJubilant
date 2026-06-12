@@ -37,6 +37,41 @@ Both tools read and write the same local file. Production and the other tool onl
 
 ## Log
 
+### 2026-06-12 — Cursor — WCAG follow-ups + UI redesign worktree setup
+
+**Prompt:** WCAG form `aria-describedby` fixes; footer tap targets; set up worktree + `ui-redesign` branch for phased UI work  
+**Status:** local only (pending commit/push to `main` before worktree branches)  
+**Files:** `ReferralForm.tsx`, `ReviewForm.tsx`, `layout.tsx`, plus prior WCAG batch files
+
+**Summary:**
+- **Form a11y:** Referral + Review `Field`/`TextArea` link hint + error in `aria-describedby` (`${id}-hint` `${id}-error`)
+- **Footer mobile:** Phone/email `tel:`/`mailto:` use `nav-link` + `min-h-11` touch targets
+- **UI redesign plan:** Worktree at `../act-jubilant-ui-redesign` on branch `ui-redesign`; tag `ui-baseline-2026-06-12` on `main`; phased scope documented in `WORKFLOW.md`
+
+**Next:** Phase 1 in worktree only (global theme + homepage); do not merge until owner approves preview
+
+---
+
+### 2026-06-12 — Cursor — WCAG 2.2 AA technical pass (#14)
+
+**Prompt:** Broader WCAG technical pass across forms, focus, metadata, and contact accuracy  
+**Status:** local only  
+**Files:** `src/app/globals.css`, `src/app/consultation/page.tsx`, `src/app/consultation/layout.tsx`, `src/app/feedback/page.tsx`, `src/app/feedback/layout.tsx`, `src/app/faq/layout.tsx`, `src/app/privacy/page.tsx`, `src/app/privacy/layout.tsx`, `src/app/referral/ReferralForm.tsx`, `src/app/reviews/ReviewForm.tsx`, `src/components/MobileNav.tsx`, `src/app/layout.tsx`, `CHANGES.md`
+
+**Summary:**
+- **Focus visible (2.4.7):** Added shared `.form-control` class; removed `focus:outline-none` from form inputs so global `:focus-visible` ring applies site-wide
+- **Forms (1.3.1, 3.3.1, 4.1.2):** Consultation fields link errors via `aria-describedby`; feedback consent checkbox matches referral/reviews pattern; reviews rating uses `fieldset`/`legend`, radiogroup labels, and visible keyboard focus per star
+- **Reduced motion (2.3.3):** `scroll-behavior: auto` when `prefers-reduced-motion: reduce`
+- **Page titles (2.4.2):** Added route metadata layouts for `/consultation`, `/feedback`, `/faq`, `/privacy`
+- **Contact accuracy:** Corrected outdated phone numbers on `/feedback` and `/privacy`; clickable `tel:`/`mailto:` links
+- **Mobile nav:** Removed blue focus-ring overrides; call button uses `btn-primary` + `aria-label`
+- **Logo alt (1.1.1):** Shortened to "ACT Jubilant" (header/footer)
+
+**Review notes:** Automated axe run blocked by local ChromeDriver version mismatch; manual/code audit applied. Codex to browser-check forms (Tab focus, error states) on `/referral`, `/consultation`, `/feedback`, `/reviews`  
+**Next:** Codex audit; owner commit/push when ready; real-user usability testing remains owner-led per `/accessibility`
+
+---
+
 ### 2026-06-12 — Codex — Quick cleanups audit (`/referral`)
 
 **Prompt:** Browser-check quick cleanups diff after Cursor batch  
@@ -283,7 +318,7 @@ Both tools read and write the same local file. Production and the other tool onl
 | 11 | Footer blurb + JSON-LD alignment | Cursor | Cursor | **Done** — pushed |
 | 12 | Footer link to `/services/canberra` | Owner + Cursor | Cursor | **Done** — pushed |
 | 13 | Hostinger domain transfer → SMTP forms | Owner | Owner | Blocked on DNS/email stability |
-| 14 | Accessibility standards pass: WCAG 2.2 AA + W3C cognitive accessibility + real-user testing where possible | Owner + Cursor + Codex | Cursor + Codex | **Partial** — standards page, Codex audit, video keyboard fixes pushed `ac2641d`; broader technical pass optional |
+| 14 | Accessibility standards pass: WCAG 2.2 AA + W3C cognitive accessibility + real-user testing where possible | Owner + Cursor + Codex | Cursor + Codex | **Partial** — standards + video keyboard pushed; WCAG technical pass local only; Codex audit + real-user testing remain |
 | 15 | GA + Search Console placeholders in `layout.tsx` | Owner | Owner | `GA_MEASUREMENT_ID` and `your-google-verification-code` still placeholders |
 
 **Confirmed good (no action):** No horizontal overflow · headings clear sticky header · Large Text mode OK · `/referral` Brand Bible structure (Codex audit)
@@ -297,7 +332,7 @@ Both tools read and write the same local file. Production and the other tool onl
 6. ~~Cursor → media compression + pexels removal (#5 partial)~~ ✓ pushed
 7. ~~Cursor → accessibility standards page (#14 partial)~~ ✓ pushed `ac2641d`
 8. ~~Video keyboard audit (all `SelfHostedVideo` instances)~~ ✓ pushed `ac2641d`
-9. Cursor/Codex → broader WCAG technical pass (#14) as needed
+9. ~~Cursor → WCAG technical pass (#14 partial)~~ ✓ local only · Codex browser audit next
 10. Owner → Hostinger transfer (#13) → SMTP forms; GA + Search Console IDs (#15)
 
 ### 2026-06-11 — Cursor — Homepage, Programs, docs, and polish

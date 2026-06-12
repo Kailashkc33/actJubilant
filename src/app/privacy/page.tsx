@@ -68,8 +68,21 @@ export default function PrivacyPage() {
             For privacy-related questions or concerns, please contact us:
           </p>
           <div className="mt-4">
-            <p><strong>Phone:</strong> 0424 488 439</p>
-            <p><strong>Email:</strong> privacy@actjubilant.com.au</p>
+            <p>
+              <strong>Phone:</strong>{" "}
+              <a href="tel:+61434740745" className="text-[var(--primary-600)] underline underline-offset-2">
+                +61 434 740 745
+              </a>
+            </p>
+            <p>
+              <strong>Email:</strong>{" "}
+              <a
+                href="mailto:admin@actjubilant.com.au"
+                className="text-[var(--primary-600)] underline underline-offset-2"
+              >
+                admin@actjubilant.com.au
+              </a>
+            </p>
             <p><strong>Address:</strong> ACT Jubilant, Canberra, ACT</p>
           </div>
         </div>

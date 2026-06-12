@@ -161,6 +161,9 @@ function Field(props: {
   className?: string;
 }) {
   const { id, label, type = "text", required, hint, error, className } = props;
+  const describedBy =
+    [hint && `${id}-hint`, error && `${id}-error`].filter(Boolean).join(" ") || undefined;
+
   return (
     <div className={className}>
       <label htmlFor={id} className="block text-sm font-medium">
@@ -171,9 +174,9 @@ function Field(props: {
         name={id}
         type={type}
         required={required}
-        className={`mt-2 w-full rounded-xl border px-3 py-3 ${error ? "border-red-500" : "border-gray-300"} focus:outline-none`}
+        className={`form-control ${error ? "border-red-500" : ""}`}
         aria-invalid={Boolean(error)}
-        aria-describedby={hint ? `${id}-hint` : undefined}
+        aria-describedby={describedBy}
       />
       {hint && (
         <p id={`${id}-hint`} className="mt-1 text-sm text-[var(--text-muted)]">
@@ -181,7 +184,7 @@ function Field(props: {
         </p>
       )}
       {error && (
-        <p className="mt-1 text-sm text-red-700" role="alert">
+        <p id={`${id}-error`} className="mt-1 text-sm text-red-700" role="alert">
           {error}
         </p>
       )}
@@ -198,6 +201,9 @@ function TextArea(props: {
   className?: string;
 }) {
   const { id, label, required, hint, error, className } = props;
+  const describedBy =
+    [hint && `${id}-hint`, error && `${id}-error`].filter(Boolean).join(" ") || undefined;
+
   return (
     <div className={className}>
       <label htmlFor={id} className="block text-sm font-medium">
@@ -208,9 +214,9 @@ function TextArea(props: {
         name={id}
         rows={5}
         required={required}
-        className={`mt-2 w-full rounded-xl border px-3 py-3 ${error ? "border-red-500" : "border-gray-300"} focus:outline-none`}
+        className={`form-control ${error ? "border-red-500" : ""}`}
         aria-invalid={Boolean(error)}
-        aria-describedby={hint ? `${id}-hint` : undefined}
+        aria-describedby={describedBy}
       />
       {hint && (
         <p id={`${id}-hint`} className="mt-1 text-sm text-[var(--text-muted)]">
@@ -218,7 +224,7 @@ function TextArea(props: {
         </p>
       )}
       {error && (
-        <p className="mt-1 text-sm text-red-700" role="alert">
+        <p id={`${id}-error`} className="mt-1 text-sm text-red-700" role="alert">
           {error}
         </p>
       )}

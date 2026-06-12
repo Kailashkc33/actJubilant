@@ -69,6 +69,7 @@ body {
   line-height: 1.7;
 }
 @media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
   * { animation: none !important; transition: none !important; }
 }
 
@@ -130,6 +131,14 @@ body {
 
 /* Focus ring */
 :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+
+/* Form controls — use global :focus-visible; do not suppress with outline-none */
+.form-control {
+  @apply mt-2 w-full rounded-xl border border-gray-300 px-3 py-3;
+}
+.form-control[aria-invalid="true"] {
+  @apply border-red-500;
+}
 
 /* Screen-reader utility */
 .sr-only {
