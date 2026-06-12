@@ -261,9 +261,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Header */}
         <header
           role="banner"
-          className="sticky top-0 z-40 w-full border-b bg-white/85 backdrop-blur"
+          className="site-header sticky top-0 z-40 w-full"
         >
-          <div className="mx-auto max-w-7xl px-4 py-3 flex flex-wrap items-center justify-between gap-4">
+          <div className="site-header__inner mx-auto max-w-7xl px-4">
             <Link href="/" className="flex shrink-0 items-center gap-3">
               <Image
                 src="/logo.png"
@@ -271,8 +271,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 width={100}
                 height={60}
                 priority
-                sizes="(max-width: 768px) 160px, 200px"
-                className="h-10 md:h-10 w-auto rounded-xl"
+                sizes="(max-width: 768px) 140px, 200px"
+                className="h-9 w-auto rounded-lg md:h-10"
               />
              
             </Link>
@@ -303,84 +303,77 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </main>
 
         {/* Footer */}
-        <footer role="contentinfo" className="mt-16 border-t bg-[var(--surface)]">
-          {/* Main footer content */}
-          <div className="mx-auto max-w-7xl px-4 py-12">
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-              {/* Company Info */}
-              <div className="lg:col-span-2">
-                <div className="flex items-center gap-3 mb-4">
+        <footer role="contentinfo" className="site-footer">
+          <div className="site-footer__inner mx-auto max-w-7xl px-4">
+            <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-12 lg:gap-8">
+              <div className="lg:col-span-6">
+                <div className="site-footer__brand">
                   <Image
                     src="/logo.png"
                     alt="ACT Jubilant"
                     width={100}
                     height={60}
-                    className="h-10 md:h-12 w-auto rounded-xl"
+                    className="site-footer__logo h-10 w-auto md:h-11"
                   />
                 </div>
-                <p className="text-[var(--text-muted)] mb-4">
+                <p className="site-footer__blurb">
                   ACT Jubilant is a boutique, relationship-led NDIS provider in Canberra and the
                   ACT. We structure support around participant interests, routine, and consistent
                   workers, helping people build meaningful daily life at home and in the community.
                 </p>
-                <div className="space-y-2">
-                  <p className="text-sm">
-                    <strong>Address:</strong>
-                    <span className="ml-1">75/20 Beissel St, Belconnen 2617</span>
+                <div className="site-footer__contact">
+                  <p className="site-footer__contact-row">
+                    <strong>Address:</strong>{" "}
+                    75/20 Beissel St, Belconnen 2617
                   </p>
-                  <p className="text-sm flex flex-wrap items-center gap-x-1">
-                    <strong>Phone:</strong>
-                    <a
-                      href="tel:+61434740745"
-                      className="nav-link inline-flex min-h-11 items-center text-[var(--primary-600)] hover:underline"
-                    >
+                  <p className="site-footer__contact-row flex flex-wrap items-center gap-x-1">
+                    <strong>Phone:</strong>{" "}
+                    <a href="tel:+61434740745" className="site-footer__link">
                       +61 434 740 745
                     </a>
                   </p>
-                  <p className="text-sm flex flex-wrap items-center gap-x-1">
-                    <strong>Email:</strong>
+                  <p className="site-footer__contact-row flex flex-wrap items-center gap-x-1">
+                    <strong>Email:</strong>{" "}
                     <a
                       href="mailto:admin@actjubilant.com.au"
-                      className="nav-link inline-flex min-h-11 items-center text-[var(--primary-600)] hover:underline break-all sm:break-normal"
+                      className="site-footer__link break-all sm:break-normal"
                     >
                       admin@actjubilant.com.au
                     </a>
                   </p>
-                  <p className="text-sm">
-                    <strong>Office Hours:</strong>
-                    <span className="ml-1">Mon-Fri 8:30am-5:00pm, Sat 10:00am-1:00pm</span>
+                  <p className="site-footer__contact-row">
+                    <strong>Office Hours:</strong>{" "}
+                    Mon-Fri 8:30am-5:00pm, Sat 10:00am-1:00pm
                   </p>
                 </div>
               </div>
 
-              {/* Quick Links */}
-              <div>
-                <h3 className="font-semibold text-lg mb-4">Quick Links</h3>
+              <div className="lg:col-span-3">
+                <h3 className="site-footer__heading">Quick Links</h3>
                 <nav aria-label="Footer navigation">
-                  <ul className="space-y-2">
-                    <li><Link className="nav-link" href="/programs">Our Programs</Link></li>
-                    <li><Link className="nav-link" href="/services/canberra">NDIS Services (Canberra)</Link></li>
-                    <li><Link className="nav-link" href="/about">About Us</Link></li>
-                    <li><Link className="nav-link" href="/reviews">Reviews</Link></li>
-                    <li><Link className="nav-link" href="/referral">Make a Referral</Link></li>
-                    <li><Link className="nav-link" href="/consultation">Book Consultation</Link></li>
-                    <li><Link className="nav-link" href="/faq">FAQ</Link></li>
+                  <ul className="site-footer__link-list">
+                    <li><Link className="site-footer__link" href="/programs">Our Programs</Link></li>
+                    <li><Link className="site-footer__link" href="/services/canberra">NDIS Services (Canberra)</Link></li>
+                    <li><Link className="site-footer__link" href="/about">About Us</Link></li>
+                    <li><Link className="site-footer__link" href="/reviews">Reviews</Link></li>
+                    <li><Link className="site-footer__link" href="/referral">Make a Referral</Link></li>
+                    <li><Link className="site-footer__link" href="/consultation">Book Consultation</Link></li>
+                    <li><Link className="site-footer__link" href="/faq">FAQ</Link></li>
                   </ul>
                 </nav>
               </div>
 
-              {/* Support & Info */}
-              <div>
-                <h3 className="font-semibold text-lg mb-4">Support & Info</h3>
+              <div className="lg:col-span-3">
+                <h3 className="site-footer__heading">Support &amp; Info</h3>
                 <nav aria-label="Support navigation">
-                  <ul className="space-y-2">
-                    <li><Link className="nav-link" href="/accessibility">Accessibility</Link></li>
-                    <li><Link className="nav-link" href="/feedback">Feedback & Complaints</Link></li>
-                    <li><Link className="nav-link" href="/privacy">Privacy Policy</Link></li>
+                  <ul className="site-footer__link-list">
+                    <li><Link className="site-footer__link" href="/accessibility">Accessibility</Link></li>
+                    <li><Link className="site-footer__link" href="/feedback">Feedback &amp; Complaints</Link></li>
+                    <li><Link className="site-footer__link" href="/privacy">Privacy Policy</Link></li>
                     <li>
                       <a
                         href="https://www.ndis.gov.au"
-                        className="nav-link"
+                        className="site-footer__link"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -393,24 +386,23 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
           </div>
 
-          {/* Acknowledgement of Country */}
-          <div className="border-t bg-[color-mix(in_oklab,var(--primary-600)_5%,var(--surface))]">
-            <div className="mx-auto max-w-7xl px-4 py-6">
-              <p className="text-sm text-[var(--text-muted)] leading-relaxed">
-                <strong>Acknowledgement of Country:</strong> We acknowledge the Ngunnawal people as the Traditional Custodians of the land on which we live and work. We pay our respects to Elders past and present, and extend that respect to all Aboriginal and Torres Strait Islander peoples.
+          <hr className="site-footer__divider" />
+
+          <div className="site-footer__ack">
+            <div className="mx-auto max-w-7xl px-4">
+              <p>
+                <strong>Acknowledgement of Country:</strong> We acknowledge the Ngunnawal people as
+                the Traditional Custodians of the land on which we live and work. We pay our
+                respects to Elders past and present, and extend that respect to all Aboriginal and
+                Torres Strait Islander peoples.
               </p>
             </div>
           </div>
 
-          {/* Bottom bar */}
-          <div className="border-t bg-[color-mix(in_oklab,var(--primary-600)_8%,var(--surface))]">
-            <div className="mx-auto max-w-7xl px-4 py-4 flex flex-wrap items-center justify-between gap-4">
-              <p className="text-sm text-[var(--text-muted)]">
-                Proudly supporting the Canberra community
-              </p>
-              <p className="text-sm text-[var(--text-muted)]">
-                © {new Date().getFullYear()} ACT Jubilant. All rights reserved.
-              </p>
+          <div className="site-footer__bar">
+            <div className="site-footer__bar-inner mx-auto max-w-7xl px-4">
+              <p>Proudly supporting the Canberra community</p>
+              <p>© {new Date().getFullYear()} ACT Jubilant. All rights reserved.</p>
             </div>
           </div>
         </footer>

@@ -81,12 +81,33 @@ export default function MobileNav() {
       <button
         ref={triggerRef}
         type="button"
-        className="btn-chip touch-target"
+        className="mobile-nav-trigger"
         aria-expanded={open}
         aria-controls="mobile-menu"
+        aria-label={open ? "Close menu" : "Open menu"}
         onClick={() => setOpen((v) => !v)}
       >
-        {open ? "Close" : "Menu"}
+        {open ? (
+          <span>Close</span>
+        ) : (
+          <>
+            <svg
+              className="h-5 w-5 shrink-0"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+            <span className="sr-only">Menu</span>
+          </>
+        )}
       </button>
 
       {open && (

@@ -37,6 +37,41 @@ Both tools read and write the same local file. Production and the other tool onl
 
 ## Log
 
+### 2026-06-12 — Cursor — Phase 1 homepage UI approved (`ui-redesign`)
+
+**Prompt:** Owner approved Phase 1 homepage UI + footer polish on `ui-redesign` worktree  
+**Status:** pushed (`ui-redesign` branch — Vercel preview)  
+**Files:** `src/app/globals.css`, `src/app/page.tsx`, `src/app/layout.tsx`, `src/components/ImageCarousel.tsx`, `src/components/MobileNav.tsx`, `CHANGES.md`
+
+**Summary:**
+- **Theme:** “Settled Ground” tokens — stone/sage/slate/warm accents; teal brand anchor (`#2B6CB0`); dark slate footer
+- **Homepage:** Section rhythm, hero identity strip, compact carousel captions, insight cards (problem), approach bullets + soft callout, support model rows (not paragraph cards), desktop row polish
+- **Header:** Compact mobile sticky header; subtler menu trigger
+- **Scope:** Homepage-led; shared globals/footer/header affect other routes visually only — **not merged to `main`**
+
+**Review notes:** Owner signed off mobile + desktop density pass  
+**Next:** Phase 2 nav/header sitewide alignment if desired; merge to `main` only after explicit owner go-live approval
+
+---
+
+### 2026-06-12 — Cursor — Phase 1 homepage UI refine (“Settled Ground” pass)
+
+**Prompt:** Refine homepage UI using design reference (stone/sage/slate/warm accents); keep teal brand anchor, locked copy, structure, media, a11y toolbar, and forms unchanged  
+**Status:** local only (`ui-redesign` worktree)  
+**Files:** `src/app/globals.css`, `src/app/page.tsx`, `src/components/ImageCarousel.tsx`, `CHANGES.md`
+
+**Summary:**
+- **Tokens:** Stone page bg (`#F7F5F2`); ACT Jubilant teal primary (`#2B6CB0`); sage support tones; deep slate (`#3B4F5C`) for one grounded band; terracotta (`#C06D3A`) accents only (pull-quote border, checkmarks, carousel progress)
+- **Removed:** Gradient section backgrounds behind text; negative letter-spacing; viewport `clamp()` on pull quote; forced Atkinson on all body text (reverted to system-ui; dyslexia mode unchanged)
+- **Homepage rhythm:** Sage hero → white problem → stone approach → **slate “How support works”** → sage meaningful → white fit → stone stories → sage referrer band → white service areas → sage final CTA panel
+- **Cards/CTAs:** Softer shadow (`0 2px 12px`), subtle borders, white cards on bands; referrer + final conversion bands with clearer primary/secondary hierarchy
+- **Scope:** Homepage + shared globals only; nav/footer/other pages not redesigned (other routes pick up warmer bg/button tokens passively)
+
+**Review notes:** Audit `/` on mobile + desktop — hero calmness, slate section contrast, CTA prominence, Tab focus rings, carousel controls. Compare feel to Amazing Cleaner (should stay distinct). Other pages may look slightly warmer until Phase 2+  
+**Next:** Owner preview in worktree; commit/push `ui-redesign` for Vercel preview when approved; Phase 2 nav/footer after sign-off
+
+---
+
 ### 2026-06-12 — Cursor — WCAG follow-ups + UI redesign worktree setup
 
 **Prompt:** WCAG form `aria-describedby` fixes; footer tap targets; set up worktree + `ui-redesign` branch for phased UI work  
