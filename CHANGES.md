@@ -37,6 +37,47 @@ Both tools read and write the same local file. Production and the other tool onl
 
 ## Log
 
+### 2026-06-13 — Cursor — ui-redesign merged to main; stock images; Phase 3 pages; phone fix
+
+**Prompt:** Stock images on inner pages; Codex pre-merge fixes; merge `ui-redesign` → `main`; Settled Ground on Consultation/Reviews/FAQ; consultation form above fold; correct owner phone number; end-of-day handoff  
+**Status:** committed · pushed · **live** (`main` @ `cab9cff`)  
+**Build:** `npm run build` passes · Vercel production deploy succeeded after push
+
+**Commits on `main` (since `ffc931d`):**
+- `73376ff`–`8687cd9` — Phase 1 homepage UI (Settled Ground), inner-page stock images, team group photo `.png` rename, Brand Bible path fixes
+- `cab9cff` — Consultation/Reviews/FAQ polish, Programs one-on-one photo grid, phone number site-wide
+
+**Stock images (`public/images/stock/`):**
+- Optimized assets for About, Programs, Referral, Accessibility, Canberra services
+- Owner community-run photo on Programs opener (`programs-community-run.jpg`)
+- Illustrative alt text on stock; “ACT Jubilant …” on real gallery/team photos
+- Raw `stock images/` upload folder removed before commit; do not commit screenshots or `.DS_Store`
+
+**Codex pre-merge fixes (included in `8687cd9`):**
+- `event-group-photo-dec-2025.jpg` → `.png` (was PNG data); references updated in Brand Bible + WORKFLOW
+- Programs/About/Referral/Accessibility/Canberra page image wiring
+
+**Phase 3 content pages (`cab9cff`):**
+- `consultation/page.tsx` — Settled Ground sections; **form directly under short intro** (no hero image); depth links below form
+- `reviews/page.tsx` — `home-pill` outcomes, `card--warm` quotes, video in muted card, final CTA
+- `faq/page.tsx` — 2-col FAQ grid, depth links, final CTA; metadata on page
+
+**UX fixes (`cab9cff`):**
+- Programs one-on-one photos: equal 3-column `aspect-[4/3]` grid (was awkward 6+3+3 layout)
+- Phone **+61 424 488 439** (`tel:+61424488439`) — was +61 434 740 745; updated in layout, footer, mobile nav, all CTAs, `actions.ts` fallbacks, Brand Bible
+
+**Review notes (owner, live site):**
+- Hard-refresh and tap **Call** on mobile — confirm new number dials correctly
+- `/consultation` — form visible without scrolling on phone + desktop
+- `/programs` — one-on-one photo row; community-run hero
+- `/reviews`, `/faq` — section rhythm matches About/Referral
+
+**Supersedes:** Phase 1 handoff entry below still documents homepage design intent but its **Status** line (“not on `main`”) is **out of date** — that work is now live.
+
+**Next (owner):** See owner todo list in latest session wrap-up · Hostinger transfer (#13) · GA/Search Console IDs (#15) · live form smoke-test when SMTP ready
+
+---
+
 ### 2026-06-12 — Cursor — Phase 1 homepage UI redesign batch (handoff for Codex audit)
 
 **Prompt:** Owner approved Phase 1 homepage UI; pause further redesign; log full batch for Codex homepage audit before About/Programs  
