@@ -60,11 +60,6 @@ html.dyslexia em, html.dyslexia i {
   text-decoration: underline; 
 }
 
-/* Temporary visual indicator for testing - remove later */
-html.dyslexia body { 
-  outline: 4px dashed rgba(0, 150, 255, 0.3); 
-  outline-offset: 4px;
-}
 body {
   background: var(--bg);
   color: var(--text);

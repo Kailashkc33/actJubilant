@@ -108,18 +108,24 @@ export default function ImageCarousel({
 
       {/* Dots Indicator */}
       {showDots && images.length > 1 && (
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
+        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex items-center justify-center gap-1">
           {images.map((_, index) => (
             <button
               key={index}
+              type="button"
               onClick={() => goToSlide(index)}
-              className={`w-2 h-2 rounded-full transition-all duration-200 ${
-                index === currentIndex 
-                  ? 'bg-white scale-125' 
-                  : 'bg-white/50 hover:bg-white/75'
-              }`}
+              className="flex h-11 w-11 items-center justify-center rounded-full focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-[var(--focus)]"
               aria-label={`Go to slide ${index + 1}`}
-            />
+            >
+              <span
+                aria-hidden="true"
+                className={`block rounded-full transition-all duration-200 ${
+                  index === currentIndex
+                    ? "h-3 w-3 bg-white"
+                    : "h-2 w-2 bg-white/60 hover:bg-white/80"
+                }`}
+              />
+            </button>
           ))}
         </div>
       )}

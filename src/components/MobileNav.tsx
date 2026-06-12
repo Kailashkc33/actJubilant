@@ -106,10 +106,10 @@ export default function MobileNav() {
             onClick={() => setOpen(false)}
           />
 
-          {/* Right-side drawer: full height, scrollable, safe-area aware */}
+          {/* Full-screen drawer: full height, scrollable, safe-area aware */}
           <div
             ref={panelRef}
-            className="absolute right-0 top-0 h-[100dvh] w-[86%] max-w-sm bg-white shadow-[0_8px_24px_rgba(0,0,0,0.2)]
+            className="absolute inset-0 h-[100dvh] w-full bg-white shadow-[0_8px_24px_rgba(0,0,0,0.2)]
                        outline-none overflow-y-auto overscroll-contain
                        pt-[calc(env(safe-area-inset-top,0px)+1rem)] pb-[calc(env(safe-area-inset-bottom,0px)+1rem)]
                        motion-safe:transition-transform motion-safe:duration-300 motion-safe:ease-out translate-x-0"
