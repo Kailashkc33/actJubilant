@@ -105,18 +105,28 @@ export default function ReferralForm() {
           className="md:col-span-2"
         />
 
-        <label className="md:col-span-2 inline-flex items-start gap-2">
-          <input type="checkbox" name="consent" />
+        <label htmlFor="referral-consent" className="md:col-span-2 inline-flex items-start gap-2">
+          <input
+            id="referral-consent"
+            type="checkbox"
+            name="consent"
+            required
+            aria-invalid={Boolean(state.errors?.consent)}
+            aria-describedby={
+              state.errors?.consent ? "referral-consent-error" : "referral-consent-hint"
+            }
+          />
           <span>
             I have consent from the participant (or I am the participant) to share this
-            information with ACT Jubilant.
-            <span className="block text-sm text-[var(--text-muted)]">
+            information with ACT Jubilant.{" "}
+            <span aria-hidden="true" className="text-red-700">*</span>
+            <span id="referral-consent-hint" className="block text-sm text-[var(--text-muted)]">
               We respect your privacy and handle information securely.
             </span>
           </span>
         </label>
         {state.errors?.consent && (
-          <p className="text-red-700 md:col-span-2" role="alert">
+          <p id="referral-consent-error" className="text-red-700 md:col-span-2" role="alert">
             {state.errors.consent as string}
           </p>
         )}

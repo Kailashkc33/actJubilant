@@ -90,6 +90,160 @@ export const metadata: Metadata = {
   },
 };
 
+const ORGANIZATION_JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": ["Organization", "LocalBusiness"],
+  "@id": "https://actjubilant.com.au/#organization",
+  name: "ACT Jubilant",
+  alternateName: "ACT Jubilant NDIS Provider",
+  description:
+    "Boutique, relationship-led NDIS provider in Canberra and the ACT. Structured support around participant interests, routine, consistent workers, and meaningful daily life.",
+  url: "https://actjubilant.com.au",
+  logo: "https://actjubilant.com.au/logo.png",
+  image: "https://actjubilant.com.au/logo.png",
+  telephone: "+61 434 740 745",
+  email: "admin@actjubilant.com.au",
+  founder: {
+    "@type": "Person",
+    name: "Manish Gupta",
+    jobTitle: "Founder & Client Service Manager",
+  },
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "75/20 Beissel St",
+    addressLocality: "Belconnen",
+    addressRegion: "ACT",
+    postalCode: "2617",
+    addressCountry: "AU",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: "-35.2386",
+    longitude: "149.0687",
+  },
+  areaServed: {
+    "@type": "City",
+    name: "Canberra",
+    containedInPlace: {
+      "@type": "State",
+      name: "Australian Capital Territory",
+    },
+  },
+  serviceType: [
+    "Daily living and personal activities",
+    "Community participation",
+    "Social and group supports",
+    "Transport",
+    "Respite",
+    "Skill development",
+    "Support coordination",
+    "High intensity daily personal activities",
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "NDIS support services in Canberra",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Daily living and personal activities",
+          description:
+            "In-home support with daily living, personal care, and household tasks in service of routine and engagement.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Community participation",
+          description:
+            "Support to access community activities, social outings, local venues, and shared experiences.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Social and group supports",
+          description:
+            "Small group programs, structured activities, and community-based gatherings.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Transport",
+          description:
+            "Travel assistance to access community activities, appointments, and everyday outings.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Respite",
+          description:
+            "Short-term support giving families and carers a break while maintaining familiar routines.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Skill development",
+          description:
+            "Practical skill-building through everyday activities, aligned with participant interests and plan goals.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Support coordination",
+          description:
+            "Help navigating NDIS plans, connecting with providers, and coordinating funded supports.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "High intensity daily personal activities",
+          description:
+            "Specialist in-home support for participants with complex needs who require a higher level of personal care.",
+        },
+      },
+    ],
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "08:30",
+      closes: "17:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: "Saturday",
+      opens: "10:00",
+      closes: "13:00",
+    },
+  ],
+  sameAs: [],
+  slogan: "Support should create meaningful daily life.",
+  knowsAbout: [
+    "NDIS",
+    "Disability support",
+    "Participant engagement",
+    "Routine and structure",
+    "Community participation",
+    "Consistent support workers",
+    "Canberra",
+  ],
+} as const;
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en-AU" suppressHydrationWarning className={atkinson.variable}>
@@ -165,9 +319,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   />
                 </div>
                 <p className="text-[var(--text-muted)] mb-4">
-                  ACT Jubilant recognizes the happiness that our organization brings to everyone. 
-                  We strive to provide happiness to our community, clients and support workers. 
-                  Registered NDIS provider offering personalised support and services in ACT.
+                  ACT Jubilant is a boutique, relationship-led NDIS provider in Canberra and the
+                  ACT. We structure support around participant interests, routine, and consistent
+                  workers, helping people build meaningful daily life at home and in the community.
                 </p>
                 <div className="space-y-2">
                   <p className="text-sm">
@@ -199,6 +353,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <nav aria-label="Footer navigation">
                   <ul className="space-y-2">
                     <li><Link className="nav-link" href="/programs">Our Programs</Link></li>
+                    <li><Link className="nav-link" href="/services/canberra">NDIS Services (Canberra)</Link></li>
                     <li><Link className="nav-link" href="/about">About Us</Link></li>
                     <li><Link className="nav-link" href="/reviews">Reviews</Link></li>
                     <li><Link className="nav-link" href="/referral">Make a Referral</Link></li>
@@ -248,7 +403,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 Proudly supporting the Canberra community
               </p>
               <p className="text-sm text-[var(--text-muted)]">
-                © 2025 ACT Jubilant. All rights reserved.
+                © {new Date().getFullYear()} ACT Jubilant. All rights reserved.
               </p>
             </div>
           </div>
@@ -277,102 +432,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              "@id": "https://actjubilant.com.au/#organization",
-              name: "ACT Jubilant",
-              alternateName: "ACT Jubilant NDIS Provider",
-              description: "Registered NDIS provider in Canberra offering personalised support, inclusive programs, and real care. Empowering people and creating possibilities.",
-              url: "https://actjubilant.com.au",
-              logo: "https://actjubilant.com.au/logo.png",
-              image: "https://actjubilant.com.au/logo.png",
-              telephone: "+61 434 740 745",
-              email: "admin@actjubilant.com.au",
-              address: {
-                "@type": "PostalAddress",
-                streetAddress: "75/20 Beissel St",
-                addressLocality: "Belconnen",
-                addressRegion: "ACT",
-                postalCode: "2617",
-                addressCountry: "AU"
-              },
-              geo: {
-                "@type": "GeoCoordinates",
-                latitude: "-35.2386",
-                longitude: "149.0687"
-              },
-              areaServed: {
-                "@type": "City",
-                name: "Canberra",
-                containedInPlace: {
-                  "@type": "State",
-                  name: "Australian Capital Territory"
-                }
-              },
-              serviceType: [
-                "NDIS Support Services",
-                "Personal Care",
-                "Community Participation",
-                "Daily Living Support",
-                "Respite Care",
-                "Transport Services"
-              ],
-              hasOfferCatalog: {
-                "@type": "OfferCatalog",
-                name: "NDIS Services",
-                itemListElement: [
-                  {
-                    "@type": "Offer",
-                    itemOffered: {
-                      "@type": "Service",
-                      name: "Personal Care Support",
-                      description: "Assistance with daily living activities and personal care needs"
-                    }
-                  },
-                  {
-                    "@type": "Offer",
-                    itemOffered: {
-                      "@type": "Service",
-                      name: "Community Participation",
-                      description: "Support to participate in community activities and social events"
-                    }
-                  },
-                  {
-                    "@type": "Offer",
-                    itemOffered: {
-                      "@type": "Service",
-                      name: "Respite Care",
-                      description: "Short-term care to give families and carers a break"
-                    }
-                  }
-                ]
-              },
-              openingHoursSpecification: [
-                {
-                  "@type": "OpeningHoursSpecification",
-                  dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-                  opens: "08:30",
-                  closes: "17:00"
-                },
-                {
-                  "@type": "OpeningHoursSpecification",
-                  dayOfWeek: "Saturday",
-                  opens: "10:00",
-                  closes: "13:00"
-                }
-              ],
-              sameAs: [],
-              foundingDate: "2020",
-              slogan: "Empowering people. Creating possibilities.",
-              knowsAbout: [
-                "NDIS",
-                "Disability Support",
-                "Personal Care",
-                "Community Services",
-                "Canberra"
-              ]
-            }),
+            __html: JSON.stringify(ORGANIZATION_JSON_LD),
           }}
         />
       </body>

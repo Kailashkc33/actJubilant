@@ -1,258 +1,159 @@
-"use client";
+import type { Metadata } from "next";
+import Link from "next/link";
+import SelfHostedVideo from "@/components/SelfHostedVideo";
+import ReviewForm from "./ReviewForm";
 
-import { useEffect, useRef, useActionState } from "react";
-import { useFormStatus } from "react-dom";
-import { submitReview, type ActionResult } from "../actions";
-import SelfHostedVideo from "../../components/SelfHostedVideo";
+export const metadata: Metadata = {
+  title: "Stories & Reviews | ACT Jubilant Canberra",
+  description:
+    "Real experiences from participants and families building routine, engagement, and meaningful daily life with ACT Jubilant in Canberra.",
+  alternates: {
+    canonical: "/reviews",
+  },
+};
 
-const initialState: ActionResult = { ok: false, errors: {} };
+const OUTCOME_THEMES = [
+  "Better routine",
+  "Consistent support",
+  "Confidence and independence",
+  "Pride and identity",
+] as const;
+
+/** Exemplar quotes. Replace with real participant/family reviews when available. */
+const EXEMPLAR_REVIEWS = [
+  {
+    theme: "Better routine",
+    text: "My week has a shape now, with regular activities, familiar faces, and days that don't just drift by.",
+    name: "Jonnathan",
+    relationship: "Participant",
+  },
+  {
+    theme: "Consistent support",
+    text: "Having the same support workers means I don't have to start over every time. They know me, and I trust them.",
+    name: "Robbin",
+    relationship: "Participant",
+  },
+  {
+    theme: "Pride and identity",
+    text: "I'm proud of what I do and what I've learned. People see me for that, not just my disability.",
+    name: "Priya",
+    relationship: "Participant",
+  },
+  {
+    theme: "Community participation",
+    text: "As her advocate, I see how getting out to local places with familiar support has made community outings part of her week, not a one-off.",
+    name: "Ishika",
+    relationship: "Advocate",
+  },
+  {
+    theme: "Meaningful activities",
+    text: "Group outings and shared activities give the people I support a regular rhythm and people they look forward to seeing each week.",
+    name: "Rajesh",
+    relationship: "Support Worker",
+  },
+] as const;
 
 export default function ReviewsPage() {
-  const [state, formAction] = useActionState(submitReview, initialState);
-  const formRef = useRef<HTMLFormElement>(null);
-
-  useEffect(() => {
-    if (state.ok) formRef.current?.reset();
-  }, [state.ok]);
-
   return (
-    <div className="py-10">
-      <h1 className="h2">Reviews & Testimonials</h1>
-      <p className="mt-4 text-lg">
-        Hear from our participants and families about their experiences with ACT Jubilant.
-      </p>
-
-      {/* Video Testimonial */}
-      <div className="mt-8">
-        <h2 className="h3 mb-4">Client Testimonial Video</h2>
-        <SelfHostedVideo
-          srcMp4="/videos/testimonial2.mp4"
-          title="Client Testimonial - ACT Jubilant NDIS Services"
-          description="Hear directly from our clients about their experience with our disability support services in Canberra"
-          poster="/images/testimonials/thumbnail.png"
-        />
-      </div>
-
-      {/* Review submission form */}
-      <div className="mt-8 card">
-        <h2 className="h3">Share Your Experience</h2>
-        <p className="mt-2">
-          We'd love to hear about your experience with ACT Jubilant. Your feedback helps us improve and helps others make informed decisions.
+    <div className="max-w-4xl">
+      {/* 1. Opener */}
+      <section aria-labelledby="reviews-opener-title" className="py-8 md:py-12">
+        <h1 id="reviews-opener-title" className="h2 text-balance">
+          Stories from participants and families
+        </h1>
+        <p className="mt-4 text-lg text-[var(--text-muted)]">
+          Real experiences from people building routine, engagement, and a daily life they
+          recognise as their own.
         </p>
+      </section>
 
-        {state.ok && (
-          <div className="mt-4 rounded-lg border border-green-300 bg-green-50 p-4" role="status">
-            {state.message}
-          </div>
-        )}
-
-        <form ref={formRef} action={formAction} className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-          {/* Honeypot */}
-          <div className="hidden" aria-hidden="true">
-            <label htmlFor="website">Website</label>
-            <input id="website" name="website" type="text" autoComplete="off" />
-          </div>
-
-          <Field
-            id="name"
-            label="Your name (first name only)"
-            required
-            error={state.errors?.name as string}
+      {/* 2. Video */}
+      <section
+        aria-labelledby="video-story-title"
+        className="py-8 md:py-10 border-t border-gray-100"
+      >
+        <h2 id="video-story-title" className="text-lg font-semibold">
+          Building a routine that feels meaningful
+        </h2>
+        <p className="mt-2 text-[var(--text-muted)]">
+          Hear how structured support around interests and routine helps someone stay engaged in
+          the life they&apos;re building.
+        </p>
+        <div className="mt-4">
+          <SelfHostedVideo
+            srcMp4="/videos/testimonial2.mp4"
+            title="Building a routine that feels meaningful"
+            description="Hear how structured support around interests and routine helps someone stay engaged in the life they're building."
+            poster="/images/testimonials/thumbnail.jpg"
+            minimalChrome
           />
-          <Field
-            id="relationship"
-            label="Your relationship"
-            required
-            hint="e.g., Participant, Parent, Family Member"
-            error={state.errors?.relationship as string}
-          />
+        </div>
+      </section>
 
-          <div className="md:col-span-2">
-            <label htmlFor="rating" className="block text-sm font-medium">
-              Rating <span aria-hidden="true" className="text-red-700">*</span>
-            </label>
-            <div className="mt-2 flex gap-2">
-              {[1, 2, 3, 4, 5].map((star) => (
-                <label key={star} className="cursor-pointer">
-                  <input
-                    type="radio"
-                    name="rating"
-                    value={star}
-                    required
-                    className="sr-only peer"
-                  />
-                  <span className="text-2xl text-gray-300 hover:text-yellow-400 peer-checked:text-yellow-400 transition-colors">
-                    ★
-                  </span>
-                </label>
-              ))}
-            </div>
-            {state.errors?.rating && (
-              <p className="mt-1 text-sm text-red-700" role="alert">{state.errors.rating}</p>
-            )}
-          </div>
+      {/* 3. Outcome themes */}
+      <section
+        aria-labelledby="outcome-themes-title"
+        className="py-8 md:py-10 border-t border-gray-100"
+      >
+        <h2 id="outcome-themes-title" className="text-lg font-medium">
+          The outcomes people talk about most often:
+        </h2>
+        <ul className="mt-4 flex flex-wrap gap-3" aria-label="Common outcome themes">
+          {OUTCOME_THEMES.map((outcome) => (
+            <li
+              key={outcome}
+              className="rounded-full border border-[var(--primary-600)] px-4 py-2 text-sm font-medium text-[var(--primary-700)]"
+            >
+              {outcome}
+            </li>
+          ))}
+        </ul>
+      </section>
 
-          <TextArea
-            id="review"
-            label="Your review"
-            required
-            hint="Tell us about your experience with ACT Jubilant"
-            error={state.errors?.review as string}
-            className="md:col-span-2"
-          />
-
-          <div className="md:col-span-2">
-            <label className="inline-flex items-start gap-2">
-              <input type="checkbox" name="consent" required />
-              <span>
-                I consent to this review being published on the ACT Jubilant website.
-                <span className="block text-sm text-[var(--text-muted)]">
-                  We may edit for length and clarity, but will preserve the meaning.
-                </span>
-              </span>
-            </label>
-            {state.errors?.consent && (
-              <p className="mt-1 text-sm text-red-700" role="alert">{state.errors.consent}</p>
-            )}
-          </div>
-
-          <div className="md:col-span-2">
-            <SubmitButton>Submit Review</SubmitButton>
-          </div>
-        </form>
-      </div>
-
-      {/* All reviews */}
-      <div className="mt-12">
-        <h2 className="h3">All Reviews</h2>
-        <div className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {reviews.map((review, index) => (
-            <div key={index} className="card">
-              <div className="flex items-center gap-1 mb-3">
-                {[...Array(review.rating)].map((_, i) => (
-                  <span key={i} className="text-yellow-400" aria-hidden="true">★</span>
-                ))}
-                {[...Array(5 - review.rating)].map((_, i) => (
-                  <span key={i} className="text-gray-300" aria-hidden="true">★</span>
-                ))}
-              </div>
-              <blockquote className="text-lg">
-                "{review.text}"
+      {/* 4. Written stories */}
+      <section
+        aria-labelledby="written-stories-title"
+        className="py-8 md:py-10 border-t border-gray-100"
+      >
+        <h2 id="written-stories-title" className="h2">
+          What people share
+        </h2>
+        <p className="mt-4 text-[var(--text-muted)]">
+          Stories grouped by the outcomes participants and families mention most often.
+        </p>
+        <div className="mt-8 grid gap-6 md:grid-cols-2">
+          {EXEMPLAR_REVIEWS.map((review) => (
+            <figure key={review.theme} className="card h-full">
+              <p className="text-xs font-semibold uppercase tracking-wide text-[var(--primary-700)]">
+                {review.theme}
+              </p>
+              <blockquote className="mt-3 text-lg leading-relaxed">
+                &ldquo;{review.text}&rdquo;
               </blockquote>
-              <cite className="mt-3 block text-sm text-[var(--text-muted)]">
+              <figcaption className="mt-4 text-sm text-[var(--text-muted)]">
                 {review.name}, {review.relationship}
-              </cite>
-            </div>
+              </figcaption>
+            </figure>
           ))}
         </div>
-      </div>
+        <p className="mt-8 text-sm text-[var(--text-muted)]">
+          Want to understand fit before referring?{" "}
+          <Link
+            href="/about#who-were-best-for"
+            className="font-semibold text-[var(--primary-600)] underline decoration-2 underline-offset-4"
+          >
+            See who we&apos;re best for
+          </Link>
+        </p>
+      </section>
+
+      {/* 5. Submit form */}
+      <section
+        aria-labelledby="share-experience-title"
+        className="py-8 md:py-14 border-t border-gray-100"
+      >
+        <ReviewForm />
+      </section>
     </div>
   );
 }
-
-function SubmitButton({ children }: { children: React.ReactNode }) {
-  const { pending } = useFormStatus();
-  return (
-    <button type="submit" className="btn-primary" disabled={pending} aria-busy={pending}>
-      {pending ? "Submitting…" : children}
-    </button>
-  );
-}
-
-function Field(props: {
-  id: string; label: string; type?: string; required?: boolean; hint?: string; error?: string; className?: string;
-}) {
-  const { id, label, type = "text", required, hint, error, className } = props;
-  return (
-    <div className={className}>
-      <label htmlFor={id} className="block text-sm font-medium">
-        {label} {required && <span aria-hidden="true" className="text-red-700">*</span>}
-      </label>
-      <input id={id} name={id} type={type} required={required}
-        className={`mt-2 w-full rounded-xl border px-3 py-3 ${error ? "border-red-500" : "border-gray-300"} focus:outline-none`}
-        aria-invalid={Boolean(error)}
-        aria-describedby={hint ? `${id}-hint` : undefined}
-      />
-      {hint && <p id={`${id}-hint`} className="mt-1 text-sm text-[var(--text-muted)]">{hint}</p>}
-      {error && <p className="mt-1 text-sm text-red-700" role="alert">{error}</p>}
-    </div>
-  );
-}
-
-function TextArea(props: {
-  id: string; label: string; required?: boolean; hint?: string; error?: string; className?: string;
-}) {
-  const { id, label, required, hint, error, className } = props;
-  return (
-    <div className={className}>
-      <label htmlFor={id} className="block text-sm font-medium">
-        {label} {required && <span aria-hidden="true" className="text-red-700">*</span>}
-      </label>
-      <textarea id={id} name={id} rows={5} required={required}
-        className={`mt-2 w-full rounded-xl border px-3 py-3 ${error ? "border-red-500" : "border-gray-300"} focus:outline-none`}
-        aria-invalid={Boolean(error)}
-        aria-describedby={hint ? `${id}-hint` : undefined}
-      />
-      {hint && <p id={`${id}-hint`} className="mt-1 text-sm text-[var(--text-muted)]">{hint}</p>}
-      {error && <p className="mt-1 text-sm text-red-700" role="alert">{error}</p>}
-    </div>
-  );
-}
-
-// Sample reviews data
-const reviews = [
-  {
-    rating: 5,
-    text: "ACT Jubilant has been amazing. My support worker really understands my needs and helps me achieve my goals. I feel respected and supported every step of the way.",
-    name: "Sarah M.",
-    relationship: "Participant"
-  },
-  {
-    rating: 5,
-    text: "The team at ACT Jubilant helped my son build confidence and independence. Their group programs are fantastic and the staff are so caring and professional.",
-    name: "Jennifer L.",
-    relationship: "Parent"
-  },
-  {
-    rating: 5,
-    text: "I love how flexible they are with scheduling. They really listen to what I want to do and help me make it happen. Highly recommend!",
-    name: "Michael R.",
-    relationship: "Participant"
-  },
-  {
-    rating: 5,
-    text: "The community access support has been life-changing. I can now go shopping and attend events with confidence. The staff are patient and understanding.",
-    name: "Emma T.",
-    relationship: "Participant"
-  },
-  {
-    rating: 5,
-    text: "As a parent, I was worried about finding the right support for my daughter. ACT Jubilant exceeded our expectations. They truly care about each participant.",
-    name: "David K.",
-    relationship: "Parent"
-  },
-  {
-    rating: 5,
-    text: "The life skills program has helped me become more independent. I've learned cooking, budgeting, and communication skills that I use every day.",
-    name: "Alex P.",
-    relationship: "Participant"
-  },
-  {
-    rating: 5,
-    text: "Professional, reliable, and genuinely caring. My support worker has become like family. I couldn't ask for better service.",
-    name: "Lisa W.",
-    relationship: "Participant"
-  },
-  {
-    rating: 5,
-    text: "The group activities are so much fun! I've made new friends and learned new skills. The staff make everyone feel welcome and included.",
-    name: "Tom H.",
-    relationship: "Participant"
-  },
-  {
-    rating: 5,
-    text: "ACT Jubilant has helped my family navigate the NDIS system. They're knowledgeable, patient, and always put the participant first.",
-    name: "Maria S.",
-    relationship: "Family Member"
-  }
-];

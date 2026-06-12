@@ -472,7 +472,7 @@ export default function Home() {
               srcMp4="/videos/testimonial2.mp4"
               title="Building a routine that feels meaningful"
               description="Hear how structured support around interests and routine helps someone stay engaged in the life they're building."
-              poster="/images/testimonials/thumbnail.png"
+              poster="/images/testimonials/thumbnail.jpg"
               minimalChrome
             />
           </div>

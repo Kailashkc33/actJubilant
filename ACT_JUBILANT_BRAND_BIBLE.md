@@ -583,6 +583,10 @@ Focus on:
 
 Avoid generic praise.
 
+**Status (June 2026):** Implemented in `src/app/reviews/page.tsx` with `ReviewForm.tsx`. Five exemplar quotes (three locked from Homepage §7 + two outcome-led placeholders). Replace exemplars with real reviews when available. Removed nine generic placeholder cards (caring, flexible, highly recommend, etc.).
+
+**Section order:** Opener → Video → Outcome themes → Written stories → Share your experience form
+
 ---
 
 # CONTENT STRATEGY
@@ -993,7 +997,7 @@ Building a routine that feels meaningful
 **Description (one line):**  
 Hear how structured support around interests and routine helps someone stay engaged in the life they're building.
 
-**Poster:** `/images/testimonials/thumbnail.png`
+**Poster:** `/images/testimonials/thumbnail.jpg`
 
 **Bridge line (after video, before written quotes):**  
 The outcomes people talk about most often:

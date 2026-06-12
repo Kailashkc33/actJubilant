@@ -46,17 +46,23 @@ Local-only edits are how fixes get lost.
 
 ---
 
-## Three-page site map (do not mix jobs)
+## Site map (do not mix page jobs)
 
-| Page | Question it answers | Status |
-|------|---------------------|--------|
-| Homepage `/` | Why ACT Jubilant? | Implemented |
-| Programs `/programs` | What does support look like in real life? | Implemented |
-| Services `/services/canberra` | What NDIS supports do you provide? | Architecture only |
-| About | Founder, values, who we are | Not started |
+| Page | Route | Question it answers | Status |
+|------|-------|---------------------|--------|
+| Homepage | `/` | Why ACT Jubilant? | **Live** |
+| Programs | `/programs` | What does support look like in real life? | **Live** |
+| Services / Canberra | `/services/canberra` | What NDIS supports do you provide? | **Live** (footer + depth links only; not main nav) |
+| About | `/about` | Who is behind ACT Jubilant? | **Live** |
+| Referral | `/referral` | How do coordinators refer? | **Live** |
+| Reviews | `/reviews` | Stories and testimonials | **Live** (exemplar quotes until real reviews) |
+| Consultation | `/consultation` | Book a consultation | **Live** (form) |
+| FAQ | `/faq` | Common questions | **Live** |
 
-Do not put NDIS category grids on Homepage or Programs.  
-Do not put persuasion copy on Services/Canberra.
+**Architecture rules:**
+- Do not put NDIS category grids on Homepage or Programs.
+- Do not put persuasion copy on Services/Canberra.
+- Programs ≠ Services: Programs = what support looks like; Services = NDIS categories and logistics.
 
 ---
 
@@ -142,13 +148,34 @@ Short subject line. Body explains why, not just what.
 
 ---
 
-## Page implementation order (remaining)
+## Remaining backlog (June 2026)
 
-1. Services / Canberra (copy lock → implement)
-2. About (architecture → copy lock → implement)
-3. Referral page content (above form)
-4. Reviews (replace placeholder quotes)
-5. JSON-LD in layout.tsx (align with new positioning)
+See `CHANGES.md` work division table for full list. Current priorities:
+
+| # | Task | Owner | Status |
+|---|------|-------|--------|
+| 5 | Media audit + compression | Owner + Cursor | In progress — compress in-use assets; owner to approve removing unused legacy files |
+| 13 | Hostinger domain transfer → SMTP forms | Owner | Blocked on DNS/email stability |
+| 14 | Accessibility standards pass (WCAG 2.2 AA) | Owner + Cursor + Codex | Backlog |
+| 15 | GA + Search Console placeholders in `layout.tsx` | Owner | `GA_MEASUREMENT_ID`, `your-google-verification-code` |
+
+**Done (pushed):** Homepage · Programs · About · Services/Canberra · Referral · Reviews · footer + JSON-LD · media compression · mobile UX fixes
+
+---
+
+## Media performance notes
+
+**In use on site (keep):** Owner gallery photos (`art-workshop`, `birthday-celebration`, `community-cafe-outing`, `wheelchair-outdoor-outing`, `restaurant-group-meal`, `participant-home-flowers`), team photos (`Nilima.jpeg`, `DSC_MANISHW-42.jpg`, `event-group-photo-dec-2025.jpg`), `testimonial2.mp4`, `community-dance-class-event-sep-2025-portrait.mp4`, `thumbnail.jpg`, dance class posters.
+
+**Removed (June 2026):** All `pexels-*` stock images (10 files across gallery, team, services, facilities).
+
+**Likely unused legacy (owner confirm before delete):**
+- `public/videos/community-dance-class-event-sep-2025.mp4` (~31 MB; portrait version used instead)
+- `public/videos/community-dance-class-event-sep-2025-web.mp4` (~2.6 MB)
+- `public/videos/testimonial1.mp4` (~20 MB)
+- Duplicate testimonial thumbnails: `testimonialtn.png`, `video-thumbnail.jpg`
+
+Target max width for gallery JPEGs: **1920px** (sufficient for retina at site layout widths).
 
 ---
 
@@ -179,4 +206,9 @@ git push origin main
 If dev server breaks with `.next` errors:
 ```bash
 rm -rf .next && npm run dev
+```
+
+Compress a large JPEG in place (max width 1920):
+```bash
+ffmpeg -y -i "public/images/gallery/FILE.jpg" -vf "scale='min(1920,iw)':-2" -q:v 4 -map_metadata -1 "/tmp/out.jpg" && mv "/tmp/out.jpg" "public/images/gallery/FILE.jpg"
 ```
