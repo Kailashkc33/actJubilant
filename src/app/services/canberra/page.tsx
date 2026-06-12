@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "NDIS Support Services Canberra | ACT Jubilant",
   description:
-    "Registered NDIS provider in Canberra and the ACT. Daily living, community participation, group supports, transport, and respite — delivered through structured, relationship-based support.",
+    "Registered NDIS provider in Canberra and the ACT. Daily living, community participation, group supports, transport, respite, support coordination, and high intensity personal activities.",
   alternates: {
     canonical: "/services/canberra",
   },
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 const SUPPORT_CATEGORIES = [
   {
     title: "Daily living & personal activities",
-    body: "In-home support with daily living, personal care, and household tasks where funded — in service of routine and engagement.",
+    body: "In-home support with daily living, personal care, and household tasks where funded, in service of routine and engagement.",
   },
   {
     title: "Community participation",
@@ -33,7 +33,15 @@ const SUPPORT_CATEGORIES = [
   },
   {
     title: "Skill development",
-    body: "Practical skill-building through everyday activities — aligned with participant interests and plan goals.",
+    body: "Practical skill-building through everyday activities, aligned with participant interests and plan goals.",
+  },
+  {
+    title: "Support coordination",
+    body: "Help navigating NDIS plans, connecting with providers, and coordinating funded supports where included in a participant's plan.",
+  },
+  {
+    title: "High intensity daily personal activities",
+    body: "Specialist in-home support for participants with complex needs who require a higher level of personal care and supervision.",
   },
 ] as const;
 
@@ -60,7 +68,7 @@ export default function CanberraServicesPage() {
           ACT.
         </p>
         <p className="mt-3 text-lg">
-          Supports are delivered through structured, relationship-based engagement — not only as
+          Supports are delivered through structured, relationship-based engagement, not only as
           passive task coverage.
         </p>
       </section>

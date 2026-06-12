@@ -1941,11 +1941,11 @@ NDIS-funded supports available through ACT Jubilant include:
 | Social & group supports | Small group programs (around six participants), structured activities, and community-based gatherings |
 | Transport | Travel assistance to access community activities, appointments, and everyday outings |
 | Respite | Short-term support giving families and carers a break while maintaining familiar routines |
-| Skill development | Practical skill-building through everyday activities — aligned with participant interests and plan goals |
+| Skill development | Practical skill-building through everyday activities, aligned with participant interests and plan goals |
+| Support coordination | Help navigating NDIS plans, connecting with providers, and coordinating funded supports where included in a participant's plan |
+| High intensity daily personal activities | Specialist in-home support for participants with complex needs who require a higher level of personal care and supervision |
 
-**Items to verify before publish (may remove):**
-- Support Coordination / Plan Management — current live page lists; Programs page explicitly excluded. Confirm whether ACT Jubilant delivers before including.
-- High Intensity Daily Personal Activities — confirm registration
+**Owner confirmed (June 2026):** Support coordination and high intensity daily personal activities are delivered and listed on the live page. Plan management not confirmed — do not list unless owner approves.
 
 **Format:** Definition list or compact cards — not a wall of prose paragraphs. No stock images required.
 
@@ -2023,7 +2023,7 @@ Do not add:
 - 24/7 / comprehensive / caring / flexible claims
 - Life-visualization photos (belongs on Programs)
 - Multiple mid-page CTA blocks
-- Support Coordination unless confirmed delivered
+- Plan management unless confirmed delivered (support coordination confirmed June 2026)
 
 ---
 
