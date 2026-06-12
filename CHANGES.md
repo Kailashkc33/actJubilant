@@ -40,7 +40,7 @@ Both tools read and write the same local file. Production and the other tool onl
 ### 2026-06-12 — Cursor — Reviews, footer, JSON-LD, media pass, and push
 
 **Prompt:** Reviews rewrite; footer + JSON-LD; form a11y; media compression; remove pexels stock images; commit and push  
-**Status:** pushed  
+**Status:** pushed (`a51f2e4` on `main`)  
 **Files:** `src/app/reviews/page.tsx`, `src/app/reviews/ReviewForm.tsx`, `src/app/layout.tsx`, `src/app/page.tsx`, `src/app/referral/ReferralForm.tsx`, `public/images/gallery/*`, `public/images/testimonials/thumbnail.jpg`, `WORKFLOW.md`, `ACT_JUBILANT_BRAND_BIBLE.md`, `CHANGES.md`
 
 **Summary:**
