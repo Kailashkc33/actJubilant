@@ -40,7 +40,7 @@ Both tools read and write the same local file. Production and the other tool onl
 ### 2026-06-12 — Cursor — Video keyboard accessibility audit + fixes
 
 **Prompt:** Verify keyboard operability across every `SelfHostedVideo` instance (technical audit follow-up from accessibility page)  
-**Status:** local only  
+**Status:** pushed (`ac2641d` on `main`)  
 **Files:** `src/components/SelfHostedVideo.tsx`, `CHANGES.md`
 
 **Summary:**
@@ -49,14 +49,14 @@ Both tools read and write the same local file. Production and the other tool onl
 - **Fixes in `SelfHostedVideo.tsx`:** Native `<button>` for poster play; always in tab order; visible `focus-visible` ring; focus moves to video controls on play; focus returns to play button when video ends; loading state uses `role="status"`; poster image marked decorative (`alt=""`)
 
 **Review notes:** Manual check: Tab to each video on `/`, `/programs`, `/reviews` → Enter/Space starts play → Tab through native video controls → after video ends, focus returns to play button  
-**Next:** Owner commit/push with `/accessibility` page; broader WCAG technical pass (#14) as needed
+**Next:** Broader WCAG technical pass (#14) as needed
 
 ---
 
 ### 2026-06-12 — Codex — Accessibility page audit (standards framing + mobile)
 
 **Prompt:** Audit `/accessibility` against WCAG/cognitive accessibility framing and mobile layout after Cursor rewrite  
-**Status:** local only (page not yet pushed)  
+**Status:** pushed (`ac2641d` on `main`)  
 **Files:** `CHANGES.md`
 
 **Summary:**
@@ -68,17 +68,17 @@ Both tools read and write the same local file. Production and the other tool onl
 - Toolbar documentation matches current `AccessibilityToolbar.tsx` implementation
 - **Mobile QA at 390 × 844:** no horizontal overflow; cards, footer/contact links, and collapsed toolbar all fit
 
-**Review notes (follow-up for technical audit #14):** The "Accessible media" commitment states videos are keyboard-operable. Verify this across every `SelfHostedVideo` instance before treating the site as meeting that promise.
+**Review notes:** Video keyboard follow-up addressed in `ac2641d` (native play button + focus management on all 4 instances).
 
 **Sources checked:** W3C WCAG overview; W3C cognitive accessibility guidance  
-**Next:** Push accessibility page when owner ready; then site-wide technical WCAG audit including video keyboard controls
+**Next:** Broader site-wide WCAG technical pass (#14) as needed
 
 ---
 
 ### 2026-06-12 — Cursor — Accessibility standards page
 
 **Prompt:** Create accessibility standards pass: state WCAG 2.2 AA baseline, W3C cognitive accessibility commitments, and real-user testing framing on `/accessibility`  
-**Status:** local only — Codex standards audit passed (see entry above)  
+**Status:** pushed (`ac2641d` on `main`) — Codex standards audit passed (see entry above)  
 **Files:** `src/app/accessibility/page.tsx`, `CHANGES.md`
 
 **Summary:**
@@ -249,7 +249,7 @@ Both tools read and write the same local file. Production and the other tool onl
 | 11 | Footer blurb + JSON-LD alignment | Cursor | Cursor | **Done** — pushed |
 | 12 | Footer link to `/services/canberra` | Owner + Cursor | Cursor | **Done** — pushed |
 | 13 | Hostinger domain transfer → SMTP forms | Owner | Owner | Blocked on DNS/email stability |
-| 14 | Accessibility standards pass: WCAG 2.2 AA + W3C cognitive accessibility + real-user testing where possible | Owner + Cursor + Codex | Cursor + Codex | **Partial** — standards page + Codex framing audit ✓; technical pass next (incl. video keyboard on all `SelfHostedVideo` instances) |
+| 14 | Accessibility standards pass: WCAG 2.2 AA + W3C cognitive accessibility + real-user testing where possible | Owner + Cursor + Codex | Cursor + Codex | **Partial** — standards page, Codex audit, video keyboard fixes pushed `ac2641d`; broader technical pass optional |
 | 15 | GA + Search Console placeholders in `layout.tsx` | Owner | Owner | `GA_MEASUREMENT_ID` and `your-google-verification-code` still placeholders |
 
 **Confirmed good (no action):** No horizontal overflow · headings clear sticky header · Large Text mode OK · `/referral` Brand Bible structure (Codex audit)
@@ -261,9 +261,10 @@ Both tools read and write the same local file. Production and the other tool onl
 4. ~~Cursor → Reviews (#10)~~ ✓ pushed
 5. ~~Cursor → footer blurb + JSON-LD (#11) + footer Services link (#12)~~ ✓ pushed
 6. ~~Cursor → media compression + pexels removal (#5 partial)~~ ✓ pushed
-7. ~~Cursor → accessibility standards page (#14 partial)~~ ✓ · ~~Codex framing/mobile audit~~ ✓ local only
-8. Cursor/Codex → technical WCAG audit (#14): verify video keyboard operability site-wide, then broader fixes
-9. Owner → push `/accessibility` when ready; Hostinger transfer (#13) → SMTP forms; GA + Search Console IDs (#15)
+7. ~~Cursor → accessibility standards page (#14 partial)~~ ✓ pushed `ac2641d`
+8. ~~Video keyboard audit (all `SelfHostedVideo` instances)~~ ✓ pushed `ac2641d`
+9. Cursor/Codex → broader WCAG technical pass (#14) as needed
+10. Owner → Hostinger transfer (#13) → SMTP forms; GA + Search Console IDs (#15)
 
 ### 2026-06-11 — Cursor — Homepage, Programs, docs, and polish
 
