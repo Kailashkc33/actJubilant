@@ -37,38 +37,83 @@ Both tools read and write the same local file. Production and the other tool onl
 
 ## Log
 
-### 2026-06-12 — Cursor — Phase 1 homepage UI approved (`ui-redesign`)
+### 2026-06-12 — Cursor — Phase 1 homepage UI redesign batch (handoff for Codex audit)
 
-**Prompt:** Owner approved Phase 1 homepage UI + footer polish on `ui-redesign` worktree  
-**Status:** pushed (`ui-redesign` branch — Vercel preview)  
-**Files:** `src/app/globals.css`, `src/app/page.tsx`, `src/app/layout.tsx`, `src/components/ImageCarousel.tsx`, `src/components/MobileNav.tsx`, `CHANGES.md`
+**Prompt:** Owner approved Phase 1 homepage UI; pause further redesign; log full batch for Codex homepage audit before About/Programs  
+**Status:** pushed · **worktree branch only** (`ui-redesign` @ `c1b20ba`) — **not on `main`**, not live  
+**Worktree:** `../act-jubilant-ui-redesign` · baseline tag `ui-baseline-2026-06-12` · commits `73376ff` + `c1b20ba`  
+**Build:** `npm run build` passes (Next.js 15.5.19, Turbopack)
 
-**Summary:**
-- **Theme:** “Settled Ground” tokens — stone/sage/slate/warm accents; teal brand anchor (`#2B6CB0`); dark slate footer
-- **Homepage:** Section rhythm, hero identity strip, compact carousel captions, insight cards (problem), approach bullets + soft callout, support model rows (not paragraph cards), desktop row polish
-- **Header:** Compact mobile sticky header; subtler menu trigger
-- **Scope:** Homepage-led; shared globals/footer/header affect other routes visually only — **not merged to `main`**
+**Design-system reference used:**
+- Owner file: `act_jubilant_design_system.html` (“**Settled Ground**”)
+- Applied selectively: stone off-white bg, sage support tones, one deep slate grounded band, warm clay/terracotta as **accent only** (borders, checks, carousel progress)
+- **Preserved:** ACT Jubilant teal-blue brand anchor (`#2B6CB0`); no serif headings; no negative letter-spacing; no viewport `clamp()` on headings; no corporate-blue palette; distinct from Amazing Cleaner
+- **Not copied:** mockup layout verbatim, fake trust badges, gradient text backgrounds, playful styling
 
-**Review notes:** Owner signed off mobile + desktop density pass  
-**Next:** Phase 2 nav/header sitewide alignment if desired; merge to `main` only after explicit owner go-live approval
+**Files changed (`ffc931d` → `c1b20ba`):**
+- `src/app/globals.css` — theme tokens, homepage section utilities, problem insight cards, approach/support-model rows, carousel caption/scrim, compact header, slate footer
+- `src/app/page.tsx` — homepage layout, density restructure, section rhythm, copy restructuring (see below)
+- `src/app/layout.tsx` — compact sticky header, dark slate footer
+- `src/components/ImageCarousel.tsx` — caption panel, contrast scrim, a11y carousel labels
+- `src/components/MobileNav.tsx` — subtler icon menu trigger (44px target)
+- `ACT_JUBILANT_BRAND_BIBLE.md`, `ACT_JUBILANT_MASTER_CONTEXT.md`, `src/app/referral/page.tsx` — age range 12–65 (owner/Codex update)
+- `CHANGES.md` — this entry
 
----
+**Homepage visual theme:**
+- Page bg stone `#F7F5F2`; sage-light hero/CTA bands; white alternating surfaces; one **slate intro strip** for “How support works” (proof rows on white below)
+- Softer cards (`0 2px 12px` shadow, subtle borders); teal primary buttons/links; terracotta accent borders only
+- Footer: deep slate `#3B4F5C`, light text hierarchy, dedicated footer link styles
 
-### 2026-06-12 — Cursor — Phase 1 homepage UI refine (“Settled Ground” pass)
+**Hero / mobile image-first:**
+- Mobile: carousel **above** copy (`order-1` / `order-2`)
+- Desktop: copy left, carousel right
+- Factual **identity strip** under hero lead (Canberra & ACT; boutique relationship-led; engagement/routine/familiar workers) — from locked positioning, not new claims
 
-**Prompt:** Refine homepage UI using design reference (stone/sage/slate/warm accents); keep teal brand anchor, locked copy, structure, media, a11y toolbar, and forms unchanged  
-**Status:** local only (`ui-redesign` worktree)  
-**Files:** `src/app/globals.css`, `src/app/page.tsx`, `src/components/ImageCarousel.tsx`, `CHANGES.md`
+**Carousel captions:**
+- Bottom-left compact chip panel + lighter bottom scrim (not full-width overlay)
+- Stronger contrast for all 5 slides; overlay titles as `<p>` not `<h2>`
+- Terracotta progress bar; 44px dot/arrow targets
 
-**Summary:**
-- **Tokens:** Stone page bg (`#F7F5F2`); ACT Jubilant teal primary (`#2B6CB0`); sage support tones; deep slate (`#3B4F5C`) for one grounded band; terracotta (`#C06D3A`) accents only (pull-quote border, checkmarks, carousel progress)
-- **Removed:** Gradient section backgrounds behind text; negative letter-spacing; viewport `clamp()` on pull quote; forced Atkinson on all body text (reverted to system-ui; dyslexia mode unchanged)
-- **Homepage rhythm:** Sage hero → white problem → stone approach → **slate “How support works”** → sage meaningful → white fit → stone stories → sage referrer band → white service areas → sage final CTA panel
-- **Cards/CTAs:** Softer shadow (`0 2px 12px`), subtle borders, white cards on bands; referrer + final conversion bands with clearer primary/secondary hierarchy
-- **Scope:** Homepage + shared globals only; nav/footer/other pages not redesigned (other routes pick up warmer bg/button tokens passively)
+**“Support alone…” problem section:**
+- Three **insight cards** with short lede + native `<details><summary>Read more</summary>` for extra detail (not repeating lede)
+- Concepts unchanged: Passive routines · Changing workers · Feeling managed, not seen
 
-**Review notes:** Audit `/` on mobile + desktop — hero calmness, slate section contrast, CTA prominence, Tab focus rings, carousel controls. Compare feel to Amazing Cleaner (should stay distinct). Other pages may look slightly warmer until Phase 2+  
-**Next:** Owner preview in worktree; commit/push `ui-redesign` for Vercel preview when approved; Phase 2 nav/footer after sign-off
+**“Our approach” content-density restructure:**
+- Pull quote + callout **verbatim**
+- Two former paragraphs + closing line → **three compact ✓ rows** (`APPROACH_POINTS`) before callout
+- Warm light sage band; terracotta **left border only** on quote/callout (no heavy clay blocks)
+
+**“How support works” row/checklist restructure:**
+- Three groups unchanged: Participant experience · Supporting long-term goals · Support that stays personal
+- Seven claims as **compact rows** (number + title + one line) — not stacked paragraph cards
+- **Mobile:** open divider rows, no outer card box
+- **Desktop:** 3-column cells for triple groups; single-item group in one contained panel; larger type/padding inside cells
+
+**Desktop polish (support model only):**
+- Group titles `1.25rem`; horizontal row layout inside grid cells; card shadow on desktop cells only — mobile unchanged
+
+**Age range 12–65 (owner-approved, Codex):**
+- `ACT_JUBILANT_BRAND_BIBLE.md` (ideal participant + homepage strong-fit mirror)
+- `ACT_JUBILANT_MASTER_CONTEXT.md`
+- `src/app/page.tsx` (`STRONG_FIT`)
+- `src/app/referral/page.tsx` (`STRONG_FIT`)
+
+**Dance video wording correction (`page.tsx` § meaningful support):**
+- **Was:** “A community dance class with participants and support workers in ACT Jubilant shirts, staying engaged together.”
+- **Now:** “An example of the kind of community group activity we can help arrange or support when it suits a participant's interests and goals.”
+- Video asset, title (“Staying engaged together”), and description unchanged
+
+**Explicitly not changed:**
+- Nav structure/copy (header compactness only); accessibility toolbar; forms/validation/SMTP; locked hero H1 and core section claims; About, Programs, Referral, Consultation, Reviews page layouts
+
+**Review notes for Codex (full homepage audit):**
+- Mobile scan path: hero image-first → problem details → approach rows → slate intro + support checklist → remaining sections
+- Keyboard: problem `<details>`, carousel controls, menu trigger, skip link, focus rings
+- Contrast: carousel captions on all 5 images; slate intro strip; footer links
+- Copy: confirm 12–65 and dance blurb align with Brand Bible; no accidental claim changes in restructured lines
+- Compare live `main` vs `ui-redesign` preview — **do not merge** until audit + owner sign-off
+
+**Next:** **Pause redesign work.** Codex full homepage audit on `ui-redesign` preview. **Do not** apply this skin to About or Programs until audit complete and owner approves.
 
 ---
 
