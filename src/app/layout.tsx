@@ -14,6 +14,7 @@ export const viewport: Viewport = {
 import { Atkinson_Hyperlegible } from "next/font/google";
 import "./globals.css";
 import AccessibilityToolbar from "../components/AccessibilityToolbar";
+import HashScroll from "../components/HashScroll";
 import MobileNav from "../components/MobileNav";
 
 const atkinson = Atkinson_Hyperlegible({
@@ -108,8 +109,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           role="banner"
           className="sticky top-0 z-40 w-full border-b bg-white/85 backdrop-blur"
         >
-          <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-3 min-w-0">
+          <div className="mx-auto max-w-7xl px-4 py-3 flex flex-wrap items-center justify-between gap-4">
+            <Link href="/" className="flex shrink-0 items-center gap-3">
               <Image
                 src="/logo.png"
                 alt="ACT Jubilant - NDIS Support Services Canberra | Disability Support Worker"
@@ -123,18 +124,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </Link>
 
             {/* Desktop nav */}
-            <nav aria-label="Main" className="hidden md:flex items-center gap-3">
-              <Link className="nav-link" href="/programs">Programs</Link>
-              <Link className="nav-link" href="/consultation">Book a Consultation</Link>
-              <Link className="nav-link" href="/referral">Make a Referral</Link>
-              <Link className="nav-link" href="/faq">FAQ</Link>
-              <Link className="nav-link" href="/accessibility">Accessibility</Link>
-              <Link className="nav-link" href="/reviews">Reviews</Link>
+            <nav aria-label="Main" className="site-desktop-nav items-center gap-1 xl:gap-3">
+              <Link className="nav-link px-2 xl:px-3" href="/programs">Programs</Link>
+              <Link className="nav-link px-2 xl:px-3" href="/about">About</Link>
+              <Link className="nav-link px-2 xl:px-3" href="/consultation">Book a Consultation</Link>
+              <Link className="nav-link px-2 xl:px-3" href="/referral">Make a Referral</Link>
+              <Link className="nav-link px-2 xl:px-3" href="/faq">FAQ</Link>
+              <Link className="nav-link px-2 xl:px-3" href="/accessibility">Accessibility</Link>
+              <Link className="nav-link px-2 xl:px-3" href="/reviews">Reviews</Link>
               
             </nav>
 
             {/* Mobile nav trigger */}
-            <div className="md:hidden">
+            <div className="site-mobile-nav">
               <MobileNav />
             </div>
           </div>
@@ -142,6 +144,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         {/* Main */}
         <main id="main" className="mx-auto max-w-7xl px-4">
+          <HashScroll />
           {children}
         </main>
 
@@ -196,6 +199,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <nav aria-label="Footer navigation">
                   <ul className="space-y-2">
                     <li><Link className="nav-link" href="/programs">Our Programs</Link></li>
+                    <li><Link className="nav-link" href="/about">About Us</Link></li>
                     <li><Link className="nav-link" href="/reviews">Reviews</Link></li>
                     <li><Link className="nav-link" href="/referral">Make a Referral</Link></li>
                     <li><Link className="nav-link" href="/consultation">Book Consultation</Link></li>

@@ -203,6 +203,8 @@ Family characteristics:
 
 # IDEAL PARTICIPANT AVATAR
 
+**Internal marketing use only.** David is a fit-model persona for strategy and copy alignment — not a real participant. Do not publish "Meet David," fictional case studies, or named avatar narratives on the website. Public fit content uses "Who we're best for" criteria (Homepage §6, About §5). Manish's founder story is the real human story on About.
+
 David
 
 42 years old
@@ -957,7 +959,7 @@ The right fit matters — for participants, families, and referrers alike.
 **Closing line:**  
 We're honest about fit because the right match matters more than volume — and we'll gladly help you think through alternatives when we're not the right provider.
 
-**Depth link:** → About page (David-style ideal participant profile)
+**Depth link:** → About page (`/about#who-were-best-for` — expanded fit criteria; no fictional participant narrative)
 
 **Score:** 9.7/10 — locked.
 
@@ -2054,4 +2056,287 @@ Support we provide → Clarity ("these NDIS lines, this scope")  ← PAGE HERO
 Service areas    → Logistics
 See in practice  → Link to Programs
 Final CTA        → Act
+```
+
+---
+
+# ABOUT PAGE IMPLEMENTATION GUIDE
+
+Version 1.0 — Architecture approved (June 2026)
+
+This section documents the approved About page information architecture for `actjubilant.com.au/about`. Use alongside the Homepage, Programs, and Services/Canberra guides.
+
+**Status:** Architecture and section order locked. Copy locked June 2026. Implemented in `src/app/about/page.tsx` (June 2026). Leadership photos owner-approved June 2026.
+
+**Inbound routes:** Homepage §6 (depth link to expanded fit criteria) · Footer / nav
+
+---
+
+## STRATEGIC FRAMING
+
+The About page is a **philosophy and trust depth page**, not a second homepage.
+
+**Governing question:**
+
+*Who is behind ACT Jubilant — and who is this model best for?*
+
+**Not this page's job:**
+
+| Owned elsewhere | Page |
+|-----------------|------|
+| Full persuasion / differentiation proof cards | Homepage §2–4 |
+| Activity visualization | Programs |
+| NDIS categories & SEO | Services/Canberra |
+| Full fit test (qualify/disqualify) | Homepage §6 |
+| All testimonials | Reviews |
+| Referrer workflow | Referral |
+
+**Narrative spine:** Identity → Origin → Founder (story + leadership photos) → Values → Fit criteria → Practice → Act
+
+**One-line page frame (required):**  
+ACT Jubilant is a boutique, relationship-led provider — built for participants who benefit from engagement, routine, and consistent support workers.
+
+---
+
+## GLOBAL RULES
+
+1. **No second homepage.** Do not repeat Problem → Approach → How support works card grids verbatim.
+2. **Founder biography lives here.** Homepage §4 keeps only the onboarding signal; full founder story is Section 3 on About.
+3. **Homepage §6 depth link** goes to About §5 (`who-were-best-for`) for expanded fit criteria. The internal David avatar informs messaging only — never publish David by name or as a fictional case study. Do not duplicate the full fit/disqualifier grid on About.
+4. **Factual over promotional.** State who you are and what you stand for; avoid caring/compassionate/flexible/24/7 as differentiators.
+5. **Shorter than Programs.** Target 6–7 sections. Readable in under 4 minutes.
+6. **Single conversion block at the end** — mirror Homepage Section 10.
+7. **Media (owner-approved June 2026):** Leadership portraits — Nilima Singh, Managing Director (`/images/team/dd-2.jpeg`); Manish Gupta, Founder & Client Service Manager (`/images/team/DSC_MANISHW-42.jpg`). Team group photo: `/images/team/event-group-photo-dec-2025.jpg`. File renames optional before publish.
+
+---
+
+## SECTION ORDER (APPROVED)
+
+| # | Section | Funnel role | Copy status |
+|---|---------|-------------|-------------|
+| 1 | Who we are | Frame — boutique identity + purpose | Locked |
+| 2 | Why we exist | Origin — three problems, founding insight | Locked |
+| 3 | Founder-led from the start | Trust — Manish founder narrative, then leadership photo cards | Locked |
+| 4 | What we stand for | Values — six principles | Locked |
+| 5 | Who we're best for | Depth — expanded fit criteria (from internal avatar; no fiction) | Locked |
+| 6 | See support in practice | Bridge — team photo + Programs link | Locked |
+| 7 | Final conversion | Action | Locked (mirrors Homepage §10) |
+
+---
+
+## BELIEF MAP
+
+| Section | Belief after |
+|---------|--------------|
+| 1 Opener | "This is a deliberate boutique — not a volume agency" |
+| 2 Why we exist | "They started this for a real reason I recognise" |
+| 3 Founder | "A real person leads onboarding — I trust the intent" |
+| 4 Values | "I know what they optimise for" |
+| 5 Who we're best for | "I understand the kind of participant this model suits" |
+| 6 Practice bridge | "I can see real people and what weeks look like" |
+| 7 CTA | "I know my next step" |
+
+---
+
+## LOCKED COPY — SECTION 1: WHO WE ARE
+
+**Heading:**  
+Who we are
+
+**Lead (two lines):**  
+ACT Jubilant is a boutique disability support provider based in Canberra and the ACT.
+
+We are built around participant engagement, meaningful routine, and relationship-based support — not volume, task lists, or constant worker rotation.
+
+**Purpose line (standalone):**  
+We exist to help people with disability feel capable, engaged, and proud of what they create and achieve.
+
+**Do not include:** Leading provider · comprehensive · 24/7 · compassionate
+
+---
+
+## LOCKED COPY — SECTION 2: WHY WE EXIST
+
+**Heading:**  
+Why ACT Jubilant exists
+
+**Intro (one line):**  
+After working directly with participants and families, we kept seeing the same three gaps.
+
+**Three problems (short narrative blocks — not homepage card repeat):**
+
+*Boredom*  
+Long stretches of unstructured time, passive routines, and days without meaningful activity.
+
+*Worker instability*  
+Frequent changes in support workers, making it harder to build trust and routine.
+
+*Feeling managed, not seen*  
+Support that focuses on tasks and supervision rather than interests, goals, and identity.
+
+**Closing insight:**  
+Many participants received support. Few experienced meaningful engagement. ACT Jubilant was created to close that gap.
+
+---
+
+## LOCKED COPY — SECTION 3: FOUNDER-LED FROM THE START
+
+**Heading:**  
+Founder-led from the start
+
+**Subhead:**  
+Manish Gupta, Founder & Client Service Manager
+
+**Body (locked narrative):**  
+Before founding ACT Jubilant, Manish built businesses in Nepal focused on employment, community rebuilding, and creating opportunity, including support following the Nepal earthquake. That experience shaped a belief: business should improve people's lives.
+
+After working directly with participants and families in disability support in Australia, Manish saw that engagement and consistency were often missing from delivery, even when hours were filled. ACT Jubilant was built to design support around interests, routine, and relationships from the beginning.
+
+Before workers are matched, Manish still takes time to understand each person's communication style, preferences, routine, and goals, so support teams start with context, not cold handovers.
+
+**Subsection (after narrative):**  
+Our leadership
+
+**Leadership photo cards (owner-approved June 2026):**
+
+| Name | Public role | Asset |
+|------|-------------|-------|
+| Nilima Singh | Managing Director | `/images/team/dd-2.jpeg` |
+| Manish Gupta | Founder & Client Service Manager | `/images/team/DSC_MANISHW-42.jpg` |
+
+**Layout rule:** Founder narrative leads (trust). Photo cards follow — not a separate "Our team" page hero. Manish appears in narrative and on card; roles must match.
+
+---
+
+## LOCKED COPY — SECTION 4: WHAT WE STAND FOR
+
+**Heading:**  
+What we stand for
+
+**Format:** Six compact value cards (title + one line each).
+
+| Value | Line |
+|-------|------|
+| Consistency | We reduce unnecessary change so trust and routine can build. |
+| Choice | Participants shape activities and programs — support follows their interests. |
+| Creativity | Growth happens through doing, making, learning, and participating. |
+| Humility | We know our limits and refer appropriately when we're not the right fit. |
+| Community | People thrive through connection — at home and in everyday places. |
+| Empowerment | Support should increase capability, not dependence. |
+
+---
+
+## LOCKED COPY — SECTION 5: WHO WE'RE BEST FOR
+
+**Section id:** `who-were-best-for` (Homepage §6 depth link target)
+
+**Heading:**  
+Who we're best for
+
+**Intro (one line):**  
+ACT Jubilant is best suited to participants who:
+
+**Criteria (locked — translated from internal fit avatar; no named persona):**
+- Want more than assistance
+- Benefit from routine and familiar support workers
+- Have hobbies, interests, or goals they'd like support built around
+- Enjoy structured weekly engagement
+- May be interested in small group environments
+- Value relationship-based support over a high-volume provider model
+
+**Bridge line:**  
+If that sounds like someone you support, explore how a typical week can look on our Programs page. For age range, fit boundaries, and when we may not be the right provider, see our homepage fit guide.
+
+**Depth links:** Explore our programs → `/programs` · Full fit guide → `/#who-were-best-for`
+
+**Explicit exclusions:** No "Meet David." No fictional case study. No made-up participant narrative. David avatar is internal only.
+
+**Do not:** Repeat full Homepage §6 disqualifier grid. Link back instead.
+
+---
+
+## LOCKED COPY — SECTION 6: SEE SUPPORT IN PRACTICE
+
+**Heading:**  
+The people behind the support
+
+**Body (one line):**  
+ACT Jubilant runs as a small, relationship-led team — familiar faces for participants, coordinators, and families.
+
+**Image:** `/images/team/event-group-photo-dec-2025.jpg`  
+**Alt:** ACT Jubilant team and participants at a group event  
+**Caption:** The same faces, week after week
+
+**Bridge:**  
+For photos, examples, and what a real week can look like:
+
+**Link:** Explore our programs → `/programs`
+
+---
+
+## LOCKED COPY — SECTION 7: FINAL CONVERSION
+
+Mirror Homepage Section 10 word-for-word.
+
+---
+
+## METADATA DIRECTION
+
+**Title:**  
+About ACT Jubilant | Who We Are | Canberra NDIS Provider
+
+**Description:**  
+Boutique, relationship-led disability support in Canberra. Our story, leadership, values, and who we're best for.
+
+**Avoid:** 24/7 · comprehensive · compassionate · leading provider · keyword stuffing
+
+---
+
+## EXPLICIT ABOUT PAGE EXCLUSIONS
+
+Do not add:
+
+- Full Homepage §4 differentiation card grid
+- NDIS category list (Services/Canberra)
+- Programs process beats or interest tiles
+- Testimonials (Reviews)
+- Why Choose Us block
+- 24/7 / comprehensive / caring claims
+- Pricing or plan management detail
+
+---
+
+## DEPTH ROUTING (ABOUT → OTHER PAGES)
+
+| Visitor need | Route |
+|--------------|-------|
+| Full fit criteria | `/#who-were-best-for` |
+| What support looks like | `/programs` |
+| NDIS scope | `/services/canberra` |
+| Stories | `/reviews` |
+| Refer | `/referral` |
+
+---
+
+## IMPLEMENTATION NOTES
+
+- Reuse site button classes and `card` / `h2` patterns — match Programs and Services pages.
+- Homepage §6: depth link after closing line → `/about#who-were-best-for`
+- Nav/footer: add About link (after Programs).
+- Section 2: narrative blocks only — no homepage-style problem cards.
+- Section 3: founder story first, leadership photos second (approved layout June 2026).
+- JSON-LD `founder` / `description` in `layout.tsx` — update separately (backlog).
+
+---
+
+## COMPLETE ABOUT FLOW (LOCKED)
+
+```
+Who we are        → Identity ("boutique, engagement-led")
+Why we exist      → Origin (three problems → founding insight)
+Founder-led       → Trust (Manish story → leadership photos)
+Values            → Principles
+Who we're best for → Depth (fit criteria)   ← HOMEPAGE §6 TARGET
+See in practice   → Bridge (team photo → Programs)
+Final CTA         → Act
 ```

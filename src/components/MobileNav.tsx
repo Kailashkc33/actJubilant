@@ -28,9 +28,9 @@ export default function MobileNav() {
     };
   }, [open]);
 
-  // Auto-close when viewport hits md and above
+  // Auto-close when viewport is wide enough for the full desktop nav.
   useEffect(() => {
-    const mq = window.matchMedia("(min-width: 768px)");
+    const mq = window.matchMedia("(min-width: 900px)");
     const onChange = () => setOpen(false);
     mq.addEventListener?.("change", onChange);
     return () => mq.removeEventListener?.("change", onChange);
@@ -81,7 +81,7 @@ export default function MobileNav() {
       <button
         ref={triggerRef}
         type="button"
-        className="md:hidden btn-chip touch-target"
+        className="btn-chip touch-target"
         aria-expanded={open}
         aria-controls="mobile-menu"
         onClick={() => setOpen((v) => !v)}
@@ -95,7 +95,7 @@ export default function MobileNav() {
           role="dialog"
           aria-modal="true"
           aria-labelledby="mobile-menu-title"
-          className="fixed inset-0 z-50 md:hidden"
+          className="fixed inset-0 z-50"
         >
           {/* Backdrop (hidden from a11y tree) */}
           <button
@@ -134,6 +134,7 @@ export default function MobileNav() {
               <nav aria-label="Mobile" className="flex flex-col gap-2">
                 {[
                   { href: "/programs", label: "Programs" },
+                  { href: "/about", label: "About" },
                   { href: "/reviews", label: "Reviews" },
                   { href: "/referral", label: "Make a Referral" },
                   { href: "/consultation", label: "Book a Consultation" },

@@ -10,7 +10,9 @@ type Prefs = {
 
 export default function AccessibilityToolbar() {
   const [prefs, setPrefs] = useState<Prefs>({ hc: false, xl: false, dys: false });
+  const [expanded, setExpanded] = useState(false);
   const speakingRef = useRef(false);
+  const hasActivePrefs = prefs.hc || prefs.xl || prefs.dys;
 
   // Load saved preferences
   useEffect(() => {
@@ -41,7 +43,7 @@ export default function AccessibilityToolbar() {
 
     const utter = new SpeechSynthesisUtterance(text);
     utter.lang = "en-AU";
-    utter.rate = 1; // keep natural
+    utter.rate = 1;
     utter.onend = () => (speakingRef.current = false);
     utter.onerror = () => (speakingRef.current = false);
     speakingRef.current = true;
@@ -57,44 +59,76 @@ export default function AccessibilityToolbar() {
     synth.cancel();
   }
 
+  const toolButtons = (
+    <>
+      <button
+        type="button"
+        className="btn-chip"
+        onClick={() => setPrefs((p) => ({ ...p, hc: !p.hc }))}
+        aria-pressed={prefs.hc}
+      >
+        {prefs.hc ? "Standard Contrast" : "High Contrast"}
+      </button>
+      <button
+        type="button"
+        className="btn-chip"
+        onClick={() => setPrefs((p) => ({ ...p, xl: !p.xl }))}
+        aria-pressed={prefs.xl}
+      >
+        {prefs.xl ? "Normal Text" : "Large Text"}
+      </button>
+      <button
+        type="button"
+        className="btn-chip"
+        onClick={() => setPrefs((p) => ({ ...p, dys: !p.dys }))}
+        aria-pressed={prefs.dys}
+      >
+        {prefs.dys ? "Standard Font" : "Dyslexia-friendly"}
+      </button>
+      <button type="button" className="btn-chip" onClick={speak} aria-label="Read this page">
+        Read Aloud
+      </button>
+      <button type="button" className="btn-chip" onClick={stop} aria-label="Stop reading">
+        Stop
+      </button>
+    </>
+  );
+
   return (
     <div className="w-full bg-[var(--surface)] border-b">
-      <div className="mx-auto max-w-7xl px-4 py-2 flex flex-wrap gap-2 items-center justify-between">
-        <div className="flex items-center gap-2">
-          <span aria-hidden="true">♿</span>
-          <span className="text-sm">Accessibility</span>
+      <div className="mx-auto max-w-7xl px-4 py-2">
+        <div className="flex items-center justify-between gap-2 md:hidden">
+          <div className="flex items-center gap-2 min-w-0">
+            <span aria-hidden="true">♿</span>
+            <span className="text-sm">Accessibility</span>
+            {hasActivePrefs && (
+              <span className="text-xs font-medium text-[var(--primary-600)]">On</span>
+            )}
+          </div>
+          <button
+            type="button"
+            className="btn-chip shrink-0"
+            aria-expanded={expanded}
+            aria-controls="a11y-tools"
+            onClick={() => setExpanded((open) => !open)}
+          >
+            {expanded ? "Hide tools" : "Show tools"}
+          </button>
         </div>
-        <div className="flex flex-wrap gap-2" role="toolbar" aria-label="Accessibility tools">
-          <button
-            type="button"
-            className="btn-chip"
-            onClick={() => setPrefs((p) => ({ ...p, hc: !p.hc }))}
-            aria-pressed={prefs.hc}
-          >
-            {prefs.hc ? "Standard Contrast" : "High Contrast"}
-          </button>
-          <button
-            type="button"
-            className="btn-chip"
-            onClick={() => setPrefs((p) => ({ ...p, xl: !p.xl }))}
-            aria-pressed={prefs.xl}
-          >
-            {prefs.xl ? "Normal Text" : "Large Text"}
-          </button>
-          <button
-            type="button"
-            className="btn-chip"
-            onClick={() => setPrefs((p) => ({ ...p, dys: !p.dys }))}
-            aria-pressed={prefs.dys}
-          >
-            {prefs.dys ? "Standard Font" : "Dyslexia-friendly"}
-          </button>
-          <button type="button" className="btn-chip" onClick={speak} aria-label="Read this page">
-            Read Aloud
-          </button>
-          <button type="button" className="btn-chip" onClick={stop} aria-label="Stop reading">
-            Stop
-          </button>
+
+        <div
+          id="a11y-tools"
+          className={`${expanded ? "mt-2 flex" : "hidden"} md:flex flex-wrap items-center justify-between gap-2`}
+          role="toolbar"
+          aria-label="Accessibility tools"
+        >
+          <div className="hidden md:flex items-center gap-2">
+            <span aria-hidden="true">♿</span>
+            <span className="text-sm">Accessibility</span>
+          </div>
+          <div className="flex flex-wrap gap-2 w-full md:w-auto md:justify-end">
+            {toolButtons}
+          </div>
         </div>
       </div>
     </div>

@@ -442,6 +442,14 @@ export default function Home() {
           we&apos;ll gladly help you think through alternatives when we&apos;re not the right
           provider.
         </p>
+        <p className="mt-4">
+          <Link
+            href="/about#who-were-best-for"
+            className="font-semibold text-[var(--primary-600)] underline decoration-2 underline-offset-4"
+          >
+            Learn more about who we&apos;re best for
+          </Link>
+        </p>
       </section>
 
       {/* 7. Stories from participants and families */}
@@ -454,12 +462,20 @@ export default function Home() {
           recognise as their own.
         </p>
         <div className="mt-8 max-w-4xl">
-          <SelfHostedVideo
-            srcMp4="/videos/testimonial2.mp4"
-            title="Building a routine that feels meaningful"
-            description="Hear how structured support around interests and routine helps someone stay engaged in the life they're building."
-            poster="/images/testimonials/thumbnail.png"
-          />
+          <h3 className="text-lg font-semibold">Building a routine that feels meaningful</h3>
+          <p className="mt-2 text-[var(--text-muted)]">
+            Hear how structured support around interests and routine helps someone stay
+            engaged in the life they&apos;re building.
+          </p>
+          <div className="mt-4">
+            <SelfHostedVideo
+              srcMp4="/videos/testimonial2.mp4"
+              title="Building a routine that feels meaningful"
+              description="Hear how structured support around interests and routine helps someone stay engaged in the life they're building."
+              poster="/images/testimonials/thumbnail.png"
+              minimalChrome
+            />
+          </div>
         </div>
         <p className="mt-8 text-lg font-medium">
           The outcomes people talk about most often:

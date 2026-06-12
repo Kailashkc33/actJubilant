@@ -37,6 +37,25 @@ Both tools read and write the same local file. Production and the other tool onl
 
 ## Log
 
+### 2026-06-12 — Cursor — About, Services, mobile UX, and site polish
+
+**Prompt:** Complete Cursor batch and push — About page, Services/Canberra, mobile video, a11y toolbar, David clarification, leadership photos  
+**Status:** pushed  
+**Files:** `src/app/about/page.tsx`, `src/app/services/canberra/page.tsx`, `src/app/page.tsx`, `src/app/layout.tsx`, `src/components/SelfHostedVideo.tsx`, `src/components/AccessibilityToolbar.tsx`, `src/components/HashScroll.tsx`, `src/components/MobileNav.tsx`, `public/images/team/*`, `ACT_JUBILANT_BRAND_BIBLE.md`, `ACT_JUBILANT_MASTER_CONTEXT.md`, `CHANGES.md`
+
+**Summary:**
+- **About page:** 7 sections per Brand Bible — who we are, why we exist, founder-led + leadership photos (Nilima MD, Manish Founder & CSM), values, who we're best for (no David fiction), team group photo, final CTA; nav/footer About link
+- **David clarification:** Internal avatar only; public fit criteria on About §5; homepage depth link updated
+- **Services/Canberra:** Full Brand Bible rewrite (5 sections)
+- **Homepage testimonial video:** Copy above frame; larger mobile play button; `SelfHostedVideo` caption above thumbnail when not `minimalChrome`
+- **Accessibility toolbar:** Collapsed by default on mobile
+- **HashScroll:** Anchor scroll fix for cross-page hash links (e.g. `/about#who-were-best-for`)
+
+**Review notes:** `/about`, `/services/canberra`, homepage §6–7, mobile toolbar  
+**Next:** Media/performance pass (#5), Referral content, Reviews placeholders, JSON-LD
+
+---
+
 ### 2026-06-12 — Codex — Mobile fixes (audit items #1–3)
 
 **Prompt:** Fix mobile menu overlay, carousel touch targets, and dyslexia debug outline  
@@ -79,20 +98,19 @@ Both tools read and write the same local file. Production and the other tool onl
 | 1 | Mobile menu: page buttons still visible/interactable behind overlay | Codex | Codex | **Done** — full-screen menu overlay |
 | 2 | Hero carousel dots too small for touch (`w-2 h-2`) | Codex | Codex | **Done** — 44px touch targets |
 | 3 | Dyslexia mode debug outline still in CSS | Codex | Codex | **Done** — outline removed |
-| 4 | Accessibility toolbar uses too much mobile viewport | Owner + Cursor | Cursor | UX decision first: collapse, move, or simplify — then implement |
-| 5 | Owner media review (new photos/videos) | Owner + Cursor | Cursor | Audit assets, map to Programs gaps + About — before About architecture |
-| 6 | About page architecture | Cursor | Cursor | After media review |
-| 7 | Services/Canberra copy lock + build | Cursor | Cursor | Per Brand Bible — after mobile fixes |
-| 8 | Commit `WORKFLOW.md` + `CHANGES.md` | Owner | Either | Docs only — whenever owner prompts |
+| 4 | Accessibility toolbar uses too much mobile viewport | Owner + Cursor | Cursor | **Done** — collapsed by default on mobile |
+| 5 | Owner media review (new photos/videos) | Owner + Cursor | Cursor | Audit assets, compress videos/posters for performance |
+| 6 | About page architecture + build | Cursor | Cursor | **Done** — pushed |
+| 7 | Services/Canberra copy lock + build | Cursor | Cursor | **Done** — pushed |
+| 8 | Commit `WORKFLOW.md` + `CHANGES.md` | Owner | Either | **Done** (pushed `bddd29a`) |
 
 **Confirmed good (no action):** No horizontal overflow · headings clear sticky header · Large Text mode OK
 
 **Suggested order:**
-1. Codex → fixes #1–3 (one batch, review, commit)
-2. Owner → share new media files
-3. Cursor → media audit (#5)
-4. Cursor → accessibility toolbar UX decision (#4), then Codex or Cursor implements
-5. Cursor → About architecture (#6)
+1. ~~Codex → fixes #1–3~~ ✓
+2. ~~Cursor → About (#6) + Services (#7) + mobile UX (#4)~~ ✓ pushed
+3. Owner → share new media files → media audit + compression (#5)
+4. Cursor → Referral content, Reviews placeholders, JSON-LD
 
 ### 2026-06-11 — Cursor — Homepage, Programs, docs, and polish
 

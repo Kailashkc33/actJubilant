@@ -25,7 +25,7 @@ interface SelfHostedVideoProps {
   aspect?: string;
   /** How video fills the frame when playing. */
   objectFit?: "contain" | "cover";
-  /** Set true to hide the dark overlay label block. */
+  /** Set true when title/description are rendered outside the component. */
   minimalChrome?: boolean;
   /** Optional wrapper classes (e.g. max-width for portrait videos). */
   className?: string;
@@ -93,8 +93,18 @@ export default function SelfHostedVideo({
     }
   };
 
+  const captionBlock = !minimalChrome ? (
+    <div className="mb-3">
+      <h3 className="font-semibold leading-tight">{title}</h3>
+      {description && (
+        <p className="mt-1 text-sm text-[var(--text-muted)]">{description}</p>
+      )}
+    </div>
+  ) : null;
+
   return (
     <div className={className ? `w-full ${className}` : "w-full"}>
+      {captionBlock}
       {!isPlaying ? (
         <div
           ref={cardRef}
@@ -116,27 +126,15 @@ export default function SelfHostedVideo({
           />
 
           {/* Overlay + Play button */}
-          <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors" />
+          <div className="absolute inset-0 bg-black/25 group-hover:bg-black/35 transition-colors" />
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-20 h-20 rounded-full bg-white/90 backdrop-blur flex items-center justify-center group-hover:scale-110 transition-transform">
-              <svg className="w-9 h-9 text-[var(--primary-600)] ml-1" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <div className="flex h-24 w-24 items-center justify-center rounded-full bg-white/95 shadow-lg backdrop-blur transition-transform group-hover:scale-110 sm:h-20 sm:w-20">
+              <svg className="ml-1 h-11 w-11 text-[var(--primary-600)] sm:h-9 sm:w-9" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M8 5v14l11-7z" />
               </svg>
               <span className="sr-only">Play</span>
             </div>
           </div>
-
-          {/* Caption block */}
-          {!minimalChrome && (
-            <div className="absolute bottom-3 left-3 right-3">
-              <div className="bg-black/60 text-white p-3 rounded-xl">
-                <h3 className="font-semibold leading-tight">{title}</h3>
-                {description && (
-                  <p className="text-sm opacity-90 mt-1 line-clamp-2">{description}</p>
-                )}
-              </div>
-            </div>
-          )}
         </div>
       ) : (
         <div

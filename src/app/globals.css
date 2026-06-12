@@ -103,6 +103,30 @@ body {
 .nav-link { 
   @apply px-3 py-2 rounded-lg hover:bg-[color-mix(in_oklab,var(--primary-600)_10%,white)]; 
 }
+.site-desktop-nav {
+  display: none;
+}
+.site-mobile-nav {
+  display: block;
+}
+@media (min-width: 900px) {
+  .site-desktop-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    order: 3;
+    width: 100%;
+  }
+  .site-mobile-nav {
+    display: none;
+  }
+}
+@media (min-width: 1180px) {
+  .site-desktop-nav {
+    order: 0;
+    width: auto;
+  }
+}
 
 /* Focus ring */
 :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }

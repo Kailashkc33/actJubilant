@@ -10,8 +10,9 @@
 | Homepage (`/`) | Why ACT Jubilant? | Brand Bible → Homepage Implementation Guide v2.0 |
 | Programs (`/programs`) | What does support look like in real life? | Brand Bible → Programs Page Implementation Guide v2.0 |
 | Services / Canberra (`/services/canberra`) | What NDIS supports do you actually provide? | Brand Bible → Services / Canberra Implementation Guide v1.0 |
+| About (`/about`) | Who is behind ACT Jubilant — and who thrives here? | Brand Bible → About Page Implementation Guide v1.0 |
 
-Programs defers NDIS categories and personal care detail to Services/Canberra. Homepage defers full activity catalogue to Programs.
+Programs defers NDIS categories and personal care detail to Services/Canberra. Homepage defers full activity catalogue to Programs. Homepage §6 links to About for expanded fit criteria (`/about#who-were-best-for`). The internal "David" avatar is marketing-only — never public-facing.
 
 ---
 
