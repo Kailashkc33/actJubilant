@@ -37,6 +37,64 @@ Both tools read and write the same local file. Production and the other tool onl
 
 ## Log
 
+### 2026-06-12 — Cursor — Video keyboard accessibility audit + fixes
+
+**Prompt:** Verify keyboard operability across every `SelfHostedVideo` instance (technical audit follow-up from accessibility page)  
+**Status:** local only  
+**Files:** `src/components/SelfHostedVideo.tsx`, `CHANGES.md`
+
+**Summary:**
+- **Instances audited (4):** Homepage dance class + testimonial (`src/app/page.tsx`), Programs gallery video (`src/app/programs/page.tsx`), Reviews testimonial (`src/app/reviews/page.tsx`)
+- **Issues found:** Poster used `div role="button"` with `tabIndex={-1}` until IntersectionObserver fired (could skip videos in tab order); focus was not moved to `<video>` on play or back to play control on end
+- **Fixes in `SelfHostedVideo.tsx`:** Native `<button>` for poster play; always in tab order; visible `focus-visible` ring; focus moves to video controls on play; focus returns to play button when video ends; loading state uses `role="status"`; poster image marked decorative (`alt=""`)
+
+**Review notes:** Manual check: Tab to each video on `/`, `/programs`, `/reviews` → Enter/Space starts play → Tab through native video controls → after video ends, focus returns to play button  
+**Next:** Owner commit/push with `/accessibility` page; broader WCAG technical pass (#14) as needed
+
+---
+
+### 2026-06-12 — Codex — Accessibility page audit (standards framing + mobile)
+
+**Prompt:** Audit `/accessibility` against WCAG/cognitive accessibility framing and mobile layout after Cursor rewrite  
+**Status:** local only (page not yet pushed)  
+**Files:** `CHANGES.md`
+
+**Summary:**
+- Confirmed `/accessibility` loads correctly and meets the intended standards framing
+- **WCAG 2.2 Level AA** named as technical baseline; **W3C cognitive accessibility** guidance included
+- No overclaiming: no certified, fully compliant, or guaranteed language
+- **"Technical compliance is not enough"** section present (David's real-user usability point)
+- Barrier-reporting path: phone, email, and `/feedback` link
+- Toolbar documentation matches current `AccessibilityToolbar.tsx` implementation
+- **Mobile QA at 390 × 844:** no horizontal overflow; cards, footer/contact links, and collapsed toolbar all fit
+
+**Review notes (follow-up for technical audit #14):** The "Accessible media" commitment states videos are keyboard-operable. Verify this across every `SelfHostedVideo` instance before treating the site as meeting that promise.
+
+**Sources checked:** W3C WCAG overview; W3C cognitive accessibility guidance  
+**Next:** Push accessibility page when owner ready; then site-wide technical WCAG audit including video keyboard controls
+
+---
+
+### 2026-06-12 — Cursor — Accessibility standards page
+
+**Prompt:** Create accessibility standards pass: state WCAG 2.2 AA baseline, W3C cognitive accessibility commitments, and real-user testing framing on `/accessibility`  
+**Status:** local only — Codex standards audit passed (see entry above)  
+**Files:** `src/app/accessibility/page.tsx`, `CHANGES.md`
+
+**Summary:**
+- **Rewrote `/accessibility`:** Replaced generic statement with explicit working standard (WCAG 2.2 Level AA as review baseline; no certification or compliance-complete claims)
+- **Cognitive accessibility:** Eight commitments in plain language (clear wording, predictable navigation, reduced overwhelm, spacing, form errors, no time pressure, accessible media, comprehension-friendly content)
+- **Real-user testing:** Plain-language section that technical checks alone are not enough; usability with participants, families, and advocates matters
+- **Website tools:** Documents existing toolbar features without redesigning `AccessibilityToolbar.tsx`
+- **Ongoing review:** Lists audit and fix work in progress, including sessions with people who reflect ACT Jubilant's audience
+- **Service accessibility:** Reworded without banned differentiators; corrected contact phone to match site footer
+- **Feedback path:** Link to `/feedback` plus phone and email
+
+**Review notes:** Codex audit passed for framing and mobile layout  
+**Next:** Owner commit/push; technical WCAG pass including video keyboard verification on all video components
+
+---
+
 ### 2026-06-12 — Cursor — Reviews, footer, JSON-LD, media pass, and push
 
 **Prompt:** Reviews rewrite; footer + JSON-LD; form a11y; media compression; remove pexels stock images; commit and push  
@@ -182,7 +240,7 @@ Both tools read and write the same local file. Production and the other tool onl
 | 2 | Hero carousel dots too small for touch (`w-2 h-2`) | Codex | Codex | **Done** — 44px touch targets |
 | 3 | Dyslexia mode debug outline still in CSS | Codex | Codex | **Done** — outline removed |
 | 4 | Accessibility toolbar uses too much mobile viewport | Owner + Cursor | Cursor | **Done** — collapsed by default on mobile |
-| 5 | Owner media review (new photos/videos) | Owner + Cursor | Cursor | **Partial** — in-use images compressed; pexels stock removed; large unused videos remain |
+| 5 | Owner media review (new photos/videos) | Owner + Cursor | Cursor | **Partial** — in-use images compressed; pexels + unused videos removed; duplicate testimonial thumbnails remain |
 | 6 | About page architecture + build | Cursor | Cursor | **Done** — pushed |
 | 7 | Services/Canberra copy lock + build | Cursor | Cursor | **Done** — pushed (8 categories after owner scope confirm) |
 | 8 | Commit `WORKFLOW.md` + `CHANGES.md` | Owner | Either | **Done** (pushed `bddd29a`) |
@@ -191,7 +249,7 @@ Both tools read and write the same local file. Production and the other tool onl
 | 11 | Footer blurb + JSON-LD alignment | Cursor | Cursor | **Done** — pushed |
 | 12 | Footer link to `/services/canberra` | Owner + Cursor | Cursor | **Done** — pushed |
 | 13 | Hostinger domain transfer → SMTP forms | Owner | Owner | Blocked on DNS/email stability |
-| 14 | Accessibility standards pass: WCAG 2.2 AA + W3C cognitive accessibility + real-user testing where possible | Owner + Cursor + Codex | Cursor + Codex | Backlog — add as a build quality requirement |
+| 14 | Accessibility standards pass: WCAG 2.2 AA + W3C cognitive accessibility + real-user testing where possible | Owner + Cursor + Codex | Cursor + Codex | **Partial** — standards page + Codex framing audit ✓; technical pass next (incl. video keyboard on all `SelfHostedVideo` instances) |
 | 15 | GA + Search Console placeholders in `layout.tsx` | Owner | Owner | `GA_MEASUREMENT_ID` and `your-google-verification-code` still placeholders |
 
 **Confirmed good (no action):** No horizontal overflow · headings clear sticky header · Large Text mode OK · `/referral` Brand Bible structure (Codex audit)
@@ -203,8 +261,9 @@ Both tools read and write the same local file. Production and the other tool onl
 4. ~~Cursor → Reviews (#10)~~ ✓ pushed
 5. ~~Cursor → footer blurb + JSON-LD (#11) + footer Services link (#12)~~ ✓ pushed
 6. ~~Cursor → media compression + pexels removal (#5 partial)~~ ✓ pushed
-7. Cursor/Codex → accessibility standards pass (#14)
-8. Owner → confirm delete unused large videos; Hostinger transfer (#13) → SMTP forms
+7. ~~Cursor → accessibility standards page (#14 partial)~~ ✓ · ~~Codex framing/mobile audit~~ ✓ local only
+8. Cursor/Codex → technical WCAG audit (#14): verify video keyboard operability site-wide, then broader fixes
+9. Owner → push `/accessibility` when ready; Hostinger transfer (#13) → SMTP forms; GA + Search Console IDs (#15)
 
 ### 2026-06-11 — Cursor — Homepage, Programs, docs, and polish
 
