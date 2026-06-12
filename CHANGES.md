@@ -40,7 +40,7 @@ Both tools read and write the same local file. Production and the other tool onl
 ### 2026-06-12 — Codex — Quick cleanups audit (`/referral`)
 
 **Prompt:** Browser-check quick cleanups diff after Cursor batch  
-**Status:** pushed  
+**Status:** pushed (`2143032` on `main`)  
 **Files:** `CHANGES.md`
 
 **Summary:**
@@ -58,7 +58,7 @@ Both tools read and write the same local file. Production and the other tool onl
 ### 2026-06-12 — Cursor — Quick cleanups (media + Referral hint + WORKFLOW sync)
 
 **Prompt:** Quick cleanups (B): delete unused testimonial thumbnails if confirmed unused; align Referral form support hint with Services categories; sync `WORKFLOW.md` with `CHANGES.md`  
-**Status:** pushed  
+**Status:** pushed (`2143032` on `main`)  
 **Files:** `public/images/testimonials/testimonialtn.png`, `public/images/testimonials/video-thumbnail.jpg`, `src/app/referral/ReferralForm.tsx`, `WORKFLOW.md`, `CHANGES.md`
 
 **Summary:**
