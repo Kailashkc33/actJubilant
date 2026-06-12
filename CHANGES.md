@@ -53,7 +53,7 @@ Both tools read and write the same local file. Production and the other tool onl
 - **WORKFLOW.md:** Site map and backlog synced with current implementation state
 
 **Review notes:** `/reviews`, footer, homepage + reviews video poster, referral/reviews form consent validation  
-**Remaining:** `GA_MEASUREMENT_ID` and `your-google-verification-code` still placeholders; unused large videos (`testimonial1.mp4`, full dance class MP4) still in repo — owner to confirm delete  
+**Remaining:** `GA_MEASUREMENT_ID` and `your-google-verification-code` still placeholders  
 **Next:** Accessibility standards pass (#14); Hostinger transfer (#13) before SMTP forms; GA + Search Console IDs (#15)
 
 ---

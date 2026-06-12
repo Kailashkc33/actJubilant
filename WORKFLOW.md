@@ -167,12 +167,11 @@ See `CHANGES.md` work division table for full list. Current priorities:
 
 **In use on site (keep):** Owner gallery photos (`art-workshop`, `birthday-celebration`, `community-cafe-outing`, `wheelchair-outdoor-outing`, `restaurant-group-meal`, `participant-home-flowers`), team photos (`Nilima.jpeg`, `DSC_MANISHW-42.jpg`, `event-group-photo-dec-2025.jpg`), `testimonial2.mp4`, `community-dance-class-event-sep-2025-portrait.mp4`, `thumbnail.jpg`, dance class posters.
 
-**Removed (June 2026):** All `pexels-*` stock images (10 files across gallery, team, services, facilities).
+**Removed (June 2026):** All `pexels-*` stock images (10 files). Unused videos: `testimonial1.mp4`, `community-dance-class-event-sep-2025.mp4`, `community-dance-class-event-sep-2025-web.mp4` (~54 MB total).
+
+**Videos in use:** `testimonial2.mp4`, `community-dance-class-event-sep-2025-portrait.mp4`
 
 **Likely unused legacy (owner confirm before delete):**
-- `public/videos/community-dance-class-event-sep-2025.mp4` (~31 MB; portrait version used instead)
-- `public/videos/community-dance-class-event-sep-2025-web.mp4` (~2.6 MB)
-- `public/videos/testimonial1.mp4` (~20 MB)
 - Duplicate testimonial thumbnails: `testimonialtn.png`, `video-thumbnail.jpg`
 
 Target max width for gallery JPEGs: **1920px** (sufficient for retina at site layout widths).
