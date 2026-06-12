@@ -171,7 +171,7 @@ ACT Jubilant helps participants build meaningful daily lives through structured,
 # IDEAL PARTICIPANT
 
 Age:
-18-65
+12-65
 
 Characteristics:
 
@@ -948,7 +948,7 @@ Who we're best for
 The right fit matters — for participants, families, and referrers alike.
 
 **A strong fit when the participant…**
-- Is 18–65 with physical disability or mild to moderate cognitive disability
+- Is 12–65 with physical disability or mild to moderate cognitive disability
 - Wants engagement and routine — not only tasks or hours filled
 - Has interests, hobbies, or goals they'd like support built around
 - Does better with familiar support workers than constant change

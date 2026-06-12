@@ -124,7 +124,7 @@ Families gain confidence that participants are living active lives rather than s
 
 ## Characteristics
 
-- Age 18-65
+- Age 12-65
 - Physical disability or mild/moderate cognitive disability
 - Interested in hobbies and activities
 - Values routine

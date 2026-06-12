@@ -147,7 +147,7 @@ const MEANINGFUL_PILLARS = [
 ] as const;
 
 const STRONG_FIT = [
-  "Is 18–65 with physical disability or mild to moderate cognitive disability",
+  "Is 12–65 with physical disability or mild to moderate cognitive disability",
   "Wants engagement and routine, not only tasks or hours filled",
   "Has interests, hobbies, or goals they'd like support built around",
   "Does better with familiar support workers than constant change",
