@@ -173,8 +173,8 @@ export default function CanberraServicesPage() {
             <Link href="/consultation" className="btn-secondary">
               Book a Consultation
             </Link>
-            <a href="tel:+61434740745" className="btn-ghost" aria-label="Call us on +61 434 740 745">
-              Call: +61 434 740 745
+            <a href="tel:+61424488439" className="btn-ghost" aria-label="Call us on +61 424 488 439">
+              Call: +61 424 488 439
             </a>
           </div>
         </div>

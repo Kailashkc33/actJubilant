@@ -101,7 +101,7 @@ const ORGANIZATION_JSON_LD = {
   url: "https://actjubilant.com.au",
   logo: "https://actjubilant.com.au/logo.png",
   image: "https://actjubilant.com.au/logo.png",
-  telephone: "+61 434 740 745",
+  telephone: "+61 424 488 439",
   email: "admin@actjubilant.com.au",
   founder: {
     "@type": "Person",
@@ -328,8 +328,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   </p>
                   <p className="site-footer__contact-row flex flex-wrap items-center gap-x-1">
                     <strong>Phone:</strong>{" "}
-                    <a href="tel:+61434740745" className="site-footer__link">
-                      +61 434 740 745
+                    <a href="tel:+61424488439" className="site-footer__link">
+                      +61 424 488 439
                     </a>
                   </p>
                   <p className="site-footer__contact-row flex flex-wrap items-center gap-x-1">

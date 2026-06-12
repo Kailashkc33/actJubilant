@@ -56,7 +56,6 @@ const EXEMPLAR_REVIEWS = [
 export default function ReviewsPage() {
   return (
     <div className="max-w-4xl">
-      {/* 1. Opener */}
       <section aria-labelledby="reviews-opener-title" className="py-8 md:py-12">
         <h1 id="reviews-opener-title" className="h2 text-balance">
           Stories from participants and families
@@ -67,30 +66,32 @@ export default function ReviewsPage() {
         </p>
       </section>
 
-      {/* 2. Video */}
       <section
         aria-labelledby="video-story-title"
         className="py-8 md:py-10 border-t border-gray-100"
       >
-        <h2 id="video-story-title" className="text-lg font-semibold">
-          Building a routine that feels meaningful
-        </h2>
-        <p className="mt-2 text-[var(--text-muted)]">
-          Hear how structured support around interests and routine helps someone stay engaged in
-          the life they&apos;re building.
-        </p>
-        <div className="mt-4">
-          <SelfHostedVideo
-            srcMp4="/videos/testimonial2.mp4"
-            title="Building a routine that feels meaningful"
-            description="Hear how structured support around interests and routine helps someone stay engaged in the life they're building."
-            poster="/images/testimonials/thumbnail.jpg"
-            minimalChrome
-          />
+        <div className="card card--muted p-0 overflow-hidden">
+          <div className="p-6 pb-0 md:p-8 md:pb-0">
+            <h2 id="video-story-title" className="h2 text-xl md:text-2xl">
+              Building a routine that feels meaningful
+            </h2>
+            <p className="mt-2 text-[var(--text-muted)]">
+              Hear how structured support around interests and routine helps someone stay engaged in
+              the life they&apos;re building.
+            </p>
+          </div>
+          <div className="mt-4 p-4 pt-0 md:p-8 md:pt-0">
+            <SelfHostedVideo
+              srcMp4="/videos/testimonial2.mp4"
+              title="Building a routine that feels meaningful"
+              description="Hear how structured support around interests and routine helps someone stay engaged in the life they're building."
+              poster="/images/testimonials/thumbnail.jpg"
+              minimalChrome
+            />
+          </div>
         </div>
       </section>
 
-      {/* 3. Outcome themes */}
       <section
         aria-labelledby="outcome-themes-title"
         className="py-8 md:py-10 border-t border-gray-100"
@@ -100,17 +101,13 @@ export default function ReviewsPage() {
         </h2>
         <ul className="mt-4 flex flex-wrap gap-3" aria-label="Common outcome themes">
           {OUTCOME_THEMES.map((outcome) => (
-            <li
-              key={outcome}
-              className="rounded-full border border-[var(--primary-600)] px-4 py-2 text-sm font-medium text-[var(--primary-700)]"
-            >
+            <li key={outcome} className="home-pill">
               {outcome}
             </li>
           ))}
         </ul>
       </section>
 
-      {/* 4. Written stories */}
       <section
         aria-labelledby="written-stories-title"
         className="py-8 md:py-10 border-t border-gray-100"
@@ -123,7 +120,7 @@ export default function ReviewsPage() {
         </p>
         <div className="mt-8 grid gap-6 md:grid-cols-2">
           {EXEMPLAR_REVIEWS.map((review) => (
-            <figure key={review.theme} className="card h-full">
+            <figure key={review.theme} className="card card--warm h-full">
               <p className="text-xs font-semibold uppercase tracking-wide text-[var(--primary-700)]">
                 {review.theme}
               </p>
@@ -138,21 +135,37 @@ export default function ReviewsPage() {
         </div>
         <p className="mt-8 text-sm text-[var(--text-muted)]">
           Want to understand fit before referring?{" "}
-          <Link
-            href="/about#who-were-best-for"
-            className="font-semibold text-[var(--primary-600)] underline decoration-2 underline-offset-4"
-          >
+          <Link href="/about#who-were-best-for" className="home-depth-link">
             See who we&apos;re best for
           </Link>
         </p>
       </section>
 
-      {/* 5. Submit form */}
       <section
         aria-labelledby="share-experience-title"
         className="py-8 md:py-14 border-t border-gray-100"
       >
         <ReviewForm />
+      </section>
+
+      <section aria-labelledby="reviews-cta-title" className="py-10 md:py-14 border-t border-gray-100">
+        <div className="card text-center md:text-left">
+          <p id="reviews-cta-title" className="text-lg md:text-xl font-medium leading-relaxed">
+            Meaningful daily life starts with the right support, the right relationships, and the
+            right opportunities to stay engaged.
+          </p>
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3 md:justify-start">
+            <Link href="/referral" className="btn-primary">
+              Make a Referral
+            </Link>
+            <Link href="/consultation" className="btn-secondary">
+              Book a Consultation
+            </Link>
+            <a href="tel:+61424488439" className="btn-ghost" aria-label="Call us on +61 424 488 439">
+              Call: +61 424 488 439
+            </a>
+          </div>
+        </div>
       </section>
     </div>
   );

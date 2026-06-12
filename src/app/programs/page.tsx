@@ -157,22 +157,19 @@ const ONE_ON_ONE_SUPPORTING = [
 
 const ONE_ON_ONE_MEDIA = [
   {
-    src: "/images/stock/accessible-transport-minivan.jpg",
-    alt: "Wheelchair accessible minivan with rear ramp deployed in a parking area",
-    caption: "Getting out into the community with the right support",
-    large: true,
-  },
-  {
     src: "/images/gallery/community-cafe-outing-nov-2025.jpg",
     alt: "ACT Jubilant support worker and participant sharing a café outing together",
     caption: "The same familiar faces, in everyday places",
-    large: false,
   },
   {
     src: "/images/gallery/participant-home-flowers-jan-2026.jpg",
     alt: "ACT Jubilant participant at home, recognised and valued in their own space",
     caption: "Support that fits the person, at home and in the community",
-    large: false,
+  },
+  {
+    src: "/images/stock/accessible-transport-minivan.jpg",
+    alt: "Wheelchair accessible minivan with rear ramp deployed in a parking area",
+    caption: "Getting out into the community with the right support",
   },
 ] as const;
 
@@ -409,25 +406,22 @@ export default function ProgramsPage() {
             </article>
           ))}
         </div>
-        <div className="mt-10 grid gap-6 lg:grid-cols-12">
+        <div className="mt-10 grid gap-6 md:grid-cols-3">
           {ONE_ON_ONE_MEDIA.map((photo, index) => (
-            <figure
-              key={photo.src}
-              className={`card overflow-hidden p-0 ${photo.large ? "lg:col-span-6" : "lg:col-span-3"}`}
-            >
-                <div className={`relative w-full ${photo.large ? "aspect-[3/2]" : "aspect-[4/3]"}`}>
-                  <Image
-                    src={photo.src}
-                    alt={photo.alt}
-                    fill
-                    className="object-cover object-center"
-                  sizes={photo.large ? "(max-width: 1024px) 100vw, 50vw" : "(max-width: 1024px) 50vw, 25vw"}
+            <figure key={photo.src} className="card overflow-hidden p-0">
+              <div className="relative aspect-[4/3] w-full">
+                <Image
+                  src={photo.src}
+                  alt={photo.alt}
+                  fill
+                  className="object-cover object-center"
+                  sizes="(max-width: 768px) 100vw, 33vw"
                   priority={index === 0}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-                <figcaption className="absolute bottom-4 left-4 right-4 text-sm font-medium text-white">
+                <p className="absolute bottom-4 left-4 right-4 text-sm font-medium text-white">
                   {photo.caption}
-                </figcaption>
+                </p>
               </div>
             </figure>
           ))}
@@ -508,8 +502,8 @@ export default function ProgramsPage() {
             <Link href="/consultation" className="btn-secondary">
               Book a Consultation
             </Link>
-            <a href="tel:+61434740745" className="btn-ghost" aria-label="Call us on +61 434 740 745">
-              Call: +61 434 740 745
+            <a href="tel:+61424488439" className="btn-ghost" aria-label="Call us on +61 424 488 439">
+              Call: +61 424 488 439
             </a>
           </div>
         </div>

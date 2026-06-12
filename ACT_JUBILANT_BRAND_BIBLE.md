@@ -1092,7 +1092,7 @@ Meaningful daily life starts with the right support, the right relationships, an
 
 **Primary CTA:** Make a Referral  
 **Secondary CTA:** Book a Consultation  
-**Phone:** +61 434 740 745
+**Phone:** +61 424 488 439
 
 **Do not add:** New claims, second sales pitch, service lists, or additional copy blocks.
 
@@ -1656,7 +1656,7 @@ Meaningful daily life starts with the right support, the right relationships, an
 
 **Primary CTA:** Make a Referral  
 **Secondary CTA:** Book a Consultation  
-**Phone:** +61 434 740 745
+**Phone:** +61 424 488 439
 
 **Do not add:** New claims, second sales pitch, service lists, or additional copy blocks.
 
@@ -2001,7 +2001,7 @@ Meaningful daily life starts with the right support, the right relationships, an
 
 **Primary CTA:** Make a Referral  
 **Secondary CTA:** Book a Consultation  
-**Phone:** +61 434 740 745
+**Phone:** +61 424 488 439
 
 ---
 

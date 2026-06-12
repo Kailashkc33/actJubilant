@@ -173,12 +173,12 @@ export default function MobileNav() {
                 ))}
 
                 <a
-                  href="tel:+61434740745"
+                  href="tel:+61424488439"
                   onClick={() => setOpen(false)}
                   className="btn-primary mt-3 w-full"
-                  aria-label="Call us on +61 434 740 745"
+                  aria-label="Call us on +61 424 488 439"
                 >
-                  Call +61 434 740 745
+                  Call +61 424 488 439
                 </a>
               </nav>
             </div>

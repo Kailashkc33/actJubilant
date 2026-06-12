@@ -170,12 +170,12 @@ export async function submitReferral(
   const cText =
     `Hi ${data.fullName},\n\n` +
     `Thanks for your referral. Our team will be in touch within 1–2 business days.\n\n` +
-    `If this is urgent, please call +61 434 740 745.\n\n` +
+    `If this is urgent, please call +61 424 488 439.\n\n` +
     `- ACT Jubilant`;
   const cHtml = `
     <p>Hi ${escapeHtml(data.fullName)},</p>
     <p>Thanks for your referral. Our team will be in touch within <strong>1–2 business days</strong>.</p>
-    <p>If this is urgent, please call <strong>+61 434 740 745</strong>.</p>
+    <p>If this is urgent, please call <strong>+61 424 488 439</strong>.</p>
     <p>- ACT Jubilant</p>
   `;
 
@@ -204,7 +204,7 @@ export async function submitReferral(
     return {
       ok: true,
       message:
-        "Thanks! We've recorded your referral. If you don't hear from us, please call +61 434 740 745.",
+        "Thanks! We've recorded your referral. If you don't hear from us, please call +61 424 488 439.",
     };
   }
 }
@@ -273,12 +273,12 @@ export async function submitConsultation(
   const cText =
     `Hi ${data.fullName},\n\n` +
     `Thanks for your request. We’ll confirm a time shortly.\n\n` +
-    `If this is urgent, please call +61 434 740 745.\n\n` +
+    `If this is urgent, please call +61 424 488 439.\n\n` +
     `- ACT Jubilant`;
   const cHtml = `
     <p>Hi ${escapeHtml(data.fullName)},</p>
     <p>Thanks for your consultation request. We’ll confirm a time shortly.</p>
-    <p>If this is urgent, please call <strong>+61 434 740 745</strong>.</p>
+    <p>If this is urgent, please call <strong>+61 424 488 439</strong>.</p>
     <p>- ACT Jubilant</p>
   `;
 
@@ -306,7 +306,7 @@ export async function submitConsultation(
     return {
       ok: true,
       message:
-        "Your request is recorded. If you don't receive a confirmation soon, please call +61 434 740 745.",
+        "Your request is recorded. If you don't receive a confirmation soon, please call +61 424 488 439.",
     };
   }
 }
@@ -492,7 +492,7 @@ export async function submitFeedback(
     console.error("Resend error (feedback):", err);
     return {
       ok: true,
-      message: "Thanks for your feedback. If you don't receive a response within 2 days, please call +61 434 740 745.",
+      message: "Thanks for your feedback. If you don't receive a response within 2 days, please call +61 424 488 439.",
     };
   }
 }

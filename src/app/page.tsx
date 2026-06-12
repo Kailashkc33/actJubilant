@@ -252,11 +252,11 @@ export default function Home() {
                 Book a Consultation
               </Link>
               <a
-                href="tel:+61434740745"
+                href="tel:+61424488439"
                 className="btn-ghost"
-                aria-label="Call us on +61 434 740 745"
+                aria-label="Call us on +61 424 488 439"
               >
-                Call: +61 434 740 745
+                Call: +61 424 488 439
               </a>
             </div>
             <p className="mt-5 text-sm text-[var(--text-muted)]">
@@ -641,8 +641,8 @@ export default function Home() {
             <Link href="/consultation" className="btn-secondary">
               Book a Consultation
             </Link>
-            <a href="tel:+61434740745" className="btn-ghost" aria-label="Call us on +61 434 740 745">
-              Call: +61 434 740 745
+            <a href="tel:+61424488439" className="btn-ghost" aria-label="Call us on +61 424 488 439">
+              Call: +61 424 488 439
             </a>
           </div>
         </div>

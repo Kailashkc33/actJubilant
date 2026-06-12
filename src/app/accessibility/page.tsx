@@ -267,10 +267,10 @@ export default function AccessibilityPage() {
             <li>
               <strong>Phone:</strong>{" "}
               <a
-                href="tel:+61434740745"
+                href="tel:+61424488439"
                 className="text-[var(--primary-600)] underline underline-offset-2"
               >
-                +61 434 740 745
+                +61 424 488 439
               </a>
             </li>
             <li>
