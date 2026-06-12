@@ -334,7 +334,7 @@ Both tools read and write the same local file. Production and the other tool onl
 8. ~~Video keyboard audit (all `SelfHostedVideo` instances)~~ ✓ pushed `ac2641d`
 9. ~~Cursor → WCAG technical pass (#14 partial)~~ ✓ pushed `1b51499`
 10. **Next:** Phase 1 UI redesign in worktree (`ui-redesign`) — global theme + homepage only
-10. Owner → Hostinger transfer (#13) → SMTP forms; GA + Search Console IDs (#15)
+11. Owner → Hostinger transfer (#13) → SMTP forms; GA + Search Console IDs (#15)
 
 ### 2026-06-11 — Cursor — Homepage, Programs, docs, and polish
 
