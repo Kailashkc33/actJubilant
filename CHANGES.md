@@ -37,6 +37,40 @@ Both tools read and write the same local file. Production and the other tool onl
 
 ## Log
 
+### 2026-06-12 — Codex — Quick cleanups audit (`/referral`)
+
+**Prompt:** Browser-check quick cleanups diff after Cursor batch  
+**Status:** pushed  
+**Files:** `CHANGES.md`
+
+**Summary:**
+- Confirmed updated supports hint lists all 8 Services/Canberra categories correctly
+- Hint connected to textarea via `aria-describedby="supports-hint"`
+- Supports field remains required
+- No horizontal overflow on `/referral`
+- No broken images on the page
+
+**Verdict:** Quick cleanups good to commit/push  
+**Next:** Optional broader WCAG pass (#14); owner Hostinger (#13) and GA IDs (#15)
+
+---
+
+### 2026-06-12 — Cursor — Quick cleanups (media + Referral hint + WORKFLOW sync)
+
+**Prompt:** Quick cleanups (B): delete unused testimonial thumbnails if confirmed unused; align Referral form support hint with Services categories; sync `WORKFLOW.md` with `CHANGES.md`  
+**Status:** pushed  
+**Files:** `public/images/testimonials/testimonialtn.png`, `public/images/testimonials/video-thumbnail.jpg`, `src/app/referral/ReferralForm.tsx`, `WORKFLOW.md`, `CHANGES.md`
+
+**Summary:**
+- **Deleted unused assets:** `testimonialtn.png` and `video-thumbnail.jpg` (not referenced in `src/`; site uses `thumbnail.jpg`)
+- **Referral form hint:** Updated "What supports are you looking for?" to list all 8 Services/Canberra categories (added skill development and high intensity personal activities; aligned naming)
+- **WORKFLOW.md:** Backlog, done list, suggested order, and media notes synced with current `CHANGES.md` state
+
+**Review notes:** Codex rendered audit passed (see entry above)  
+**Next:** Optional broader WCAG pass (#14); owner Hostinger (#13) and GA IDs (#15)
+
+---
+
 ### 2026-06-12 — Cursor — Video keyboard accessibility audit + fixes
 
 **Prompt:** Verify keyboard operability across every `SelfHostedVideo` instance (technical audit follow-up from accessibility page)  
@@ -240,7 +274,7 @@ Both tools read and write the same local file. Production and the other tool onl
 | 2 | Hero carousel dots too small for touch (`w-2 h-2`) | Codex | Codex | **Done** — 44px touch targets |
 | 3 | Dyslexia mode debug outline still in CSS | Codex | Codex | **Done** — outline removed |
 | 4 | Accessibility toolbar uses too much mobile viewport | Owner + Cursor | Cursor | **Done** — collapsed by default on mobile |
-| 5 | Owner media review (new photos/videos) | Owner + Cursor | Cursor | **Partial** — in-use images compressed; pexels + unused videos removed; duplicate testimonial thumbnails remain |
+| 5 | Owner media review (new photos/videos) | Owner + Cursor | Cursor | **Done** — compressed in-use images; pexels, unused videos, and duplicate thumbnails removed |
 | 6 | About page architecture + build | Cursor | Cursor | **Done** — pushed |
 | 7 | Services/Canberra copy lock + build | Cursor | Cursor | **Done** — pushed (8 categories after owner scope confirm) |
 | 8 | Commit `WORKFLOW.md` + `CHANGES.md` | Owner | Either | **Done** (pushed `bddd29a`) |

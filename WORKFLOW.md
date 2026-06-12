@@ -154,12 +154,17 @@ See `CHANGES.md` work division table for full list. Current priorities:
 
 | # | Task | Owner | Status |
 |---|------|-------|--------|
-| 5 | Media audit + compression | Owner + Cursor | In progress — compress in-use assets; owner to approve removing unused legacy files |
 | 13 | Hostinger domain transfer → SMTP forms | Owner | Blocked on DNS/email stability |
-| 14 | Accessibility standards pass (WCAG 2.2 AA) | Owner + Cursor + Codex | Backlog |
+| 14 | Accessibility standards pass (WCAG 2.2 AA) | Owner + Cursor + Codex | **Partial** — standards page + video keyboard fixes pushed `ac2641d`; broader technical pass optional |
 | 15 | GA + Search Console placeholders in `layout.tsx` | Owner | `GA_MEASUREMENT_ID`, `your-google-verification-code` |
 
-**Done (pushed):** Homepage · Programs · About · Services/Canberra · Referral · Reviews · footer + JSON-LD · media compression · mobile UX fixes
+**Done (pushed):** Homepage · Programs · About · Services/Canberra · Referral · Reviews · footer + JSON-LD · media cleanup · accessibility standards page · video keyboard fixes · mobile UX fixes
+
+**Suggested order (from `CHANGES.md`):**
+1. ~~Core pages + Reviews + footer/JSON-LD + media cleanup~~ ✓
+2. ~~Accessibility standards page + video keyboard audit~~ ✓ pushed `ac2641d`
+3. Optional: broader WCAG technical pass (#14)
+4. Owner: Hostinger transfer (#13) → SMTP forms; GA + Search Console IDs (#15)
 
 ---
 
@@ -167,12 +172,11 @@ See `CHANGES.md` work division table for full list. Current priorities:
 
 **In use on site (keep):** Owner gallery photos (`art-workshop`, `birthday-celebration`, `community-cafe-outing`, `wheelchair-outdoor-outing`, `restaurant-group-meal`, `participant-home-flowers`), team photos (`Nilima.jpeg`, `DSC_MANISHW-42.jpg`, `event-group-photo-dec-2025.jpg`), `testimonial2.mp4`, `community-dance-class-event-sep-2025-portrait.mp4`, `thumbnail.jpg`, dance class posters.
 
-**Removed (June 2026):** All `pexels-*` stock images (10 files). Unused videos: `testimonial1.mp4`, `community-dance-class-event-sep-2025.mp4`, `community-dance-class-event-sep-2025-web.mp4` (~54 MB total).
+**Removed (June 2026):** All `pexels-*` stock images (10 files); unused videos `testimonial1.mp4`, `community-dance-class-event-sep-2025.mp4`, `community-dance-class-event-sep-2025-web.mp4` (~54 MB); duplicate testimonial thumbnails `testimonialtn.png`, `video-thumbnail.jpg` (~5 MB). In-use gallery JPEGs compressed to max 1920px width.
 
 **Videos in use:** `testimonial2.mp4`, `community-dance-class-event-sep-2025-portrait.mp4`
 
-**Likely unused legacy (owner confirm before delete):**
-- Duplicate testimonial thumbnails: `testimonialtn.png`, `video-thumbnail.jpg`
+**Testimonial poster in use:** `thumbnail.jpg` only
 
 Target max width for gallery JPEGs: **1920px** (sufficient for retina at site layout widths).
 

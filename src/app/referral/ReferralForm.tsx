@@ -94,7 +94,7 @@ export default function ReferralForm() {
           id="supports"
           label="What supports are you looking for?"
           required
-          hint="Daily living, community participation, group supports, transport, respite, support coordination, etc."
+          hint="e.g. daily living and personal activities, community participation, social and group supports, transport, respite, skill development, support coordination, high intensity personal activities"
           error={state.errors?.supports as string}
           className="md:col-span-2"
         />
