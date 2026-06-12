@@ -1422,7 +1422,7 @@ Movement, routine, and participation — with familiar support workers and parti
 - `art-workshop-group-feb-2026.jpg` — Caption: Creating together, with people you know
 - `community-dance-class-event-sep-2025-portrait.mp4` + `dance-class-event-poster-portrait.jpg` — Caption: Staying engaged together
 - `restaurant-group-meal-dec-2025.jpg` — Caption: Shared experiences that build connection
-- `team/event-group-photo-dec-2025.jpg` (optional) — Caption: The same faces, week after week
+- `team/event-group-photo-dec-2025.png` (optional) — Caption: The same faces, week after week
 
 **CTAs:** None
 
@@ -2114,7 +2114,7 @@ ACT Jubilant is a boutique, relationship-led provider — built for participants
 4. **Factual over promotional.** State who you are and what you stand for; avoid caring/compassionate/flexible/24/7 as differentiators.
 5. **Shorter than Programs.** Target 6–7 sections. Readable in under 4 minutes.
 6. **Single conversion block at the end** — mirror Homepage Section 10.
-7. **Media (owner-approved June 2026):** Leadership portraits — Nilima Singh, Managing Director (`/images/team/Nilima.jpeg`); Manish Gupta, Founder & Client Service Manager (`/images/team/DSC_MANISHW-42.jpg`). Team group photo: `/images/team/event-group-photo-dec-2025.jpg`.
+7. **Media (owner-approved June 2026):** Leadership portraits — Nilima Singh, Managing Director (`/images/team/Nilima.jpeg`); Manish Gupta, Founder & Client Service Manager (`/images/team/DSC_MANISHW-42.jpg`). Team group photo: `/images/team/event-group-photo-dec-2025.png`.
 
 ---
 
@@ -2271,7 +2271,7 @@ The people behind the support
 **Body (one line):**  
 ACT Jubilant runs as a small, relationship-led team — familiar faces for participants, coordinators, and families.
 
-**Image:** `/images/team/event-group-photo-dec-2025.jpg`  
+**Image:** `/images/team/event-group-photo-dec-2025.png`  
 **Alt:** ACT Jubilant team and participants at a group event  
 **Caption:** The same faces, week after week
 

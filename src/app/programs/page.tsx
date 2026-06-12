@@ -34,20 +34,20 @@ const PROGRAM_BEATS = [
 const SMALL_GROUP_MEDIA = [
   {
     type: "image" as const,
-    src: "/images/team/event-group-photo-dec-2025.jpg",
-    alt: "ACT Jubilant team and participants at a group event",
+    src: "/images/team/event-group-photo-dec-2025.png",
+    alt: "ACT Jubilant team and participants at a December 2025 group event",
     caption: "The same faces, week after week",
   },
   {
     type: "image" as const,
-    src: "/images/gallery/restaurant-group-meal-dec-2025.jpg",
-    alt: "Group meal at a restaurant with friends and support",
+    src: "/images/gallery/art-workshop-group-feb-2026.jpg",
+    alt: "ACT Jubilant participant at a group art workshop with paints and supplies",
     caption: "Shared experiences that build connection",
   },
   {
     type: "image" as const,
-    src: "/images/gallery/community-cafe-outing-nov-2025.jpg",
-    alt: "Support worker and participant sharing a café outing together",
+    src: "/images/gallery/birthday-celebration-restaurant-jan-2026.jpg",
+    alt: "ACT Jubilant birthday celebration at a restaurant with support worker and family",
     caption: "Connected in everyday places",
   },
   {
@@ -65,29 +65,29 @@ const MEANINGFUL_PILLARS = [
   {
     title: "Hobbies & interests",
     body: "Someone who takes pride in what they create and pursue, whether that's gardening, art, cooking, or an interest that's uniquely their own.",
-    image: "/images/gallery/art-workshop-group-feb-2026.jpg",
-    alt: "Participant at a group art workshop with paints and supplies",
+    image: "/images/stock/participant-enjoying-music.jpg",
+    alt: "Illustrative photo of a person with headphones enjoying a creative activity",
     caption: "Pride in what they create",
   },
   {
     title: "Routine & structure",
     body: "Someone whose week has a rhythm they can count on, with familiar activities, regular outings, and days that feel intentional rather than empty.",
-    image: "/images/gallery/wheelchair-outdoor-outing-nov-2025.jpg",
-    alt: "Regular outdoor outing with familiar support workers",
+    image: "/images/stock/outdoor-group-walk.jpg",
+    alt: "Illustrative photo of a small group on an outdoor walk, including people using wheelchairs",
     caption: "A week with rhythm and purpose",
   },
   {
     title: "Community participation",
     body: "Someone who belongs in everyday places, catching up with friends, visiting local venues, and staying connected to community life.",
-    image: "/images/gallery/restaurant-group-meal-dec-2025.jpg",
-    alt: "Group meal at a restaurant with friends and support",
+    image: "/images/stock/community-group-outdoors.jpg",
+    alt: "Illustrative photo of a diverse group relaxing outdoors, including a person in a wheelchair",
     caption: "Belonging in everyday places",
   },
   {
     title: "Skill & identity building",
     body: "Someone growing in confidence and recognised for what they learn, build, and contribute, not only for what they need help with.",
     image: "/images/gallery/participant-home-flowers-jan-2026.jpg",
-    alt: "Participant at home, recognised and valued in their own space",
+    alt: "ACT Jubilant participant at home, recognised and valued in their own space",
     caption: "Confidence and recognition",
   },
 ] as const;
@@ -97,19 +97,19 @@ const INTEREST_PHOTO_TILES = [
     title: "Café outings & local venues",
     outcome: "Connection in everyday community spaces",
     image: "/images/gallery/community-cafe-outing-nov-2025.jpg",
-    alt: "Support worker and participant sharing a café outing together",
+    alt: "ACT Jubilant support worker and participant sharing a café outing together",
   },
   {
     title: "Community events & celebrations",
     outcome: "Shared experiences that matter",
     image: "/images/gallery/birthday-celebration-restaurant-jan-2026.jpg",
-    alt: "Birthday celebration at a restaurant with support worker and family",
+    alt: "ACT Jubilant birthday celebration at a restaurant with support worker and family",
   },
   {
     title: "Social time with friends",
     outcome: "Belonging, not just supervision",
-    image: "/images/gallery/restaurant-group-meal-dec-2025.jpg",
-    alt: "Group meal at a restaurant with friends and support",
+    image: "/images/stock/accessible-kitchen-cooking.jpg",
+    alt: "Illustrative photo of a person in a wheelchair and a support worker cooking together in an accessible kitchen",
   },
 ] as const;
 
@@ -157,21 +157,21 @@ const ONE_ON_ONE_SUPPORTING = [
 
 const ONE_ON_ONE_MEDIA = [
   {
-    src: "/images/gallery/community-cafe-outing-nov-2025.jpg",
-    alt: "Support worker and participant sharing a café outing together",
-    caption: "The same familiar faces, in everyday places",
+    src: "/images/stock/accessible-transport-minivan.jpg",
+    alt: "Wheelchair accessible minivan with rear ramp deployed in a parking area",
+    caption: "Getting out into the community with the right support",
     large: true,
   },
   {
-    src: "/images/gallery/birthday-celebration-restaurant-jan-2026.jpg",
-    alt: "Birthday celebration at a restaurant with support worker and family",
-    caption: "Moments that matter, with workers who know them",
+    src: "/images/gallery/community-cafe-outing-nov-2025.jpg",
+    alt: "ACT Jubilant support worker and participant sharing a café outing together",
+    caption: "The same familiar faces, in everyday places",
     large: false,
   },
   {
-    src: "/images/team/event-group-photo-dec-2025.jpg",
-    alt: "ACT Jubilant team and participants at a group event",
-    caption: "People who know each other, week after week",
+    src: "/images/gallery/participant-home-flowers-jan-2026.jpg",
+    alt: "ACT Jubilant participant at home, recognised and valued in their own space",
+    caption: "Support that fits the person, at home and in the community",
     large: false,
   },
 ] as const;
@@ -199,6 +199,18 @@ export default function ProgramsPage() {
         <p className="mt-3 text-lg">
           Here&apos;s what that can look like week to week in Canberra.
         </p>
+        <figure className="mx-auto mt-8 max-w-3xl overflow-hidden rounded-2xl border border-gray-100">
+          <div className="relative aspect-[4/3] w-full">
+            <Image
+              src="/images/stock/programs-community-run.jpg"
+              alt="ACT Jubilant team and participants at a community run, including a participant in a wheelchair"
+              fill
+              className="object-cover object-center"
+              sizes="(max-width: 768px) 100vw, 768px"
+              priority
+            />
+          </div>
+        </figure>
       </section>
 
       {/* 2. Programs start with the person, page hero */}
@@ -258,14 +270,12 @@ export default function ProgramsPage() {
               }`}
             >
               {item.type === "image" ? (
-                <div
-                  className={`relative w-full ${index === 0 ? "h-64 md:h-80" : "h-56 md:h-64"}`}
-                >
+                <div className="relative aspect-[4/3] w-full">
                   <Image
                     src={item.src}
                     alt={item.alt}
                     fill
-                    className="object-cover"
+                    className="object-cover object-center"
                     sizes={
                       index === 0
                         ? "(max-width: 1024px) 100vw, 50vw"
@@ -308,12 +318,12 @@ export default function ProgramsPage() {
         <div className="mt-8 grid gap-6 md:grid-cols-2">
           {MEANINGFUL_PILLARS.map((pillar) => (
             <article key={pillar.title} className="card overflow-hidden p-0">
-              <div className="relative h-48 w-full">
+              <div className="relative aspect-[3/2] w-full">
                 <Image
                   src={pillar.image}
                   alt={pillar.alt}
                   fill
-                  className="object-cover"
+                  className="object-cover object-center"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
@@ -345,12 +355,12 @@ export default function ProgramsPage() {
         <div className="mt-8 grid gap-6 md:grid-cols-3">
           {INTEREST_PHOTO_TILES.map((tile) => (
             <article key={tile.title} className="card overflow-hidden p-0">
-              <div className="relative h-56 w-full md:h-72">
+              <div className="relative aspect-[4/3] w-full">
                 <Image
                   src={tile.image}
                   alt={tile.alt}
                   fill
-                  className="object-cover"
+                  className="object-cover object-center"
                   sizes="(max-width: 768px) 100vw, 33vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/75 to-transparent" />
@@ -405,14 +415,12 @@ export default function ProgramsPage() {
               key={photo.src}
               className={`card overflow-hidden p-0 ${photo.large ? "lg:col-span-6" : "lg:col-span-3"}`}
             >
-              <div
-                className={`relative w-full ${photo.large ? "h-64 md:h-80" : "h-56 md:h-64"}`}
-              >
-                <Image
-                  src={photo.src}
-                  alt={photo.alt}
-                  fill
-                  className="object-cover"
+                <div className={`relative w-full ${photo.large ? "aspect-[3/2]" : "aspect-[4/3]"}`}>
+                  <Image
+                    src={photo.src}
+                    alt={photo.alt}
+                    fill
+                    className="object-cover object-center"
                   sizes={photo.large ? "(max-width: 1024px) 100vw, 50vw" : "(max-width: 1024px) 50vw, 25vw"}
                   priority={index === 0}
                 />

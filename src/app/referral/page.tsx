@@ -58,12 +58,12 @@ export default function ReferralPage() {
         </p>
         <figure className="mt-8 overflow-hidden rounded-2xl border border-gray-100">
           <div className="grid md:grid-cols-5">
-            <div className="relative h-48 md:col-span-2 md:h-full md:min-h-[11rem]">
+            <div className="relative aspect-[4/3] w-full md:col-span-2">
               <Image
-                src="/images/gallery/community-cafe-outing-nov-2025.jpg"
-                alt="Support worker and participant on a café outing in Canberra"
+                src="/images/stock/participant-partnership-handshake.jpg"
+                alt="Illustrative photo of a person in a wheelchair greeting a support worker with a handshake outdoors"
                 fill
-                className="object-cover"
+                className="object-cover object-center"
                 sizes="(max-width: 768px) 100vw, 320px"
               />
             </div>

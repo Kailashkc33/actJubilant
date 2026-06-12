@@ -170,7 +170,7 @@ See `CHANGES.md` work division table for full list. Current priorities:
 
 ## Media performance notes
 
-**In use on site (keep):** Owner gallery photos (`art-workshop`, `birthday-celebration`, `community-cafe-outing`, `wheelchair-outdoor-outing`, `restaurant-group-meal`, `participant-home-flowers`), team photos (`Nilima.jpeg`, `DSC_MANISHW-42.jpg`, `event-group-photo-dec-2025.jpg`), `testimonial2.mp4`, `community-dance-class-event-sep-2025-portrait.mp4`, `thumbnail.jpg`, dance class posters.
+**In use on site (keep):** Owner gallery photos (`art-workshop`, `birthday-celebration`, `community-cafe-outing`, `wheelchair-outdoor-outing`, `restaurant-group-meal`, `participant-home-flowers`), team photos (`Nilima.jpeg`, `DSC_MANISHW-42.jpg`, `event-group-photo-dec-2025.png`), `testimonial2.mp4`, `community-dance-class-event-sep-2025-portrait.mp4`, `thumbnail.jpg`, dance class posters.
 
 **Removed (June 2026):** All `pexels-*` stock images (10 files); unused videos `testimonial1.mp4`, `community-dance-class-event-sep-2025.mp4`, `community-dance-class-event-sep-2025-web.mp4` (~54 MB); duplicate testimonial thumbnails `testimonialtn.png`, `video-thumbnail.jpg` (~5 MB). In-use gallery JPEGs compressed to max 1920px width.
 

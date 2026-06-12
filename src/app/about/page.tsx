@@ -96,6 +96,17 @@ export default function AboutPage() {
           We exist to help people with disability feel capable, engaged, and proud of what they
           create and achieve.
         </p>
+        <figure className="mx-auto mt-8 max-w-3xl overflow-hidden rounded-2xl border border-gray-100">
+          <div className="relative aspect-[4/3] w-full">
+            <Image
+              src="/images/stock/community-group-outdoors.jpg"
+              alt="Illustrative photo of a diverse group outdoors, including a person in a wheelchair"
+              fill
+              className="object-cover object-center"
+              sizes="(max-width: 768px) 100vw, 768px"
+            />
+          </div>
+        </figure>
       </section>
 
       {/* 2. Why we exist */}
@@ -247,12 +258,12 @@ export default function AboutPage() {
           coordinators, and families.
         </p>
         <figure className="mt-8 card overflow-hidden p-0">
-          <div className="relative h-64 w-full md:h-80">
+          <div className="relative aspect-[4/3] w-full">
             <Image
-              src="/images/team/event-group-photo-dec-2025.jpg"
-              alt="ACT Jubilant team and participants at a group event"
+              src="/images/team/event-group-photo-dec-2025.png"
+              alt="ACT Jubilant team and participants at a December 2025 group event"
               fill
-              className="object-cover"
+              className="object-cover object-center"
               sizes="(max-width: 768px) 100vw, 896px"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />

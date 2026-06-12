@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -135,7 +136,17 @@ export default function AccessibilityPage() {
         aria-labelledby="real-people-title"
         className="py-8 md:py-10 border-t border-gray-100"
       >
-        <div className="card">
+        <div className="card overflow-hidden p-0">
+          <div className="relative aspect-[3/2] w-full">
+            <Image
+              src="/images/stock/community-group-outdoors.jpg"
+              alt="Illustrative photo of a diverse group outdoors, including a person in a wheelchair"
+              fill
+              className="object-cover object-center"
+              sizes="(max-width: 768px) 100vw, 896px"
+            />
+          </div>
+          <div className="p-6">
           <h2 id="real-people-title" className="h2">
             Technical compliance is not enough
           </h2>
@@ -149,6 +160,7 @@ export default function AccessibilityPage() {
             adjust layout, wording, or tools based on what people actually experience.
             That feedback is as important as any checklist.
           </p>
+          </div>
         </div>
       </section>
 

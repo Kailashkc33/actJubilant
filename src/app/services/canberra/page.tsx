@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -71,6 +72,20 @@ export default function CanberraServicesPage() {
           Supports are delivered through structured, relationship-based engagement, not only as
           passive task coverage.
         </p>
+        <figure className="mx-auto mt-8 max-w-3xl overflow-hidden rounded-2xl border border-gray-100">
+          <div className="relative aspect-[4/3] w-full">
+            <Image
+              src="/images/stock/outdoor-group-walk.jpg"
+              alt="Illustrative photo of a group on an outdoor walk, including people using wheelchairs"
+              fill
+              className="object-cover object-center"
+              sizes="(max-width: 768px) 100vw, 768px"
+            />
+          </div>
+          <figcaption className="border-t border-gray-100 px-5 py-4 text-sm text-[var(--text-muted)]">
+            Community participation, social outings, and structured group supports across Canberra and the ACT.
+          </figcaption>
+        </figure>
       </section>
 
       {/* 2. Support we provide — page hero */}
@@ -92,6 +107,20 @@ export default function CanberraServicesPage() {
             </div>
           ))}
         </dl>
+        <figure className="mx-auto mt-8 max-w-3xl overflow-hidden rounded-2xl border border-gray-100">
+          <div className="relative aspect-[3/2] w-full">
+            <Image
+              src="/images/stock/accessible-transport-minivan.jpg"
+              alt="Wheelchair accessible minivan with rear ramp deployed in a parking area"
+              fill
+              className="object-cover object-center"
+              sizes="(max-width: 768px) 100vw, 768px"
+            />
+          </div>
+          <figcaption className="border-t border-gray-100 px-5 py-4 text-sm text-[var(--text-muted)]">
+            Travel assistance to access community activities, appointments, and everyday outings.
+          </figcaption>
+        </figure>
       </section>
 
       {/* 3. Service areas */}
