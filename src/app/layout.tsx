@@ -263,7 +263,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           role="banner"
           className="site-header sticky top-0 z-40 w-full"
         >
-          <div className="site-header__inner mx-auto max-w-7xl px-4">
+          <div className="site-header__inner content-shell content-shell--home">
             <Link href="/" className="flex shrink-0 items-center gap-3">
               <Image
                 src="/logo.png"
@@ -297,14 +297,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </header>
 
         {/* Main */}
-        <main id="main" className="mx-auto max-w-7xl px-4">
+        <main id="main" className="w-full">
           <HashScroll />
           {children}
         </main>
 
         {/* Footer */}
         <footer role="contentinfo" className="site-footer">
-          <div className="site-footer__inner mx-auto max-w-7xl px-4">
+          <div className="site-footer__inner content-shell content-shell--home">
             <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-12 lg:gap-8">
               <div className="lg:col-span-6">
                 <div className="site-footer__brand">
@@ -389,7 +389,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <hr className="site-footer__divider" />
 
           <div className="site-footer__ack">
-            <div className="mx-auto max-w-7xl px-4">
+            <div className="content-shell content-shell--home">
               <p>
                 <strong>Acknowledgement of Country:</strong> We acknowledge the Ngunnawal people as
                 the Traditional Custodians of the land on which we live and work. We pay our
@@ -400,7 +400,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </div>
 
           <div className="site-footer__bar">
-            <div className="site-footer__bar-inner mx-auto max-w-7xl px-4">
+            <div className="site-footer__bar-inner content-shell content-shell--home">
               <p>Proudly supporting the Canberra community</p>
               <p>© {new Date().getFullYear()} ACT Jubilant. All rights reserved.</p>
             </div>

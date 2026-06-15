@@ -111,6 +111,12 @@ const INTEREST_PHOTO_TILES = [
     image: "/images/stock/accessible-kitchen-cooking.jpg",
     alt: "Illustrative photo of a person in a wheelchair and a support worker cooking together in an accessible kitchen",
   },
+  {
+    title: "Transport & community access",
+    outcome: "Getting out into the community with the right support",
+    image: "/images/stock/accessible-transport-minivan.jpg",
+    alt: "Wheelchair accessible minivan with rear ramp deployed in a parking area",
+  },
 ] as const;
 
 const INTEREST_TEXT_TILES = [
@@ -155,24 +161,6 @@ const ONE_ON_ONE_SUPPORTING = [
   },
 ] as const;
 
-const ONE_ON_ONE_MEDIA = [
-  {
-    src: "/images/gallery/community-cafe-outing-nov-2025.jpg",
-    alt: "ACT Jubilant support worker and participant sharing a café outing together",
-    caption: "The same familiar faces, in everyday places",
-  },
-  {
-    src: "/images/gallery/participant-home-flowers-jan-2026.jpg",
-    alt: "ACT Jubilant participant at home, recognised and valued in their own space",
-    caption: "Support that fits the person, at home and in the community",
-  },
-  {
-    src: "/images/stock/accessible-transport-minivan.jpg",
-    alt: "Wheelchair accessible minivan with rear ramp deployed in a parking area",
-    caption: "Getting out into the community with the right support",
-  },
-] as const;
-
 const FIT_REMINDER = [
   "Wants engagement and routine, not only tasks or hours filled",
   "Has interests, hobbies, or goals they'd like support built around",
@@ -182,7 +170,7 @@ const FIT_REMINDER = [
 
 export default function ProgramsPage() {
   return (
-    <>
+    <div className="content-shell content-shell--home">
       {/* 1. Page opener */}
       <section aria-labelledby="programs-opener-title" className="py-8 md:py-12">
         <h1 id="programs-opener-title" className="h2 text-balance">
@@ -254,17 +242,11 @@ export default function ProgramsPage() {
           Participants join the same small group each week, structured gatherings where people know
           each other, build routine together, and stay engaged in shared experiences.
         </p>
-        <div className="mt-10 grid gap-6 lg:grid-cols-12">
-          {SMALL_GROUP_MEDIA.map((item, index) => (
+        <div className="mt-10 grid gap-6 sm:grid-cols-2">
+          {SMALL_GROUP_MEDIA.map((item) => (
             <figure
-              key={index}
-              className={`card overflow-hidden p-0 ${
-                item.type === "video"
-                  ? "lg:col-span-4"
-                  : index === 0
-                    ? "lg:col-span-6"
-                    : "lg:col-span-3"
-              }`}
+              key={item.caption}
+              className="card flex h-full flex-col overflow-hidden p-0"
             >
               {item.type === "image" ? (
                 <div className="relative aspect-[4/3] w-full">
@@ -273,27 +255,23 @@ export default function ProgramsPage() {
                     alt={item.alt}
                     fill
                     className="object-cover object-center"
-                    sizes={
-                      index === 0
-                        ? "(max-width: 1024px) 100vw, 50vw"
-                        : "(max-width: 1024px) 50vw, 25vw"
-                    }
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 36rem"
                   />
                 </div>
               ) : (
-                <div className="mx-auto max-w-xs lg:max-w-none">
+                <div className="w-full">
                   <SelfHostedVideo
                     srcMp4={item.srcMp4}
                     title={item.title}
                     description={item.description}
                     poster={item.poster}
-                    aspect="9/16"
+                    aspect="4/3"
                     objectFit="cover"
                     minimalChrome
                   />
                 </div>
               )}
-              <figcaption className="p-4 text-sm font-medium text-[var(--text-muted)]">
+              <figcaption className="flex min-h-16 items-center p-4 text-sm font-medium text-[var(--text-muted)]">
                 {item.caption}
               </figcaption>
             </figure>
@@ -349,34 +327,35 @@ export default function ProgramsPage() {
           Every participant&apos;s program looks different. These are real examples of how interests
           become structured support.
         </p>
-        <div className="mt-8 grid gap-6 md:grid-cols-3">
+        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {INTEREST_PHOTO_TILES.map((tile) => (
-            <article key={tile.title} className="card overflow-hidden p-0">
+            <article key={tile.title} className="card flex h-full flex-col overflow-hidden p-0">
               <div className="relative aspect-[4/3] w-full">
                 <Image
                   src={tile.image}
                   alt={tile.alt}
                   fill
                   className="object-cover object-center"
-                  sizes="(max-width: 768px) 100vw, 33vw"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/75 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
-                  <h3 className="text-lg font-semibold leading-snug">{tile.title}</h3>
-                  <p className="mt-2 text-sm font-medium text-white/90">{tile.outcome}</p>
-                </div>
+              </div>
+              <div className="flex flex-1 flex-col p-5">
+                <h3 className="text-lg font-semibold leading-snug">{tile.title}</h3>
+                <p className="mt-2 text-sm font-medium leading-relaxed text-[var(--text-muted)]">
+                  {tile.outcome}
+                </p>
               </div>
             </article>
           ))}
         </div>
-        <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 rounded-2xl border border-gray-100 bg-gray-50/80 p-4 md:p-5">
+        <ul className="mt-8 grid gap-4 rounded-2xl border border-gray-100 bg-gray-50/80 p-4 sm:grid-cols-2 md:p-5 lg:grid-cols-3">
           {INTEREST_TEXT_TILES.map((tile) => (
             <li
               key={tile.title}
-              className="border-l-2 border-gray-200 pl-3 py-1 text-sm text-[var(--text-muted)]"
+              className="rounded-xl border border-gray-100 bg-white px-4 py-3 text-sm text-[var(--text-muted)] shadow-sm"
             >
               <span className="font-medium text-[var(--text)]">{tile.title}</span>
-              <span className="mt-0.5 block text-xs">{tile.outcome}</span>
+              <span className="mt-1 block text-sm leading-relaxed">{tile.outcome}</span>
             </li>
           ))}
         </ul>
@@ -404,26 +383,6 @@ export default function ProgramsPage() {
               <h3 className="text-lg font-semibold">{theme.title}</h3>
               <p className="mt-2 text-[var(--text-muted)]">{theme.body}</p>
             </article>
-          ))}
-        </div>
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
-          {ONE_ON_ONE_MEDIA.map((photo, index) => (
-            <figure key={photo.src} className="card overflow-hidden p-0">
-              <div className="relative aspect-[4/3] w-full">
-                <Image
-                  src={photo.src}
-                  alt={photo.alt}
-                  fill
-                  className="object-cover object-center"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  priority={index === 0}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-                <p className="absolute bottom-4 left-4 right-4 text-sm font-medium text-white">
-                  {photo.caption}
-                </p>
-              </div>
-            </figure>
           ))}
         </div>
         <dl className="mt-10 grid gap-6 md:grid-cols-2">
@@ -508,6 +467,6 @@ export default function ProgramsPage() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

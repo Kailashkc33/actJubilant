@@ -7,12 +7,30 @@
 
 | Page | Question | Doc section |
 |------|----------|-------------|
-| Homepage (`/`) | Why ACT Jubilant? | Brand Bible → Homepage Implementation Guide v2.0 |
+| Homepage (`/`) | Why ACT Jubilant? | Brand Bible → Homepage Implementation Guide v2.0 (hybrid 7-section IA on `homepage-hybrid-refresh`) |
 | Programs (`/programs`) | What does support look like in real life? | Brand Bible → Programs Page Implementation Guide v2.0 |
 | Services / Canberra (`/services/canberra`) | What NDIS supports do you actually provide? | Brand Bible → Services / Canberra Implementation Guide v1.0 |
 | About (`/about`) | Who is behind ACT Jubilant — and who thrives here? | Brand Bible → About Page Implementation Guide v1.0 |
 
-Programs defers NDIS categories and personal care detail to Services/Canberra. Homepage defers full activity catalogue to Programs. Homepage §6 links to About for expanded fit criteria (`/about#who-were-best-for`). The internal "David" avatar is marketing-only — never public-facing.
+Programs defers NDIS categories and personal care detail to Services/Canberra. Homepage defers full activity catalogue to Programs. Homepage depth band links to About, Programs, Reviews, and Canberra services (no inline mid-page depth links in hybrid IA). Homepage §5 (fit) links to About for expanded fit criteria (`/about#who-were-best-for`). The internal "David" avatar is marketing-only — never public-facing.
+
+---
+
+## Site layout (June 2026)
+
+**Pattern:** Full-width coloured section bands; inner grids and prose constrained.
+
+| Width | CSS | Pages |
+|-------|-----|-------|
+| 1160px | `.content-shell--home` | Homepage, About, Programs, Reviews, Canberra |
+| 1000px | `.content-shell--reading` | FAQ, Privacy, Accessibility, Consultation, Referral, Feedback |
+| 720px | `.content-measure` | Long intro paragraphs and body copy blocks |
+
+Homepage hybrid IA (7 sections) is on branch `homepage-hybrid-refresh`; production `main` still has 10-section homepage until merge.
+
+Codex layout QA on 2026-06-16 found no horizontal overflow, no visible text under 14px, no clickable targets under 44px, and no mismatched grid rows across the public routes at desktop `1440x900` and mobile `390x844`. Remaining concern is content length on Homepage and Programs mobile scroll, which should be handled as a strategy/content decision rather than a layout defect.
+
+Latest owner-review cleanup on `homepage-hybrid-refresh` simplified Homepage "How it works" to three steps only (Meet, Match, Build routine) and changed Programs interest media cards so captions sit below images rather than covering photos. The duplicate one-on-one media row on Programs was removed.
 
 ---
 

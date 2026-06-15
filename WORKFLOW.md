@@ -50,7 +50,7 @@ Local-only edits are how fixes get lost.
 
 | Page | Route | Question it answers | Status |
 |------|-------|---------------------|--------|
-| Homepage | `/` | Why ACT Jubilant? | **Live** |
+| Homepage | `/` | Why ACT Jubilant? | **Preview** on `homepage-hybrid-refresh` · Codex layout QA passed · live `main` still has 10-section homepage |
 | Programs | `/programs` | What does support look like in real life? | **Live** |
 | Services / Canberra | `/services/canberra` | What NDIS supports do you provide? | **Live** (footer + depth links only; not main nav) |
 | About | `/about` | Who is behind ACT Jubilant? | **Live** |
@@ -58,11 +58,52 @@ Local-only edits are how fixes get lost.
 | Reviews | `/reviews` | Stories and testimonials | **Live** (exemplar quotes until real reviews) |
 | Consultation | `/consultation` | Book a consultation | **Live** (form) |
 | FAQ | `/faq` | Common questions | **Live** |
+| Accessibility | `/accessibility` | Accessibility standards and toolbar | **Live** |
+| Feedback | `/feedback` | Feedback and complaints form | **Live** (functional; older page layout) |
+| Privacy | `/privacy` | Privacy policy | **Live** (functional; older page layout) |
 
 **Architecture rules:**
 - Do not put NDIS category grids on Homepage or Programs.
 - Do not put persuasion copy on Services/Canberra.
 - Programs ≠ Services: Programs = what support looks like; Services = NDIS categories and logistics.
+
+---
+
+## Layout system (June 2026)
+
+**Pattern:** Full-width section backgrounds; inner content constrained. Do not cap the entire page in `main` — bands go edge-to-edge; shells hold readable width.
+
+| Token | CSS class | Max width | Use for |
+|-------|-----------|-----------|---------|
+| `--content-home` | `.content-shell--home` | 1160px | Homepage grids, About, Programs, Reviews, Canberra, header, footer |
+| `--content-reading` | `.content-shell--reading` | 1000px | FAQ, Privacy, Accessibility, Consultation, Referral, Feedback |
+| `--content-prose` | `.content-measure` | 720px | Long text blocks and intros (avoid full-width lines on desktop) |
+
+**Homepage:** Each `.home-band` section is full width; children wrapped in `.content-shell.content-shell--home`.
+
+**Reading pages:** Outer wrapper `.content-shell--reading`; apply `.content-measure` to intro copy where lines would otherwise span too wide.
+
+Defined in `src/app/globals.css`. Header/footer/toolbar aligned to `--content-home`.
+
+### Layout QA baseline (2026-06-16)
+
+Codex audited the current `homepage-hybrid-refresh` branch at desktop `1440x900` and mobile `390x844`.
+
+Routes checked: `/`, `/programs`, `/about`, `/services/canberra`, `/referral`, `/consultation`, `/reviews`, `/accessibility`, `/faq`, `/feedback`, `/privacy`.
+
+Current result:
+- No horizontal overflow.
+- No visible text under 14px.
+- No clickable targets under 44px.
+- No mismatched/uneven grid rows detected.
+- `npm run build` passes.
+
+Latest owner-review cleanup:
+- Homepage "How it works" is now a true 3-step process only: Meet → Match → Build routine.
+- Programs "Built around interests" uses four equal image cards with captions below images, not text overlays.
+- Programs duplicate one-on-one media row was removed.
+
+Remaining note: Homepage and Programs may still feel long on mobile. Treat this as a content/strategy decision, not a spacing/font/box bug.
 
 ---
 
@@ -154,17 +195,17 @@ See `CHANGES.md` work division table for full list. Current priorities:
 
 | # | Task | Owner | Status |
 |---|------|-------|--------|
+| 16 | Homepage hybrid refresh — merge `homepage-hybrid-refresh` → `main` | Owner + Cursor | **Pushed for owner review** — Codex layout/source QA passed; owner content-length review remains |
 | 13 | Hostinger domain transfer → SMTP forms | Owner | Blocked on DNS/email stability |
-| 14 | Accessibility standards pass (WCAG 2.2 AA) | Owner + Cursor + Codex | **Partial** — standards + video keyboard pushed; WCAG form/focus fixes local only |
+| 14 | Accessibility standards pass (WCAG 2.2 AA) | Owner + Cursor + Codex | **Partial** — standards + video keyboard + form/focus pushed |
 | 15 | GA + Search Console placeholders in `layout.tsx` | Owner | `GA_MEASUREMENT_ID`, `your-google-verification-code` |
 
-**Done (pushed):** Homepage · Programs · About · Services/Canberra · Referral · Reviews · footer + JSON-LD · media cleanup · accessibility standards page · video keyboard fixes · mobile UX fixes
+**Done (pushed to `main`):** Phase 1 UI (Settled Ground) · Programs · About · Services/Canberra · Referral · Reviews · footer + JSON-LD · media cleanup · accessibility standards page · video keyboard fixes · mobile UX fixes · Consultation/Reviews/FAQ polish · stock images on inner pages
 
-**Suggested order (from `CHANGES.md`):**
-1. ~~Core pages + Reviews + footer/JSON-LD + media cleanup~~ ✓
-2. ~~Accessibility standards page + video keyboard audit~~ ✓ pushed `ac2641d`
-3. ~~WCAG technical pass (forms, focus, metadata)~~ ✓ local only · Codex audit next
-4. Owner: Hostinger transfer (#13) → SMTP forms; GA + Search Console IDs (#15)
+**Suggested order:**
+1. **Owner review** homepage hybrid on `homepage-hybrid-refresh` → decide whether to reduce content further or merge to `main` (#16)
+2. Owner: Hostinger transfer (#13) → SMTP forms; GA + Search Console IDs (#15)
+3. Optional: reskin `/feedback` and `/privacy` to match Settled Ground (functional, older layout)
 
 ---
 
@@ -182,55 +223,38 @@ Target max width for gallery JPEGs: **1920px** (sufficient for retina at site la
 
 ---
 
-## UI redesign (worktree + branch)
+## UI redesign (worktree + branches)
 
-**Goal:** Experiment with major UI changes without touching production `main` until approved.
+**Live site:** `main` at [actjubilant.com.au](https://actjubilant.com.au) — Settled Ground theme, 10-section homepage.
+
+**In review (not on `main`):** branch `homepage-hybrid-refresh` — scannable 7-section homepage + layout shells; Codex layout QA passed on 2026-06-16 (see `CHANGES.md`).
 
 | Folder | Branch | Role |
 |--------|--------|------|
-| `/Users/kailashkc/Developer/act-jubilant` | `main` | Current live site; bugfixes and copy only unless merging redesign |
-| `/Users/kailashkc/Developer/act-jubilant-ui-redesign` | `ui-redesign` | UI experiments; Vercel preview from this branch |
+| `/Users/kailashkc/Developer/act-jubilant` | `main` | Production; bugfixes unless merging a feature branch |
+| `/Users/kailashkc/Developer/act-jubilant` | `homepage-hybrid-refresh` | Homepage density + layout system (current work) |
+| `/Users/kailashkc/Developer/act-jubilant-ui-redesign` | `ui-redesign` | Optional; merged to `main` June 2026 — can delete worktree when no longer needed |
 
-**Rollback tag:** `ui-baseline-2026-06-12` (snapshot of `main` before redesign work)
+**Rollback tag:** `ui-baseline-2026-06-12` (snapshot of `main` before first redesign work)
 
-**Phased scope (do not reskin whole site in one pass):**
-
-1. **Phase 1:** Global theme tokens + homepage only → audit on preview URL
-2. **Phase 2:** Nav + footer (if Phase 1 approved)
-3. **Phase 3:** About, Referral, Consultation, Reviews
-4. **Later:** Programs, Services, FAQ, remaining pages
-
-**Rules:**
-- Locked Brand Bible copy stays unless owner approves wording changes
-- No merge to `main` until owner signs off on preview
-- Run `npm run dev` in the **worktree folder** for redesign previews
-
-**Worktree commands:**
+**Branch workflow:**
 
 ```bash
-# From main repo (already set up once):
-git worktree list
-
-# Daily: open redesign folder in Cursor
-cd /Users/kailashkc/Developer/act-jubilant-ui-redesign
-git pull origin ui-redesign
+# Preview hybrid homepage locally
+cd /Users/kailashkc/Developer/act-jubilant
+git checkout homepage-hybrid-refresh
 npm run dev
 
-# Return to current site
-cd /Users/kailashkc/Developer/act-jubilant
-git checkout main
-
-# After approval: merge redesign
-cd /Users/kailashkc/Developer/act-jubilant
+# After owner approval — merge to production
 git checkout main && git pull
-git merge ui-redesign
+git merge homepage-hybrid-refresh
 git push origin main
-
-# If abandoning redesign
-git worktree remove ../act-jubilant-ui-redesign
-git branch -D ui-redesign
-git push origin --delete ui-redesign   # if pushed
 ```
+
+**Rules:**
+- Locked Brand Bible claims stay unless owner approves wording changes
+- No merge to `main` until owner signs off on preview
+- Full-width bands + content shells apply site-wide once hybrid branch merges
 
 ---
 

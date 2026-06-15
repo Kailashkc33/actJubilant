@@ -15,9 +15,9 @@ export default function FeedbackPage() {
   }, [state.ok]);
 
   return (
-    <div className="py-10">
+    <div className="content-shell content-shell--reading py-10">
       <h1 className="h2">Feedback & Complaints</h1>
-      <p className="mt-4 text-lg">
+      <p className="content-measure mt-4 text-lg">
         We value your feedback and are committed to continuous improvement. 
         Your input helps us provide better services.
       </p>
@@ -131,12 +131,13 @@ export default function FeedbackPage() {
             </div>
 
             <div>
-              <label htmlFor="feedback-consent" className="inline-flex items-start gap-2">
+              <label htmlFor="feedback-consent" className="inline-flex items-start gap-3">
                 <input
                   id="feedback-consent"
                   type="checkbox"
                   name="consent"
                   required
+                  className="form-choice"
                   aria-invalid={Boolean(state.errors?.consent)}
                   aria-describedby={
                     state.errors?.consent ? "feedback-consent-error" : "feedback-consent-hint"

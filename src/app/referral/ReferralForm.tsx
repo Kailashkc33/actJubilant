@@ -80,11 +80,18 @@ export default function ReferralForm() {
           <fieldset>
             <legend className="block text-sm font-medium">Interpreter needed?</legend>
             <div className="mt-2 flex gap-4">
-              <label className="inline-flex items-center gap-2">
-                <input type="radio" name="interpreter" value="no" defaultChecked /> No
+              <label className="inline-flex min-h-11 items-center gap-2">
+                <input
+                  type="radio"
+                  name="interpreter"
+                  value="no"
+                  defaultChecked
+                  className="form-choice"
+                />{" "}
+                No
               </label>
-              <label className="inline-flex items-center gap-2">
-                <input type="radio" name="interpreter" value="yes" /> Yes
+              <label className="inline-flex min-h-11 items-center gap-2">
+                <input type="radio" name="interpreter" value="yes" className="form-choice" /> Yes
               </label>
             </div>
           </fieldset>
@@ -105,12 +112,13 @@ export default function ReferralForm() {
           className="md:col-span-2"
         />
 
-        <label htmlFor="referral-consent" className="md:col-span-2 inline-flex items-start gap-2">
+        <label htmlFor="referral-consent" className="md:col-span-2 inline-flex items-start gap-3">
           <input
             id="referral-consent"
             type="checkbox"
             name="consent"
             required
+            className="form-choice"
             aria-invalid={Boolean(state.errors?.consent)}
             aria-describedby={
               state.errors?.consent ? "referral-consent-error" : "referral-consent-hint"

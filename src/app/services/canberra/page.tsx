@@ -58,7 +58,7 @@ const SERVICE_AREAS = [
 
 export default function CanberraServicesPage() {
   return (
-    <div className="max-w-4xl">
+    <div className="content-shell content-shell--home">
       {/* 1. Opener */}
       <section aria-labelledby="services-opener-title" className="py-8 md:py-12">
         <h1 id="services-opener-title" className="h2 text-balance">

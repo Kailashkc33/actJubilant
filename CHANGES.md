@@ -22,14 +22,14 @@ Both tools read and write the same local file. Production and the other tool onl
 ```markdown
 ### YYYY-MM-DD — [Cursor | Codex] — short title
 
-**Prompt:** What the owner asked for  
-**Status:** local only | committed | pushed | live  
+**Prompt:** What the owner asked for
+**Status:** local only | committed | pushed | live
 **Files:** `path/to/file.tsx`, …
 
 **Summary:**
 - Bullet of what changed and why
 
-**Review notes:** (optional) What to check in browser  
+**Review notes:** (optional) What to check in browser
 **Next:** (optional) Follow-up for the other tool or owner
 ```
 
@@ -37,10 +37,134 @@ Both tools read and write the same local file. Production and the other tool onl
 
 ## Log
 
+### 2026-06-16 — Codex — Owner-review homepage and Programs audit
+
+**Prompt:** Audit the latest homepage/Programs changes, update docs, and push the branch for owner review
+**Status:** committed · pushed to `origin/homepage-hybrid-refresh` · not merged to `main`, not live
+**Build:** `npm run build` passes. Existing ESLint flat-config warning remains: `plugins` is in eslintrc array format, but build completes.
+
+**Files:**
+- `src/app/page.tsx`
+- `src/app/programs/page.tsx`
+- `CHANGES.md`, `WORKFLOW.md`, `README.md`, `ACT_JUBILANT_BRAND_BIBLE.md`, `ACT_JUBILANT_MASTER_CONTEXT.md`, `VIDEO_SETUP_GUIDE.md`
+
+**Summary:**
+- Homepage "How it works" now reads as a simple 3-step process: Meet → Match → Build routine.
+- Removed the confusing second row of proof cards from the homepage process section so it no longer looks like unrelated ideas are stacked into one workflow.
+- Programs "Built around interests" now uses four clean media cards with captions below the images, so text no longer covers the photos.
+- Added Transport & community access into that Programs interest-card set.
+- Removed the duplicate one-on-one media row from Programs after owner feedback.
+- Corrected the responsive image `sizes` hint for the new 4-column Programs card grid.
+
+**Audit result:**
+- Source audit clean: no remaining `PROOF_GROUPS` or `ONE_ON_ONE_MEDIA` references.
+- `npm run build` passes after the final Programs image-sizing cleanup.
+- Browser automation could not directly verify `localhost:3003` because that URL is currently blocked by the browser automation policy in this session; owner/Cursor should still do a manual visual pass on the running preview.
+
+**Owner review notes:**
+- Check homepage section flow: Hero → proof points → support examples → How it works → fit guide.
+- Check Programs: interest cards should feel organised, with no text overlay covering photos.
+- Main open question remains content density: the site is technically cleaner, but Homepage/Programs may still feel long on mobile if the owner wants a lighter experience.
+
+**Next:**
+- Send `homepage-hybrid-refresh` preview to owner.
+- If approved, merge `homepage-hybrid-refresh` into `main`.
+- If owner still feels it is too much, reduce content priority on Homepage/Programs before merge.
+
+---
+
+### 2026-06-16 — Codex — Layout QA polish + final desktop/mobile audit
+
+**Prompt:** Implement audit fixes for gaps, font sizes, mismatched boxes, and touch targets; rerun page-by-page audit
+**Status:** committed · pushed · branch `homepage-hybrid-refresh` (not merged to `main`, not live)
+**Build:** `npm run build` passes. Existing ESLint flat-config warning remains: `plugins` is in eslintrc array format, but build completes.
+
+**Files:**
+- `src/app/globals.css`
+- `src/components/AccessibilityToolbar.tsx`
+- `src/app/programs/page.tsx`
+- `src/app/reviews/page.tsx`
+- `src/app/referral/ReferralForm.tsx`
+- `src/app/feedback/page.tsx`
+- `src/app/reviews/ReviewForm.tsx`
+- `CHANGES.md`, `WORKFLOW.md`, `README.md`, `ACT_JUBILANT_BRAND_BIBLE.md`, `ACT_JUBILANT_MASTER_CONTEXT.md`, `VIDEO_SETUP_GUIDE.md`
+
+**Summary:**
+- Accessibility toolbar buttons now meet the 44px touch target on desktop and mobile.
+- Mobile "Show tools" control now meets the 44px touch target.
+- Visible checkbox/radio controls on Referral, Feedback, and Reviews are larger and easier to see (`.form-choice`), while hidden star-rating inputs remain screen-reader-only as intended.
+- Programs "Small group programs" media grid is balanced as equal cards; video now uses the same visual frame as the image cards in that grid.
+- Programs "Built around interests" text outcomes are larger and styled as readable chips/cards instead of tiny footnotes.
+- Reviews outcome/theme labels increased from tiny uppercase text to readable small labels.
+- Homepage carousel captions, identity strip, chips, and section kickers were bumped up for readability.
+
+**Audit result:**
+- Checked desktop `1440x900` and mobile `390x844`.
+- Routes checked: `/`, `/programs`, `/about`, `/services/canberra`, `/referral`, `/consultation`, `/reviews`, `/accessibility`, `/faq`, `/feedback`, `/privacy`.
+- No horizontal overflow found.
+- No visible text under 14px after fixes.
+- No clickable targets under 44px after fixes.
+- No mismatched/uneven grid rows detected.
+
+**Review notes:**
+- Homepage and Programs are still long on mobile, but this is now a content/strategy issue rather than a spacing, font, or box bug.
+- Owner should review whether further content reduction is needed before merging `homepage-hybrid-refresh` to `main`.
+
+**Next:**
+- Owner/Cursor: decide whether to reduce Homepage/Programs content further or merge current `homepage-hybrid-refresh`.
+
+---
+
+### 2026-06-16 — Cursor — Homepage hybrid refresh + site layout shells
+
+**Prompt:** Owner feedback: homepage too text-heavy; hybrid pass (same Settled Ground theme, ~35–40% less repetition); restore videos; depth links at bottom; layout system with full-width bands + constrained content; update all MDs
+**Status:** committed · pushed · branch `homepage-hybrid-refresh` (not merged to `main`, not live)
+**Build:** `npm run build` passes
+
+**Files:**
+- `src/app/page.tsx` — 7-section homepage IA + §8 depth links
+- `src/app/globals.css` — content shells, homepage utilities, pillar overlay contrast, pull-quote spacing
+- `src/app/layout.tsx` — full-width `main`; header/footer use `content-shell--home`
+- `src/components/ImageCarousel.tsx` — pause on hover/focus; `prefers-reduced-motion`; `aria-live` slide announcements
+- `src/components/AccessibilityToolbar.tsx` — aligned to content shell
+- All inner `page.tsx` routes — reading vs home shell assignment
+- `ACT_JUBILANT_BRAND_BIBLE.md`, `ACT_JUBILANT_MASTER_CONTEXT.md`, `WORKFLOW.md`, `README.md`, `VIDEO_SETUP_GUIDE.md`, `CHANGES.md`
+
+**Homepage IA (hybrid — replaces live 10-section scroll on `main`):**
+
+| # | Section | Notes |
+|---|---------|--------|
+| 1 | Hero | Locked H1 + subhead; 3 identity chips; CTAs + phone; carousel |
+| 2 | Three proof points | Familiar workers · Interest-led days · Small groups; pull-quote intro |
+| 3 | What support looks like | Image-led cards; dance-class video retained |
+| 4 | How it works | Meet → Match → Build routine |
+| 5 | Who we're best for | Full locked checklist; testimonial video retained |
+| 6 | Referrer CTA + service area chips | No duplicate final CTA |
+| 7 | Explore in more detail | Depth links only (About, Programs, Reviews, Canberra) |
+| — | Footer | Unchanged in `layout.tsx` |
+
+**Removed from homepage scroll:** standalone Problem, Approach, 7-row proof grid, duplicate final CTA, inline depth links mid-page. **Depth preserved** on `/about`, `/programs`, `/reviews`, `/services/canberra`.
+
+**Layout system (site-wide):**
+- Full-width section backgrounds; inner content constrained via `.content-shell`
+- **Home / grids:** `1160px` (`--content-home`) — homepage, About, Programs, Reviews, Canberra, header/footer
+- **Reading / forms:** `1000px` (`--content-reading`) — FAQ, Privacy, Accessibility, Consultation, Referral, Feedback
+- **Prose measure:** `720px` (`--content-prose`) — intro paragraphs and long text blocks
+
+**A11y / polish:**
+- Pillar card overlay: explicit white text + stronger scrim (fixes dark `.h3` on images)
+- Pull-quote spacing above proof cards (CSS specificity fix)
+- Carousel autoplay pauses on interaction; disabled when `prefers-reduced-motion`
+
+**Review notes:** Compare `homepage-hybrid-refresh` preview vs live `main`; owner sign-off before merge
+**Next:** Push branch → owner review → merge to `main` when approved
+
+---
+
 ### 2026-06-13 — Cursor — ui-redesign merged to main; stock images; Phase 3 pages; phone fix
 
-**Prompt:** Stock images on inner pages; Codex pre-merge fixes; merge `ui-redesign` → `main`; Settled Ground on Consultation/Reviews/FAQ; consultation form above fold; correct owner phone number; end-of-day handoff  
-**Status:** committed · pushed · **live** (`main` @ `cab9cff`)  
+**Prompt:** Stock images on inner pages; Codex pre-merge fixes; merge `ui-redesign` → `main`; Settled Ground on Consultation/Reviews/FAQ; consultation form above fold; correct owner phone number; end-of-day handoff
+**Status:** committed · pushed · **live** (`main` @ `cab9cff`)
 **Build:** `npm run build` passes · Vercel production deploy succeeded after push
 
 **Commits on `main` (since `ffc931d`):**
@@ -80,9 +204,9 @@ Both tools read and write the same local file. Production and the other tool onl
 
 ### 2026-06-12 — Cursor — Phase 1 homepage UI redesign batch (handoff for Codex audit)
 
-**Prompt:** Owner approved Phase 1 homepage UI; pause further redesign; log full batch for Codex homepage audit before About/Programs  
-**Status:** pushed · **worktree branch only** (`ui-redesign` @ `c1b20ba`) — **not on `main`**, not live  
-**Worktree:** `../act-jubilant-ui-redesign` · baseline tag `ui-baseline-2026-06-12` · commits `73376ff` + `c1b20ba`  
+**Prompt:** Owner approved Phase 1 homepage UI; pause further redesign; log full batch for Codex homepage audit before About/Programs
+**Status:** pushed · **worktree branch only** (`ui-redesign` @ `c1b20ba`) — **not on `main`**, not live
+**Worktree:** `../act-jubilant-ui-redesign` · baseline tag `ui-baseline-2026-06-12` · commits `73376ff` + `c1b20ba`
 **Build:** `npm run build` passes (Next.js 15.5.19, Turbopack)
 
 **Design-system reference used:**
@@ -160,8 +284,8 @@ Both tools read and write the same local file. Production and the other tool onl
 
 ### 2026-06-12 — Cursor — WCAG follow-ups + UI redesign worktree setup
 
-**Prompt:** WCAG form `aria-describedby` fixes; footer tap targets; set up worktree + `ui-redesign` branch for phased UI work  
-**Status:** pushed (`1b51499` on `main`; `ui-redesign` synced)  
+**Prompt:** WCAG form `aria-describedby` fixes; footer tap targets; set up worktree + `ui-redesign` branch for phased UI work
+**Status:** pushed (`1b51499` on `main`; `ui-redesign` synced)
 **Files:** `ReferralForm.tsx`, `ReviewForm.tsx`, `layout.tsx`, plus WCAG batch files; `WORKFLOW.md`
 
 **Summary:**
@@ -175,8 +299,8 @@ Both tools read and write the same local file. Production and the other tool onl
 
 ### 2026-06-12 — Cursor — WCAG 2.2 AA technical pass (#14)
 
-**Prompt:** Broader WCAG technical pass across forms, focus, metadata, and contact accuracy  
-**Status:** pushed (`1b51499` on `main`)  
+**Prompt:** Broader WCAG technical pass across forms, focus, metadata, and contact accuracy
+**Status:** pushed (`1b51499` on `main`)
 **Files:** `src/app/globals.css`, `src/app/consultation/page.tsx`, `src/app/consultation/layout.tsx`, `src/app/feedback/page.tsx`, `src/app/feedback/layout.tsx`, `src/app/faq/layout.tsx`, `src/app/privacy/page.tsx`, `src/app/privacy/layout.tsx`, `src/app/referral/ReferralForm.tsx`, `src/app/reviews/ReviewForm.tsx`, `src/components/MobileNav.tsx`, `src/app/layout.tsx`, `CHANGES.md`
 
 **Summary:**
@@ -188,15 +312,15 @@ Both tools read and write the same local file. Production and the other tool onl
 - **Mobile nav:** Removed blue focus-ring overrides; call button uses `btn-primary` + `aria-label`
 - **Logo alt (1.1.1):** Shortened to "ACT Jubilant" (header/footer)
 
-**Review notes:** Automated axe run blocked by local ChromeDriver version mismatch; manual/code audit applied. Codex to browser-check forms (Tab focus, error states) on `/referral`, `/consultation`, `/feedback`, `/reviews`  
+**Review notes:** Automated axe run blocked by local ChromeDriver version mismatch; manual/code audit applied. Codex to browser-check forms (Tab focus, error states) on `/referral`, `/consultation`, `/feedback`, `/reviews`
 **Next:** Codex audit; owner commit/push when ready; real-user usability testing remains owner-led per `/accessibility`
 
 ---
 
 ### 2026-06-12 — Codex — Quick cleanups audit (`/referral`)
 
-**Prompt:** Browser-check quick cleanups diff after Cursor batch  
-**Status:** pushed (`2143032` on `main`)  
+**Prompt:** Browser-check quick cleanups diff after Cursor batch
+**Status:** pushed (`2143032` on `main`)
 **Files:** `CHANGES.md`
 
 **Summary:**
@@ -206,15 +330,15 @@ Both tools read and write the same local file. Production and the other tool onl
 - No horizontal overflow on `/referral`
 - No broken images on the page
 
-**Verdict:** Quick cleanups good to commit/push  
+**Verdict:** Quick cleanups good to commit/push
 **Next:** Optional broader WCAG pass (#14); owner Hostinger (#13) and GA IDs (#15)
 
 ---
 
 ### 2026-06-12 — Cursor — Quick cleanups (media + Referral hint + WORKFLOW sync)
 
-**Prompt:** Quick cleanups (B): delete unused testimonial thumbnails if confirmed unused; align Referral form support hint with Services categories; sync `WORKFLOW.md` with `CHANGES.md`  
-**Status:** pushed (`2143032` on `main`)  
+**Prompt:** Quick cleanups (B): delete unused testimonial thumbnails if confirmed unused; align Referral form support hint with Services categories; sync `WORKFLOW.md` with `CHANGES.md`
+**Status:** pushed (`2143032` on `main`)
 **Files:** `public/images/testimonials/testimonialtn.png`, `public/images/testimonials/video-thumbnail.jpg`, `src/app/referral/ReferralForm.tsx`, `WORKFLOW.md`, `CHANGES.md`
 
 **Summary:**
@@ -222,15 +346,15 @@ Both tools read and write the same local file. Production and the other tool onl
 - **Referral form hint:** Updated "What supports are you looking for?" to list all 8 Services/Canberra categories (added skill development and high intensity personal activities; aligned naming)
 - **WORKFLOW.md:** Backlog, done list, suggested order, and media notes synced with current `CHANGES.md` state
 
-**Review notes:** Codex rendered audit passed (see entry above)  
+**Review notes:** Codex rendered audit passed (see entry above)
 **Next:** Optional broader WCAG pass (#14); owner Hostinger (#13) and GA IDs (#15)
 
 ---
 
 ### 2026-06-12 — Cursor — Video keyboard accessibility audit + fixes
 
-**Prompt:** Verify keyboard operability across every `SelfHostedVideo` instance (technical audit follow-up from accessibility page)  
-**Status:** pushed (`ac2641d` on `main`)  
+**Prompt:** Verify keyboard operability across every `SelfHostedVideo` instance (technical audit follow-up from accessibility page)
+**Status:** pushed (`ac2641d` on `main`)
 **Files:** `src/components/SelfHostedVideo.tsx`, `CHANGES.md`
 
 **Summary:**
@@ -238,15 +362,15 @@ Both tools read and write the same local file. Production and the other tool onl
 - **Issues found:** Poster used `div role="button"` with `tabIndex={-1}` until IntersectionObserver fired (could skip videos in tab order); focus was not moved to `<video>` on play or back to play control on end
 - **Fixes in `SelfHostedVideo.tsx`:** Native `<button>` for poster play; always in tab order; visible `focus-visible` ring; focus moves to video controls on play; focus returns to play button when video ends; loading state uses `role="status"`; poster image marked decorative (`alt=""`)
 
-**Review notes:** Manual check: Tab to each video on `/`, `/programs`, `/reviews` → Enter/Space starts play → Tab through native video controls → after video ends, focus returns to play button  
+**Review notes:** Manual check: Tab to each video on `/`, `/programs`, `/reviews` → Enter/Space starts play → Tab through native video controls → after video ends, focus returns to play button
 **Next:** Broader WCAG technical pass (#14) as needed
 
 ---
 
 ### 2026-06-12 — Codex — Accessibility page audit (standards framing + mobile)
 
-**Prompt:** Audit `/accessibility` against WCAG/cognitive accessibility framing and mobile layout after Cursor rewrite  
-**Status:** pushed (`ac2641d` on `main`)  
+**Prompt:** Audit `/accessibility` against WCAG/cognitive accessibility framing and mobile layout after Cursor rewrite
+**Status:** pushed (`ac2641d` on `main`)
 **Files:** `CHANGES.md`
 
 **Summary:**
@@ -260,15 +384,15 @@ Both tools read and write the same local file. Production and the other tool onl
 
 **Review notes:** Video keyboard follow-up addressed in `ac2641d` (native play button + focus management on all 4 instances).
 
-**Sources checked:** W3C WCAG overview; W3C cognitive accessibility guidance  
+**Sources checked:** W3C WCAG overview; W3C cognitive accessibility guidance
 **Next:** Broader site-wide WCAG technical pass (#14) as needed
 
 ---
 
 ### 2026-06-12 — Cursor — Accessibility standards page
 
-**Prompt:** Create accessibility standards pass: state WCAG 2.2 AA baseline, W3C cognitive accessibility commitments, and real-user testing framing on `/accessibility`  
-**Status:** pushed (`ac2641d` on `main`) — Codex standards audit passed (see entry above)  
+**Prompt:** Create accessibility standards pass: state WCAG 2.2 AA baseline, W3C cognitive accessibility commitments, and real-user testing framing on `/accessibility`
+**Status:** pushed (`ac2641d` on `main`) — Codex standards audit passed (see entry above)
 **Files:** `src/app/accessibility/page.tsx`, `CHANGES.md`
 
 **Summary:**
@@ -280,15 +404,15 @@ Both tools read and write the same local file. Production and the other tool onl
 - **Service accessibility:** Reworded without banned differentiators; corrected contact phone to match site footer
 - **Feedback path:** Link to `/feedback` plus phone and email
 
-**Review notes:** Codex audit passed for framing and mobile layout  
+**Review notes:** Codex audit passed for framing and mobile layout
 **Next:** Owner commit/push; technical WCAG pass including video keyboard verification on all video components
 
 ---
 
 ### 2026-06-12 — Cursor — Reviews, footer, JSON-LD, media pass, and push
 
-**Prompt:** Reviews rewrite; footer + JSON-LD; form a11y; media compression; remove pexels stock images; commit and push  
-**Status:** pushed (`a51f2e4` on `main`)  
+**Prompt:** Reviews rewrite; footer + JSON-LD; form a11y; media compression; remove pexels stock images; commit and push
+**Status:** pushed (`a51f2e4` on `main`)
 **Files:** `src/app/reviews/page.tsx`, `src/app/reviews/ReviewForm.tsx`, `src/app/layout.tsx`, `src/app/page.tsx`, `src/app/referral/ReferralForm.tsx`, `public/images/gallery/*`, `public/images/testimonials/thumbnail.jpg`, `WORKFLOW.md`, `ACT_JUBILANT_BRAND_BIBLE.md`, `CHANGES.md`
 
 **Summary:**
@@ -300,16 +424,16 @@ Both tools read and write the same local file. Production and the other tool onl
 - **Stock cleanup:** Removed 10 unused `pexels-*` images from gallery, team, services, and facilities folders
 - **WORKFLOW.md:** Site map and backlog synced with current implementation state
 
-**Review notes:** `/reviews`, footer, homepage + reviews video poster, referral/reviews form consent validation  
-**Remaining:** `GA_MEASUREMENT_ID` and `your-google-verification-code` still placeholders  
+**Review notes:** `/reviews`, footer, homepage + reviews video poster, referral/reviews form consent validation
+**Remaining:** `GA_MEASUREMENT_ID` and `your-google-verification-code` still placeholders
 **Next:** Accessibility standards pass (#14); Hostinger transfer (#13) before SMTP forms; GA + Search Console IDs (#15)
 
 ---
 
 ### 2026-06-12 — Cursor — Referral page + Services scope confirmation
 
-**Prompt:** Complete step one — push Referral page; fix Nilima leadership photo path  
-**Status:** pushed (`0f493c0` on `main`)  
+**Prompt:** Complete step one — push Referral page; fix Nilima leadership photo path
+**Status:** pushed (`0f493c0` on `main`)
 **Files:** `src/app/referral/page.tsx`, `src/app/referral/ReferralForm.tsx`, `src/app/about/page.tsx`, `public/images/team/Nilima.jpeg`, `ACT_JUBILANT_BRAND_BIBLE.md`
 
 **Summary:**
@@ -318,7 +442,7 @@ Both tools read and write the same local file. Production and the other tool onl
 - **Nilima photo:** Asset renamed `dd-2.jpeg` → `Nilima.jpeg`; About leadership card path fixed
 - **Services scope (prior commit `a290df7`):** Owner confirmed Support coordination + High intensity daily personal activities; both added to `/services/canberra`
 
-**Review notes:** `/referral`, `/about` (Nilima photo), `/services/canberra` (8 categories)  
+**Review notes:** `/referral`, `/about` (Nilima photo), `/services/canberra` (8 categories)
 **Next:** Reviews page rewrite; footer + JSON-LD; footer link to Services (discussed, not yet added)
 - Add accessibility standards pass to backlog: verify the site against WCAG 2.2 AA, W3C cognitive accessibility guidance, and real-user usability testing where possible with people who reflect ACT Jubilant's audience.
 
@@ -326,8 +450,8 @@ Both tools read and write the same local file. Production and the other tool onl
 
 ### 2026-06-12 — Codex — Referral audit and remaining Brand Bible backlog
 
-**Prompt:** Review the Referral page against the Brand Bible, then list what build requirements remain  
-**Status:** pushed (referral content live `0f493c0`)  
+**Prompt:** Review the Referral page against the Brand Bible, then list what build requirements remain
+**Status:** pushed (referral content live `0f493c0`)
 **Files:** `CHANGES.md`
 
 **Summary:**
@@ -353,8 +477,8 @@ Both tools read and write the same local file. Production and the other tool onl
 
 ### 2026-06-12 — Owner + Codex — Domain transfer before SMTP forms
 
-**Prompt:** Plan working Referral and Consultation form submissions using Hostinger SMTP, but transfer domain from VentraIP to Hostinger first  
-**Status:** local only  
+**Prompt:** Plan working Referral and Consultation form submissions using Hostinger SMTP, but transfer domain from VentraIP to Hostinger first
+**Status:** local only
 **Files:** `CHANGES.md`
 
 **Summary:**
@@ -370,8 +494,8 @@ Both tools read and write the same local file. Production and the other tool onl
 
 ### 2026-06-12 — Cursor — About, Services, mobile UX, and site polish
 
-**Prompt:** Complete Cursor batch and push — About page, Services/Canberra, mobile video, a11y toolbar, David clarification, leadership photos  
-**Status:** pushed  
+**Prompt:** Complete Cursor batch and push — About page, Services/Canberra, mobile video, a11y toolbar, David clarification, leadership photos
+**Status:** pushed
 **Files:** `src/app/about/page.tsx`, `src/app/services/canberra/page.tsx`, `src/app/page.tsx`, `src/app/layout.tsx`, `src/components/SelfHostedVideo.tsx`, `src/components/AccessibilityToolbar.tsx`, `src/components/HashScroll.tsx`, `src/components/MobileNav.tsx`, `public/images/team/*`, `ACT_JUBILANT_BRAND_BIBLE.md`, `ACT_JUBILANT_MASTER_CONTEXT.md`, `CHANGES.md`
 
 **Summary:**
@@ -382,15 +506,15 @@ Both tools read and write the same local file. Production and the other tool onl
 - **Accessibility toolbar:** Collapsed by default on mobile
 - **HashScroll:** Anchor scroll fix for cross-page hash links (e.g. `/about#who-were-best-for`)
 
-**Review notes:** `/about`, `/services/canberra`, homepage §6–7, mobile toolbar  
+**Review notes:** `/about`, `/services/canberra`, homepage §6–7, mobile toolbar
 **Next:** Media/performance pass (#5), Referral content, Reviews placeholders, JSON-LD
 
 ---
 
 ### 2026-06-12 — Codex — Mobile fixes (audit items #1–3)
 
-**Prompt:** Fix mobile menu overlay, carousel touch targets, and dyslexia debug outline  
-**Status:** pushed  
+**Prompt:** Fix mobile menu overlay, carousel touch targets, and dyslexia debug outline
+**Status:** pushed
 **Files:** `src/components/MobileNav.tsx`, `src/components/ImageCarousel.tsx`, `src/app/globals.css`
 
 **Summary:**
@@ -398,15 +522,15 @@ Both tools read and write the same local file. Production and the other tool onl
 - **Carousel dots:** Touch targets enlarged to 44×44px (`h-11 w-11`); visual dot remains small inside button
 - **Dyslexia mode:** Removed temporary debug dashed outline from `globals.css`
 
-**Review notes:** On phone: open Menu (full screen, not side drawer), tap carousel dots on homepage hero, toggle Dyslexia-friendly mode (no blue outline)  
+**Review notes:** On phone: open Menu (full screen, not side drawer), tap carousel dots on homepage hero, toggle Dyslexia-friendly mode (no blue outline)
 **Next:** Owner review → commit/push. Cursor: accessibility toolbar UX (#4), then media review (#5)
 
 ---
 
 ### 2026-06-12 — Codex — Mobile viewport audit
 
-**Prompt:** Audit the website on mobile viewport and recommend what Cursor should handle  
-**Status:** local only  
+**Prompt:** Audit the website on mobile viewport and recommend what Cursor should handle
+**Status:** local only
 **Files:** `CHANGES.md`
 
 **Summary:**
@@ -459,8 +583,8 @@ Both tools read and write the same local file. Production and the other tool onl
 
 ### 2026-06-11 — Cursor — Homepage, Programs, docs, and polish
 
-**Prompt:** Full site rewrite per Brand Bible; doc sync; em dash cleanup; push to GitHub  
-**Status:** pushed (`399f30b` on `main`)  
+**Prompt:** Full site rewrite per Brand Bible; doc sync; em dash cleanup; push to GitHub
+**Status:** pushed (`399f30b` on `main`)
 **Files:** `src/app/page.tsx`, `src/app/programs/page.tsx`, `src/app/layout.tsx`, `src/app/globals.css`, `src/app/actions.ts`, `src/app/reviews/page.tsx`, `ACT_JUBILANT_BRAND_BIBLE.md`, `ACT_JUBILANT_MASTER_CONTEXT.md`, `WORKFLOW.md`
 
 **Summary:**
@@ -471,15 +595,15 @@ Both tools read and write the same local file. Production and the other tool onl
 - Anchor scroll offset added (`--header-offset`) so `/#how-support-works` clears sticky header
 - Strategy docs committed; site code pushed
 
-**Review notes:** Check `/`, `/programs`, anchor link from homepage, mobile layout (Codex auditing)  
+**Review notes:** Check `/`, `/programs`, anchor link from homepage, mobile layout (Codex auditing)
 **Next:** Media review from owner → About page architecture
 
 ---
 
 ### 2026-06-11 — Cursor — Workflow setup
 
-**Prompt:** Create shared Cursor + Codex workflow  
-**Status:** pushed  
+**Prompt:** Create shared Cursor + Codex workflow
+**Status:** pushed
 **Files:** `WORKFLOW.md`, `CHANGES.md`
 
 **Summary:**

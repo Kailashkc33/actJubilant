@@ -45,12 +45,12 @@ const FAQ_ITEMS = [
 
 export default function FAQPage() {
   return (
-    <div className="max-w-4xl">
+    <div className="content-shell content-shell--reading">
       <section aria-labelledby="faq-opener-title" className="py-8 md:py-12">
         <h1 id="faq-opener-title" className="h2 text-balance">
           Frequently Asked Questions
         </h1>
-        <p className="mt-4 text-lg text-[var(--text-muted)]">
+        <p className="content-measure mt-4 text-lg text-[var(--text-muted)]">
           Practical answers about NDIS support, service areas, and how to get started with ACT
           Jubilant in Canberra and the ACT.
         </p>

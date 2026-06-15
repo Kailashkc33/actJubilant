@@ -22,6 +22,50 @@ This statement should influence every page, message, advertisement, referral con
 
 ---
 
+# IMPLEMENTATION QA BASELINE
+
+Date: 2026-06-16
+
+Branch: `homepage-hybrid-refresh`
+
+Codex audited the current page layouts at desktop `1440x900` and mobile `390x844`.
+
+Routes checked:
+
+- `/`
+- `/programs`
+- `/about`
+- `/services/canberra`
+- `/referral`
+- `/consultation`
+- `/reviews`
+- `/accessibility`
+- `/faq`
+- `/feedback`
+- `/privacy`
+
+Current technical layout result:
+
+- No horizontal overflow
+- No visible text under 14px
+- No clickable targets under 44px
+- No mismatched or uneven grid rows detected
+- `npm run build` passes
+
+Remaining review point:
+
+Homepage and Programs are still long on mobile. If the owner still feels the site is "too much," solve that by reducing or prioritising content, not by making fonts smaller or tightening spacing.
+
+Owner-review cleanup after this baseline:
+
+- Homepage "How it works" should remain a simple process section: Meet, Match, Build routine.
+- Do not add unrelated proof cards underneath that process unless the section is renamed or redesigned.
+- Programs interest examples should show image first with caption/content below; do not place dense text overlays over participant/activity photos.
+- Transport & community access belongs with the Programs interest examples.
+- Avoid duplicating the same Programs media in adjacent sections.
+
+---
+
 # FOUNDER STORY
 
 Founder: Manish Gupta
@@ -702,7 +746,24 @@ Version 2.0 — All homepage sections locked (March 2026)
 
 This section documents the approved homepage information architecture, persuasion strategy, design decisions, and locked copy for the ACT Jubilant website (`actjubilant.com.au`). Use alongside the Website Review findings and `ACT_JUBILANT_MASTER_CONTEXT.md`.
 
-**Status:** All homepage sections (1–10) copy locked. Ready for implementation in `src/app/page.tsx`.
+**Status:** Original 10-section copy locked (March 2026). **Current implementation target:** hybrid 7-section IA below (branch `homepage-hybrid-refresh`, June 2026). Locked claims unchanged.
+
+**June 2026 hybrid refresh (branch `homepage-hybrid-refresh`):** Homepage IA consolidated from 10 scroll sections to 7 scannable sections + depth-links band. **All locked claims preserved** (hero H1/subhead, full fit checklist, referrer positioning, both homepage videos). Visual theme unchanged (Settled Ground). Depth content on `/about`, `/programs`, `/reviews`, `/services/canberra`.
+
+| # | Hybrid section | Consolidates former sections | Notes |
+|---|----------------|------------------------------|-------|
+| 1 | Hero | §1 Hero | Locked H1 + subhead; identity as 3 chips; CTAs + phone; carousel |
+| 2 | Three proof points | §2 Problem + §3 Approach (distilled) | Pull-quote intro; Familiar workers · Interest-led days · Small groups |
+| 3 | What support looks like | §5 What meaningful support looks like | Image-led cards; **dance-class video retained** |
+| 4 | How it works | §4 How support works here | 3 steps only: Meet → Match → Build routine |
+| 5 | Who we're best for | §6 + §7 (partial) | Full locked checklist; **testimonial video retained** |
+| 6 | Referrer CTA + service areas | §8 Referrers + §9 Service areas | Service area chips; no duplicate final CTA |
+| 7 | Explore in more detail | — (new) | Depth links only: About, Programs, Reviews, Canberra |
+| — | Footer | — | Unchanged in `layout.tsx` |
+
+**Removed from homepage scroll:** standalone Problem section, full Approach section, 7-row proof grid, standalone Stories copy block, standalone Service areas section, duplicate final CTA, inline mid-page depth links.
+
+**Site layout (June 2026):** Full-width section backgrounds (`.home-band`); inner content in `.content-shell--home` (1160px). Reading pages use `.content-shell--reading` (1000px) and `.content-measure` (720px) for prose. See `WORKFLOW.md` → Layout system.
 
 ---
 
@@ -742,7 +803,9 @@ Services are secondary; belief comes first.
 
 ---
 
-## SECTION ORDER (APPROVED)
+## SECTION ORDER (APPROVED — original 10-section architecture)
+
+> **Implementation note (June 2026):** Live `main` still uses this structure. Hybrid refresh consolidates to 7 sections + depth band — see table at top of Homepage Guide. Locked copy below remains the source of truth for claims; hybrid pass distils repetition only.
 
 | # | Section | Funnel role | Copy status |
 |---|---------|-------------|-------------|

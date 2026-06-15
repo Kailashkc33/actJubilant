@@ -5,80 +5,39 @@ import Image from "next/image";
 import SelfHostedVideo from "../components/SelfHostedVideo";
 import ImageCarousel from "../components/ImageCarousel";
 
-const SERVICE_AREAS = [
-  "Gungahlin",
-  "Belconnen",
-  "Civic",
-  "Woden",
-  "Tuggeranong",
-  "Weston Creek",
-  "Queanbeyan",
+const HERO_IDENTITY = [
+  "Canberra & the ACT",
+  "Boutique, relationship-led provider",
+  "Engagement, routine, and familiar workers",
 ] as const;
 
-const PROOF_GROUPS = [
+const PROOF_POINTS = [
   {
-    id: "participant-experience",
-    title: "Participant experience",
-    items: [
-      {
-        title: "Participant-led matching",
-        line: "Participants choose who supports them through introductions, trial shifts, and their own feedback.",
-      },
-      {
-        title: "Consistent support teams",
-        line: "Stable teams mean less time adjusting to new faces and more time building trust.",
-      },
-      {
-        title: "Participant-driven activities",
-        line: "Programs are shaped around each person's interests and hobbies, not a standard catalogue.",
-      },
-    ],
+    title: "Familiar workers",
+    line: "The same support team, week after week — less time starting over.",
   },
   {
-    id: "supporting-long-term-goals",
-    title: "Supporting long-term goals",
-    subtitle: "This works alongside plans and therapy.",
-    items: [
-      {
-        title: "Therapy reinforced through daily activities",
-        line: "Everyday activities reinforce mobility, independence, and confidence between therapy appointments.",
-      },
-    ],
+    title: "Interest-led days",
+    line: "Activities shaped around hobbies, goals, and what matters to each person.",
   },
   {
-    id: "support-that-stays-personal",
-    title: "Support that stays personal",
-    subtitle: "Support built on knowing the person first.",
-    items: [
-      {
-        title: "Founder-led onboarding",
-        line: "Before matching, our founder learns each person's communication style, preferences, routine, and goals.",
-        emphasis: true,
-      },
-      {
-        title: "Coordinator communication",
-        line: "Regular updates and observations keep referrals collaborative, not disconnected.",
-      },
-      {
-        title: "Small structured groups",
-        line: "Group programs stay around six participants, designed for connection, not crowd management.",
-      },
-    ],
+    title: "Small groups",
+    line: "Around six participants — connection and routine, not crowd management.",
   },
 ] as const;
 
-const APPROACH_POINTS = [
+const HOW_IT_WORKS = [
   {
-    title: "Interests, hobbies, and routine",
-    line: "Support is structured around interests, hobbies, routine, and relationships — at home and in the community.",
+    step: "Meet",
+    line: "We learn interests, routine, communication style, and what a good day feels like.",
   },
   {
-    title: "Active engagement",
-    line: "Workers actively engage people in activities that build confidence, connection, and pride — not only accompany them.",
+    step: "Match",
+    line: "Participants meet workers through introductions, trial shifts, and their own feedback.",
   },
   {
-    title: "Engagement over task lists",
-    line: "Built around engagement and consistency, not task lists and constant changes.",
+    step: "Build routine",
+    line: "Structured support runs consistently at home and in the community.",
   },
 ] as const;
 
@@ -115,34 +74,30 @@ const HERO_CAROUSEL = [
   },
 ] as const;
 
-const MEANINGFUL_PILLARS = [
+const SUPPORT_LOOKS_LIKE = [
   {
     title: "Hobbies & interests",
-    body: "Someone who takes pride in what they create and pursue, whether that's gardening, art, cooking, or an interest that's uniquely their own.",
+    caption: "Pride in what they create",
     image: "/images/gallery/art-workshop-group-feb-2026.jpg",
     alt: "Participant at a group art workshop with paints and supplies",
-    caption: "Pride in what they create",
   },
   {
     title: "Routine & structure",
-    body: "Someone whose week has a rhythm they can count on, with familiar activities, regular outings, and days that feel intentional rather than empty.",
+    caption: "A week with rhythm and purpose",
     image: "/images/gallery/wheelchair-outdoor-outing-nov-2025.jpg",
     alt: "Regular outdoor outing with familiar support workers",
-    caption: "A week with rhythm and purpose",
   },
   {
     title: "Community participation",
-    body: "Someone who belongs in everyday places, catching up with friends, visiting local venues, and staying connected to community life.",
+    caption: "Belonging in everyday places",
     image: "/images/gallery/restaurant-group-meal-dec-2025.jpg",
     alt: "Group meal at a restaurant with friends and support",
-    caption: "Belonging in everyday places",
   },
   {
     title: "Skill & identity building",
-    body: "Someone growing in confidence and recognised for what they learn, build, and contribute, not only for what they need help with.",
+    caption: "Confidence and recognition",
     image: "/images/gallery/participant-home-flowers-jan-2026.jpg",
     alt: "Participant at home, recognised and valued in their own space",
-    caption: "Confidence and recognition",
   },
 ] as const;
 
@@ -166,49 +121,28 @@ const HONEST_BOUNDARIES = [
   "Support is needed without a focus on interests, routine, or meaningful daily participation",
 ] as const;
 
-const STORY_OUTCOMES = [
-  "Better routine",
-  "Consistent support",
-  "Confidence and independence",
-  "Pride and identity",
+const REFERRER_POINTS = [
+  "Clear fit guide — engagement, routine, and consistent workers",
+  "Goals reinforced between therapy appointments through everyday activities",
+  "Collaborative referrals with regular coordinator updates",
 ] as const;
 
-/** Factual identity cues from locked positioning — not new marketing claims */
-const HERO_IDENTITY = [
-  "Canberra & the ACT",
-  "Boutique, relationship-led provider",
-  "Engagement, routine, and familiar workers",
-] as const;
-
-const PROBLEM_INSIGHTS = [
-  {
-    id: "passive-routines",
-    title: "Passive routines",
-    summary: "Long stretches without structure can leave a day feeling empty.",
-    detail:
-      "Support may be available, but without meaningful activity or rhythm, hours can still pass without real engagement.",
-  },
-  {
-    id: "changing-workers",
-    title: "Changing workers",
-    summary: "Frequent worker changes disrupt trust and routine.",
-    detail:
-      "Familiar support helps people feel safe. Starting over with someone new makes it harder to build that steadiness.",
-  },
-  {
-    id: "feeling-managed",
-    title: "Feeling managed, not seen",
-    summary: "Support can feel like tasks and supervision, not being seen as a person.",
-    detail:
-      "When the focus stays on what needs doing, it is easier to miss who someone is and what they care about.",
-  },
+const SERVICE_AREAS = [
+  "Gungahlin",
+  "Belconnen",
+  "Civic",
+  "Woden",
+  "Tuggeranong",
+  "Weston Creek",
+  "Queanbeyan",
 ] as const;
 
 export default function Home() {
   return (
     <div className="homepage">
-      {/* 1. Hero — sage band, calm and open */}
+      {/* 1. Hero */}
       <section aria-labelledby="hero-title" className="home-hero home-band">
+        <div className="content-shell content-shell--home">
         <div className="grid gap-8 md:grid-cols-2 md:items-center md:gap-12">
           <div className="home-hero__media order-1 md:order-2">
             <ImageCarousel
@@ -230,20 +164,13 @@ export default function Home() {
               Structured, relationship-based support in Canberra for participants who benefit
               from engagement, routine, and familiar support workers.
             </p>
-            <ul className="home-hero__identity" aria-label="Who we are">
+            <ul className="home-hero__chips mt-5" aria-label="Who we are">
               {HERO_IDENTITY.map((item) => (
-                <li key={item} className="home-hero__identity-item">
-                  <span className="home-hero__identity-mark" aria-hidden="true">
-                    ✓
-                  </span>
+                <li key={item} className="home-hero__chip">
                   {item}
                 </li>
               ))}
             </ul>
-            <p className="mt-5 text-lg leading-relaxed">
-              We help people build confidence and pride through the activities, relationships,
-              and routines that matter to them.
-            </p>
             <div className="home-hero__actions mt-8">
               <Link href="/referral" className="btn-primary">
                 Make a Referral
@@ -265,177 +192,77 @@ export default function Home() {
             </p>
           </div>
         </div>
+        </div>
       </section>
 
-      {/* 2. Problem — white surface */}
+      {/* 2. Three proof points */}
       <section
-        aria-labelledby="problem-title"
+        aria-labelledby="proof-points-title"
         className="home-section home-section--surface home-band"
       >
-        <h2 id="problem-title" className="h2 max-w-3xl">
-          Support alone doesn&apos;t create a meaningful day
+        <div className="content-shell content-shell--home">
+        <h2 id="proof-points-title" className="sr-only">
+          What makes our support different
         </h2>
-        <p className="mt-4 max-w-3xl text-lg text-[var(--text-muted)]">
-          Many participants receive support, but still experience days without enough
-          engagement, continuity, or connection.
-        </p>
-        <ul className="home-insight-grid mt-8" role="list">
-          {PROBLEM_INSIGHTS.map((item) => (
-            <li key={item.id}>
-              <article className="home-insight-card" aria-labelledby={`${item.id}-title`}>
-                <h3 id={`${item.id}-title`} className="home-insight-card__title">
-                  {item.title}
-                </h3>
-                <p className="home-insight-card__lede">{item.summary}</p>
-                <details className="home-insight-card__details">
-                  <summary className="home-insight-card__toggle">
-                    <span className="sr-only">{item.title}: </span>
-                    Read more
-                  </summary>
-                  <p className="home-insight-card__detail">{item.detail}</p>
-                </details>
+        <blockquote className="home-pull-quote home-pull-quote--compact text-balance">
+          Support should not simply fill time. It should help people build meaningful daily life.
+        </blockquote>
+        <ul className="home-proof-grid" role="list">
+          {PROOF_POINTS.map((point) => (
+            <li key={point.title}>
+              <article className="card home-proof-card home-card-interactive h-full">
+                <h3 className="home-proof-card__title">{point.title}</h3>
+                <p className="home-proof-card__line">{point.line}</p>
               </article>
             </li>
           ))}
         </ul>
+        </div>
       </section>
 
-      {/* 3. Our approach — warm light band */}
+      {/* 3. What support looks like — image-led */}
       <section
-        aria-labelledby="approach-title"
-        className="home-section home-section--approach home-band"
-      >
-        <div className="max-w-3xl">
-          <h2 id="approach-title" className="h2">
-            Our approach
-          </h2>
-          <blockquote className="home-pull-quote mt-6 text-balance">
-            Support should not simply fill time.
-            <br />
-            It should help people build meaningful daily life.
-          </blockquote>
-          <ul className="home-approach-points mt-6" role="list">
-            {APPROACH_POINTS.map((point) => (
-              <li key={point.title} className="home-approach-point">
-                <span className="home-approach-point__mark" aria-hidden="true">
-                  ✓
-                </span>
-                <div>
-                  <p className="home-approach-point__title">{point.title}</p>
-                  <p className="home-approach-point__line">{point.line}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
-          <p className="home-callout mt-6">
-            We help people be recognised for what they build, learn, and contribute, not only for
-            what they need support with.
-          </p>
-          <p className="mt-5">
-            <a href="#how-support-works" className="home-depth-link">
-              Here&apos;s how that works in practice ↓
-            </a>
-          </p>
-        </div>
-      </section>
-
-      {/* 4. How support works — short slate intro, proof on light surface */}
-      <section id="how-support-works" aria-labelledby="how-support-works-title">
-        <div className="home-slate-intro home-band">
-          <h2 id="how-support-works-title" className="h2 max-w-3xl">
-            How support works here
-          </h2>
-          <p className="home-slate-intro__lead">
-            The difference isn&apos;t one activity or one program. It&apos;s how support is
-            designed from the beginning.
-          </p>
-        </div>
-        <div className="home-slate-body home-band">
-          <div className="home-support-model">
-            {PROOF_GROUPS.map((group) => (
-              <section
-                key={group.id}
-                className="home-support-group"
-                aria-labelledby={`${group.id}-heading`}
-              >
-                <div className="home-support-group__header">
-                  <h3 id={`${group.id}-heading`} className="home-support-group__title">
-                    {group.title}
-                  </h3>
-                  {"subtitle" in group && group.subtitle && (
-                    <p className="home-support-group__subtitle">{group.subtitle}</p>
-                  )}
-                </div>
-                <ul
-                  className={`home-support-list${
-                    group.items.length === 3 ? " home-support-list--triple" : ""
-                  }`}
-                  role="list"
-                >
-                  {group.items.map((item, index) => (
-                    <li key={item.title}>
-                      <div
-                        className={`home-support-row${
-                          "emphasis" in item && item.emphasis ? " home-support-row--emphasis" : ""
-                        }`}
-                      >
-                        <span className="home-support-row__mark" aria-hidden="true">
-                          {String(index + 1).padStart(2, "0")}
-                        </span>
-                        <div className="home-support-row__content">
-                          <h4 className="home-support-row__title">{item.title}</h4>
-                          <p className="home-support-row__line">{item.line}</p>
-                        </div>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </section>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 5. What meaningful support looks like — sage band */}
-      <section
-        aria-labelledby="meaningful-support-title"
+        aria-labelledby="support-looks-title"
         className="home-section home-section--sage home-band"
       >
-        <h2 id="meaningful-support-title" className="h2 max-w-3xl">
-          What meaningful support looks like
+        <div className="content-shell content-shell--home">
+        <p className="home-section-kicker">Participant life</p>
+        <h2 id="support-looks-title" className="h2 content-measure">
+          What support looks like
         </h2>
-        <p className="mt-4 max-w-3xl text-lg text-[var(--text-muted)]">
-          Picture a week that feels purposeful, where support helps someone build a life they
-          recognise as their own.
+        <p className="content-measure mt-3 text-[var(--text-muted)]">
+          Picture a week that feels purposeful — built around interests, routine, and connection.
         </p>
-        <div className="mt-10 grid gap-5 md:grid-cols-2 md:gap-6">
-          {MEANINGFUL_PILLARS.map((pillar) => (
-            <article key={pillar.title} className="card home-pillar-card card--on-band">
+        <div className="mt-8 grid gap-5 sm:grid-cols-2 md:gap-6">
+          {SUPPORT_LOOKS_LIKE.map((item) => (
+            <article
+              key={item.title}
+              className="card home-pillar-card home-pillar-card--compact home-card-interactive card--on-band"
+            >
               <div className="home-pillar-card__image">
                 <Image
-                  src={pillar.image}
-                  alt={pillar.alt}
+                  src={item.image}
+                  alt={item.alt}
                   fill
                   className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
+                  sizes="(max-width: 640px) 100vw, 50vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent" />
-                <p className="home-pillar-card__caption">{pillar.caption}</p>
-              </div>
-              <div className="p-6">
-                <h3 className="h3 text-xl md:text-xl">{pillar.title}</h3>
-                <p className="mt-2 text-[var(--text-muted)]">{pillar.body}</p>
+                <div className="home-pillar-card__scrim" aria-hidden="true" />
+                <div className="home-pillar-card__title-overlay">
+                  <h3 className="h3">{item.title}</h3>
+                  <p>{item.caption}</p>
+                </div>
               </div>
             </article>
           ))}
         </div>
-        <div className="mt-12 max-w-4xl">
+        <div className="mx-auto mt-12 max-w-4xl rounded-[var(--radius-lg)] border border-[var(--border-subtle)] bg-[var(--bg-surface)] p-5 shadow-[var(--shadow-card)] md:p-6">
           <h3 className="text-lg font-semibold">Group programs in action</h3>
           <p className="mt-2 text-[var(--text-muted)]">
             An example of the kind of community group activity we can help arrange or
             support when it suits a participant&apos;s interests and goals.
           </p>
-          <div className="mt-5 mx-auto max-w-sm">
+          <div className="mx-auto mt-5 max-w-md">
             <SelfHostedVideo
               srcMp4="/videos/community-dance-class-event-sep-2025-portrait.mp4"
               title="Staying engaged together"
@@ -447,27 +274,51 @@ export default function Home() {
             />
           </div>
         </div>
-        <p className="mt-8">
-          <Link href="/programs" className="home-depth-link">
-            Explore our programs
-          </Link>
-        </p>
+        </div>
       </section>
 
-      {/* 6. Who we're best for — white surface */}
+      {/* 4. How it works */}
+      <section
+        aria-labelledby="how-it-works-title"
+        className="home-section home-section--surface home-band"
+      >
+        <div className="content-shell content-shell--home">
+        <p className="home-section-kicker">Getting started</p>
+        <h2 id="how-it-works-title" className="h2">
+          How it works
+        </h2>
+        <p className="content-measure mt-3 text-[var(--text-muted)]">
+          A simple path from first conversation to familiar support that runs consistently.
+        </p>
+        <ol className="home-steps mt-8">
+          {HOW_IT_WORKS.map((item) => (
+            <li key={item.step}>
+              <article className="card home-step home-card-interactive h-full">
+                <h3 className="home-step__label">{item.step}</h3>
+                <p className="home-step__line">{item.line}</p>
+              </article>
+            </li>
+          ))}
+        </ol>
+        </div>
+      </section>
+
+      {/* 5. Who we're best for */}
       <section
         id="who-were-best-for"
         aria-labelledby="best-for-title"
-        className="home-section home-section--surface home-band"
+        className="home-section home-band"
       >
-        <h2 id="best-for-title" className="h2 max-w-3xl">
+        <div className="content-shell content-shell--home">
+        <p className="home-section-kicker">Fit guide</p>
+        <h2 id="best-for-title" className="h2 content-measure">
           Who we&apos;re best for
         </h2>
-        <p className="mt-4 max-w-3xl text-lg text-[var(--text-muted)]">
+        <p className="content-measure mt-3 text-[var(--text-muted)]">
           The right fit matters for participants, families, and referrers alike.
         </p>
         <div className="mt-10 grid gap-6 lg:grid-cols-2 lg:gap-8">
-          <div className="card card--on-band">
+          <div className="card card--on-band home-card-interactive">
             <h3 className="h3 text-xl md:text-xl">A strong fit when the participant…</h3>
             <ul className="mt-5 space-y-3">
               {STRONG_FIT.map((item) => (
@@ -491,7 +342,7 @@ export default function Home() {
               ))}
             </ul>
           </div>
-          <div className="card card--muted">
+          <div className="card card--muted home-card-interactive">
             <h3 className="h3 text-xl md:text-xl">We may not be the best fit when…</h3>
             <ul className="mt-5 space-y-3">
               {HONEST_BOUNDARIES.map((item) => (
@@ -505,28 +356,12 @@ export default function Home() {
             </ul>
           </div>
         </div>
-        <p className="mt-10 max-w-3xl text-lg leading-relaxed">
+        <p className="content-measure mt-8 leading-relaxed">
           We&apos;re honest about fit because the right match matters more than volume, and
           we&apos;ll gladly help you think through alternatives when we&apos;re not the right
           provider.
         </p>
-        <p className="mt-5">
-          <Link href="/about#who-were-best-for" className="home-depth-link">
-            Learn more about who we&apos;re best for
-          </Link>
-        </p>
-      </section>
-
-      {/* 7. Stories — default stone page bg */}
-      <section aria-labelledby="stories-title" className="home-section">
-        <h2 id="stories-title" className="h2 max-w-3xl">
-          Stories from participants and families
-        </h2>
-        <p className="mt-4 max-w-3xl text-lg text-[var(--text-muted)]">
-          Real experiences from people building routine, engagement, and a daily life they
-          recognise as their own.
-        </p>
-        <div className="mt-10 max-w-4xl rounded-[var(--radius-lg)] border border-[var(--border-subtle)] bg-[var(--bg-surface)] p-5 shadow-[var(--shadow-card)] md:p-6">
+        <div className="mx-auto mt-10 max-w-4xl rounded-[var(--radius-lg)] border border-[var(--border-subtle)] bg-[var(--bg-surface)] p-5 shadow-[var(--shadow-card)] md:p-6">
           <h3 className="text-lg font-semibold">Building a routine that feels meaningful</h3>
           <p className="mt-2 text-[var(--text-muted)]">
             Hear how structured support around interests and routine helps someone stay
@@ -542,58 +377,33 @@ export default function Home() {
             />
           </div>
         </div>
-        <p className="mt-10 text-lg font-medium">
-          The outcomes people talk about most often:
-        </p>
-        <ul className="mt-4 flex flex-wrap gap-3" aria-label="Common outcome themes">
-          {STORY_OUTCOMES.map((outcome) => (
-            <li key={outcome} className="home-pill">
-              {outcome}
-            </li>
-          ))}
-        </ul>
-        <p className="mt-8">
-          <Link href="/reviews" className="btn-secondary">
-            Read more stories
-          </Link>
-        </p>
+        </div>
       </section>
 
-      {/* 8. Referrers — sage CTA band */}
-      <section aria-labelledby="referrers-title" className="home-section home-section--sage home-band">
-        <div className="home-referrer-band max-w-3xl">
+      {/* 6. Referrer CTA + service areas */}
+      <section
+        aria-labelledby="referrers-title"
+        className="home-section home-section--sage home-band"
+      >
+        <div className="content-shell content-shell--home">
+        <div className="home-referrer-band">
+          <p className="home-section-kicker">For professionals</p>
           <h2 id="referrers-title" className="h2">
             For support coordinators and referrers
           </h2>
-          <p className="mt-4 text-lg">
+          <p className="mt-3 text-[var(--text-muted)]">
             We work alongside coordinators and therapists, not around them.
           </p>
-          <dl className="mt-6 space-y-5">
-            <div>
-              <dt className="font-semibold">You know who fits</dt>
-              <dd className="mt-1 text-[var(--text-muted)]">
-                Participants seeking engagement, routine, and consistent workers.{" "}
-                <a href="#who-were-best-for" className="home-depth-link text-base">
-                  see who we&apos;re best for above
-                </a>
-                .
-              </dd>
-            </div>
-            <div>
-              <dt className="font-semibold">Goals are reinforced between appointments</dt>
-              <dd className="mt-1 text-[var(--text-muted)]">
-                Everyday activities can support mobility, independence, and confidence while
-                complementing therapy and support plans.
-              </dd>
-            </div>
-            <div>
-              <dt className="font-semibold">Referrals stay collaborative</dt>
-              <dd className="mt-1 text-[var(--text-muted)]">
-                Regular updates and observations, so you&apos;re informed, not left wondering how
-                things are going.
-              </dd>
-            </div>
-          </dl>
+          <ul className="mt-5 space-y-2">
+            {REFERRER_POINTS.map((item) => (
+              <li key={item} className="flex gap-3 text-sm md:text-base">
+                <span className="home-accent-mark shrink-0" aria-hidden="true">
+                  ✓
+                </span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
           <div className="mt-8">
             <Link href="/referral" className="btn-primary">
               Make a Referral
@@ -602,49 +412,59 @@ export default function Home() {
               We&apos;ll respond within 1–2 business days.
             </p>
           </div>
+          <div className="mt-8 border-t border-[var(--sage-mid)] pt-6">
+            <p className="text-sm font-semibold text-[var(--text)]">Service areas</p>
+            <p className="mt-1 text-sm text-[var(--text-muted)]">
+              Support throughout Canberra and the ACT
+            </p>
+            <ul className="home-service-chips mt-3" aria-label="Service areas">
+              {SERVICE_AREAS.map((area) => (
+                <li key={area}>
+                  <span className="home-pill">{area}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
         </div>
       </section>
 
-      {/* 9. Service areas — white surface */}
+      {/* 7. Depth links — routes to detail pages */}
       <section
-        aria-labelledby="service-areas-title"
-        className="home-section home-section--surface home-band"
+        aria-labelledby="home-depth-title"
+        className="home-section home-section--surface home-band border-t border-[var(--border-subtle)] pb-16 md:pb-20"
       >
-        <h2 id="service-areas-title" className="h2">
-          Service areas
+        <div className="content-shell content-shell--home">
+        <h2 id="home-depth-title" className="h2 text-xl md:text-2xl">
+          Explore in more detail
         </h2>
-        <p className="mt-3 text-lg">We provide support throughout Canberra and the ACT.</p>
-        <p className="mt-5 leading-relaxed text-[var(--text-muted)]">
-          {SERVICE_AREAS.join(" · ")}
+        <p className="content-measure mt-2 text-[var(--text-muted)]">
+          Deeper context on our approach, programs, stories, and Canberra service areas.
         </p>
-        <p className="mt-5">
-          <Link href="/services/canberra" className="home-depth-link text-base">
-            More about our Canberra service areas
-          </Link>
-        </p>
-      </section>
-
-      {/* 10. Final conversion — sage band + elevated panel */}
-      <section
-        aria-labelledby="final-cta-title"
-        className="home-section home-section--sage home-band pb-16 md:pb-20"
-      >
-        <div className="home-cta-panel">
-          <p id="final-cta-title" className="max-w-3xl text-lg font-medium leading-relaxed md:text-xl">
-            Meaningful daily life starts with the right support, the right relationships, and the
-            right opportunities to stay engaged.
-          </p>
-          <div className="home-cta-panel__actions">
-            <Link href="/referral" className="btn-primary">
-              Make a Referral
-            </Link>
-            <Link href="/consultation" className="btn-secondary">
-              Book a Consultation
-            </Link>
-            <a href="tel:+61424488439" className="btn-ghost" aria-label="Call us on +61 424 488 439">
-              Call: +61 424 488 439
-            </a>
-          </div>
+        <nav className="mt-6" aria-label="Related pages">
+          <ul className="home-depth-links">
+            <li className="home-depth-links__item">
+              <Link href="/about" className="home-depth-link">
+                About our approach
+              </Link>
+            </li>
+            <li className="home-depth-links__item">
+              <Link href="/programs" className="home-depth-link">
+                Our programs
+              </Link>
+            </li>
+            <li className="home-depth-links__item">
+              <Link href="/reviews" className="home-depth-link">
+                Stories &amp; reviews
+              </Link>
+            </li>
+            <li className="home-depth-links__item">
+              <Link href="/services/canberra" className="home-depth-link">
+                NDIS services in Canberra
+              </Link>
+            </li>
+          </ul>
+        </nav>
         </div>
       </section>
     </div>
