@@ -43,13 +43,13 @@ const REFERRAL_STEPS = [
 
 export default function ReferralPage() {
   return (
-    <div className="max-w-4xl">
+    <div className="content-shell content-shell--reading">
       {/* 1. Opener */}
       <section aria-labelledby="referral-opener-title" className="py-8 md:py-12">
         <h1 id="referral-opener-title" className="h2 text-balance">
           Make a Referral
         </h1>
-        <p className="mt-4 text-lg text-[var(--text-muted)]">
+        <p className="content-measure mt-4 text-lg text-[var(--text-muted)]">
           For support coordinators, therapists, families, and self-referrers.
         </p>
         <p className="mt-3 text-lg">
@@ -87,7 +87,7 @@ export default function ReferralPage() {
         <h2 id="referral-fit-title" className="h2">
           Who we&apos;re looking for
         </h2>
-        <p className="mt-4 text-lg text-[var(--text-muted)]">
+        <p className="content-measure mt-4 text-lg text-[var(--text-muted)]">
           The right fit matters for participants, families, and referrers alike. A strong fit
           when the participant:
         </p>

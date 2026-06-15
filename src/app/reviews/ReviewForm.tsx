@@ -101,12 +101,13 @@ export default function ReviewForm() {
         />
 
         <div className="md:col-span-2">
-          <label htmlFor="review-consent" className="inline-flex items-start gap-2">
+          <label htmlFor="review-consent" className="inline-flex items-start gap-3">
             <input
               id="review-consent"
               type="checkbox"
               name="consent"
               required
+              className="form-choice"
               aria-invalid={Boolean(state.errors?.consent)}
               aria-describedby={state.errors?.consent ? "review-consent-error" : "review-consent-hint"}
             />

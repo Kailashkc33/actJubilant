@@ -96,13 +96,13 @@ export default function AccessibilityToolbar() {
 
   return (
     <div className="w-full bg-[var(--surface)] border-b">
-      <div className="mx-auto max-w-7xl px-4 py-2">
+      <div className="content-shell content-shell--home py-2">
         <div className="flex items-center justify-between gap-2 md:hidden">
           <div className="flex items-center gap-2 min-w-0">
             <span aria-hidden="true">♿</span>
             <span className="text-sm">Accessibility</span>
             {hasActivePrefs && (
-              <span className="text-xs font-medium text-[var(--primary-600)]">On</span>
+              <span className="text-sm font-medium text-[var(--primary-600)]">On</span>
             )}
           </div>
           <button

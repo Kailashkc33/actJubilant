@@ -1,6 +1,6 @@
 export default function PrivacyPage() {
   return (
-    <div className="py-10">
+    <div className="content-shell content-shell--reading py-10">
       <h1 className="h2">Privacy Policy</h1>
       
       <div className="mt-6 space-y-6">

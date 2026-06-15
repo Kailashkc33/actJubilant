@@ -16,12 +16,12 @@ export default function ConsultationPage() {
   }, [state.ok]);
 
   return (
-    <div className="max-w-4xl">
+    <div className="content-shell content-shell--reading">
       <section aria-labelledby="consultation-form-title" className="py-6 md:py-8">
         <h1 id="consultation-form-title" className="h2 text-balance">
           Book a Consultation
         </h1>
-        <p className="mt-3 text-lg text-[var(--text-muted)]">
+        <p className="content-measure mt-3 text-lg text-[var(--text-muted)]">
           For participants, families, and anyone exploring fit. Tell us a good time to chat and
           we&apos;ll confirm by phone or email.
         </p>

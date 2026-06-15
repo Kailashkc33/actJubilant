@@ -55,7 +55,7 @@ const EXEMPLAR_REVIEWS = [
 
 export default function ReviewsPage() {
   return (
-    <div className="max-w-4xl">
+    <div className="content-shell content-shell--home">
       <section aria-labelledby="reviews-opener-title" className="py-8 md:py-12">
         <h1 id="reviews-opener-title" className="h2 text-balance">
           Stories from participants and families
@@ -121,7 +121,7 @@ export default function ReviewsPage() {
         <div className="mt-8 grid gap-6 md:grid-cols-2">
           {EXEMPLAR_REVIEWS.map((review) => (
             <figure key={review.theme} className="card card--warm h-full">
-              <p className="text-xs font-semibold uppercase tracking-wide text-[var(--primary-700)]">
+              <p className="text-sm font-semibold uppercase tracking-wide text-[var(--primary-700)]">
                 {review.theme}
               </p>
               <blockquote className="mt-3 text-lg leading-relaxed">

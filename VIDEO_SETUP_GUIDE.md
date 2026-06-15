@@ -1,58 +1,70 @@
-# 🎥 Video Setup Guide for ACT Jubilant
+# Video setup — ACT Jubilant
 
-## 📁 File Structure
+## Videos in use (June 2026)
+
+| File | Page | Component | Notes |
+|------|------|-----------|-------|
+| `public/videos/testimonial2.mp4` | Homepage §5 (hybrid) · `/reviews` | `SelfHostedVideo` | Poster: `public/images/testimonials/thumbnail.jpg` |
+| `public/videos/community-dance-class-event-sep-2025-portrait.mp4` | Homepage §3 (hybrid) · `/programs` | `SelfHostedVideo` | Poster: `public/images/gallery/dance-class-event-poster-portrait.jpg`; source is portrait 9:16; Programs media grid displays it in a 4:3 cover frame for card consistency |
+
+**Component:** `src/components/SelfHostedVideo.tsx` — native play button, keyboard focus management, `aria` labels, optional `minimalChrome` for homepage.
+
+**Removed / do not re-add:** `testimonial1.mp4`, `community-dance-class-event-sep-2025.mp4`, `community-dance-class-event-sep-2025-web.mp4`, `testimonialtn.png`, `video-thumbnail.jpg` (unused duplicates).
+
+---
+
+## File structure
+
 ```
 public/
 ├── videos/
-│   └── client-testimonial.mp4    # Your 20MB video (compress this)
-├── images/
-│   └── testimonials/
-│       └── video-thumbnail.jpg   # Thumbnail image for video
+│   ├── testimonial2.mp4
+│   └── community-dance-class-event-sep-2025-portrait.mp4
+└── images/
+    ├── testimonials/
+    │   └── thumbnail.jpg          # Testimonial poster
+    └── gallery/
+        └── dance-class-event-poster-portrait.jpg
 ```
 
-## 🗜️ Video Compression Options
+---
 
-### Option 1: Online Compression (Easiest)
-1. Go to [CloudConvert](https://cloudconvert.com/mp4-converter) or [FreeConvert](https://www.freeconvert.com/mp4-compressor)
-2. Upload your 20MB video
-3. Set compression to "Medium" or "High" quality
-4. Target size: 2-5MB
-5. Download compressed video
+## Adding or replacing a video
 
-### Option 2: HandBrake (Free Desktop App)
-1. Download [HandBrake](https://handbrake.fr/)
-2. Open your video
-3. Preset: "Web" or "Fast 1080p30"
-4. Output: MP4
-5. Start encoding
+1. **Compress** target under ~10 MB for web (portrait dance class is acceptable larger if needed; testimonial should stay lean).
+2. **Place** MP4 in `public/videos/`.
+3. **Add poster** JPEG in `public/images/` (gallery or testimonials).
+4. **Wire** in page via `<SelfHostedVideo srcMp4="..." poster="..." title="..." description="..." />`.
+5. **Test** keyboard: Tab to play → Enter/Space → native controls → focus returns on end.
+6. Run `npm run build`.
 
-### Option 3: FFmpeg (Command Line)
+### FFmpeg compression (example)
+
 ```bash
-# Install FFmpeg first, then run:
-ffmpeg -i input-video.mp4 -vcodec libx264 -crf 28 -preset fast -acodec aac -b:a 128k output-video.mp4
+ffmpeg -i input.mp4 -vcodec libx264 -crf 28 -preset fast -acodec aac -b:a 128k output.mp4
 ```
 
-## 📸 Thumbnail Image
-- Create a thumbnail image (1200x675px recommended)
-- Save as `video-thumbnail.jpg`
-- Place in `/public/images/testimonials/`
+### Poster from video frame
 
-## 🚀 Final Steps
-1. **Compress your 20MB video** to 2-5MB
-2. **Rename** to `client-testimonial.mp4`
-3. **Place** in `/public/videos/`
-4. **Create thumbnail** and place in `/public/images/testimonials/`
-5. **Deploy** to Vercel
+```bash
+ffmpeg -i input.mp4 -ss 00:00:02 -vframes 1 -q:v 2 poster.jpg
+```
 
-## ✅ Benefits of This Setup
-- ✅ **Fast loading** - Video only loads when clicked
-- ✅ **Mobile friendly** - Responsive design
-- ✅ **SEO optimized** - Proper video markup
-- ✅ **Accessible** - Screen reader friendly
-- ✅ **Professional** - Custom play button and overlay
+---
 
-## 🎯 Performance Tips
-- Keep video under 5MB for best performance
-- Use MP4 format for maximum compatibility
-- Add a compelling thumbnail to encourage clicks
-- Consider creating a shorter 30-60 second version for social media
+## Performance tips
+
+- Prefer MP4 (H.264 + AAC) for broad compatibility.
+- Use `minimalChrome` on homepage when caption copy lives above the player.
+- On Programs media grids, keep the video card the same visual aspect ratio as neighbouring image cards unless the section is intentionally featuring the video.
+- Do not duplicate the same video/photo immediately in adjacent Programs sections; keep each media block doing a distinct job.
+- Posters should be JPEG, max ~1920px wide, under ~300 KB where possible.
+- Videos lazy-load via `SelfHostedVideo` (poster shown until play).
+
+---
+
+## Accessibility
+
+- Every instance needs unique `title` and `description` (screen readers).
+- Do not use `div role="button"` for play — use the shared component.
+- Homepage dance blurb (Brand Bible): *"An example of the kind of community group activity we can help arrange or support when it suits a participant's interests and goals."* — not a claim that ACT Jubilant runs the class.

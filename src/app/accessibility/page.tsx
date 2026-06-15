@@ -66,12 +66,12 @@ const ONGOING_WORK = [
 
 export default function AccessibilityPage() {
   return (
-    <div className="max-w-4xl">
+    <div className="content-shell content-shell--reading">
       <section aria-labelledby="accessibility-opener-title" className="py-8 md:py-12">
         <h1 id="accessibility-opener-title" className="h2 text-balance">
           Accessibility
         </h1>
-        <p className="mt-4 text-lg text-[var(--text-muted)]">
+        <p className="content-measure mt-4 text-lg text-[var(--text-muted)]">
           ACT Jubilant serves participants, families, advocates, and referrers. This page
           explains the standard we work toward on this website and how we handle
           accessibility in our support.

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
 
 interface CarouselImage {
@@ -18,6 +18,20 @@ interface ImageCarouselProps {
   showArrows?: boolean;
 }
 
+function usePrefersReducedMotion() {
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setPrefersReducedMotion(mediaQuery.matches);
+    update();
+    mediaQuery.addEventListener("change", update);
+    return () => mediaQuery.removeEventListener("change", update);
+  }, []);
+
+  return prefersReducedMotion;
+}
+
 export default function ImageCarousel({
   images,
   autoPlay = true,
@@ -26,16 +40,38 @@ export default function ImageCarousel({
   showArrows = true,
 }: ImageCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const prefersReducedMotion = usePrefersReducedMotion();
+  const liveRegionRef = useRef<HTMLDivElement>(null);
+
+  const shouldAutoPlay = autoPlay && !prefersReducedMotion && !isPaused && images.length > 1;
+
+  const announceSlide = useCallback(
+    (index: number) => {
+      const slide = images[index];
+      if (!liveRegionRef.current || !slide) return;
+      const parts = [slide.title, slide.description].filter(Boolean);
+      liveRegionRef.current.textContent =
+        parts.length > 0
+          ? `Slide ${index + 1} of ${images.length}: ${parts.join(". ")}`
+          : `Slide ${index + 1} of ${images.length}`;
+    },
+    [images]
+  );
 
   useEffect(() => {
-    if (!autoPlay || images.length <= 1) return;
+    announceSlide(currentIndex);
+  }, [currentIndex, announceSlide]);
+
+  useEffect(() => {
+    if (!shouldAutoPlay) return;
 
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
     }, autoPlayInterval);
 
     return () => clearInterval(interval);
-  }, [autoPlay, autoPlayInterval, images.length]);
+  }, [shouldAutoPlay, autoPlayInterval, images.length]);
 
   const goToPrevious = () => {
     setCurrentIndex((prevIndex) =>
@@ -60,7 +96,22 @@ export default function ImageCarousel({
       className="carousel group relative h-[17.5rem] w-full overflow-hidden rounded-[var(--radius-lg)] border border-[var(--sage-mid)] shadow-[var(--shadow-card)] md:h-[30rem]"
       aria-roledescription="carousel"
       aria-label="Gallery highlights"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      onFocusCapture={() => setIsPaused(true)}
+      onBlurCapture={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+          setIsPaused(false);
+        }
+      }}
     >
+      <div
+        ref={liveRegionRef}
+        className="sr-only"
+        aria-live="polite"
+        aria-atomic="true"
+      />
+
       <div className="relative h-full w-full">
         <Image
           src={slide.src}
@@ -135,7 +186,7 @@ export default function ImageCarousel({
         </div>
       )}
 
-      {autoPlay && images.length > 1 && (
+      {autoPlay && images.length > 1 && !prefersReducedMotion && (
         <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/25" aria-hidden="true">
           <div
             className="h-full bg-[var(--warm)] transition-all duration-100 ease-linear"

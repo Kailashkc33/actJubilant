@@ -79,7 +79,7 @@ const LEADERSHIP = [
 
 export default function AboutPage() {
   return (
-    <>
+    <div className="content-shell content-shell--home">
       {/* 1. Who we are */}
       <section aria-labelledby="about-opener-title" className="py-8 md:py-12">
         <h1 id="about-opener-title" className="h2 text-balance">
@@ -305,6 +305,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }
