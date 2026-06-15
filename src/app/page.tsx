@@ -256,13 +256,13 @@ export default function Home() {
             </article>
           ))}
         </div>
-        <div className="mt-12 content-measure">
+        <div className="mx-auto mt-12 max-w-4xl rounded-[var(--radius-lg)] border border-[var(--border-subtle)] bg-[var(--bg-surface)] p-5 shadow-[var(--shadow-card)] md:p-6">
           <h3 className="text-lg font-semibold">Group programs in action</h3>
           <p className="mt-2 text-[var(--text-muted)]">
             An example of the kind of community group activity we can help arrange or
             support when it suits a participant&apos;s interests and goals.
           </p>
-          <div className="mx-auto mt-5 max-w-sm">
+          <div className="mx-auto mt-5 max-w-md">
             <SelfHostedVideo
               srcMp4="/videos/community-dance-class-event-sep-2025-portrait.mp4"
               title="Staying engaged together"
@@ -361,7 +361,7 @@ export default function Home() {
           we&apos;ll gladly help you think through alternatives when we&apos;re not the right
           provider.
         </p>
-        <div className="mt-10 max-w-4xl rounded-[var(--radius-lg)] border border-[var(--border-subtle)] bg-[var(--bg-surface)] p-5 shadow-[var(--shadow-card)] md:p-6">
+        <div className="mx-auto mt-10 max-w-4xl rounded-[var(--radius-lg)] border border-[var(--border-subtle)] bg-[var(--bg-surface)] p-5 shadow-[var(--shadow-card)] md:p-6">
           <h3 className="text-lg font-semibold">Building a routine that feels meaningful</h3>
           <p className="mt-2 text-[var(--text-muted)]">
             Hear how structured support around interests and routine helps someone stay
