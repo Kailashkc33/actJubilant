@@ -15,9 +15,9 @@ export default function FeedbackPage() {
   }, [state.ok]);
 
   return (
-    <div className="py-10">
+    <div className="content-shell content-shell--reading py-10">
       <h1 className="h2">Feedback & Complaints</h1>
-      <p className="mt-4 text-lg">
+      <p className="content-measure mt-4 text-lg">
         We value your feedback and are committed to continuous improvement. 
         Your input helps us provide better services.
       </p>
@@ -48,16 +48,19 @@ export default function FeedbackPage() {
               <label htmlFor="name" className="block text-sm font-medium">
                 Your name <span aria-hidden="true" className="text-red-700">*</span>
               </label>
-              <input 
-                id="name" 
-                name="name" 
-                type="text" 
+              <input
+                id="name"
+                name="name"
+                type="text"
                 required
-                className="mt-2 w-full rounded-xl border border-gray-300 px-3 py-3 focus:outline-none"
+                className={`form-control ${state.errors?.name ? "border-red-500" : ""}`}
                 aria-invalid={Boolean(state.errors?.name)}
+                aria-describedby={state.errors?.name ? "name-error" : undefined}
               />
               {state.errors?.name && (
-                <p className="mt-1 text-sm text-red-700" role="alert">{state.errors.name}</p>
+                <p id="name-error" className="mt-1 text-sm text-red-700" role="alert">
+                  {state.errors.name}
+                </p>
               )}
             </div>
 
@@ -65,16 +68,19 @@ export default function FeedbackPage() {
               <label htmlFor="email" className="block text-sm font-medium">
                 Email address <span aria-hidden="true" className="text-red-700">*</span>
               </label>
-              <input 
-                id="email" 
-                name="email" 
-                type="email" 
+              <input
+                id="email"
+                name="email"
+                type="email"
                 required
-                className="mt-2 w-full rounded-xl border border-gray-300 px-3 py-3 focus:outline-none"
+                className={`form-control ${state.errors?.email ? "border-red-500" : ""}`}
                 aria-invalid={Boolean(state.errors?.email)}
+                aria-describedby={state.errors?.email ? "email-error" : undefined}
               />
               {state.errors?.email && (
-                <p className="mt-1 text-sm text-red-700" role="alert">{state.errors.email}</p>
+                <p id="email-error" className="mt-1 text-sm text-red-700" role="alert">
+                  {state.errors.email}
+                </p>
               )}
             </div>
 
@@ -82,11 +88,13 @@ export default function FeedbackPage() {
               <label htmlFor="type" className="block text-sm font-medium">
                 Type of feedback <span aria-hidden="true" className="text-red-700">*</span>
               </label>
-              <select 
-                id="type" 
-                name="type" 
+              <select
+                id="type"
+                name="type"
                 required
-                className="mt-2 w-full rounded-xl border border-gray-300 px-3 py-3 focus:outline-none"
+                className={`form-control ${state.errors?.type ? "border-red-500" : ""}`}
+                aria-invalid={Boolean(state.errors?.type)}
+                aria-describedby={state.errors?.type ? "type-error" : undefined}
               >
                 <option value="">Please select...</option>
                 <option value="compliment">Compliment</option>
@@ -95,7 +103,9 @@ export default function FeedbackPage() {
                 <option value="other">Other</option>
               </select>
               {state.errors?.type && (
-                <p className="mt-1 text-sm text-red-700" role="alert">{state.errors.type}</p>
+                <p id="type-error" className="mt-1 text-sm text-red-700" role="alert">
+                  {state.errors.type}
+                </p>
               )}
             </div>
 
@@ -103,32 +113,48 @@ export default function FeedbackPage() {
               <label htmlFor="message" className="block text-sm font-medium">
                 Your message <span aria-hidden="true" className="text-red-700">*</span>
               </label>
-              <textarea 
-                id="message" 
-                name="message" 
-                rows={6} 
+              <textarea
+                id="message"
+                name="message"
+                rows={6}
                 required
-                className="mt-2 w-full rounded-xl border border-gray-300 px-3 py-3 focus:outline-none"
+                className={`form-control ${state.errors?.message ? "border-red-500" : ""}`}
                 aria-invalid={Boolean(state.errors?.message)}
+                aria-describedby={state.errors?.message ? "message-error" : undefined}
                 placeholder="Please provide details about your feedback..."
               />
               {state.errors?.message && (
-                <p className="mt-1 text-sm text-red-700" role="alert">{state.errors.message}</p>
+                <p id="message-error" className="mt-1 text-sm text-red-700" role="alert">
+                  {state.errors.message}
+                </p>
               )}
             </div>
 
             <div>
-              <label className="inline-flex items-start gap-2">
-                <input type="checkbox" name="consent" required />
+              <label htmlFor="feedback-consent" className="inline-flex items-start gap-3">
+                <input
+                  id="feedback-consent"
+                  type="checkbox"
+                  name="consent"
+                  required
+                  className="form-choice"
+                  aria-invalid={Boolean(state.errors?.consent)}
+                  aria-describedby={
+                    state.errors?.consent ? "feedback-consent-error" : "feedback-consent-hint"
+                  }
+                />
                 <span>
-                  I consent to ACT Jubilant using this feedback to improve our services.
-                  <span className="block text-sm text-muted-800">
+                  I consent to ACT Jubilant using this feedback to improve our services.{" "}
+                  <span aria-hidden="true" className="text-red-700">*</span>
+                  <span id="feedback-consent-hint" className="block text-sm text-[var(--text-muted)]">
                     We may contact you for follow-up if needed.
                   </span>
                 </span>
               </label>
               {state.errors?.consent && (
-                <p className="mt-1 text-sm text-red-700" role="alert">{state.errors.consent}</p>
+                <p id="feedback-consent-error" className="mt-1 text-sm text-red-700" role="alert">
+                  {state.errors.consent}
+                </p>
               )}
             </div>
 
@@ -144,10 +170,19 @@ export default function FeedbackPage() {
             <h2 className="h3">Other Ways to Contact Us</h2>
             <div className="mt-4 space-y-3">
               <div>
-                <strong>Phone:</strong> 0424 488 439
+                <strong>Phone:</strong>{" "}
+                <a href="tel:+61424488439" className="text-[var(--primary-600)] underline underline-offset-2">
+                  +61 424 488 439
+                </a>
               </div>
               <div>
-                <strong>Email:</strong> feedback@actjubilant.com.au
+                <strong>Email:</strong>{" "}
+                <a
+                  href="mailto:admin@actjubilant.com.au"
+                  className="text-[var(--primary-600)] underline underline-offset-2"
+                >
+                  admin@actjubilant.com.au
+                </a>
               </div>
               <div>
                 <strong>Post:</strong><br />

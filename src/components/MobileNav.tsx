@@ -28,9 +28,9 @@ export default function MobileNav() {
     };
   }, [open]);
 
-  // Auto-close when viewport hits md and above
+  // Auto-close when viewport is wide enough for the full desktop nav.
   useEffect(() => {
-    const mq = window.matchMedia("(min-width: 768px)");
+    const mq = window.matchMedia("(min-width: 900px)");
     const onChange = () => setOpen(false);
     mq.addEventListener?.("change", onChange);
     return () => mq.removeEventListener?.("change", onChange);
@@ -81,12 +81,33 @@ export default function MobileNav() {
       <button
         ref={triggerRef}
         type="button"
-        className="md:hidden btn-chip touch-target"
+        className="mobile-nav-trigger"
         aria-expanded={open}
         aria-controls="mobile-menu"
+        aria-label={open ? "Close menu" : "Open menu"}
         onClick={() => setOpen((v) => !v)}
       >
-        {open ? "Close" : "Menu"}
+        {open ? (
+          <span>Close</span>
+        ) : (
+          <>
+            <svg
+              className="h-5 w-5 shrink-0"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+            <span className="sr-only">Menu</span>
+          </>
+        )}
       </button>
 
       {open && (
@@ -95,7 +116,7 @@ export default function MobileNav() {
           role="dialog"
           aria-modal="true"
           aria-labelledby="mobile-menu-title"
-          className="fixed inset-0 z-50 md:hidden"
+          className="fixed inset-0 z-50"
         >
           {/* Backdrop (hidden from a11y tree) */}
           <button
@@ -106,10 +127,10 @@ export default function MobileNav() {
             onClick={() => setOpen(false)}
           />
 
-          {/* Right-side drawer: full height, scrollable, safe-area aware */}
+          {/* Full-screen drawer: full height, scrollable, safe-area aware */}
           <div
             ref={panelRef}
-            className="absolute right-0 top-0 h-[100dvh] w-[86%] max-w-sm bg-white shadow-[0_8px_24px_rgba(0,0,0,0.2)]
+            className="absolute inset-0 h-[100dvh] w-full bg-white shadow-[0_8px_24px_rgba(0,0,0,0.2)]
                        outline-none overflow-y-auto overscroll-contain
                        pt-[calc(env(safe-area-inset-top,0px)+1rem)] pb-[calc(env(safe-area-inset-bottom,0px)+1rem)]
                        motion-safe:transition-transform motion-safe:duration-300 motion-safe:ease-out translate-x-0"
@@ -134,6 +155,7 @@ export default function MobileNav() {
               <nav aria-label="Mobile" className="flex flex-col gap-2">
                 {[
                   { href: "/programs", label: "Programs" },
+                  { href: "/about", label: "About" },
                   { href: "/reviews", label: "Reviews" },
                   { href: "/referral", label: "Make a Referral" },
                   { href: "/consultation", label: "Book a Consultation" },
@@ -144,20 +166,19 @@ export default function MobileNav() {
                     key={item.href}
                     href={item.href}
                     onClick={() => setOpen(false)}
-                    className="block rounded-lg px-4 py-3 text-gray-900 hover:bg-gray-100 focus:bg-gray-100
-                               focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="block rounded-lg px-4 py-3 text-gray-900 hover:bg-gray-100 focus-visible:bg-gray-100"
                   >
                     {item.label}
                   </Link>
                 ))}
 
                 <a
-                                     href="tel:+61434740745"
+                  href="tel:+61424488439"
                   onClick={() => setOpen(false)}
-                  className="mt-3 rounded-lg bg-blue-600 px-4 py-3 text-center text-white
-                             hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="btn-primary mt-3 w-full"
+                  aria-label="Call us on +61 424 488 439"
                 >
-                  Call +61 434 740 745
+                  Call +61 424 488 439
                 </a>
               </nav>
             </div>

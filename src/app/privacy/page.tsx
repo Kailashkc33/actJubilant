@@ -1,6 +1,6 @@
 export default function PrivacyPage() {
   return (
-    <div className="py-10">
+    <div className="content-shell content-shell--reading py-10">
       <h1 className="h2">Privacy Policy</h1>
       
       <div className="mt-6 space-y-6">
@@ -68,8 +68,21 @@ export default function PrivacyPage() {
             For privacy-related questions or concerns, please contact us:
           </p>
           <div className="mt-4">
-            <p><strong>Phone:</strong> 0424 488 439</p>
-            <p><strong>Email:</strong> privacy@actjubilant.com.au</p>
+            <p>
+              <strong>Phone:</strong>{" "}
+              <a href="tel:+61424488439" className="text-[var(--primary-600)] underline underline-offset-2">
+                +61 424 488 439
+              </a>
+            </p>
+            <p>
+              <strong>Email:</strong>{" "}
+              <a
+                href="mailto:admin@actjubilant.com.au"
+                className="text-[var(--primary-600)] underline underline-offset-2"
+              >
+                admin@actjubilant.com.au
+              </a>
+            </p>
             <p><strong>Address:</strong> ACT Jubilant, Canberra, ACT</p>
           </div>
         </div>

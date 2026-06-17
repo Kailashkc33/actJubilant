@@ -73,7 +73,7 @@ export default function AccessibilityToolbar() {
 
     const utter = new SpeechSynthesisUtterance(text);
     utter.lang = "en-AU";
-    utter.rate = 1; // keep natural
+    utter.rate = 1;
     utter.onend = () => (speakingRef.current = false);
     utter.onerror = () => (speakingRef.current = false);
     speakingRef.current = true;

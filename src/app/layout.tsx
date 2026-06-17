@@ -14,6 +14,7 @@ export const viewport: Viewport = {
 import { Atkinson_Hyperlegible } from "next/font/google";
 import "./globals.css";
 import AccessibilityToolbar from "../components/AccessibilityToolbar";
+import HashScroll from "../components/HashScroll";
 import MobileNav from "../components/MobileNav";
 
 const atkinson = Atkinson_Hyperlegible({
@@ -24,9 +25,9 @@ const atkinson = Atkinson_Hyperlegible({
 });
 
 export const metadata: Metadata = {
-  title: "ACT Jubilant — NDIS Support Services Canberra | Disability Support Worker Near Me",
+  title: "ACT Jubilant | Meaningful Daily Life Support in Canberra",
   description:
-    "Leading NDIS provider in Canberra & ACT. Personal care, community support, disability services. Support workers available 24/7. Call +61 434 740 745 for immediate assistance.",
+    "ACT Jubilant provides structured, relationship-based support in Canberra, helping participants build routine, engagement, confidence, and meaningful daily life around their interests.",
   keywords: [
     "NDIS provider Canberra",
     "disability support services ACT",
@@ -61,9 +62,9 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "ACT Jubilant — NDIS Support Services Canberra | Disability Support Worker",
+    title: "ACT Jubilant | Meaningful Daily Life Support",
     description:
-      "Leading NDIS provider in Canberra & ACT. Personal care, community support, disability services. Support workers available 24/7. Empowering people, creating possibilities.",
+      "Boutique, relationship-led support in Canberra designed around participant interests, routine, consistency, and community participation.",
     url: "https://actjubilant.com.au",
     siteName: "ACT Jubilant",
     images: [
@@ -71,7 +72,7 @@ export const metadata: Metadata = {
         url: "/logo.png", 
         width: 1200, 
         height: 630,
-        alt: "ACT Jubilant - NDIS Support Services Canberra"
+        alt: "ACT Jubilant | Meaningful Daily Life Support in Canberra"
       }
     ],
     locale: "en_AU",
@@ -79,14 +80,169 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "ACT Jubilant — NDIS Support Services Canberra",
-    description: "Leading NDIS provider in Canberra & ACT. Disability support, personal care, community services.",
+    title: "ACT Jubilant | Meaningful Daily Life Support",
+    description:
+      "Structured support in Canberra built around interests, routine, engagement, and familiar support workers.",
     images: ["/logo.png"],
   },
   verification: {
     google: "your-google-verification-code", // Add your Google Search Console verification code
   },
 };
+
+const ORGANIZATION_JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": ["Organization", "LocalBusiness"],
+  "@id": "https://actjubilant.com.au/#organization",
+  name: "ACT Jubilant",
+  alternateName: "ACT Jubilant NDIS Provider",
+  description:
+    "Boutique, relationship-led NDIS provider in Canberra and the ACT. Structured support around participant interests, routine, consistent workers, and meaningful daily life.",
+  url: "https://actjubilant.com.au",
+  logo: "https://actjubilant.com.au/logo.png",
+  image: "https://actjubilant.com.au/logo.png",
+  telephone: "+61 424 488 439",
+  email: "admin@actjubilant.com.au",
+  founder: {
+    "@type": "Person",
+    name: "Manish Gupta",
+    jobTitle: "Founder & Client Service Manager",
+  },
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "75/20 Beissel St",
+    addressLocality: "Belconnen",
+    addressRegion: "ACT",
+    postalCode: "2617",
+    addressCountry: "AU",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: "-35.2386",
+    longitude: "149.0687",
+  },
+  areaServed: {
+    "@type": "City",
+    name: "Canberra",
+    containedInPlace: {
+      "@type": "State",
+      name: "Australian Capital Territory",
+    },
+  },
+  serviceType: [
+    "Daily living and personal activities",
+    "Community participation",
+    "Social and group supports",
+    "Transport",
+    "Respite",
+    "Skill development",
+    "Support coordination",
+    "High intensity daily personal activities",
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "NDIS support services in Canberra",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Daily living and personal activities",
+          description:
+            "In-home support with daily living, personal care, and household tasks in service of routine and engagement.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Community participation",
+          description:
+            "Support to access community activities, social outings, local venues, and shared experiences.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Social and group supports",
+          description:
+            "Small group programs, structured activities, and community-based gatherings.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Transport",
+          description:
+            "Travel assistance to access community activities, appointments, and everyday outings.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Respite",
+          description:
+            "Short-term support giving families and carers a break while maintaining familiar routines.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Skill development",
+          description:
+            "Practical skill-building through everyday activities, aligned with participant interests and plan goals.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Support coordination",
+          description:
+            "Help navigating NDIS plans, connecting with providers, and coordinating funded supports.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "High intensity daily personal activities",
+          description:
+            "Specialist in-home support for participants with complex needs who require a higher level of personal care.",
+        },
+      },
+    ],
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "08:30",
+      closes: "17:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: "Saturday",
+      opens: "10:00",
+      closes: "13:00",
+    },
+  ],
+  sameAs: [],
+  slogan: "Support should create meaningful daily life.",
+  knowsAbout: [
+    "NDIS",
+    "Disability support",
+    "Participant engagement",
+    "Routine and structure",
+    "Community participation",
+    "Consistent support workers",
+    "Canberra",
+  ],
+} as const;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -105,116 +261,119 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Header */}
         <header
           role="banner"
-          className="sticky top-0 z-40 w-full border-b bg-white/85 backdrop-blur"
+          className="site-header sticky top-0 z-40 w-full"
         >
-          <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-3 min-w-0">
+          <div className="site-header__inner content-shell content-shell--home">
+            <Link href="/" className="flex shrink-0 items-center gap-3">
               <Image
                 src="/logo.png"
-                alt="ACT Jubilant - NDIS Support Services Canberra | Disability Support Worker"
+                alt="ACT Jubilant"
                 width={100}
                 height={60}
                 priority
-                sizes="(max-width: 768px) 160px, 200px"
-                className="h-10 md:h-10 w-auto rounded-xl"
+                sizes="(max-width: 768px) 140px, 200px"
+                className="h-9 w-auto rounded-lg md:h-10"
               />
              
             </Link>
 
             {/* Desktop nav */}
-            <nav aria-label="Main" className="hidden md:flex items-center gap-3">
-              <Link className="nav-link" href="/programs">Programs</Link>
-              <Link className="nav-link" href="/consultation">Book a Consultation</Link>
-              <Link className="nav-link" href="/referral">Make a Referral</Link>
-              <Link className="nav-link" href="/faq">FAQ</Link>
-              <Link className="nav-link" href="/accessibility">Accessibility</Link>
-              <Link className="nav-link" href="/reviews">Reviews</Link>
+            <nav aria-label="Main" className="site-desktop-nav items-center gap-1 xl:gap-3">
+              <Link className="nav-link px-2 xl:px-3" href="/programs">Programs</Link>
+              <Link className="nav-link px-2 xl:px-3" href="/about">About</Link>
+              <Link className="nav-link px-2 xl:px-3" href="/consultation">Book a Consultation</Link>
+              <Link className="nav-link px-2 xl:px-3" href="/referral">Make a Referral</Link>
+              <Link className="nav-link px-2 xl:px-3" href="/faq">FAQ</Link>
+              <Link className="nav-link px-2 xl:px-3" href="/accessibility">Accessibility</Link>
+              <Link className="nav-link px-2 xl:px-3" href="/reviews">Reviews</Link>
               
             </nav>
 
             {/* Mobile nav trigger */}
-            <div className="md:hidden">
+            <div className="site-mobile-nav">
               <MobileNav />
             </div>
           </div>
         </header>
 
         {/* Main */}
-        <main id="main" className="mx-auto max-w-7xl px-4">
+        <main id="main" className="w-full">
+          <HashScroll />
           {children}
         </main>
 
         {/* Footer */}
-        <footer role="contentinfo" className="mt-16 border-t bg-[var(--surface)]">
-          {/* Main footer content */}
-          <div className="mx-auto max-w-7xl px-4 py-12">
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-              {/* Company Info */}
-              <div className="lg:col-span-2">
-                <div className="flex items-center gap-3 mb-4">
+        <footer role="contentinfo" className="site-footer">
+          <div className="site-footer__inner content-shell content-shell--home">
+            <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-12 lg:gap-8">
+              <div className="lg:col-span-6">
+                <div className="site-footer__brand">
                   <Image
                     src="/logo.png"
-                    alt="ACT Jubilant - NDIS Support Services Canberra | Disability Support Worker"
+                    alt="ACT Jubilant"
                     width={100}
                     height={60}
-                    className="h-10 md:h-12 w-auto rounded-xl"
+                    className="site-footer__logo h-10 w-auto md:h-11"
                   />
                 </div>
-                <p className="text-[var(--text-muted)] mb-4">
-                  ACT Jubilant recognizes the happiness that our organization brings to everyone. 
-                  We strive to provide happiness to our community, clients and support workers. 
-                  Registered NDIS provider offering personalised support and services in ACT.
+                <p className="site-footer__blurb">
+                  ACT Jubilant is a boutique, relationship-led NDIS provider in Canberra and the
+                  ACT. We structure support around participant interests, routine, and consistent
+                  workers, helping people build meaningful daily life at home and in the community.
                 </p>
-                <div className="space-y-2">
-                  <p className="text-sm">
-                    <strong>Address:</strong>
-                    <span className="ml-1">75/20 Beissel St, Belconnen 2617</span>
+                <div className="site-footer__contact">
+                  <p className="site-footer__contact-row">
+                    <strong>Address:</strong>{" "}
+                    75/20 Beissel St, Belconnen 2617
                   </p>
-                  <p className="text-sm">
-                    <strong>Phone:</strong>
-                    <a href="tel:+61434740745" className="ml-1 text-[var(--primary-600)] hover:underline">
-                      +61 434 740 745
+                  <p className="site-footer__contact-row flex flex-wrap items-center gap-x-1">
+                    <strong>Phone:</strong>{" "}
+                    <a href="tel:+61424488439" className="site-footer__link">
+                      +61 424 488 439
                     </a>
                   </p>
-                  <p className="text-sm">
-                    <strong>Email:</strong>
-                    <a href="mailto:admin@actjubilant.com.au" className="ml-1 text-[var(--primary-600)] hover:underline">
+                  <p className="site-footer__contact-row flex flex-wrap items-center gap-x-1">
+                    <strong>Email:</strong>{" "}
+                    <a
+                      href="mailto:admin@actjubilant.com.au"
+                      className="site-footer__link break-all sm:break-normal"
+                    >
                       admin@actjubilant.com.au
                     </a>
                   </p>
-                  <p className="text-sm">
-                    <strong>Office Hours:</strong>
-                    <span className="ml-1">Mon-Fri 8:30am-5:00pm, Sat 10:00am-1:00pm</span>
+                  <p className="site-footer__contact-row">
+                    <strong>Office Hours:</strong>{" "}
+                    Mon-Fri 8:30am-5:00pm, Sat 10:00am-1:00pm
                   </p>
                 </div>
               </div>
 
-              {/* Quick Links */}
-              <div>
-                <h3 className="font-semibold text-lg mb-4">Quick Links</h3>
+              <div className="lg:col-span-3">
+                <h3 className="site-footer__heading">Quick Links</h3>
                 <nav aria-label="Footer navigation">
-                  <ul className="space-y-2">
-                    <li><Link className="nav-link" href="/programs">Our Programs</Link></li>
-                    <li><Link className="nav-link" href="/reviews">Reviews</Link></li>
-                    <li><Link className="nav-link" href="/referral">Make a Referral</Link></li>
-                    <li><Link className="nav-link" href="/consultation">Book Consultation</Link></li>
-                    <li><Link className="nav-link" href="/faq">FAQ</Link></li>
+                  <ul className="site-footer__link-list">
+                    <li><Link className="site-footer__link" href="/programs">Our Programs</Link></li>
+                    <li><Link className="site-footer__link" href="/services/canberra">NDIS Services (Canberra)</Link></li>
+                    <li><Link className="site-footer__link" href="/about">About Us</Link></li>
+                    <li><Link className="site-footer__link" href="/reviews">Reviews</Link></li>
+                    <li><Link className="site-footer__link" href="/referral">Make a Referral</Link></li>
+                    <li><Link className="site-footer__link" href="/consultation">Book Consultation</Link></li>
+                    <li><Link className="site-footer__link" href="/faq">FAQ</Link></li>
                   </ul>
                 </nav>
               </div>
 
-              {/* Support & Info */}
-              <div>
-                <h3 className="font-semibold text-lg mb-4">Support & Info</h3>
+              <div className="lg:col-span-3">
+                <h3 className="site-footer__heading">Support &amp; Info</h3>
                 <nav aria-label="Support navigation">
-                  <ul className="space-y-2">
-                    <li><Link className="nav-link" href="/accessibility">Accessibility</Link></li>
-                    <li><Link className="nav-link" href="/feedback">Feedback & Complaints</Link></li>
-                    <li><Link className="nav-link" href="/privacy">Privacy Policy</Link></li>
+                  <ul className="site-footer__link-list">
+                    <li><Link className="site-footer__link" href="/accessibility">Accessibility</Link></li>
+                    <li><Link className="site-footer__link" href="/feedback">Feedback &amp; Complaints</Link></li>
+                    <li><Link className="site-footer__link" href="/privacy">Privacy Policy</Link></li>
                     <li>
                       <a
                         href="https://www.ndis.gov.au"
-                        className="nav-link"
+                        className="site-footer__link"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -227,24 +386,23 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
           </div>
 
-          {/* Acknowledgement of Country */}
-          <div className="border-t bg-[color-mix(in_oklab,var(--primary-600)_5%,var(--surface))]">
-            <div className="mx-auto max-w-7xl px-4 py-6">
-              <p className="text-sm text-[var(--text-muted)] leading-relaxed">
-                <strong>Acknowledgement of Country:</strong> We acknowledge the Ngunnawal people as the Traditional Custodians of the land on which we live and work. We pay our respects to Elders past and present, and extend that respect to all Aboriginal and Torres Strait Islander peoples.
+          <hr className="site-footer__divider" />
+
+          <div className="site-footer__ack">
+            <div className="content-shell content-shell--home">
+              <p>
+                <strong>Acknowledgement of Country:</strong> We acknowledge the Ngunnawal people as
+                the Traditional Custodians of the land on which we live and work. We pay our
+                respects to Elders past and present, and extend that respect to all Aboriginal and
+                Torres Strait Islander peoples.
               </p>
             </div>
           </div>
 
-          {/* Bottom bar */}
-          <div className="border-t bg-[color-mix(in_oklab,var(--primary-600)_8%,var(--surface))]">
-            <div className="mx-auto max-w-7xl px-4 py-4 flex flex-wrap items-center justify-between gap-4">
-              <p className="text-sm text-[var(--text-muted)]">
-                Proudly supporting the Canberra community
-              </p>
-              <p className="text-sm text-[var(--text-muted)]">
-                © 2025 ACT Jubilant. All rights reserved.
-              </p>
+          <div className="site-footer__bar">
+            <div className="site-footer__bar-inner content-shell content-shell--home">
+              <p>Proudly supporting the Canberra community</p>
+              <p>© {new Date().getFullYear()} ACT Jubilant. All rights reserved.</p>
             </div>
           </div>
         </footer>
@@ -272,102 +430,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              "@id": "https://actjubilant.com.au/#organization",
-              name: "ACT Jubilant",
-              alternateName: "ACT Jubilant NDIS Provider",
-              description: "Registered NDIS provider in Canberra offering personalised support, inclusive programs, and real care. Empowering people and creating possibilities.",
-              url: "https://actjubilant.com.au",
-              logo: "https://actjubilant.com.au/logo.png",
-              image: "https://actjubilant.com.au/logo.png",
-              telephone: "+61 434 740 745",
-              email: "admin@actjubilant.com.au",
-              address: {
-                "@type": "PostalAddress",
-                streetAddress: "75/20 Beissel St",
-                addressLocality: "Belconnen",
-                addressRegion: "ACT",
-                postalCode: "2617",
-                addressCountry: "AU"
-              },
-              geo: {
-                "@type": "GeoCoordinates",
-                latitude: "-35.2386",
-                longitude: "149.0687"
-              },
-              areaServed: {
-                "@type": "City",
-                name: "Canberra",
-                containedInPlace: {
-                  "@type": "State",
-                  name: "Australian Capital Territory"
-                }
-              },
-              serviceType: [
-                "NDIS Support Services",
-                "Personal Care",
-                "Community Participation",
-                "Daily Living Support",
-                "Respite Care",
-                "Transport Services"
-              ],
-              hasOfferCatalog: {
-                "@type": "OfferCatalog",
-                name: "NDIS Services",
-                itemListElement: [
-                  {
-                    "@type": "Offer",
-                    itemOffered: {
-                      "@type": "Service",
-                      name: "Personal Care Support",
-                      description: "Assistance with daily living activities and personal care needs"
-                    }
-                  },
-                  {
-                    "@type": "Offer",
-                    itemOffered: {
-                      "@type": "Service",
-                      name: "Community Participation",
-                      description: "Support to participate in community activities and social events"
-                    }
-                  },
-                  {
-                    "@type": "Offer",
-                    itemOffered: {
-                      "@type": "Service",
-                      name: "Respite Care",
-                      description: "Short-term care to give families and carers a break"
-                    }
-                  }
-                ]
-              },
-              openingHoursSpecification: [
-                {
-                  "@type": "OpeningHoursSpecification",
-                  dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-                  opens: "08:30",
-                  closes: "17:00"
-                },
-                {
-                  "@type": "OpeningHoursSpecification",
-                  dayOfWeek: "Saturday",
-                  opens: "10:00",
-                  closes: "13:00"
-                }
-              ],
-              sameAs: [],
-              foundingDate: "2020",
-              slogan: "Empowering people. Creating possibilities.",
-              knowsAbout: [
-                "NDIS",
-                "Disability Support",
-                "Personal Care",
-                "Community Services",
-                "Canberra"
-              ]
-            }),
+            __html: JSON.stringify(ORGANIZATION_JSON_LD),
           }}
         />
       </body>

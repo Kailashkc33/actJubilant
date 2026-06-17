@@ -21,20 +21,22 @@ interface SelfHostedVideoProps {
   description?: string;
   /** Shown before play; prefer a lightweight JPG (<=200 KB). */
   poster?: string;
-  /** 16/9 by default. Pass like "4/3", "1/1" if needed. */
+  /** 16/9 by default. Pass like "9/16", "4/3", "1/1" if needed. */
   aspect?: string;
-  /** Set true to hide the dark overlay label block. */
+  /** How video fills the frame when playing. */
+  objectFit?: "contain" | "cover";
+  /** Set true when title/description are rendered outside the component. */
   minimalChrome?: boolean;
+  /** Optional wrapper classes (e.g. max-width for portrait videos). */
+  className?: string;
 }
 
 /**
  * SelfHostedVideo
- * - Lazy mounts the <video> only after the user interacts (click/Enter/Space)
- * - Optional IntersectionObserver to enable keyboard focus once in view
+ * - Poster is a native button (keyboard: Tab, Enter, Space)
+ * - After play, focus moves to the <video controls> element
+ * - When playback ends, focus returns to the play button
  * - Supports WebVTT captions
- * - Adds a11y + keyboard controls
- *
- * TIP: Export your MP4 with "Web Optimized / Fast Start" so playback starts instantly.
  */
 export default function SelfHostedVideo({
   srcMp4,
@@ -44,93 +46,100 @@ export default function SelfHostedVideo({
   description,
   poster,
   aspect = "16/9",
+  objectFit = "contain",
   minimalChrome,
+  className,
 }: SelfHostedVideoProps) {
+  const fitClass = objectFit === "cover" ? "object-cover" : "object-contain";
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [isInView, setIsInView] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const cardRef = useRef<HTMLDivElement>(null);
-
-  // Basic IntersectionObserver: once visible, allow keyboard focus styles
-  useEffect(() => {
-    const el = cardRef.current;
-    if (!el || typeof IntersectionObserver === "undefined") return;
-    const io = new IntersectionObserver((entries) => {
-      for (const e of entries) if (e.isIntersecting) setIsInView(true);
-    }, { rootMargin: "200px" });
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
+  const playButtonRef = useRef<HTMLButtonElement>(null);
 
   const startPlayback = () => {
     if (isPlaying) return;
     setIsPlaying(true);
     setIsLoading(true);
-    // The <video> mounts only after isPlaying=true
-    // Give it a tick, then call play()
-    setTimeout(() => {
-      const v = videoRef.current;
-      if (!v) return;
-      // Some mobile browsers require user gesture; we already have it from click/keydown
-      v.play().catch(() => {
-        // If autoplay fails, just show controls; user will tap play
-      });
-    }, 0);
   };
 
-  const onKey = (e: React.KeyboardEvent<HTMLDivElement>) => {
+  useEffect(() => {
+    if (!isPlaying) return;
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.play().catch(() => {
+      // Autoplay may fail; native controls remain available.
+    });
+    video.focus();
+  }, [isPlaying]);
+
+  const onPlayKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
     if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
       startPlayback();
     }
   };
 
+  const handleEnded = () => {
+    setIsPlaying(false);
+    setIsLoading(false);
+    requestAnimationFrame(() => playButtonRef.current?.focus());
+  };
+
+  const captionBlock = !minimalChrome ? (
+    <div className="mb-3">
+      <h3 className="font-semibold leading-tight">{title}</h3>
+      {description && (
+        <p className="mt-1 text-sm text-[var(--text-muted)]">{description}</p>
+      )}
+    </div>
+  ) : null;
+
+  const playButtonClassName =
+    "relative block w-full rounded-2xl overflow-hidden shadow-lg cursor-pointer group " +
+    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 " +
+    "focus-visible:outline-[var(--primary-600)]";
+
   return (
-    <div className="w-full">
+    <div className={className ? `w-full ${className}` : "w-full"}>
+      {captionBlock}
       {!isPlaying ? (
-        <div
-          ref={cardRef}
-          role="button"
-          tabIndex={isInView ? 0 : -1}
-          aria-label={`Play video: ${title}`}
+        <button
+          ref={playButtonRef}
+          type="button"
           onClick={startPlayback}
-          onKeyDown={onKey}
-          className="relative rounded-2xl overflow-hidden shadow-lg cursor-pointer group"
+          onKeyDown={onPlayKeyDown}
+          aria-label={`Play video: ${title}`}
+          className={playButtonClassName}
           style={{ aspectRatio: aspect }}
         >
-          {/* Poster */}
           <img
             src={poster || "/images/video-fallback.jpg"}
-            alt={title}
-            className="absolute inset-0 h-full w-full object-cover"
+            alt=""
+            aria-hidden="true"
+            className={`absolute inset-0 h-full w-full ${fitClass}`}
             loading="lazy"
             decoding="async"
           />
 
-          {/* Overlay + Play button */}
-          <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors" />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-20 h-20 rounded-full bg-white/90 backdrop-blur flex items-center justify-center group-hover:scale-110 transition-transform">
-              <svg className="w-9 h-9 text-[var(--primary-600)] ml-1" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <div
+            className="absolute inset-0 bg-black/25 group-hover:bg-black/35 transition-colors"
+            aria-hidden="true"
+          />
+          <div className="absolute inset-0 flex items-center justify-center" aria-hidden="true">
+            <div className="flex h-24 w-24 items-center justify-center rounded-full bg-white/95 shadow-lg backdrop-blur transition-transform group-hover:scale-110 sm:h-20 sm:w-20">
+              <svg
+                className="ml-1 h-11 w-11 text-[var(--primary-600)] sm:h-9 sm:w-9"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+              >
                 <path d="M8 5v14l11-7z" />
               </svg>
-              <span className="sr-only">Play</span>
             </div>
           </div>
-
-          {/* Caption block */}
-          {!minimalChrome && (
-            <div className="absolute bottom-3 left-3 right-3">
-              <div className="bg-black/60 text-white p-3 rounded-xl">
-                <h3 className="font-semibold leading-tight">{title}</h3>
-                {description && (
-                  <p className="text-sm opacity-90 mt-1 line-clamp-2">{description}</p>
-                )}
-              </div>
-            </div>
-          )}
-        </div>
+          <span className="sr-only">Play</span>
+        </button>
       ) : (
         <div
           className="relative rounded-2xl overflow-hidden shadow-lg bg-black"
@@ -138,19 +147,18 @@ export default function SelfHostedVideo({
         >
           <video
             ref={videoRef}
-            className="absolute inset-0 h-full w-full object-contain"
+            className={`absolute inset-0 h-full w-full ${fitClass}`}
             controls
             playsInline
             preload="metadata"
             poster={poster}
+            aria-label={title}
             onLoadedData={() => setIsLoading(false)}
-            onEnded={() => setIsPlaying(false)}
+            onEnded={handleEnded}
           >
-            {/* Sources */}
             {srcWebm && <source src={srcWebm} type="video/webm" />}
             <source src={srcMp4} type="video/mp4" />
 
-            {/* Subtitles / Captions */}
             {tracks?.map((t, i) => (
               <track
                 key={i}
@@ -162,11 +170,15 @@ export default function SelfHostedVideo({
               />
             ))}
 
-            Your browser doesn't support HTML5 video.
+            Your browser doesn&apos;t support HTML5 video.
           </video>
 
           {isLoading && (
-            <div className="absolute inset-0 grid place-items-center bg-black/50">
+            <div
+              className="absolute inset-0 grid place-items-center bg-black/50"
+              role="status"
+              aria-live="polite"
+            >
               <div className="text-white text-center">
                 <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4" />
                 <p>Loading video…</p>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
 
 interface CarouselImage {
@@ -18,6 +18,20 @@ interface ImageCarouselProps {
   showArrows?: boolean;
 }
 
+function usePrefersReducedMotion() {
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setPrefersReducedMotion(mediaQuery.matches);
+    update();
+    mediaQuery.addEventListener("change", update);
+    return () => mediaQuery.removeEventListener("change", update);
+  }, []);
+
+  return prefersReducedMotion;
+}
+
 export default function ImageCarousel({
   images,
   autoPlay = true,
@@ -26,20 +40,41 @@ export default function ImageCarousel({
   showArrows = true,
 }: ImageCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const prefersReducedMotion = usePrefersReducedMotion();
+  const liveRegionRef = useRef<HTMLDivElement>(null);
 
-  // Auto-play functionality
+  const shouldAutoPlay = autoPlay && !prefersReducedMotion && !isPaused && images.length > 1;
+
+  const announceSlide = useCallback(
+    (index: number) => {
+      const slide = images[index];
+      if (!liveRegionRef.current || !slide) return;
+      const parts = [slide.title, slide.description].filter(Boolean);
+      liveRegionRef.current.textContent =
+        parts.length > 0
+          ? `Slide ${index + 1} of ${images.length}: ${parts.join(". ")}`
+          : `Slide ${index + 1} of ${images.length}`;
+    },
+    [images]
+  );
+
   useEffect(() => {
-    if (!autoPlay || images.length <= 1) return;
+    announceSlide(currentIndex);
+  }, [currentIndex, announceSlide]);
+
+  useEffect(() => {
+    if (!shouldAutoPlay) return;
 
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
     }, autoPlayInterval);
 
     return () => clearInterval(interval);
-  }, [autoPlay, autoPlayInterval, images.length]);
+  }, [shouldAutoPlay, autoPlayInterval, images.length]);
 
   const goToPrevious = () => {
-    setCurrentIndex((prevIndex) => 
+    setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? images.length - 1 : prevIndex - 1
     );
   };
@@ -54,83 +89,109 @@ export default function ImageCarousel({
 
   if (images.length === 0) return null;
 
+  const slide = images[currentIndex];
+
   return (
-    <div className="relative w-full h-80 md:h-[480px] rounded-2xl overflow-hidden shadow-lg group">
-      {/* Main Image */}
-      <div className="relative w-full h-full">
+    <div
+      className="carousel group relative h-[17.5rem] w-full overflow-hidden rounded-[var(--radius-lg)] border border-[var(--sage-mid)] shadow-[var(--shadow-card)] md:h-[30rem]"
+      aria-roledescription="carousel"
+      aria-label="Gallery highlights"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      onFocusCapture={() => setIsPaused(true)}
+      onBlurCapture={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+          setIsPaused(false);
+        }
+      }}
+    >
+      <div
+        ref={liveRegionRef}
+        className="sr-only"
+        aria-live="polite"
+        aria-atomic="true"
+      />
+
+      <div className="relative h-full w-full">
         <Image
-          src={images[currentIndex].src}
-          alt={images[currentIndex].alt}
+          src={slide.src}
+          alt={slide.alt}
           fill
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          className="object-cover transition-transform duration-700 ease-out md:group-hover:scale-[1.02]"
           priority={currentIndex === 0}
           sizes="(max-width: 768px) 100vw, 50vw"
         />
-        
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-        
-        {/* Content Overlay */}
-        <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-          <h2 className="text-2xl md:text-3xl font-bold mb-2">
-            {images[currentIndex].title || "Welcome to ACT Jubilant"}
-          </h2>
-          <p className="text-lg opacity-90">
-            {images[currentIndex].description || "Empowering people. Creating possibilities."}
-          </p>
+
+        <div className="carousel__scrim" aria-hidden="true" />
+
+        <div className="carousel__caption">
+          <div className="carousel__caption-panel">
+            {slide.title && (
+              <p className="carousel__caption-title">{slide.title}</p>
+            )}
+            {slide.description && (
+              <p className="carousel__caption-desc">{slide.description}</p>
+            )}
+          </div>
         </div>
       </div>
 
-      {/* Navigation Arrows */}
       {showArrows && images.length > 1 && (
         <>
           <button
+            type="button"
             onClick={goToPrevious}
-            className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-200 opacity-0 group-hover:opacity-100"
+            className="carousel-arrow absolute left-3 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/35 bg-black/45 text-white backdrop-blur-sm transition-colors hover:bg-black/60 md:left-4 md:opacity-0 md:group-hover:opacity-100 md:focus-visible:opacity-100"
             aria-label="Previous image"
           >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
-          
+
           <button
+            type="button"
             onClick={goToNext}
-            className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-200 opacity-0 group-hover:opacity-100"
+            className="carousel-arrow absolute right-3 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/35 bg-black/45 text-white backdrop-blur-sm transition-colors hover:bg-black/60 md:right-4 md:opacity-0 md:group-hover:opacity-100 md:focus-visible:opacity-100"
             aria-label="Next image"
           >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </button>
         </>
       )}
 
-      {/* Dots Indicator */}
       {showDots && images.length > 1 && (
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
+        <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 items-center justify-center gap-0.5 md:bottom-4">
           {images.map((_, index) => (
             <button
               key={index}
+              type="button"
               onClick={() => goToSlide(index)}
-              className={`w-2 h-2 rounded-full transition-all duration-200 ${
-                index === currentIndex 
-                  ? 'bg-white scale-125' 
-                  : 'bg-white/50 hover:bg-white/75'
-              }`}
+              className="flex h-11 w-11 items-center justify-center rounded-full"
               aria-label={`Go to slide ${index + 1}`}
-            />
+              aria-current={index === currentIndex ? "true" : undefined}
+            >
+              <span
+                aria-hidden="true"
+                className={`block rounded-full transition-all duration-200 ${
+                  index === currentIndex
+                    ? "h-3 w-3 bg-white shadow-[0_0_0_1px_rgba(0,0,0,0.35)]"
+                    : "h-2 w-2 bg-white/60 hover:bg-white/90"
+                }`}
+              />
+            </button>
           ))}
         </div>
       )}
 
-      {/* Progress Bar */}
-      {autoPlay && images.length > 1 && (
-        <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/20">
-          <div 
-            className="h-full bg-white transition-all duration-100 ease-linear"
+      {autoPlay && images.length > 1 && !prefersReducedMotion && (
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/25" aria-hidden="true">
+          <div
+            className="h-full bg-[var(--warm)] transition-all duration-100 ease-linear"
             style={{
-              width: `${((currentIndex + 1) / images.length) * 100}%`
+              width: `${((currentIndex + 1) / images.length) * 100}%`,
             }}
           />
         </div>

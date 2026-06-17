@@ -1,155 +1,210 @@
-"use client";
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import ReferralForm from "./ReferralForm";
 
-import { useEffect, useRef, useActionState } from "react";
-import { useFormStatus } from "react-dom";
-import { submitReferral, type ActionResult } from "../actions";
+export const metadata: Metadata = {
+  title: "Make a Referral | ACT Jubilant Canberra",
+  description:
+    "Refer a participant to ACT Jubilant in Canberra. Who we're best for, how referrals work, and what coordinators can expect from our engagement-led, relationship-based support.",
+  alternates: {
+    canonical: "/referral",
+  },
+};
 
-const initialState: ActionResult = { ok: false, errors: {} };
+const STRONG_FIT = [
+  "Is 12–65 with physical disability or mild to moderate cognitive disability",
+  "Wants engagement and routine, not only tasks or hours filled",
+  "Has interests, hobbies, or goals they'd like support built around",
+  "Does better with familiar support workers than constant change",
+  "Would benefit from small group settings (around six people)",
+] as const;
+
+const REFERRER_BENEFITS = [
+  {
+    title: "You know who fits",
+    body: "We work best with participants seeking engagement, routine, and consistent workers. See our full fit guide if you're unsure.",
+  },
+  {
+    title: "Goals are reinforced between appointments",
+    body: "Everyday activities can support mobility, independence, and confidence while complementing therapy and support plans.",
+  },
+  {
+    title: "Referrals stay collaborative",
+    body: "We keep coordinators informed through regular updates and observations, so you're not left wondering how things are going.",
+  },
+] as const;
+
+const REFERRAL_STEPS = [
+  "We review your referral within 1–2 business days.",
+  "We contact you to discuss the participant's goals, interests, and support needs.",
+  "If it's a good match, onboarding starts with understanding the person before workers are matched.",
+] as const;
 
 export default function ReferralPage() {
-  const [state, formAction] = useActionState(submitReferral, initialState);
-  const formRef = useRef<HTMLFormElement>(null);
-
-  useEffect(() => {
-    if (state.ok) formRef.current?.reset();
-  }, [state.ok]);
-
   return (
-    <section className="py-10 md:py-14">
-      <div className="card">
-        <h1 className="h2">Make a Referral</h1>
-        <p className="mt-2">
-          You can refer yourself or someone else. We’ll get back to you within 1–2 business days.
+    <div className="content-shell content-shell--reading">
+      {/* 1. Opener */}
+      <section aria-labelledby="referral-opener-title" className="py-8 md:py-12">
+        <h1 id="referral-opener-title" className="h2 text-balance">
+          Make a Referral
+        </h1>
+        <p className="content-measure mt-4 text-lg text-[var(--text-muted)]">
+          For support coordinators, therapists, families, and self-referrers.
         </p>
-
-        {/* Live region for status */}
-        <div className="sr-only" aria-live="polite" aria-atomic="true">{state.message}</div>
-
-        {state.ok && (
-          <div className="mt-4 rounded-lg border border-green-300 bg-green-50 p-4" role="status">
-            {state.message}
+        <p className="mt-3 text-lg">
+          We work alongside coordinators and therapists, not around them. ACT Jubilant is a
+          boutique, engagement-led provider in Canberra and the ACT.
+        </p>
+        <figure className="mt-8 overflow-hidden rounded-2xl border border-gray-100">
+          <div className="grid md:grid-cols-5">
+            <div className="relative aspect-[4/3] w-full md:col-span-2">
+              <Image
+                src="/images/stock/participant-partnership-handshake.jpg"
+                alt="Illustrative photo of a person in a wheelchair greeting a support worker with a handshake outdoors"
+                fill
+                className="object-cover object-center"
+                sizes="(max-width: 768px) 100vw, 320px"
+              />
+            </div>
+            <figcaption className="flex flex-col justify-center bg-[color-mix(in_oklab,var(--bg)_96%,var(--primary-600))] p-6 md:col-span-3">
+              <p className="text-sm font-medium text-[var(--text)]">Support in practice</p>
+              <p className="mt-2 text-[var(--text-muted)] leading-relaxed">
+                Interest-led support in everyday Canberra settings, with familiar workers and
+                coordinator updates once support begins. We respond to referrals within 1–2 business
+                days.
+              </p>
+            </figcaption>
           </div>
-        )}
+        </figure>
+      </section>
 
-        <form ref={formRef} action={formAction} className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-          {/* Honeypot */}
-          <div className="hidden" aria-hidden="true">
-            <label htmlFor="website">Website</label>
-            <input id="website" name="website" type="text" autoComplete="off" />
-          </div>
+      {/* 2. Who we're looking for */}
+      <section
+        aria-labelledby="referral-fit-title"
+        className="py-8 md:py-10 border-t border-gray-100"
+      >
+        <h2 id="referral-fit-title" className="h2">
+          Who we&apos;re looking for
+        </h2>
+        <p className="content-measure mt-4 text-lg text-[var(--text-muted)]">
+          The right fit matters for participants, families, and referrers alike. A strong fit
+          when the participant:
+        </p>
+        <ul className="mt-6 space-y-3">
+          {STRONG_FIT.map((item) => (
+            <li key={item} className="flex gap-3">
+              <span className="mt-1 text-[var(--primary-600)] shrink-0" aria-hidden="true">
+                ✓
+              </span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+        <p className="mt-6 text-[var(--text-muted)]">
+          We&apos;re honest about fit because the right match matters more than volume.
+        </p>
+        <p className="mt-4 flex flex-wrap gap-x-6 gap-y-2">
+          <Link
+            href="/#who-were-best-for"
+            className="font-semibold text-[var(--primary-600)] underline decoration-2 underline-offset-4"
+          >
+            Full fit guide on the homepage
+          </Link>
+          <Link
+            href="/about#who-were-best-for"
+            className="font-semibold text-[var(--primary-600)] underline decoration-2 underline-offset-4"
+          >
+            More about who we&apos;re best for
+          </Link>
+        </p>
+      </section>
 
-          <Field
-            id="fullName"
-            label="Full name"
-            required
-            error={state.errors?.fullName as string}
-          />
-          <Field id="preferredName" label="Preferred name" />
+      {/* 3. Why referrers choose ACT Jubilant */}
+      <section
+        aria-labelledby="referrer-trust-title"
+        className="py-8 md:py-10 border-t border-gray-100"
+      >
+        <h2 id="referrer-trust-title" className="h2">
+          Why referrers work with us
+        </h2>
+        <dl className="mt-8 space-y-6">
+          {REFERRER_BENEFITS.map((item) => (
+            <div key={item.title} className="card">
+              <dt className="font-semibold">{item.title}</dt>
+              <dd className="mt-2 text-[var(--text-muted)]">{item.body}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
 
-          <Field id="email" label="Email" type="email" required error={state.errors?.email as string} />
-          <Field id="phone" label="Phone" type="tel" required error={state.errors?.phone as string} />
+      {/* 4. What happens next */}
+      <section
+        aria-labelledby="referral-process-title"
+        className="py-8 md:py-10 border-t border-gray-100"
+      >
+        <h2 id="referral-process-title" className="h2">
+          What happens after you refer
+        </h2>
+        <ol className="mt-6 space-y-4">
+          {REFERRAL_STEPS.map((step, index) => (
+            <li key={step} className="flex gap-4">
+              <span
+                className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[color-mix(in_oklab,var(--primary-600)_12%,white)] text-sm font-semibold text-[var(--primary-700)]"
+                aria-hidden="true"
+              >
+                {index + 1}
+              </span>
+              <span className="pt-1">{step}</span>
+            </li>
+          ))}
+        </ol>
+      </section>
 
-          <Field id="relationship" label="Who are you referring?" required
-            hint="e.g., Self, Family, Guardian, Support Coordinator"
-            error={state.errors?.relationship as string}
-          />
+      {/* 5. Depth links */}
+      <section
+        aria-labelledby="referral-depth-title"
+        className="py-8 md:py-10 border-t border-gray-100"
+      >
+        <h2 id="referral-depth-title" className="text-xl font-semibold">
+          Want more detail before you refer?
+        </h2>
+        <ul className="mt-4 space-y-2 text-[var(--text-muted)]">
+          <li>
+            <Link
+              href="/programs"
+              className="font-semibold text-[var(--primary-600)] underline decoration-2 underline-offset-4"
+            >
+              Explore our programs
+            </Link>
+            {" "}
+            to see what support looks like in practice
+          </li>
+          <li>
+            <Link
+              href="/services/canberra"
+              className="font-semibold text-[var(--primary-600)] underline decoration-2 underline-offset-4"
+            >
+              View NDIS services in Canberra
+            </Link>
+            {" "}
+            for support categories and service areas
+          </li>
+          <li>
+            <Link
+              href="/reviews"
+              className="font-semibold text-[var(--primary-600)] underline decoration-2 underline-offset-4"
+            >
+              Read participant stories
+            </Link>
+          </li>
+        </ul>
+      </section>
 
-          <Field id="address" label="Address" className="md:col-span-1" />
-          <Field id="ndisNumber" label="NDIS number (optional)" />
-
-          <Field id="dob" label="Date of birth" type="date" />
-
-          <Field id="primaryLanguage" label="Primary language" />
-          <div className="md:col-span-1">
-            <fieldset>
-              <legend className="block text-sm font-medium">Interpreter needed?</legend>
-              <div className="mt-2 flex gap-4">
-                <label className="inline-flex items-center gap-2">
-                  <input type="radio" name="interpreter" value="no" defaultChecked /> No
-                </label>
-                <label className="inline-flex items-center gap-2">
-                  <input type="radio" name="interpreter" value="yes" /> Yes
-                </label>
-              </div>
-            </fieldset>
-          </div>
-
-          <TextArea
-            id="supports"
-            label="What supports are you looking for?"
-            required
-            hint="Daily living, community access, group programs, transport, etc."
-            error={state.errors?.supports as string}
-            className="md:col-span-2"
-          />
-
-          <TextArea id="notes" label="Anything else you’d like us to know?" className="md:col-span-2" />
-
-          <label className="md:col-span-2 inline-flex items-start gap-2">
-            <input type="checkbox" name="consent" />
-            <span>
-              I have consent from the participant (or I am the participant) to share this information with ACT Jubilant.
-              <span className="block text-sm text-[var(--text-muted)]">We respect your privacy and handle information securely.</span>
-            </span>
-          </label>
-          {state.errors?.consent && (
-            <p className="text-red-700 md:col-span-2" role="alert">{state.errors.consent as string}</p>
-          )}
-
-          <div className="md:col-span-2">
-            <SubmitButton>Submit Referral</SubmitButton>
-          </div>
-        </form>
-      </div>
-    </section>
-  );
-}
-
-function SubmitButton({ children }: { children: React.ReactNode }) {
-  const { pending } = useFormStatus();
-  return (
-    <button type="submit" className="btn-primary" disabled={pending} aria-busy={pending}>
-      {pending ? "Submitting…" : children}
-    </button>
-  );
-}
-
-function Field(props: {
-  id: string; label: string; type?: string; required?: boolean; hint?: string; error?: string; className?: string;
-}) {
-  const { id, label, type = "text", required, hint, error, className } = props;
-  return (
-    <div className={className}>
-      <label htmlFor={id} className="block text-sm font-medium">
-        {label} {required && <span aria-hidden="true" className="text-red-700">*</span>}
-      </label>
-      <input id={id} name={id} type={type} required={required}
-        className={`mt-2 w-full rounded-xl border px-3 py-3 ${error ? "border-red-500" : "border-gray-300"} focus:outline-none`}
-        aria-invalid={Boolean(error)}
-        aria-describedby={hint ? `${id}-hint` : undefined}
-      />
-      {hint && <p id={`${id}-hint`} className="mt-1 text-sm text-[var(--text-muted)]">{hint}</p>}
-      {error && <p className="mt-1 text-sm text-red-700" role="alert">{error}</p>}
-    </div>
-  );
-}
-
-function TextArea(props: {
-  id: string; label: string; required?: boolean; hint?: string; error?: string; className?: string;
-}) {
-  const { id, label, required, hint, error, className } = props;
-  return (
-    <div className={className}>
-      <label htmlFor={id} className="block text-sm font-medium">
-        {label} {required && <span aria-hidden="true" className="text-red-700">*</span>}
-      </label>
-      <textarea id={id} name={id} rows={5} required={required}
-        className={`mt-2 w-full rounded-xl border px-3 py-3 ${error ? "border-red-500" : "border-gray-300"} focus:outline-none`}
-        aria-invalid={Boolean(error)}
-        aria-describedby={hint ? `${id}-hint` : undefined}
-      />
-      {hint && <p id={`${id}-hint`} className="mt-1 text-sm text-[var(--text-muted)]">{hint}</p>}
-      {error && <p className="mt-1 text-sm text-red-700" role="alert">{error}</p>}
+      {/* 6. Form */}
+      <section aria-labelledby="referral-form-title" className="py-8 md:py-14 border-t border-gray-100">
+        <ReferralForm />
+      </section>
     </div>
   );
 }
