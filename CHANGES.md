@@ -37,6 +37,44 @@ Both tools read and write the same local file. Production and the other tool onl
 
 ## Log
 
+### 2026-06-17 — Cursor — Golden Sand theme, site-wide refresh, Programs IA redesign
+
+**Prompt:** Owner wanted stronger modern/premium direction (Wattle-inspired, not copied); UI audit of Programs page; implement all recommended fixes; commit local work
+**Status:** committed
+**Build:** `npm run build` passes
+
+**Chosen direction:** **Golden Sand** — sand canvas, deep green ink, gold CTAs. Fonts: Sora (display), Inter (body), IBM Plex Mono (labels). Wattle-inspired palette adapted for ACT Jubilant.
+
+**Palette / tokens (summary):**
+- Canvas: `--sand` #F7F1E6, `--card` #FFFDF8, bands `--bg-band-dawn/cream/eucalyptus/sky`
+- Primary: `--green` #243B2C, gold CTAs `--gold` #CC9A3E
+- Text: `--ink` #211E18, `--text-muted` via `--ink-soft`
+
+**Files:**
+- `src/app/globals.css` — Golden Sand tokens, distinct section bands, media/jump-nav/referrer patterns
+- `src/app/layout.tsx` — Sora/Inter/IBM Plex Mono font stack
+- `src/app/page.tsx` — trust strip, hybrid 7-section homepage, dark referrer panel
+- `src/app/programs/page.tsx` — 5-section IA (was 9): hero split + jump nav, timeline, small groups, unified interests, fit + dark CTA
+- All inner pages: `about`, `referral`, `consultation`, `reviews`, `services/canberra`, `accessibility`, `faq`, `feedback`, `privacy`
+- `src/components/ConsultationForm.tsx` (new), `ImageCarousel`, `AccessibilityToolbar`, `MobileNav`, `SelfHostedVideo`
+- `src/app/referral/ReferralForm.tsx`, `src/app/reviews/ReviewForm.tsx`
+- `CHANGES.md`, `WORKFLOW.md`
+
+**Summary:**
+- Site-wide Golden Sand refresh: shadow-over-borders, caption-below photos, shared `.site-section` / `.media-card` rhythm.
+- Homepage: lean hybrid IA, trust strip, proof grid, how-it-works timeline, dark green referrer close.
+- Programs: cut duplicate pillars/homepage content; 3-step timeline; unified 9-card interest grid; portrait dance video 3:4 contain; NDIS callout inline; homepage-style referrer CTA.
+- Consultation form extracted to shared component. Codex `.form-choice` and Programs grid polish retained.
+
+**Owner review notes:**
+- Preview homepage + Programs on mobile and desktop; check band tint alternation and jump nav anchors.
+- Programs dance video should show full frame (contain), not cropped portrait.
+- High-contrast mode via accessibility toolbar still supported.
+
+**Next:** Owner approval before merge to `main`; push branch when ready for remote preview.
+
+---
+
 ### 2026-06-16 — Codex — Owner-review homepage and Programs audit
 
 **Prompt:** Audit the latest homepage/Programs changes, update docs, and push the branch for owner review

@@ -19,7 +19,6 @@ const OUTCOME_THEMES = [
   "Pride and identity",
 ] as const;
 
-/** Exemplar quotes. Replace with real participant/family reviews when available. */
 const EXEMPLAR_REVIEWS = [
   {
     theme: "Better routine",
@@ -55,32 +54,28 @@ const EXEMPLAR_REVIEWS = [
 
 export default function ReviewsPage() {
   return (
-    <div className="content-shell content-shell--home">
-      <section aria-labelledby="reviews-opener-title" className="py-8 md:py-12">
-        <h1 id="reviews-opener-title" className="h2 text-balance">
-          Stories from participants and families
-        </h1>
-        <p className="mt-4 text-lg text-[var(--text-muted)]">
-          Real experiences from people building routine, engagement, and a daily life they
-          recognise as their own.
-        </p>
+    <>
+      <section aria-labelledby="reviews-opener-title" className="site-band site-section site-section--dawn">
+        <div className="content-shell content-shell--home">
+          <p className="section-kicker">Stories</p>
+          <h1 id="reviews-opener-title" className="h1 text-balance">
+            Stories from participants and families
+          </h1>
+          <p className="mt-4 text-lg text-[var(--text-muted)]">
+            Real experiences from people building routine, engagement, and a daily life they
+            recognise as their own.
+          </p>
+        </div>
       </section>
 
-      <section
-        aria-labelledby="video-story-title"
-        className="py-8 md:py-10 border-t border-gray-100"
-      >
-        <div className="card card--muted p-0 overflow-hidden">
-          <div className="p-6 pb-0 md:p-8 md:pb-0">
-            <h2 id="video-story-title" className="h2 text-xl md:text-2xl">
-              Building a routine that feels meaningful
-            </h2>
-            <p className="mt-2 text-[var(--text-muted)]">
-              Hear how structured support around interests and routine helps someone stay engaged in
-              the life they&apos;re building.
-            </p>
-          </div>
-          <div className="mt-4 p-4 pt-0 md:p-8 md:pt-0">
+      <section aria-labelledby="video-story-title" className="site-band site-section site-section--cream">
+        <div className="content-shell content-shell--home">
+          <h2 id="video-story-title" className="h2">Building a routine that feels meaningful</h2>
+          <p className="mt-2 text-[var(--text-muted)]">
+            Hear how structured support around interests and routine helps someone stay engaged in
+            the life they&apos;re building.
+          </p>
+          <div className="mt-6 max-w-3xl">
             <SelfHostedVideo
               srcMp4="/videos/testimonial2.mp4"
               title="Building a routine that feels meaningful"
@@ -92,81 +87,68 @@ export default function ReviewsPage() {
         </div>
       </section>
 
-      <section
-        aria-labelledby="outcome-themes-title"
-        className="py-8 md:py-10 border-t border-gray-100"
-      >
-        <h2 id="outcome-themes-title" className="text-lg font-medium">
-          The outcomes people talk about most often:
-        </h2>
-        <ul className="mt-4 flex flex-wrap gap-3" aria-label="Common outcome themes">
-          {OUTCOME_THEMES.map((outcome) => (
-            <li key={outcome} className="home-pill">
-              {outcome}
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <section
-        aria-labelledby="written-stories-title"
-        className="py-8 md:py-10 border-t border-gray-100"
-      >
-        <h2 id="written-stories-title" className="h2">
-          What people share
-        </h2>
-        <p className="mt-4 text-[var(--text-muted)]">
-          Stories grouped by the outcomes participants and families mention most often.
-        </p>
-        <div className="mt-8 grid gap-6 md:grid-cols-2">
-          {EXEMPLAR_REVIEWS.map((review) => (
-            <figure key={review.theme} className="card card--warm h-full">
-              <p className="text-sm font-semibold uppercase tracking-wide text-[var(--primary-700)]">
-                {review.theme}
-              </p>
-              <blockquote className="mt-3 text-lg leading-relaxed">
-                &ldquo;{review.text}&rdquo;
-              </blockquote>
-              <figcaption className="mt-4 text-sm text-[var(--text-muted)]">
-                {review.name}, {review.relationship}
-              </figcaption>
-            </figure>
-          ))}
+      <section aria-labelledby="outcome-themes-title" className="site-band site-section site-section--eucalyptus">
+        <div className="content-shell content-shell--home">
+          <h2 id="outcome-themes-title" className="text-lg font-medium">
+            The outcomes people talk about most often:
+          </h2>
+          <ul className="mt-4 flex flex-wrap gap-3" aria-label="Common outcome themes">
+            {OUTCOME_THEMES.map((outcome) => (
+              <li key={outcome} className="home-pill">{outcome}</li>
+            ))}
+          </ul>
         </div>
-        <p className="mt-8 text-sm text-[var(--text-muted)]">
-          Want to understand fit before referring?{" "}
-          <Link href="/about#who-were-best-for" className="home-depth-link">
-            See who we&apos;re best for
-          </Link>
-        </p>
       </section>
 
-      <section
-        aria-labelledby="share-experience-title"
-        className="py-8 md:py-14 border-t border-gray-100"
-      >
-        <ReviewForm />
-      </section>
-
-      <section aria-labelledby="reviews-cta-title" className="py-10 md:py-14 border-t border-gray-100">
-        <div className="card text-center md:text-left">
-          <p id="reviews-cta-title" className="text-lg md:text-xl font-medium leading-relaxed">
-            Meaningful daily life starts with the right support, the right relationships, and the
-            right opportunities to stay engaged.
+      <section aria-labelledby="written-stories-title" className="site-band site-section site-section--surface">
+        <div className="content-shell content-shell--home">
+          <h2 id="written-stories-title" className="h2">What people share</h2>
+          <p className="mt-4 text-[var(--text-muted)]">
+            Stories grouped by the outcomes participants and families mention most often.
           </p>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3 md:justify-start">
-            <Link href="/referral" className="btn-primary">
-              Make a Referral
-            </Link>
-            <Link href="/consultation" className="btn-secondary">
-              Book a Consultation
-            </Link>
-            <a href="tel:+61424488439" className="btn-ghost" aria-label="Call us on +61 424 488 439">
-              Call: +61 424 488 439
-            </a>
+          <div className="mt-8 grid gap-6 md:grid-cols-2">
+            {EXEMPLAR_REVIEWS.map((review) => (
+              <figure key={review.theme} className="card card--warm h-full">
+                <p className="section-kicker mb-2">{review.theme}</p>
+                <blockquote className="text-lg leading-relaxed">
+                  &ldquo;{review.text}&rdquo;
+                </blockquote>
+                <figcaption className="mt-4 text-sm text-[var(--text-muted)]">
+                  {review.name}, {review.relationship}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+          <p className="mt-8 text-sm text-[var(--text-muted)]">
+            Want to understand fit before referring?{" "}
+            <Link href="/programs#who-were-best-for" className="text-link">See who we&apos;re best for</Link>
+          </p>
+        </div>
+      </section>
+
+      <section aria-labelledby="share-experience-title" className="site-band site-section site-section--dawn">
+        <div className="content-shell content-shell--home">
+          <ReviewForm />
+        </div>
+      </section>
+
+      <section aria-labelledby="reviews-cta-title" className="site-band site-section site-section--eucalyptus">
+        <div className="content-shell content-shell--home">
+          <div className="cta-panel text-center md:text-left">
+            <p id="reviews-cta-title" className="text-lg md:text-xl font-medium leading-relaxed">
+              Meaningful daily life starts with the right support, the right relationships, and the
+              right opportunities to stay engaged.
+            </p>
+            <div className="cta-panel__actions justify-center md:justify-start">
+              <Link href="/referral" className="btn-primary">Make a Referral</Link>
+              <Link href="/consultation" className="btn-secondary">Book a Consultation</Link>
+              <a href="tel:+61424488439" className="btn-ghost" aria-label="Call us on +61 424 488 439">
+                Call: +61 424 488 439
+              </a>
+            </div>
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 }

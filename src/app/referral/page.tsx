@@ -43,10 +43,11 @@ const REFERRAL_STEPS = [
 
 export default function ReferralPage() {
   return (
-    <div className="content-shell content-shell--reading">
-      {/* 1. Opener */}
-      <section aria-labelledby="referral-opener-title" className="py-8 md:py-12">
-        <h1 id="referral-opener-title" className="h2 text-balance">
+    <>
+      <section aria-labelledby="referral-opener-title" className="site-band site-section site-section--dawn">
+        <div className="content-shell content-shell--reading">
+        <p className="section-kicker">Referrals</p>
+        <h1 id="referral-opener-title" className="h1 text-balance">
           Make a Referral
         </h1>
         <p className="content-measure mt-4 text-lg text-[var(--text-muted)]">
@@ -56,9 +57,9 @@ export default function ReferralPage() {
           We work alongside coordinators and therapists, not around them. ACT Jubilant is a
           boutique, engagement-led provider in Canberra and the ACT.
         </p>
-        <figure className="mt-8 overflow-hidden rounded-2xl border border-gray-100">
+        <figure className="media-figure media-figure--bordered mt-8">
           <div className="grid md:grid-cols-5">
-            <div className="relative aspect-[4/3] w-full md:col-span-2">
+            <div className="media-figure__image aspect-[4/3] md:col-span-2">
               <Image
                 src="/images/stock/participant-partnership-handshake.jpg"
                 alt="Illustrative photo of a person in a wheelchair greeting a support worker with a handshake outdoors"
@@ -67,7 +68,7 @@ export default function ReferralPage() {
                 sizes="(max-width: 768px) 100vw, 320px"
               />
             </div>
-            <figcaption className="flex flex-col justify-center bg-[color-mix(in_oklab,var(--bg)_96%,var(--primary-600))] p-6 md:col-span-3">
+            <figcaption className="flex flex-col justify-center bg-[var(--bg-band-eucalyptus)] p-6 md:col-span-3">
               <p className="text-sm font-medium text-[var(--text)]">Support in practice</p>
               <p className="mt-2 text-[var(--text-muted)] leading-relaxed">
                 Interest-led support in everyday Canberra settings, with familiar workers and
@@ -77,13 +78,11 @@ export default function ReferralPage() {
             </figcaption>
           </div>
         </figure>
+        </div>
       </section>
 
-      {/* 2. Who we're looking for */}
-      <section
-        aria-labelledby="referral-fit-title"
-        className="py-8 md:py-10 border-t border-gray-100"
-      >
+      <section aria-labelledby="referral-fit-title" className="site-band site-section site-section--cream">
+        <div className="content-shell content-shell--reading">
         <h2 id="referral-fit-title" className="h2">
           Who we&apos;re looking for
         </h2>
@@ -91,12 +90,10 @@ export default function ReferralPage() {
           The right fit matters for participants, families, and referrers alike. A strong fit
           when the participant:
         </p>
-        <ul className="mt-6 space-y-3">
+        <ul className="check-list mt-6 space-y-3">
           {STRONG_FIT.map((item) => (
-            <li key={item} className="flex gap-3">
-              <span className="mt-1 text-[var(--primary-600)] shrink-0" aria-hidden="true">
-                ✓
-              </span>
+            <li key={item}>
+              <span className="check-mark" aria-hidden="true">✓</span>
               <span>{item}</span>
             </li>
           ))}
@@ -105,26 +102,14 @@ export default function ReferralPage() {
           We&apos;re honest about fit because the right match matters more than volume.
         </p>
         <p className="mt-4 flex flex-wrap gap-x-6 gap-y-2">
-          <Link
-            href="/#who-were-best-for"
-            className="font-semibold text-[var(--primary-600)] underline decoration-2 underline-offset-4"
-          >
-            Full fit guide on the homepage
-          </Link>
-          <Link
-            href="/about#who-were-best-for"
-            className="font-semibold text-[var(--primary-600)] underline decoration-2 underline-offset-4"
-          >
-            More about who we&apos;re best for
-          </Link>
+          <Link href="/programs#who-were-best-for" className="text-link">Full fit guide on the programs page</Link>
+          <Link href="/about#who-were-best-for" className="text-link">More about who we&apos;re best for</Link>
         </p>
+        </div>
       </section>
 
-      {/* 3. Why referrers choose ACT Jubilant */}
-      <section
-        aria-labelledby="referrer-trust-title"
-        className="py-8 md:py-10 border-t border-gray-100"
-      >
+      <section aria-labelledby="referrer-trust-title" className="site-band site-section site-section--eucalyptus">
+        <div className="content-shell content-shell--reading">
         <h2 id="referrer-trust-title" className="h2">
           Why referrers work with us
         </h2>
@@ -136,13 +121,11 @@ export default function ReferralPage() {
             </div>
           ))}
         </dl>
+        </div>
       </section>
 
-      {/* 4. What happens next */}
-      <section
-        aria-labelledby="referral-process-title"
-        className="py-8 md:py-10 border-t border-gray-100"
-      >
+      <section aria-labelledby="referral-process-title" className="site-band site-section site-section--surface">
+        <div className="content-shell content-shell--reading">
         <h2 id="referral-process-title" className="h2">
           What happens after you refer
         </h2>
@@ -159,52 +142,35 @@ export default function ReferralPage() {
             </li>
           ))}
         </ol>
+        </div>
       </section>
 
-      {/* 5. Depth links */}
-      <section
-        aria-labelledby="referral-depth-title"
-        className="py-8 md:py-10 border-t border-gray-100"
-      >
+      <section aria-labelledby="referral-depth-title" className="site-band site-section site-section--compact site-section--sky">
+        <div className="content-shell content-shell--reading">
         <h2 id="referral-depth-title" className="text-xl font-semibold">
           Want more detail before you refer?
         </h2>
         <ul className="mt-4 space-y-2 text-[var(--text-muted)]">
           <li>
-            <Link
-              href="/programs"
-              className="font-semibold text-[var(--primary-600)] underline decoration-2 underline-offset-4"
-            >
-              Explore our programs
-            </Link>
-            {" "}
-            to see what support looks like in practice
+            <Link href="/programs" className="text-link">Explore our programs</Link>
+            {" "}to see what support looks like in practice
           </li>
           <li>
-            <Link
-              href="/services/canberra"
-              className="font-semibold text-[var(--primary-600)] underline decoration-2 underline-offset-4"
-            >
-              View NDIS services in Canberra
-            </Link>
-            {" "}
-            for support categories and service areas
+            <Link href="/services/canberra" className="text-link">View NDIS services in Canberra</Link>
+            {" "}for support categories and service areas
           </li>
           <li>
-            <Link
-              href="/reviews"
-              className="font-semibold text-[var(--primary-600)] underline decoration-2 underline-offset-4"
-            >
-              Read participant stories
-            </Link>
+            <Link href="/reviews" className="text-link">Read participant stories</Link>
           </li>
         </ul>
+        </div>
       </section>
 
-      {/* 6. Form */}
-      <section aria-labelledby="referral-form-title" className="py-8 md:py-14 border-t border-gray-100">
+      <section aria-labelledby="referral-form-title" className="site-band site-section site-section--dawn">
+        <div className="content-shell content-shell--reading">
         <ReferralForm />
+        </div>
       </section>
-    </div>
+    </>
   );
 }

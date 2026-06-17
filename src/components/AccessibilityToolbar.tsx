@@ -102,7 +102,7 @@ export default function AccessibilityToolbar() {
     >
       <button
         type="button"
-        className={`touch-target flex h-14 w-14 items-center justify-center border border-[var(--primary-700)] bg-[var(--primary-600)] text-white shadow-lg transition hover:opacity-95 ${
+        className={`touch-target flex h-14 w-14 items-center justify-center border border-[var(--primary-700)] bg-[var(--primary-600)] text-white shadow-lg transition hover:bg-[var(--primary-700)] ${
           isOpen ? "rounded-r-none" : "rounded-r-xl"
         }`}
         onClick={() => setIsOpen((open) => !open)}
@@ -118,7 +118,7 @@ export default function AccessibilityToolbar() {
           id="accessibility-tools-panel"
           role="dialog"
           aria-label="Accessibility tools"
-          className="absolute left-14 top-0 w-[min(19rem,calc(100vw-2.5rem))] rounded-r-xl rounded-bl-xl border border-gray-300 bg-white shadow-2xl"
+          className="absolute left-14 top-0 w-[min(19rem,calc(100vw-2.5rem))] rounded-r-xl rounded-bl-xl border border-[var(--border-subtle)] bg-[var(--surface)] shadow-2xl"
         >
           <div className="border-b px-4 py-3">
             <h2 className="text-lg font-semibold">Accessibility Tools</h2>
@@ -126,7 +126,7 @@ export default function AccessibilityToolbar() {
           <div className="max-h-[70vh] space-y-2 overflow-y-auto p-3" role="toolbar" aria-label="Accessibility tools">
             <button
               type="button"
-              className="w-full rounded-md border border-gray-300 px-3 py-2 text-left text-sm hover:bg-gray-100"
+              className="w-full rounded-md border border-[var(--border-subtle)] px-3 py-2.5 text-left text-sm hover:bg-[var(--bg-band-eucalyptus)] min-h-11"
               onClick={() => setPrefs((p) => ({ ...p, xl: true }))}
               aria-pressed={prefs.xl}
             >
@@ -134,7 +134,7 @@ export default function AccessibilityToolbar() {
             </button>
             <button
               type="button"
-              className="w-full rounded-md border border-gray-300 px-3 py-2 text-left text-sm hover:bg-gray-100"
+              className="w-full rounded-md border border-[var(--border-subtle)] px-3 py-2.5 text-left text-sm hover:bg-[var(--bg-band-eucalyptus)] min-h-11"
               onClick={() => setPrefs((p) => ({ ...p, xl: false }))}
               aria-pressed={!prefs.xl}
             >
@@ -142,7 +142,7 @@ export default function AccessibilityToolbar() {
             </button>
             <button
               type="button"
-              className="w-full rounded-md border border-gray-300 px-3 py-2 text-left text-sm hover:bg-gray-100"
+              className="w-full rounded-md border border-[var(--border-subtle)] px-3 py-2.5 text-left text-sm hover:bg-[var(--bg-band-eucalyptus)] min-h-11"
               onClick={() => setPrefs((p) => ({ ...p, hc: !p.hc }))}
               aria-pressed={prefs.hc}
             >
@@ -150,7 +150,7 @@ export default function AccessibilityToolbar() {
             </button>
             <button
               type="button"
-              className="w-full rounded-md border border-gray-300 px-3 py-2 text-left text-sm hover:bg-gray-100"
+              className="w-full rounded-md border border-[var(--border-subtle)] px-3 py-2.5 text-left text-sm hover:bg-[var(--bg-band-eucalyptus)] min-h-11"
               onClick={() => setPrefs((p) => ({ ...p, dys: !p.dys }))}
               aria-pressed={prefs.dys}
             >
@@ -158,7 +158,7 @@ export default function AccessibilityToolbar() {
             </button>
             <button
               type="button"
-              className="w-full rounded-md border border-gray-300 px-3 py-2 text-left text-sm hover:bg-gray-100"
+              className="w-full rounded-md border border-[var(--border-subtle)] px-3 py-2.5 text-left text-sm hover:bg-[var(--bg-band-eucalyptus)] min-h-11"
               onClick={speak}
               aria-label="Read this page"
             >
@@ -166,7 +166,7 @@ export default function AccessibilityToolbar() {
             </button>
             <button
               type="button"
-              className="w-full rounded-md border border-gray-300 px-3 py-2 text-left text-sm hover:bg-gray-100"
+              className="w-full rounded-md border border-[var(--border-subtle)] px-3 py-2.5 text-left text-sm hover:bg-[var(--bg-band-eucalyptus)] min-h-11"
               onClick={stop}
               aria-label="Stop reading"
             >
@@ -174,7 +174,7 @@ export default function AccessibilityToolbar() {
             </button>
             <button
               type="button"
-              className="w-full rounded-md border border-gray-300 px-3 py-2 text-left text-sm hover:bg-gray-100"
+              className="w-full rounded-md border border-[var(--border-subtle)] px-3 py-2.5 text-left text-sm hover:bg-[var(--bg-band-eucalyptus)] min-h-11"
               onClick={resetAll}
             >
               Reset

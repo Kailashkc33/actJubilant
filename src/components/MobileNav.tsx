@@ -130,19 +130,19 @@ export default function MobileNav() {
           {/* Full-screen drawer: full height, scrollable, safe-area aware */}
           <div
             ref={panelRef}
-            className="absolute inset-0 h-[100dvh] w-full bg-white shadow-[0_8px_24px_rgba(0,0,0,0.2)]
+            className="absolute inset-0 h-[100dvh] w-full bg-[var(--sand)] shadow-[0_8px_24px_rgba(33,30,24,0.22)]
                        outline-none overflow-y-auto overscroll-contain
                        pt-[calc(env(safe-area-inset-top,0px)+1rem)] pb-[calc(env(safe-area-inset-bottom,0px)+1rem)]
                        motion-safe:transition-transform motion-safe:duration-300 motion-safe:ease-out translate-x-0"
           >
             <div className="px-6">
-              <div className="mb-4 flex items-center justify-between">
-                <span id="mobile-menu-title" className="text-lg font-semibold text-gray-900">
+              <div className="mb-4 flex items-center justify-between border-b border-[var(--line)] pb-4">
+                <span id="mobile-menu-title" className="text-lg font-semibold text-[var(--ink)]">
                   Menu
                 </span>
                 <button
                   type="button"
-                  className="rounded-full p-2 text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-700"
+                  className="flex min-h-11 min-w-11 items-center justify-center rounded-full text-[var(--ink-soft)] transition-colors hover:bg-[var(--sand-deep)] hover:text-[var(--ink)]"
                   onClick={() => setOpen(false)}
                   aria-label="Close menu"
                 >
@@ -166,7 +166,7 @@ export default function MobileNav() {
                     key={item.href}
                     href={item.href}
                     onClick={() => setOpen(false)}
-                    className="block rounded-lg px-4 py-3 text-gray-900 hover:bg-gray-100 focus-visible:bg-gray-100"
+                    className="block rounded-lg px-4 py-3 font-medium text-[var(--ink)] hover:bg-[var(--sand-deep)] focus-visible:bg-[var(--sand-deep)]"
                   >
                     {item.label}
                   </Link>

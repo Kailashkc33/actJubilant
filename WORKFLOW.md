@@ -71,17 +71,26 @@ Local-only edits are how fixes get lost.
 
 ## Layout system (June 2026)
 
+**Visual direction (preview branch):** **Canberra Morning** — dawn cream grounds, eucalyptus primary (#2D5A4E), terracotta accent (#C46842), ink footer (#243032). Alternating colour bands replace stacked bordered cards.
+
 **Pattern:** Full-width section backgrounds; inner content constrained. Do not cap the entire page in `main` — bands go edge-to-edge; shells hold readable width.
 
-| Token | CSS class | Max width | Use for |
-|-------|-----------|-----------|---------|
-| `--content-home` | `.content-shell--home` | 1160px | Homepage grids, About, Programs, Reviews, Canberra, header, footer |
-| `--content-reading` | `.content-shell--reading` | 1000px | FAQ, Privacy, Accessibility, Consultation, Referral, Feedback |
-| `--content-prose` | `.content-measure` | 720px | Long text blocks and intros (avoid full-width lines on desktop) |
+| Token / class | Max width / use |
+|---------------|-----------------|
+| `--content-home` / `.content-shell--home` | 1160px — Homepage grids, About, Programs, Reviews, Canberra, header, footer |
+| `--content-reading` / `.content-shell--reading` | 1000px — FAQ, Privacy, Accessibility, Consultation, Referral, Feedback |
+| `--content-prose` / `.content-measure` | 720px — Long text blocks and intros |
+| `.site-band` + `.site-section` | Full-width section rhythm; variants `--dawn`, `--eucalyptus`, `--stone`, `--sky`, `--surface`, `--cream` |
+| `.media-card` / `.media-figure` | Image-first blocks with caption below (no text overlay on photos) |
+| `.cta-panel` | End-of-page conversion band |
+
+**Component classes:** `.btn-primary`, `.btn-secondary`, `.btn-ghost`, `.card`, `.section-kicker`, `.text-link`, `.check-list`, `.step-list`, `.form-control`, `.form-success`
+
+**Do not:** Put text overlays on participant photos. Do not revert to sage/beige-only or healthcare-blue primary without owner sign-off.
 
 **Homepage:** Each `.home-band` section is full width; children wrapped in `.content-shell.content-shell--home`.
 
-**Reading pages:** Outer wrapper `.content-shell--reading`; apply `.content-measure` to intro copy where lines would otherwise span too wide.
+**Reading pages:** Use `.site-band` + `.site-section` bands; inner `.content-shell--reading`; apply `.content-measure` to intro copy.
 
 Defined in `src/app/globals.css`. Header/footer/toolbar aligned to `--content-home`.
 

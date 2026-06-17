@@ -11,7 +11,7 @@ export const viewport: Viewport = {
   userScalable: true,
 };
 
-import { Atkinson_Hyperlegible } from "next/font/google";
+import { Atkinson_Hyperlegible, IBM_Plex_Mono, Inter, Sora } from "next/font/google";
 import "./globals.css";
 import AccessibilityToolbar from "../components/AccessibilityToolbar";
 import HashScroll from "../components/HashScroll";
@@ -22,6 +22,27 @@ const atkinson = Atkinson_Hyperlegible({
   weight: "400",
   display: "swap",
   variable: "--font-dys",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+  variable: "--font-body",
+});
+
+const sora = Sora({
+  subsets: ["latin"],
+  weight: ["500", "600", "700", "800"],
+  display: "swap",
+  variable: "--font-display",
+});
+
+const ibmPlexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["500", "600"],
+  display: "swap",
+  variable: "--font-mono",
 });
 
 export const metadata: Metadata = {
@@ -246,12 +267,16 @@ const ORGANIZATION_JSON_LD = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-AU" suppressHydrationWarning className={atkinson.variable}>
-      <body>
+    <html
+      lang="en-AU"
+      suppressHydrationWarning
+      className={`${atkinson.variable} ${inter.variable} ${sora.variable} ${ibmPlexMono.variable}`}
+    >
+      <body className={inter.className}>
         {/* Skip link */}
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:bg-[var(--primary-600)] focus:text-white focus:px-4 focus:py-2 focus:rounded-lg"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:bg-[var(--gold)] focus:text-[var(--ink)] focus:px-4 focus:py-2 focus:rounded-lg"
         >
           Skip to main content
         </a>
@@ -274,11 +299,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 sizes="(max-width: 768px) 140px, 200px"
                 className="h-9 w-auto rounded-lg md:h-10"
               />
-             
             </Link>
 
-            {/* Desktop nav */}
-            <nav aria-label="Main" className="site-desktop-nav items-center gap-1 xl:gap-3">
+            <nav aria-label="Main" className="site-desktop-nav items-center gap-1 xl:gap-2">
               <Link className="nav-link px-2 xl:px-3" href="/programs">Programs</Link>
               <Link className="nav-link px-2 xl:px-3" href="/about">About</Link>
               <Link className="nav-link px-2 xl:px-3" href="/consultation">Book a Consultation</Link>
@@ -286,7 +309,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link className="nav-link px-2 xl:px-3" href="/faq">FAQ</Link>
               <Link className="nav-link px-2 xl:px-3" href="/accessibility">Accessibility</Link>
               <Link className="nav-link px-2 xl:px-3" href="/reviews">Reviews</Link>
-              
             </nav>
 
             {/* Mobile nav trigger */}

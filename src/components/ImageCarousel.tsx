@@ -16,6 +16,7 @@ interface ImageCarouselProps {
   autoPlayInterval?: number;
   showDots?: boolean;
   showArrows?: boolean;
+  captionBelow?: boolean;
 }
 
 function usePrefersReducedMotion() {
@@ -38,6 +39,7 @@ export default function ImageCarousel({
   autoPlayInterval = 5000,
   showDots = true,
   showArrows = true,
+  captionBelow = true,
 }: ImageCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -92,8 +94,11 @@ export default function ImageCarousel({
   const slide = images[currentIndex];
 
   return (
+    <figure className="carousel-figure">
     <div
-      className="carousel group relative h-[17.5rem] w-full overflow-hidden rounded-[var(--radius-lg)] border border-[var(--sage-mid)] shadow-[var(--shadow-card)] md:h-[30rem]"
+      className={`carousel group relative w-full overflow-hidden rounded-[var(--radius-lg)] ${
+        captionBelow ? "carousel--caption-below" : ""
+      }`}
       aria-roledescription="carousel"
       aria-label="Gallery highlights"
       onMouseEnter={() => setIsPaused(true)}
@@ -112,7 +117,7 @@ export default function ImageCarousel({
         aria-atomic="true"
       />
 
-      <div className="relative h-full w-full">
+      <div className="carousel__stage relative h-[17.5rem] w-full md:h-[30rem]">
         <Image
           src={slide.src}
           alt={slide.alt}
@@ -122,18 +127,21 @@ export default function ImageCarousel({
           sizes="(max-width: 768px) 100vw, 50vw"
         />
 
-        <div className="carousel__scrim" aria-hidden="true" />
-
-        <div className="carousel__caption">
-          <div className="carousel__caption-panel">
-            {slide.title && (
-              <p className="carousel__caption-title">{slide.title}</p>
-            )}
-            {slide.description && (
-              <p className="carousel__caption-desc">{slide.description}</p>
-            )}
-          </div>
-        </div>
+        {!captionBelow && (
+          <>
+            <div className="carousel__scrim" aria-hidden="true" />
+            <div className="carousel__caption">
+              <div className="carousel__caption-panel">
+                {slide.title && (
+                  <p className="carousel__caption-title">{slide.title}</p>
+                )}
+                {slide.description && (
+                  <p className="carousel__caption-desc">{slide.description}</p>
+                )}
+              </div>
+            </div>
+          </>
+        )}
       </div>
 
       {showArrows && images.length > 1 && (
@@ -197,5 +205,14 @@ export default function ImageCarousel({
         </div>
       )}
     </div>
+    {captionBelow && (slide.title || slide.description) && (
+      <figcaption className="carousel-figure__caption">
+        {slide.title && <span className="carousel-figure__title">{slide.title}</span>}
+        {slide.description && (
+          <span className="carousel-figure__desc">{slide.description}</span>
+        )}
+      </figcaption>
+    )}
+    </figure>
   );
 }
