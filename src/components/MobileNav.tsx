@@ -130,19 +130,19 @@ export default function MobileNav() {
           {/* Full-screen drawer: full height, scrollable, safe-area aware */}
           <div
             ref={panelRef}
-            className="absolute inset-0 h-[100dvh] w-full bg-white shadow-[0_8px_24px_rgba(0,0,0,0.2)]
+            className="mobile-nav-panel absolute inset-0 h-[100dvh] w-full
                        outline-none overflow-y-auto overscroll-contain
                        pt-[calc(env(safe-area-inset-top,0px)+1rem)] pb-[calc(env(safe-area-inset-bottom,0px)+1rem)]
                        motion-safe:transition-transform motion-safe:duration-300 motion-safe:ease-out translate-x-0"
           >
             <div className="px-6">
-              <div className="mb-4 flex items-center justify-between">
-                <span id="mobile-menu-title" className="text-lg font-semibold text-gray-900">
+              <div className="mb-5 flex items-center justify-between">
+                <span id="mobile-menu-title" className="mobile-nav-panel__title text-lg font-semibold">
                   Menu
                 </span>
                 <button
                   type="button"
-                  className="rounded-full p-2 text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-700"
+                  className="mobile-nav-panel__close rounded-full p-2 transition-colors"
                   onClick={() => setOpen(false)}
                   aria-label="Close menu"
                 >
@@ -152,12 +152,11 @@ export default function MobileNav() {
                 </button>
               </div>
 
-              <nav aria-label="Mobile" className="flex flex-col gap-2">
+              <nav aria-label="Mobile" className="flex flex-col gap-1">
                 {[
                   { href: "/programs", label: "Programs" },
                   { href: "/about", label: "About" },
                   { href: "/reviews", label: "Reviews" },
-                  { href: "/referral", label: "Make a Referral" },
                   { href: "/consultation", label: "Book a Consultation" },
                   { href: "/accessibility", label: "Accessibility" },
                   { href: "/faq", label: "FAQ" },
@@ -166,16 +165,23 @@ export default function MobileNav() {
                     key={item.href}
                     href={item.href}
                     onClick={() => setOpen(false)}
-                    className="block rounded-lg px-4 py-3 text-gray-900 hover:bg-gray-100 focus-visible:bg-gray-100"
+                    className="mobile-nav-panel__link block rounded-lg px-4 py-3"
                   >
                     {item.label}
                   </Link>
                 ))}
 
+                <Link
+                  href="/referral"
+                  onClick={() => setOpen(false)}
+                  className="btn-primary mt-4 w-full"
+                >
+                  Make a Referral
+                </Link>
                 <a
                   href="tel:+61424488439"
                   onClick={() => setOpen(false)}
-                  className="btn-primary mt-3 w-full"
+                  className="btn-secondary mt-2 w-full"
                   aria-label="Call us on +61 424 488 439"
                 >
                   Call +61 424 488 439

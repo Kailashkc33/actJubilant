@@ -156,7 +156,7 @@ export default function Home() {
           <div className="order-2 max-w-xl md:order-1">
             <h1
               id="hero-title"
-              className="text-balance text-3xl font-bold leading-snug md:text-5xl"
+              className="home-hero__title text-balance text-4xl font-extrabold leading-[1.08] md:text-6xl"
             >
               Meaningful daily life, built around your interests
             </h1>

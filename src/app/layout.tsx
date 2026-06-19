@@ -11,7 +11,7 @@ export const viewport: Viewport = {
   userScalable: true,
 };
 
-import { Atkinson_Hyperlegible } from "next/font/google";
+import { Atkinson_Hyperlegible, Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
 import AccessibilityToolbar from "../components/AccessibilityToolbar";
 import HashScroll from "../components/HashScroll";
@@ -22,6 +22,13 @@ const atkinson = Atkinson_Hyperlegible({
   weight: "400",
   display: "swap",
   variable: "--font-dys",
+});
+
+const display = Bricolage_Grotesque({
+  subsets: ["latin"],
+  weight: ["500", "600", "700", "800"],
+  display: "swap",
+  variable: "--font-display",
 });
 
 export const metadata: Metadata = {
@@ -246,7 +253,7 @@ const ORGANIZATION_JSON_LD = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-AU" suppressHydrationWarning className={atkinson.variable}>
+    <html lang="en-AU" suppressHydrationWarning className={`${atkinson.variable} ${display.variable}`}>
       <body>
         {/* Skip link */}
         <a
@@ -264,7 +271,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           className="site-header sticky top-0 z-40 w-full"
         >
           <div className="site-header__inner content-shell content-shell--home">
-            <Link href="/" className="flex shrink-0 items-center gap-3">
+            <Link href="/" className="site-header__brand flex shrink-0 items-center gap-3" aria-label="ACT Jubilant home">
               <Image
                 src="/logo.png"
                 alt="ACT Jubilant"
@@ -278,16 +285,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </Link>
 
             {/* Desktop nav */}
-            <nav aria-label="Main" className="site-desktop-nav items-center gap-1 xl:gap-3">
+            <nav aria-label="Main" className="site-desktop-nav items-center gap-1 xl:gap-2">
               <Link className="nav-link px-2 xl:px-3" href="/programs">Programs</Link>
               <Link className="nav-link px-2 xl:px-3" href="/about">About</Link>
               <Link className="nav-link px-2 xl:px-3" href="/consultation">Book a Consultation</Link>
-              <Link className="nav-link px-2 xl:px-3" href="/referral">Make a Referral</Link>
               <Link className="nav-link px-2 xl:px-3" href="/faq">FAQ</Link>
               <Link className="nav-link px-2 xl:px-3" href="/accessibility">Accessibility</Link>
               <Link className="nav-link px-2 xl:px-3" href="/reviews">Reviews</Link>
-              
             </nav>
+
+            {/* Persistent desktop CTA */}
+            <div className="site-header__cta">
+              <Link href="/referral" className="btn-primary btn-primary--sm">
+                Make a Referral
+              </Link>
+            </div>
 
             {/* Mobile nav trigger */}
             <div className="site-mobile-nav">
