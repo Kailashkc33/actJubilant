@@ -66,9 +66,11 @@ const ONGOING_WORK = [
 
 export default function AccessibilityPage() {
   return (
-    <div className="content-shell content-shell--reading">
-      <section aria-labelledby="accessibility-opener-title" className="py-8 md:py-12">
-        <h1 id="accessibility-opener-title" className="h2 text-balance">
+    <>
+      <section aria-labelledby="accessibility-opener-title" className="site-band site-section site-section--dawn">
+        <div className="content-shell content-shell--reading">
+        <p className="section-kicker">Accessibility</p>
+        <h1 id="accessibility-opener-title" className="h1 text-balance">
           Accessibility
         </h1>
         <p className="content-measure mt-4 text-lg text-[var(--text-muted)]">
@@ -76,12 +78,11 @@ export default function AccessibilityPage() {
           explains the standard we work toward on this website and how we handle
           accessibility in our support.
         </p>
+        </div>
       </section>
 
-      <section
-        aria-labelledby="our-standard-title"
-        className="py-8 md:py-10 border-t border-gray-100"
-      >
+      <section aria-labelledby="our-standard-title" className="site-band site-section site-section--cream">
+        <div className="content-shell content-shell--reading">
         <h2 id="our-standard-title" className="h2">
           Our standard
         </h2>
@@ -109,12 +110,11 @@ export default function AccessibilityPage() {
             page as our review work progresses.
           </p>
         </div>
+        </div>
       </section>
 
-      <section
-        aria-labelledby="cognitive-commitments-title"
-        className="py-8 md:py-10 border-t border-gray-100"
-      >
+      <section aria-labelledby="cognitive-commitments-title" className="site-band site-section site-section--eucalyptus">
+        <div className="content-shell content-shell--reading">
         <h2 id="cognitive-commitments-title" className="h2">
           Cognitive accessibility commitments
         </h2>
@@ -130,14 +130,13 @@ export default function AccessibilityPage() {
             </div>
           ))}
         </dl>
+        </div>
       </section>
 
-      <section
-        aria-labelledby="real-people-title"
-        className="py-8 md:py-10 border-t border-gray-100"
-      >
-        <div className="card overflow-hidden p-0">
-          <div className="relative aspect-[3/2] w-full">
+      <section aria-labelledby="real-people-title" className="site-band site-section site-section--surface">
+        <div className="content-shell content-shell--reading">
+        <div className="media-figure media-figure--bordered overflow-hidden">
+          <div className="media-figure__image aspect-[3/2]">
             <Image
               src="/images/stock/community-group-outdoors.jpg"
               alt="Illustrative photo of a diverse group outdoors, including a person in a wheelchair"
@@ -162,12 +161,11 @@ export default function AccessibilityPage() {
           </p>
           </div>
         </div>
+        </div>
       </section>
 
-      <section
-        aria-labelledby="website-tools-title"
-        className="py-8 md:py-10 border-t border-gray-100"
-      >
+      <section aria-labelledby="website-tools-title" className="site-band site-section site-section--dawn">
+        <div className="content-shell content-shell--reading">
         <h2 id="website-tools-title" className="h2">
           Tools on this website
         </h2>
@@ -188,12 +186,11 @@ export default function AccessibilityPage() {
           Preferences are saved in your browser for return visits. If a tool does not
           work as expected on your device, please tell us.
         </p>
+        </div>
       </section>
 
-      <section
-        aria-labelledby="ongoing-work-title"
-        className="py-8 md:py-10 border-t border-gray-100"
-      >
+      <section aria-labelledby="ongoing-work-title" className="site-band site-section site-section--cream">
+        <div className="content-shell content-shell--reading">
         <h2 id="ongoing-work-title" className="h2">
           Ongoing review
         </h2>
@@ -210,12 +207,11 @@ export default function AccessibilityPage() {
             </li>
           ))}
         </ul>
+        </div>
       </section>
 
-      <section
-        aria-labelledby="service-accessibility-title"
-        className="py-8 md:py-10 border-t border-gray-100"
-      >
+      <section aria-labelledby="service-accessibility-title" className="site-band site-section site-section--eucalyptus">
+        <div className="content-shell content-shell--reading">
         <h2 id="service-accessibility-title" className="h2">
           Accessibility in our support
         </h2>
@@ -249,13 +245,12 @@ export default function AccessibilityPage() {
             <span>Staff trained in disability awareness and respectful support</span>
           </li>
         </ul>
+        </div>
       </section>
 
-      <section
-        aria-labelledby="feedback-title"
-        className="py-8 md:py-14 border-t border-gray-100"
-      >
-        <div className="card">
+      <section aria-labelledby="feedback-title" className="site-band site-section site-section--surface">
+        <div className="content-shell content-shell--reading">
+        <div className="cta-panel">
           <h2 id="feedback-title" className="h2">
             Report a barrier or suggest an improvement
           </h2>
@@ -289,7 +284,8 @@ export default function AccessibilityPage() {
             </Link>
           </p>
         </div>
+        </div>
       </section>
-    </div>
+    </>
   );
 }

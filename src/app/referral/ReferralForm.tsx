@@ -15,7 +15,7 @@ export default function ReferralForm() {
   }, [state.ok]);
 
   return (
-    <div className="card">
+    <div className="card card--elevated">
       <h2 id="referral-form-title" className="h2">
         Referral form
       </h2>
@@ -28,7 +28,7 @@ export default function ReferralForm() {
       </div>
 
       {state.ok && (
-        <div className="mt-4 rounded-lg border border-green-300 bg-green-50 p-4" role="status">
+        <div className="mt-4 form-success" role="status">
           {state.message}
         </div>
       )}

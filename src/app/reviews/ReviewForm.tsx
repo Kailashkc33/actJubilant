@@ -15,7 +15,7 @@ export default function ReviewForm() {
   }, [state.ok]);
 
   return (
-    <div className="card">
+    <div className="card card--elevated">
       <h2 id="share-experience-title" className="h2">
         Share your experience
       </h2>
@@ -25,7 +25,7 @@ export default function ReviewForm() {
       </p>
 
       {state.ok && (
-        <div className="mt-4 rounded-lg border border-green-300 bg-green-50 p-4" role="status">
+        <div className="mt-4 form-success" role="status">
           {state.message}
         </div>
       )}

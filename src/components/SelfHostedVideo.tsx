@@ -127,9 +127,9 @@ export default function SelfHostedVideo({
             aria-hidden="true"
           />
           <div className="absolute inset-0 flex items-center justify-center" aria-hidden="true">
-            <div className="flex h-24 w-24 items-center justify-center rounded-full bg-white/95 shadow-lg backdrop-blur transition-transform group-hover:scale-110 sm:h-20 sm:w-20">
+            <div className="flex h-[4.5rem] w-[4.5rem] items-center justify-center rounded-full bg-white/95 shadow-lg backdrop-blur transition-transform group-hover:scale-105 sm:h-20 sm:w-20">
               <svg
-                className="ml-1 h-11 w-11 text-[var(--primary-600)] sm:h-9 sm:w-9"
+                className="ml-1 h-8 w-8 text-[var(--primary-600)] sm:h-9 sm:w-9"
                 viewBox="0 0 24 24"
                 fill="currentColor"
                 aria-hidden="true"

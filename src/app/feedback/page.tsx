@@ -15,8 +15,10 @@ export default function FeedbackPage() {
   }, [state.ok]);
 
   return (
-    <div className="content-shell content-shell--reading py-10">
-      <h1 className="h2">Feedback & Complaints</h1>
+    <div className="site-band site-section site-section--dawn">
+    <div className="content-shell content-shell--reading">
+      <p className="section-kicker">Feedback</p>
+      <h1 className="h1">Feedback & Complaints</h1>
       <p className="content-measure mt-4 text-lg">
         We value your feedback and are committed to continuous improvement. 
         Your input helps us provide better services.
@@ -24,7 +26,7 @@ export default function FeedbackPage() {
 
       <div className="mt-8 grid gap-8 md:grid-cols-2">
         {/* Feedback Form */}
-        <div className="card">
+        <div className="card card--elevated">
           <h2 className="h3">Share Your Feedback</h2>
           <p className="mt-2">
             Tell us about your experience with ACT Jubilant. We appreciate 
@@ -32,7 +34,7 @@ export default function FeedbackPage() {
           </p>
 
           {state.ok && (
-            <div className="mt-4 rounded-lg border border-green-300 bg-green-50 p-4" role="status">
+            <div className="mt-4 form-success" role="status">
               {state.message}
             </div>
           )}
@@ -166,7 +168,7 @@ export default function FeedbackPage() {
 
         {/* Contact Information */}
         <div className="space-y-6">
-          <div className="card">
+          <div className="card card--elevated">
             <h2 className="h3">Other Ways to Contact Us</h2>
             <div className="mt-4 space-y-3">
               <div>
@@ -192,7 +194,7 @@ export default function FeedbackPage() {
             </div>
           </div>
 
-          <div className="card">
+          <div className="card card--elevated">
             <h2 className="h3">Our Commitment</h2>
             <ul className="mt-3 space-y-2">
               <li>• We respond to all feedback within 2 business days</li>
@@ -202,7 +204,7 @@ export default function FeedbackPage() {
             </ul>
           </div>
 
-          <div className="card">
+          <div className="card card--elevated">
             <h2 className="h3">External Support</h2>
             <p className="mt-2">
               If you're not satisfied with our response, you can contact:
@@ -215,6 +217,7 @@ export default function FeedbackPage() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }

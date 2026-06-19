@@ -45,83 +45,63 @@ const FAQ_ITEMS = [
 
 export default function FAQPage() {
   return (
-    <div className="content-shell content-shell--reading">
-      <section aria-labelledby="faq-opener-title" className="py-8 md:py-12">
-        <h1 id="faq-opener-title" className="h2 text-balance">
-          Frequently Asked Questions
-        </h1>
-        <p className="content-measure mt-4 text-lg text-[var(--text-muted)]">
-          Practical answers about NDIS support, service areas, and how to get started with ACT
-          Jubilant in Canberra and the ACT.
-        </p>
-      </section>
-
-      <section aria-labelledby="faq-list-title" className="py-8 md:py-10 border-t border-gray-100">
-        <h2 id="faq-list-title" className="sr-only">
-          Questions and answers
-        </h2>
-        <dl className="grid gap-6 md:grid-cols-2">
-          {FAQ_ITEMS.map((item) => (
-            <div key={item.question} className="card h-full">
-              <dt className="h3 text-lg md:text-xl">{item.question}</dt>
-              <dd className="mt-2 text-[var(--text-muted)]">{item.answer}</dd>
-            </div>
-          ))}
-        </dl>
-      </section>
-
-      <section
-        aria-labelledby="faq-more-title"
-        className="py-8 md:py-10 border-t border-gray-100"
-      >
-        <h2 id="faq-more-title" className="text-xl font-semibold">
-          Still have questions?
-        </h2>
-        <p className="mt-3 text-[var(--text-muted)]">
-          These pages go deeper on fit, programs, and how to get in touch:
-        </p>
-        <ul className="mt-4 space-y-2 text-[var(--text-muted)]">
-          <li>
-            <Link href="/about#who-were-best-for" className="home-depth-link">
-              Who we&apos;re best for
-            </Link>
-          </li>
-          <li>
-            <Link href="/programs" className="home-depth-link">
-              Explore our programs
-            </Link>
-          </li>
-          <li>
-            <Link href="/services/canberra" className="home-depth-link">
-              NDIS services in Canberra
-            </Link>
-          </li>
-          <li>
-            <Link href="/accessibility" className="home-depth-link">
-              Website accessibility
-            </Link>
-          </li>
-        </ul>
-      </section>
-
-      <section aria-labelledby="faq-cta-title" className="py-10 md:py-14 border-t border-gray-100">
-        <div className="card text-center md:text-left">
-          <p id="faq-cta-title" className="text-lg md:text-xl font-medium leading-relaxed">
-            Ready to talk about support, fit, or next steps?
+    <>
+      <section aria-labelledby="faq-opener-title" className="site-band site-section site-section--dawn">
+        <div className="content-shell content-shell--reading">
+          <p className="section-kicker">FAQ</p>
+          <h1 id="faq-opener-title" className="h1 text-balance">Frequently Asked Questions</h1>
+          <p className="content-measure mt-4 text-lg text-[var(--text-muted)]">
+            Practical answers about NDIS support, service areas, and how to get started with ACT
+            Jubilant in Canberra and the ACT.
           </p>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3 md:justify-start">
-            <Link href="/consultation" className="btn-primary">
-              Book a Consultation
-            </Link>
-            <Link href="/referral" className="btn-secondary">
-              Make a Referral
-            </Link>
-            <a href="tel:+61424488439" className="btn-ghost" aria-label="Call us on +61 424 488 439">
-              Call: +61 424 488 439
-            </a>
+        </div>
+      </section>
+
+      <section aria-labelledby="faq-list-title" className="site-band site-section site-section--cream">
+        <div className="content-shell content-shell--reading">
+          <h2 id="faq-list-title" className="sr-only">Questions and answers</h2>
+          <dl className="grid gap-6 md:grid-cols-2">
+            {FAQ_ITEMS.map((item) => (
+              <div key={item.question} className="card card--elevated h-full">
+                <dt className="h3 text-lg md:text-xl">{item.question}</dt>
+                <dd className="mt-2 text-[var(--text-muted)]">{item.answer}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </section>
+
+      <section aria-labelledby="faq-more-title" className="site-band site-section site-section--eucalyptus">
+        <div className="content-shell content-shell--reading">
+          <h2 id="faq-more-title" className="text-xl font-semibold">Still have questions?</h2>
+          <p className="mt-3 text-[var(--text-muted)]">
+            These pages go deeper on fit, programs, and how to get in touch:
+          </p>
+          <ul className="mt-4 space-y-2">
+            <li><Link href="/programs#who-were-best-for" className="text-link">Who we&apos;re best for</Link></li>
+            <li><Link href="/programs" className="text-link">Explore our programs</Link></li>
+            <li><Link href="/services/canberra" className="text-link">NDIS services in Canberra</Link></li>
+            <li><Link href="/accessibility" className="text-link">Website accessibility</Link></li>
+          </ul>
+        </div>
+      </section>
+
+      <section aria-labelledby="faq-cta-title" className="site-band site-section site-section--surface">
+        <div className="content-shell content-shell--reading">
+          <div className="cta-panel text-center md:text-left">
+            <p id="faq-cta-title" className="text-lg md:text-xl font-medium leading-relaxed">
+              Ready to talk about support, fit, or next steps?
+            </p>
+            <div className="cta-panel__actions justify-center md:justify-start">
+              <Link href="/consultation" className="btn-primary">Book a Consultation</Link>
+              <Link href="/referral" className="btn-secondary">Make a Referral</Link>
+              <a href="tel:+61424488439" className="btn-ghost" aria-label="Call us on +61 424 488 439">
+                Call: +61 424 488 439
+              </a>
+            </div>
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 }

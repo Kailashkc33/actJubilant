@@ -4,11 +4,13 @@ import Link from "next/link";
 import Image from "next/image";
 import SelfHostedVideo from "../components/SelfHostedVideo";
 import ImageCarousel from "../components/ImageCarousel";
+import ConsultationForm from "../components/ConsultationForm";
 
-const HERO_IDENTITY = [
-  "Canberra & the ACT",
+const TRUST_STRIP = [
   "Boutique, relationship-led provider",
-  "Engagement, routine, and familiar workers",
+  "Engagement before tasks",
+  "Consistent familiar workers",
+  "Small groups around six people",
 ] as const;
 
 const PROOF_POINTS = [
@@ -101,26 +103,6 @@ const SUPPORT_LOOKS_LIKE = [
   },
 ] as const;
 
-const STRONG_FIT = [
-  "Is 12–65 with physical disability or mild to moderate cognitive disability",
-  "Wants engagement and routine, not only tasks or hours filled",
-  "Has interests, hobbies, or goals they'd like support built around",
-  "Does better with familiar support workers than constant change",
-  "Would benefit from small group settings (around six people)",
-] as const;
-
-const FAMILY_VALUES = [
-  "Consistent workers over frequent rotation",
-  "Meaningful activity over passive supervision",
-  "A smaller, relationship-led provider who knows participants personally",
-] as const;
-
-const HONEST_BOUNDARIES = [
-  "The primary goal is task completion or hours filled, without a focus on engagement, routine, or relationship-building",
-  "Worker rotation is unavoidable and relationship continuity is not a priority",
-  "Support is needed without a focus on interests, routine, or meaningful daily participation",
-] as const;
-
 const REFERRER_POINTS = [
   "Clear fit guide — engagement, routine, and consistent workers",
   "Goals reinforced between therapy appointments through everyday activities",
@@ -141,330 +123,312 @@ export default function Home() {
   return (
     <div className="homepage">
       {/* 1. Hero */}
-      <section aria-labelledby="hero-title" className="home-hero home-band">
+      <section aria-labelledby="hero-title" className="home-hero home-band home-band--hero">
         <div className="content-shell content-shell--home">
-        <div className="grid gap-8 md:grid-cols-2 md:items-center md:gap-12">
-          <div className="home-hero__media order-1 md:order-2">
-            <ImageCarousel
-              images={[...HERO_CAROUSEL]}
-              autoPlay
-              autoPlayInterval={4000}
-              showDots
-              showArrows
-            />
-          </div>
-          <div className="order-2 max-w-xl md:order-1">
-            <h1
-              id="hero-title"
-              className="text-balance text-3xl font-bold leading-snug md:text-5xl"
-            >
-              Meaningful daily life, built around your interests
-            </h1>
-            <p className="home-hero__lead mt-4 md:mt-5">
-              Structured, relationship-based support in Canberra for participants who benefit
-              from engagement, routine, and familiar support workers.
-            </p>
-            <ul className="home-hero__chips mt-5" aria-label="Who we are">
-              {HERO_IDENTITY.map((item) => (
-                <li key={item} className="home-hero__chip">
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <div className="home-hero__actions mt-8">
-              <Link href="/referral" className="btn-primary">
-                Make a Referral
-              </Link>
-              <Link href="/consultation" className="btn-secondary">
-                Book a Consultation
-              </Link>
-              <a
-                href="tel:+61424488439"
-                className="btn-ghost"
-                aria-label="Call us on +61 424 488 439"
-              >
-                Call: +61 424 488 439
-              </a>
+          <div className="home-hero__grid grid gap-8 md:grid-cols-2 md:items-center md:gap-12">
+            <div className="home-hero__media order-1 md:order-2">
+              <ImageCarousel
+                images={[...HERO_CAROUSEL]}
+                autoPlay
+                autoPlayInterval={4000}
+                showDots
+                showArrows
+                captionBelow
+              />
             </div>
-            <p className="mt-5 text-sm text-[var(--text-muted)]">
-              If you&apos;re in crisis, call <strong>000</strong> or Lifeline{" "}
-              <strong>13&nbsp;11&nbsp;14</strong>.
-            </p>
+            <div className="home-hero__copy order-2 max-w-xl md:order-1">
+              <p className="section-kicker">Canberra &amp; the ACT</p>
+              <h1
+                id="hero-title"
+                className="h1 text-balance"
+              >
+                Meaningful daily life, built around your interests
+              </h1>
+              <p className="home-hero__lead mt-4 md:mt-5">
+                Structured, relationship-based support in Canberra for participants who benefit
+                from engagement, routine, and familiar support workers.
+              </p>
+              <div className="home-hero__actions">
+                <Link href="/referral" className="btn-primary">
+                  Make a Referral
+                </Link>
+              </div>
+              <div className="home-hero__actions mt-6">
+                <Link href="/consultation" className="btn-secondary">
+                  Book a Consultation
+                </Link>
+                <a
+                  href="tel:+61424488439"
+                  className="btn-ghost"
+                  aria-label="Call us on +61 424 488 439"
+                >
+                  +61 424 488 439
+                </a>
+              </div>
+              <p className="mt-5 text-sm text-[var(--text-muted)]">
+                If you&apos;re in crisis, call <strong>000</strong> or Lifeline{" "}
+                <strong>13&nbsp;11&nbsp;14</strong>.
+              </p>
+              <p className="mt-4">
+                <Link href="#how-it-works" className="text-link">
+                  See how it works ↓
+                </Link>
+              </p>
+            </div>
           </div>
         </div>
-        </div>
       </section>
 
-      {/* 2. Three proof points */}
-      <section
-        aria-labelledby="proof-points-title"
-        className="home-section home-section--surface home-band"
-      >
+      {/* Trust strip */}
+      <div className="trust-strip" role="region" aria-label="What makes our support different">
         <div className="content-shell content-shell--home">
-        <h2 id="proof-points-title" className="sr-only">
-          What makes our support different
-        </h2>
-        <blockquote className="home-pull-quote home-pull-quote--compact text-balance">
-          Support should not simply fill time. It should help people build meaningful daily life.
-        </blockquote>
-        <ul className="home-proof-grid" role="list">
-          {PROOF_POINTS.map((point) => (
-            <li key={point.title}>
-              <article className="card home-proof-card home-card-interactive h-full">
-                <h3 className="home-proof-card__title">{point.title}</h3>
-                <p className="home-proof-card__line">{point.line}</p>
-              </article>
-            </li>
-          ))}
-        </ul>
+          <ul className="trust-strip__row">
+            {TRUST_STRIP.map((item) => (
+              <li key={item} className="trust-strip__item">
+                <span className="trust-strip__mark" aria-hidden="true">✓</span>
+                {item}
+              </li>
+            ))}
+          </ul>
         </div>
-      </section>
+      </div>
 
-      {/* 3. What support looks like — image-led */}
+      {/* 2. What support looks like — image-led */}
       <section
         aria-labelledby="support-looks-title"
-        className="home-section home-section--sage home-band"
+        className="home-section home-band home-band--subtle"
       >
         <div className="content-shell content-shell--home">
-        <p className="home-section-kicker">Participant life</p>
-        <h2 id="support-looks-title" className="h2 content-measure">
-          What support looks like
-        </h2>
-        <p className="content-measure mt-3 text-[var(--text-muted)]">
-          Picture a week that feels purposeful — built around interests, routine, and connection.
-        </p>
-        <div className="mt-8 grid gap-5 sm:grid-cols-2 md:gap-6">
-          {SUPPORT_LOOKS_LIKE.map((item) => (
-            <article
-              key={item.title}
-              className="card home-pillar-card home-pillar-card--compact home-card-interactive card--on-band"
-            >
-              <div className="home-pillar-card__image">
-                <Image
-                  src={item.image}
-                  alt={item.alt}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 640px) 100vw, 50vw"
-                />
-                <div className="home-pillar-card__scrim" aria-hidden="true" />
-                <div className="home-pillar-card__title-overlay">
-                  <h3 className="h3">{item.title}</h3>
-                  <p>{item.caption}</p>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-        <div className="mx-auto mt-12 max-w-4xl rounded-[var(--radius-lg)] border border-[var(--border-subtle)] bg-[var(--bg-surface)] p-5 shadow-[var(--shadow-card)] md:p-6">
-          <h3 className="text-lg font-semibold">Group programs in action</h3>
-          <p className="mt-2 text-[var(--text-muted)]">
-            An example of the kind of community group activity we can help arrange or
-            support when it suits a participant&apos;s interests and goals.
+          <p className="section-kicker">Participant life</p>
+          <h2 id="support-looks-title" className="h2 content-measure">
+            What support looks like
+          </h2>
+          <p className="content-measure mt-3 text-[var(--text-muted)]">
+            Picture a week that feels purposeful — built around interests, routine, and connection.
           </p>
-          <div className="mx-auto mt-5 max-w-md">
-            <SelfHostedVideo
-              srcMp4="/videos/community-dance-class-event-sep-2025-portrait.mp4"
-              title="Staying engaged together"
-              description="A group movement class focused on connection, routine, and participation in a welcoming community space."
-              poster="/images/gallery/dance-class-event-poster-portrait.jpg"
-              aspect="9/16"
-              objectFit="cover"
-              minimalChrome
-            />
+          <div className="mt-8 grid gap-5 sm:grid-cols-2 md:gap-6">
+            {SUPPORT_LOOKS_LIKE.map((item) => (
+              <article
+                key={item.title}
+                className="media-card media-card--elevated home-card-interactive"
+              >
+                <div className="media-card__image aspect-[4/3]">
+                  <Image
+                    src={item.image}
+                    alt={item.alt}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 640px) 100vw, 50vw"
+                  />
+                </div>
+                <div className="media-card__body">
+                  <h3 className="media-card__title">{item.title}</h3>
+                  <p className="media-card__line">{item.caption}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+          <div className="media-spotlight mx-auto mt-12 max-w-3xl">
+            <h3 className="text-lg font-semibold">Group programs in action</h3>
+            <p className="mt-2 text-[var(--text-muted)]">
+              An example of the kind of community group activity we can help arrange or
+              support when it suits a participant&apos;s interests and goals.
+            </p>
+            <div className="mx-auto mt-5 max-w-[18rem] sm:max-w-sm md:max-w-md">
+              <SelfHostedVideo
+                srcMp4="/videos/community-dance-class-event-sep-2025-portrait.mp4"
+                title="Staying engaged together"
+                description="A group movement class focused on connection, routine, and participation in a welcoming community space."
+                poster="/images/gallery/dance-class-event-poster-portrait.jpg"
+                aspect="9/16"
+                objectFit="cover"
+                minimalChrome
+              />
+            </div>
           </div>
         </div>
+      </section>
+
+      {/* 3. Three proof points */}
+      <section
+        aria-labelledby="proof-points-title"
+        className="home-section home-band home-band--proof"
+      >
+        <div className="content-shell content-shell--home">
+          <h2 id="proof-points-title" className="h2">
+            What makes our support different
+          </h2>
+          <p className="content-measure mt-3 text-[var(--text-muted)]">
+            Support should not simply fill time. It should help people build meaningful daily life.
+          </p>
+          <ul className="home-proof-grid mt-8" role="list">
+            {PROOF_POINTS.map((point) => (
+              <li key={point.title}>
+                <article className="card card--elevated card--borderless home-proof-card home-card-interactive h-full">
+                  <h3 className="home-proof-card__title">{point.title}</h3>
+                  <p className="home-proof-card__line">{point.line}</p>
+                </article>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
       {/* 4. How it works */}
       <section
         aria-labelledby="how-it-works-title"
-        className="home-section home-section--surface home-band"
+        id="how-it-works"
+        className="home-section home-band home-band--subtle"
       >
         <div className="content-shell content-shell--home">
-        <p className="home-section-kicker">Getting started</p>
-        <h2 id="how-it-works-title" className="h2">
-          How it works
-        </h2>
-        <p className="content-measure mt-3 text-[var(--text-muted)]">
-          A simple path from first conversation to familiar support that runs consistently.
-        </p>
-        <ol className="home-steps mt-8">
-          {HOW_IT_WORKS.map((item) => (
-            <li key={item.step}>
-              <article className="card home-step home-card-interactive h-full">
-                <h3 className="home-step__label">{item.step}</h3>
-                <p className="home-step__line">{item.line}</p>
-              </article>
-            </li>
-          ))}
-        </ol>
+          <p className="section-kicker">Getting started</p>
+          <h2 id="how-it-works-title" className="h2">
+            How it works
+          </h2>
+          <p className="content-measure mt-3 text-[var(--text-muted)]">
+            A simple path from first conversation to familiar support that runs consistently.
+          </p>
+          <ol className="step-list mt-8">
+            {HOW_IT_WORKS.map((item) => (
+              <li key={item.step} className="step-list__item">
+                <article className="step-card home-card-interactive h-full">
+                  <h3 className="step-card__label">{item.step}</h3>
+                  <p className="step-card__line">{item.line}</p>
+                </article>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 
-      {/* 5. Who we're best for */}
+      {/* 5. Participant story video */}
       <section
-        id="who-were-best-for"
-        aria-labelledby="best-for-title"
+        aria-labelledby="routine-story-title"
         className="home-section home-band"
       >
         <div className="content-shell content-shell--home">
-        <p className="home-section-kicker">Fit guide</p>
-        <h2 id="best-for-title" className="h2 content-measure">
-          Who we&apos;re best for
-        </h2>
-        <p className="content-measure mt-3 text-[var(--text-muted)]">
-          The right fit matters for participants, families, and referrers alike.
-        </p>
-        <div className="mt-10 grid gap-6 lg:grid-cols-2 lg:gap-8">
-          <div className="card card--on-band home-card-interactive">
-            <h3 className="h3 text-xl md:text-xl">A strong fit when the participant…</h3>
-            <ul className="mt-5 space-y-3">
-              {STRONG_FIT.map((item) => (
-                <li key={item} className="flex gap-3">
-                  <span className="home-accent-mark mt-0.5 shrink-0" aria-hidden="true">
-                    ✓
-                  </span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-            <h3 className="h3 mt-8 text-xl md:text-xl">Families and referrers often value…</h3>
-            <ul className="mt-5 space-y-3">
-              {FAMILY_VALUES.map((item) => (
-                <li key={item} className="flex gap-3">
-                  <span className="home-accent-mark mt-0.5 shrink-0" aria-hidden="true">
-                    ✓
-                  </span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
+          <div className="media-spotlight mx-auto max-w-3xl">
+            <h2 id="routine-story-title" className="text-lg font-semibold">
+              Building a routine that feels meaningful
+            </h2>
+            <p className="mt-2 text-[var(--text-muted)]">
+              Hear how structured support around interests and routine helps someone stay
+              engaged in the life they&apos;re building.
+            </p>
+            <div className="mt-5">
+              <SelfHostedVideo
+                srcMp4="/videos/testimonial2.mp4"
+                title="Building a routine that feels meaningful"
+                description="Hear how structured support around interests and routine helps someone stay engaged in the life they're building."
+                poster="/images/testimonials/thumbnail.jpg"
+                minimalChrome
+              />
+            </div>
           </div>
-          <div className="card card--muted home-card-interactive">
-            <h3 className="h3 text-xl md:text-xl">We may not be the best fit when…</h3>
-            <ul className="mt-5 space-y-3">
-              {HONEST_BOUNDARIES.map((item) => (
-                <li key={item} className="flex gap-3">
-                  <span className="mt-0.5 shrink-0 text-[var(--text-muted)]" aria-hidden="true">
-                    ·
-                  </span>
-                  <span className="text-[var(--text-muted)]">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-        <p className="content-measure mt-8 leading-relaxed">
-          We&apos;re honest about fit because the right match matters more than volume, and
-          we&apos;ll gladly help you think through alternatives when we&apos;re not the right
-          provider.
-        </p>
-        <div className="mx-auto mt-10 max-w-4xl rounded-[var(--radius-lg)] border border-[var(--border-subtle)] bg-[var(--bg-surface)] p-5 shadow-[var(--shadow-card)] md:p-6">
-          <h3 className="text-lg font-semibold">Building a routine that feels meaningful</h3>
-          <p className="mt-2 text-[var(--text-muted)]">
-            Hear how structured support around interests and routine helps someone stay
-            engaged in the life they&apos;re building.
-          </p>
-          <div className="mt-5">
-            <SelfHostedVideo
-              srcMp4="/videos/testimonial2.mp4"
-              title="Building a routine that feels meaningful"
-              description="Hear how structured support around interests and routine helps someone stay engaged in the life they're building."
-              poster="/images/testimonials/thumbnail.jpg"
-              minimalChrome
-            />
-          </div>
-        </div>
         </div>
       </section>
 
       {/* 6. Referrer CTA + service areas */}
       <section
         aria-labelledby="referrers-title"
-        className="home-section home-section--sage home-band"
+        className="home-section home-band home-band--subtle"
       >
         <div className="content-shell content-shell--home">
-        <div className="home-referrer-band">
-          <p className="home-section-kicker">For professionals</p>
-          <h2 id="referrers-title" className="h2">
-            For support coordinators and referrers
-          </h2>
-          <p className="mt-3 text-[var(--text-muted)]">
-            We work alongside coordinators and therapists, not around them.
-          </p>
-          <ul className="mt-5 space-y-2">
-            {REFERRER_POINTS.map((item) => (
-              <li key={item} className="flex gap-3 text-sm md:text-base">
-                <span className="home-accent-mark shrink-0" aria-hidden="true">
-                  ✓
-                </span>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-          <div className="mt-8">
-            <Link href="/referral" className="btn-primary">
-              Make a Referral
-            </Link>
-            <p className="mt-2 text-sm text-[var(--text-muted)]">
-              We&apos;ll respond within 1–2 business days.
+          <div className="home-referrer-band">
+            <p className="section-kicker">For professionals</p>
+            <h2 id="referrers-title" className="h2">
+              For support coordinators and referrers
+            </h2>
+            <p className="mt-3 text-[var(--text-muted)]">
+              We work alongside coordinators and therapists, not around them.
             </p>
-          </div>
-          <div className="mt-8 border-t border-[var(--sage-mid)] pt-6">
-            <p className="text-sm font-semibold text-[var(--text)]">Service areas</p>
-            <p className="mt-1 text-sm text-[var(--text-muted)]">
-              Support throughout Canberra and the ACT
-            </p>
-            <ul className="home-service-chips mt-3" aria-label="Service areas">
-              {SERVICE_AREAS.map((area) => (
-                <li key={area}>
-                  <span className="home-pill">{area}</span>
+            <ul className="check-list mt-6 space-y-3">
+              {REFERRER_POINTS.map((item) => (
+                <li key={item}>
+                  <span className="check-mark" aria-hidden="true">✓</span>
+                  <span>{item}</span>
                 </li>
               ))}
             </ul>
+            <div className="mt-9">
+              <Link href="/referral" className="btn-primary">
+                Make a Referral
+              </Link>
+              <p className="mt-2 text-sm text-[var(--text-muted)]">
+                We&apos;ll respond within 1–2 business days.
+              </p>
+            </div>
+            <div className="mt-10 border-t border-[var(--line-light)] pt-7">
+              <p className="text-sm font-semibold text-[var(--sand)]">Service areas</p>
+              <p className="mt-1 text-sm text-[var(--text-muted)]">
+                Support throughout Canberra and the ACT
+              </p>
+              <ul className="home-service-chips mt-3" aria-label="Service areas">
+                {SERVICE_AREAS.map((area) => (
+                  <li key={area}>
+                    <span className="home-pill">{area}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
-        </div>
         </div>
       </section>
 
-      {/* 7. Depth links — routes to detail pages */}
+      {/* 7. Homepage consultation form */}
+      <section
+        aria-labelledby="home-consultation-title"
+        className="home-section home-band home-band--proof"
+      >
+        <div className="content-shell content-shell--reading">
+          <p className="section-kicker">Consultation</p>
+          <h2 id="home-consultation-title" className="h2 text-balance">
+            Book a Consultation
+          </h2>
+          <p className="content-measure mt-3 text-[var(--text-muted)]">
+            Tell us a good time to talk about support, fit, and next steps. We&apos;ll confirm by
+            phone or email.
+          </p>
+          <ConsultationForm idPrefix="home-consultation" className="mt-6" />
+        </div>
+      </section>
+
+      {/* 8. Depth links */}
       <section
         aria-labelledby="home-depth-title"
-        className="home-section home-section--surface home-band border-t border-[var(--border-subtle)] pb-16 md:pb-20"
+        className="home-section home-band pb-16 md:pb-20"
       >
         <div className="content-shell content-shell--home">
-        <h2 id="home-depth-title" className="h2 text-xl md:text-2xl">
-          Explore in more detail
-        </h2>
-        <p className="content-measure mt-2 text-[var(--text-muted)]">
-          Deeper context on our approach, programs, stories, and Canberra service areas.
-        </p>
-        <nav className="mt-6" aria-label="Related pages">
-          <ul className="home-depth-links">
-            <li className="home-depth-links__item">
-              <Link href="/about" className="home-depth-link">
-                About our approach
-              </Link>
-            </li>
-            <li className="home-depth-links__item">
-              <Link href="/programs" className="home-depth-link">
-                Our programs
-              </Link>
-            </li>
-            <li className="home-depth-links__item">
-              <Link href="/reviews" className="home-depth-link">
-                Stories &amp; reviews
-              </Link>
-            </li>
-            <li className="home-depth-links__item">
-              <Link href="/services/canberra" className="home-depth-link">
-                NDIS services in Canberra
-              </Link>
-            </li>
-          </ul>
-        </nav>
+          <h2 id="home-depth-title" className="h2 text-xl md:text-2xl">
+            Explore in more detail
+          </h2>
+          <p className="content-measure mt-2 text-[var(--text-muted)]">
+            Deeper context on our approach, programs, stories, and Canberra service areas.
+          </p>
+          <nav className="mt-6" aria-label="Related pages">
+            <ul className="home-depth-links">
+              <li className="home-depth-links__item">
+                <Link href="/about" className="text-link">
+                  About our approach
+                </Link>
+              </li>
+              <li className="home-depth-links__item">
+                <Link href="/programs" className="text-link">
+                  Our programs
+                </Link>
+              </li>
+              <li className="home-depth-links__item">
+                <Link href="/reviews" className="text-link">
+                  Stories &amp; reviews
+                </Link>
+              </li>
+              <li className="home-depth-links__item">
+                <Link href="/services/canberra" className="text-link">
+                  NDIS services in Canberra
+                </Link>
+              </li>
+            </ul>
+          </nav>
         </div>
       </section>
     </div>
