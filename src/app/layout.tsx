@@ -276,7 +276,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Skip link */}
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:bg-[var(--gold)] focus:text-[var(--ink)] focus:px-4 focus:py-2 focus:rounded-lg"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:bg-[var(--green)] focus:text-white focus:px-4 focus:py-2 focus:rounded-lg"
         >
           Skip to main content
         </a>
