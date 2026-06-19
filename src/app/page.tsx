@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import SelfHostedVideo from "../components/SelfHostedVideo";
 import ImageCarousel from "../components/ImageCarousel";
+import ScrollReveal from "../components/ScrollReveal";
 
 const HERO_IDENTITY = [
   "Canberra & the ACT",
@@ -147,6 +148,7 @@ const CREDIBILITY_STATS = [
 export default function Home() {
   return (
     <div className="homepage">
+      <ScrollReveal />
       {/* 1. Hero */}
       <section aria-labelledby="hero-title" className="home-hero home-hero--bold home-band">
         <div className="home-hero__inner content-shell content-shell--home">
