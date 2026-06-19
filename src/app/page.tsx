@@ -339,7 +339,7 @@ export default function Home() {
           The right fit matters for participants, families, and referrers alike.
         </p>
         <div className="mt-10 grid gap-6 lg:grid-cols-2 lg:gap-8">
-          <div className="card card--on-band home-card-interactive">
+          <div className="card card--highlight home-card-interactive">
             <h3 className="h3 text-xl md:text-xl">A strong fit when the participant…</h3>
             <ul className="mt-5 space-y-3">
               {STRONG_FIT.map((item) => (
