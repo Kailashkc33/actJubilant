@@ -316,6 +316,26 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         {/* Footer */}
         <footer role="contentinfo" className="site-footer">
+          {/* CTA strip */}
+          <div className="site-footer__cta">
+            <div className="site-footer__cta-inner content-shell content-shell--home">
+              <div className="site-footer__cta-copy">
+                <p className="site-footer__cta-title">Ready to talk about support that fits?</p>
+                <p className="site-footer__cta-sub">
+                  Make a referral or book a consultation — we respond within 1–2 business days.
+                </p>
+              </div>
+              <div className="site-footer__cta-actions">
+                <Link href="/referral" className="btn-primary">
+                  Make a Referral
+                </Link>
+                <Link href="/consultation" className="btn-secondary site-footer__cta-secondary">
+                  Book a Consultation
+                </Link>
+              </div>
+            </div>
+          </div>
+
           <div className="site-footer__inner content-shell content-shell--home">
             <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-12 lg:gap-8">
               <div className="lg:col-span-6">
