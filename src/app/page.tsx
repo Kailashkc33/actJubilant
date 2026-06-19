@@ -137,12 +137,19 @@ const SERVICE_AREAS = [
   "Queanbeyan",
 ] as const;
 
+const CREDIBILITY_STATS = [
+  { value: "~6", label: "Participants per small group" },
+  { value: "12–65", label: "Age range we support" },
+  { value: "1–2 days", label: "Referral response time" },
+  { value: "ACT", label: "Canberra & surrounding areas" },
+] as const;
+
 export default function Home() {
   return (
     <div className="homepage">
       {/* 1. Hero */}
-      <section aria-labelledby="hero-title" className="home-hero home-band">
-        <div className="content-shell content-shell--home">
+      <section aria-labelledby="hero-title" className="home-hero home-hero--bold home-band">
+        <div className="home-hero__inner content-shell content-shell--home">
         <div className="grid gap-8 md:grid-cols-2 md:items-center md:gap-12">
           <div className="home-hero__media order-1 md:order-2">
             <ImageCarousel
@@ -192,6 +199,20 @@ export default function Home() {
             </p>
           </div>
         </div>
+        </div>
+      </section>
+
+      {/* 1b. Credibility / stats band */}
+      <section aria-label="ACT Jubilant at a glance" className="home-stats-band home-band">
+        <div className="content-shell content-shell--home">
+          <ul className="home-stats" role="list">
+            {CREDIBILITY_STATS.map((stat) => (
+              <li key={stat.label} className="home-stat">
+                <span className="home-stat__value">{stat.value}</span>
+                <span className="home-stat__label">{stat.label}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 

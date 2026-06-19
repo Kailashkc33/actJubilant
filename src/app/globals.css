@@ -551,6 +551,70 @@ html.dyslexia .site-footer__cta-title {
   }
 }
 
+/* Modern-bold hero: layered gradient + soft accent glows */
+.home-hero--bold {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      120% 120% at 85% 0%,
+      color-mix(in oklab, var(--primary-50) 70%, transparent) 0%,
+      transparent 55%
+    ),
+    linear-gradient(
+      180deg,
+      color-mix(in oklab, var(--bg-sage) 92%, var(--surface)) 0%,
+      var(--bg-sage) 100%
+    );
+}
+.home-hero--bold::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -18%;
+  right: -10%;
+  width: 32rem;
+  height: 32rem;
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle,
+    color-mix(in oklab, var(--primary-600) 16%, transparent) 0%,
+    transparent 70%
+  );
+  filter: blur(8px);
+  pointer-events: none;
+}
+.home-hero--bold::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  bottom: -22%;
+  left: -12%;
+  width: 28rem;
+  height: 28rem;
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle,
+    color-mix(in oklab, var(--warm) 12%, transparent) 0%,
+    transparent 70%
+  );
+  filter: blur(8px);
+  pointer-events: none;
+}
+.home-hero__inner {
+  position: relative;
+  z-index: 1;
+}
+/* High-contrast: drop decorative glows for a clean, legible field */
+html.hc .home-hero--bold {
+  background: var(--bg-sage);
+}
+html.hc .home-hero--bold::before,
+html.hc .home-hero--bold::after {
+  display: none;
+}
+
 .home-hero__title {
   font-family: var(--font-display), system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
   letter-spacing: -0.028em;
@@ -609,14 +673,24 @@ html.dyslexia .site-footer__cta-title {
 .home-hero__chip {
   display: inline-flex;
   align-items: center;
+  gap: 0.4375rem;
   border-radius: 9999px;
   border: 1px solid var(--sage-mid);
-  background: var(--surface);
-  padding: 0.375rem 0.75rem;
+  background: color-mix(in oklab, var(--surface) 86%, transparent);
+  padding: 0.4375rem 0.8125rem;
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.35;
-  color: var(--text-muted);
+  color: var(--sage-dark);
+  backdrop-filter: blur(4px);
+}
+.home-hero__chip::before {
+  content: "";
+  width: 0.4375rem;
+  height: 0.4375rem;
+  border-radius: 9999px;
+  background: var(--sage);
+  flex-shrink: 0;
 }
 
 .home-section-kicker {
@@ -626,6 +700,84 @@ html.dyslexia .site-footer__cta-title {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--sage);
+}
+
+/* Credibility / stats band */
+.home-stats-band {
+  background: var(--slate);
+  color: var(--text-on-dark);
+  padding-top: 1.75rem;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid color-mix(in oklab, var(--slate) 70%, black);
+}
+@media (min-width: 768px) {
+  .home-stats-band {
+    padding-top: 2.25rem;
+    padding-bottom: 2.25rem;
+  }
+}
+.home-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+@media (min-width: 768px) {
+  .home-stats {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+}
+.home-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  text-align: center;
+  padding-inline: 0.5rem;
+}
+@media (min-width: 768px) {
+  .home-stat:not(:last-child) {
+    border-right: 1px solid rgba(255, 255, 255, 0.14);
+  }
+}
+.home-stat__value {
+  font-family: var(--font-display), system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  font-size: 1.75rem;
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--text-on-dark);
+}
+@media (min-width: 768px) {
+  .home-stat__value {
+    font-size: 2.25rem;
+  }
+}
+.home-stat__label {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.72);
+}
+@media (min-width: 768px) {
+  .home-stat__label {
+    font-size: 0.875rem;
+  }
+}
+html.dyslexia .home-stat__value {
+  font-family: var(--font-dys), system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Segoe UI Emoji";
+}
+html.hc .home-stats-band {
+  background: #000;
+  border-bottom-color: #333;
+}
+html.hc .home-stat:not(:last-child) {
+  border-right-color: #333;
+}
+html.hc .home-stat__label {
+  color: var(--text-muted);
 }
 
 .home-card-interactive {
